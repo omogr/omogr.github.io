@@ -113,3 +113,13 @@ footer {
 		flex-direction: row-reverse;
 	}
 }
+
+/* Добавьте эти правила в конец вашего CSS */
+.text-container strong {
+    font-weight: 500;         /* Уменьшаем насыщенность шрифта */
+    color: #444;              /* Слегка светлее основного текста */
+    background-color: rgba(0, 0, 0, 0.02); /* Очень лёгкий фон */
+    padding: 0.1em 0.3em;     /* Пространство вокруг текста */
+    border-radius: 3px;       /* Скруглённые углы фона */
+    text-shadow: none;        /* Убираем тени если есть */
+}
