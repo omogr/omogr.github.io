@@ -123,3 +123,11 @@ footer {
     border-radius: 3px;       /* Скруглённые углы фона */
     text-shadow: none;        /* Убираем тени если есть */
 }
+
+.nav-links-left {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	display: flex;
+	gap: 1rem;
+}
