@@ -1,2 +1,2 @@
 # ai-news
-ai-news website 
+omogr ai-news website 
