@@ -1,2 +1,2 @@
 # ai-news
-Website with ai-news
+ai-news website 
