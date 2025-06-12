@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Время удивительных историй - </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        /* Все стили из главной страницы сохранены */
+        /* Добавлены только специфичные изменения */
+        
+        /* Hero для тематической страницы */
+        .theme-hero {
+            background: linear-gradient(135deg, #1a2530, var(--primary-color));
+            padding: 3rem 0 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .theme-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .theme-icon {
+            font-size: 3rem;
+            color: var(--light-accent);
+        }
+        
+        .theme-title {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .theme-description {
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: white;
+        }
+        /*
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--light-accent);
+        }
+        
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        */
+        /* Фильтры статей */
+		/*
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--light-accent);
+            color: var(--primary-color);
+        }
+        */
+        /* Изменение заголовка секции */
+        .theme-section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-accent);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .theme-section-title i {
+            margin-right: 0.7rem;
+            color: var(--light-accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (без изменений) -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>Время удивительных историй</span>
+            </a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="theme_0.html">Искусственный интеллект</a></li>
+                    <li><a href="theme_1.html">Космос</a></li> <!-- class="active"-->
+                    <li><a href="theme_2.html">Человеческие отношения</a></li>
+                    <li><a href="articles/page_00/about.html">О проекте</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero для тематической страницы -->
+    <section class="theme-hero">
+        <div class="container">
+            <div class="theme-header">
+                <i class="fas fa-rocket theme-icon"></i>
+                <h1 class="theme-title">Космос</h1>
+            </div>
+            <p class="theme-description">
+                Исследования Вселенной, новые технологии и космические открытия. Погрузитесь в удивительный мир космоса через пересказы ключевых идей из выступлений ведущих экспертов.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="content-column">
+                <h2 class="theme-section-title">
+					<i class="fas fa-microphone-alt"></i>Пересказы выступлений по теме
+                </h2>
+                
+                <div class="articles-grid">
+				    
+                    <!-- Article 1 - Full Card -->
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="articles/page_01/images/article2/p00.png" alt="Плазменный ветер">
+                        </div>
+                        <div class="article-content">
+							
+                            <h3 class="article-title">Дмитрий Конаныхин про ядерный буксир и военный космос</h3>
+							
+
+							
+                            <div class="article-authors">Видео на канале Дмитрия Конаныхина «Русская техника и космос» «Вечер с Дмитрием Конаныхиным №248»</div>
+							
+							
+							
+                            <a href="articles/page_01/article2.html" class="read-more">Читать пересказ</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Article 2 - Full Card -->
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="articles/page_01/images/article5/p00.png" alt="Плазменный ветер">
+                        </div>
+                        <div class="article-content">
+							
+                            <h3 class="article-title">Д.Конаныхин, Е.В. Стёпин обсуждают электрореактивные двигатели ядерных планетолётов</h3>
+							
+
+							
+                            <div class="article-authors">Видео на канале Д.Конаныхина «Русская техника и космос» «Электрореактивные двигатели ядерных планетолётов для освоения Солнечной системы»</div>
+							
+							
+							
+                            <a href="articles/page_01/article5.html" class="read-more">Читать пересказ</a>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="compact-articles">
+				    
+                    
+                </div>
+                
+				
+            </div>
+            
+            <!-- Right Column - Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-fire"></i> Удивительные материалы</h3>
+                    <div class="popular-articles">
+                        <ul>
+							
+                         </ul>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-hashtag"></i> Популярные теги</h3>
+                    <div class="tags">
+                        <a href="theme_0.html" class="btn">#искусственный интеллект</a>
+                        <a href="theme_2.html" class="btn">#человеческие отношения</a>
+                        <a href="theme_1.html" class="btn">#космос</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Время удивительных историй</h3>
+                    <p>Пересказы ключевых идей из выступлений. Исследуем технологии, науку и человеческую природу. Возможны ньюансы 😉</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Подборки</h3>
+                    <ul class="footer-links">
+                        <li><a href="theme_0.html">Искусственный интеллект</a></li>
+                        <li><a href="theme_1.html">Космос</a></li>
+                        <li><a href="theme_2.html">Человеческие отношения</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Полезные ссылки</h3>
+                    <ul class="footer-links">
+                        <li><a href="articles/page_00/about.html">О проекте</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Время удивительных историй | Пересказы выступлений</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+        
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = `fadeInUp 0.6s ease forwards`;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.article-card, .compact-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+	
+</body>
+</html>                

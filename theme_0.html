@@ -3,16 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Время удивительных историй - Главная</title>
+    <title>Время удивительных историй - </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
+    <style>
+        /* Все стили из главной страницы сохранены */
+        /* Добавлены только специфичные изменения */
+        
+        /* Hero для тематической страницы */
+        .theme-hero {
+            background: linear-gradient(135deg, #1a2530, var(--primary-color));
+            padding: 3rem 0 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .theme-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .theme-icon {
+            font-size: 3rem;
+            color: var(--light-accent);
+        }
+        
+        .theme-title {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .theme-description {
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: white;
+        }
+        /*
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--light-accent);
+        }
+        
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        */
+        /* Фильтры статей */
+		/*
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--light-accent);
+            color: var(--primary-color);
+        }
+        */
+        /* Изменение заголовка секции */
+        .theme-section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-accent);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .theme-section-title i {
+            margin-right: 0.7rem;
+            color: var(--light-accent);
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header (без изменений) -->
     <header>
         <div class="container header-container">
-            <a href="/" class="logo">
+            <a href="index.html" class="logo">
                 <i class="fas fa-book-open"></i>
                 <span>Время удивительных историй</span>
             </a>
@@ -21,9 +122,9 @@
             </button>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Главная</a></li>
+                    <li><a href="index.html">Главная</a></li>
                     <li><a href="theme_0.html">Искусственный интеллект</a></li>
-                    <li><a href="theme_1.html">Космос</a></li>
+                    <li><a href="theme_1.html">Космос</a></li> <!-- class="active"-->
                     <li><a href="theme_2.html">Человеческие отношения</a></li>
                     <li><a href="articles/page_00/about.html">О проекте</a></li>
                 </ul>
@@ -31,36 +132,17 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Hero для тематической страницы -->
+    <section class="theme-hero">
         <div class="container">
-            <h1>Время удивительных историй</h1>
-            <p>Пересказы ключевых идей из выступлений</p>
-            
-            <div class="collections-grid">
-                <div class="collection-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>Искусственный интеллект</h3>
-                    <p>Развитие ИИ, этика машинного обучения и будущее технологий</p>
-                    <a href="theme_0.html" class="btn">Исследовать</a>
-                </div>
-                
-                <div class="collection-card">
-                    <i class="fas fa-rocket"></i>
-                    <h3>Космос</h3>
-                    <p>Исследования Вселенной, новые технологии и космические открытия</p>
-                    <a href="theme_1.html" class="btn">Исследовать</a>
-                </div>
-                
-                <div class="collection-card">
-                    <i class="fas fa-heart"></i>
-                    <h3>Человеческие отношения</h3>
-                    <p>Психология, коммуникация и эволюция социальных связей</p>
-                    <a href="theme_2.html" class="btn">Исследовать</a>
-                </div>
+            <div class="theme-header">
+                <i class="fas fa-rocket theme-icon"></i>
+                <h1 class="theme-title">Искусственный интеллект</h1>
             </div>
+            <p class="theme-description">
+                Мир, меняющийся на глазах: искусственный интеллект, нейросети и будущее человечества. Понять революцию ИИ через пересказы ключевых идей из выступлений ведущих экспертов.
+            </p>
         </div>
-
     </section>
 
     <!-- Main Content -->
@@ -68,8 +150,8 @@
         <div class="main-content">
             <!-- Left Column -->
             <div class="content-column">
-                <h2 class="section-title">
-                    <i class="fas fa-microphone-alt"></i>Пересказы выступлений
+                <h2 class="theme-section-title">
+					<i class="fas fa-microphone-alt"></i>Пересказы выступлений по теме
                 </h2>
                 
                 <div class="articles-grid">
@@ -98,65 +180,27 @@
                     <!-- Article 2 - Full Card -->
                     <div class="article-card">
                         <div class="article-image">
-                            <img src="articles/page_01/images/article2/p00.png" alt="Плазменный ветер">
+                            <img src="articles/page_01/images/article8/p00.png" alt="Плазменный ветер">
                         </div>
                         <div class="article-content">
 							
-                            <h3 class="article-title">Дмитрий Конаныхин про ядерный буксир и военный космос</h3>
+                            <h3 class="article-title">Илья Сацкевер: «Sequence to sequence learning with neural networks: what a decade»</h3>
 							
 
 							
-                            <div class="article-authors">Видео на канале Дмитрия Конаныхина «Русская техника и космос» «Вечер с Дмитрием Конаныхиным №248»</div>
+                            <div class="article-authors">В декабре 2024 года Илья Сацкевер, чьи работы (включая знаменитый seq2seq) легли в основу современного ИИ, а также бывший главный научный сотрудник OpenAI, представил доклад на конференции NeurIPS, подводя итоги целого десятилетия развития</div>
 							
 							
 							
-                            <a href="articles/page_01/article2.html" class="read-more">Читать пересказ</a>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <h2 class="section-title">
-                    <i class="fas fa-comments"></i>Другие пересказы
-                </h2>
-                
-                <div class="compact-articles">
-				    
-                    <!-- Article 1 - Compact Card -->
-                    <div class="compact-card">
-                        <div class="compact-image">
-                            <img src="articles/page_01/images/article8/p00.png" alt="">
-                        </div>
-                        <div class="compact-content">
-							
-                            <div class="compact-main">Илья Сацкевер: «Sequence to sequence learning with neural networks: what a decade»</div>
-							
-							
-                            <div class="compact-description">В декабре 2024 года Илья Сацкевер, чьи работы (включая знаменитый seq2seq) легли в основу современного ИИ, а также бывший главный научный сотрудник OpenAI, представил доклад на конференции NeurIPS, подводя итоги целого десятилетия развития</div>
-							
-                            
                             <a href="articles/page_01/article8.html" class="read-more">Читать пересказ</a>
                         </div>
                     </div>
                     
-                    <!-- Article 2 - Compact Card -->
-                    <div class="compact-card">
-                        <div class="compact-image">
-                            <img src="articles/page_01/images/article6/p00.png" alt="">
-                        </div>
-                        <div class="compact-content">
-							
-                            <div class="compact-main">Егор Яковлев совместно с Дмитрием Пучковым. Разбор «Онегина». Начало первой части.</div>
-							
-							
-                            <div class="compact-description">Наконец-то дерзнули мы замахнуться на «наше всё» — приступаем к разбору «Евгения Онегина», сего алмаза русской словесности, вышедшего из-под пера ...</div>
-							
-                            
-                            <a href="articles/page_01/article6.html" class="read-more">Читать пересказ</a>
-                        </div>
-                    </div>
                     
-                    <!-- Article 3 - Compact Card -->
+                </div>
+                <div class="compact-articles">
+				    
+                    <!-- Article 1 - Compact Card -->
                     <div class="compact-card">
                         <div class="compact-image">
                             <img src="articles/page_01/images/article3/p00.png" alt="">
@@ -173,20 +217,20 @@
                         </div>
                     </div>
                     
-                    <!-- Article 4 - Compact Card -->
+                    <!-- Article 2 - Compact Card -->
                     <div class="compact-card">
                         <div class="compact-image">
-                            <img src="articles/page_01/images/article7/p00.png" alt="">
+                            <img src="articles/page_01/images/article4/p00.png" alt="">
                         </div>
                         <div class="compact-content">
 							
-                            <div class="compact-main">Татьяна Черниговская: От потери слуха Бетховену стало даже лучше – ему не мешали внешние звуки</div>
+                            <div class="compact-main">Eric Schmidt. The AI Revolution Is Underhyped</div>
 							
 							
-                            <div class="compact-description">Выступление на Общественном телевидении России</div>
+                            <div class="compact-description">Выступление бывшего генерального директора и председателя совета директоров Google Эрика Шмидта 11 апреля 2025 года в Ванкувере на конференции TED2025</div>
 							
                             
-                            <a href="articles/page_01/article7.html" class="read-more">Читать пересказ</a>
+                            <a href="articles/page_01/article4.html" class="read-more">Читать пересказ</a>
                         </div>
                     </div>
                     
@@ -202,38 +246,6 @@
                     <h3><i class="fas fa-fire"></i> Удивительные материалы</h3>
                     <div class="popular-articles">
                         <ul>
-														
-							
-							<li><a href="articles/page_01/article4.html"><i class="fas fa-chevron-right"></i> 
-							        
-									Eric Schmidt. The AI Revolution Is Underhyped
-									
-							    </a>
-						    </li>
-														
-							
-							<li><a href="articles/page_01/article5.html"><i class="fas fa-chevron-right"></i> 
-							        
-									Д.Конаныхин, Е.В. Стёпин обсуждают электрореактивные двигатели ядерных планетолётов
-									
-							    </a>
-						    </li>
-														
-							
-							<li><a href="articles/page_01/article9.html"><i class="fas fa-chevron-right"></i> 
-							        
-									Уильям Гибсон | 12.01.2012 | Appel Salon | О книге Distrust That Particular Flavor.
-									
-							    </a>
-						    </li>
-														
-							
-							<li><a href="articles/page_01/article1.html"><i class="fas fa-chevron-right"></i> 
-							        
-									Путь к осознанности
-									
-							    </a>
-						    </li>
 							
                          </ul>
                     </div>
@@ -306,4 +318,4 @@
     </script>
 	
 </body>
-</html>
+</html>                
