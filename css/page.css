@@ -634,4 +634,28 @@ img {
   }
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 0 0.5rem; /* Уменьшите отступы */
+    }
 
+    .article-container {
+        padding: 1rem; /* Уменьшите внутренние отступы */
+        margin: 1rem 0; /* Уберите боковые отступы */
+        max-width: 100%; /* Расширьте контейнер на всю ширину */
+    }
+}
+@media (max-width: 768px) {
+    .article-container {
+        width: 100vw; /* Ширина на весь экран */
+        margin: 0; /* Уберите внешние отступы */
+        border-radius: 0; /* Опционально: уберите закругления */
+        box-shadow: none; /* Опционально: уберите тень */
+    }
+}
+
+.block-content p {
+    font-size: 1rem; /* Увеличьте размер шрифта */
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
