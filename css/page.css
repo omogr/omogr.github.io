@@ -566,5 +566,72 @@ html {
 	scroll-behavior: smooth;
 }
 
+/* Добавьте эти стили в конец CSS */
+@media (max-width: 1080px) {
+  .article-container {
+    width: 95%;
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-container {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+  
+  .article-block {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-container {
+    padding: 0.75rem;
+    margin: 0.5rem auto;
+    width: 100%;
+  }
+  
+  body {
+    padding: 0;
+  }
+  
+  .block-image {
+    max-height: 150px;
+  }
+}
+
+/* Для устройств с шириной около 1080px */
+@media 
+  (min-width: 960px) and (max-width: 1080px),
+  (min-height: 2000px) {
+  .article-container {
+    max-width: 850px; /* Увеличиваем полезную площадь */
+    padding: 1.5rem 2rem;
+  }
+  
+  .article-title {
+    font-size: 2.4rem; /* Увеличиваем заголовок */
+  }
+}
+
+/* Гарантируем, что изображения не создают лишних отступов */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Оптимизация вертикального пространства */
+@media (min-height: 2000px) {
+  .article-header {
+    padding-bottom: 1rem;
+  }
+  
+  .article-block {
+    margin: 2rem 0;
+  }
+}
 
 

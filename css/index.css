@@ -583,7 +583,23 @@
             .hero h1 {
                 font-size: 2.2rem;
             }
-        }
+
+			header {
+				padding: 0.7rem 0;
+			}
+
+			.logo {
+				font-size: 1.4rem;
+			}
+
+			nav ul {
+				padding: 0.5rem 0;
+			}
+
+			nav ul li {
+				padding: 0.5rem 1rem;
+			}
+		}
 
         @media (max-width: 480px) {
             .collections-grid {
@@ -605,65 +621,44 @@
             .hero p {
                 font-size: 1rem;
             }
-        }
 
+		.logo span {
+			display: none;
+		}
 
-@media (max-width: 768px) {
-  header {
-    padding: 0.7rem 0;
-  }
-  
-  .logo {
-    font-size: 1.4rem;
-  }
-  
-  nav ul {
-    padding: 0.5rem 0;
-  }
-  
-  nav ul li {
-    padding: 0.5rem 1rem;
-  }
-}
+		.logo i {
+		font-size: 1.8rem;
+			margin-right: 0;
+		}
 
-@media (max-width: 480px) {
-  .logo span {
-    display: none;
-  }
-  
-  .logo i {
-    font-size: 1.8rem;
-    margin-right: 0;
-  }
-  
-  .hero {
-    padding: 2rem 0;
-  }
-  
-  .hero h1 {
-    font-size: 1.6rem;
-    margin-bottom: 0.8rem;
-  }
-  
-  .hero p {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .collection-card {
-    padding: 1.5rem;
-  }
-  
-  .collection-card i {
-    font-size: 2.2rem;
-  }
-  
-  /* Компактный режим для шапки */
-  header.scrolled {
-    padding: 0.3rem 0;
-  }
-  
-  header.scrolled .logo {
-    font-size: 1.2rem;
-  }
+		.hero {
+			padding: 2rem 0;
+		}
+
+		.hero h1 {
+		font-size: 1.6rem;
+			margin-bottom: 0.8rem;
+		}
+
+		.hero p {
+		font-size: 0.95rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.collection-card {
+			padding: 1.5rem;
+		}
+
+		.collection-card i {
+			font-size: 2.2rem;
+		}
+
+		/* Компактный режим для шапки */
+		header.scrolled {
+			padding: 0.3rem 0;
+		}
+
+		header.scrolled .logo {
+			font-size: 1.2rem;
+		}
 }	
