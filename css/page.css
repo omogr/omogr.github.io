@@ -437,7 +437,6 @@ html {
     scroll-behavior: smooth;
 }
 
-
 /* Responsive Design */
 @media (max-width: 900px) {
 	.article-container {
@@ -571,20 +570,6 @@ html {
   .logo i {
     font-size: 1.8rem;
     margin-right: 0;
-  }
-  
-  .hero {
-    padding: 2rem 0;
-  }
-  
-  .hero h1 {
-    font-size: 1.6rem;
-    margin-bottom: 0.8rem;
-  }
-  
-  .hero p {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
   }
   
   .collection-card {
