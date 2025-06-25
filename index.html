@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header (без изменений) -->
     <header>
         <div class="container header-container">
-            <a href="/" class="logo">
+            <a href="index.html" class="logo">
                 <i class="fas fa-book-open"></i>
                 <span>Время удивительных историй</span>
             </a>
@@ -21,21 +21,20 @@
             </button>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Главная</a></li>
-                    <li><a href="theme_0.html">Искусственный интеллект</a></li>
-                    <li><a href="theme_1.html">Космос</a></li>
-                    <li><a href="theme_2.html">Человеческие отношения</a></li>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="theme_0.html">ИТ</a></li>
+                    <li><a href="theme_1.html">Техническое</a></li> <!-- class="active"-->
+                    <li><a href="theme_2.html">Человеческое</a></li>
                     <li><a href="articles/page_00/about.html">О проекте</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Время удивительных историй</h1>
-            <p>Пересказы ключевых идей из выступлений</p>
+            <p>Интервью с известными людьми, интересные выступления и обсуждения</p>
             
             <div class="collections-grid">
                 <div class="collection-card">
@@ -47,14 +46,14 @@
                 
                 <div class="collection-card">
                     <i class="fas fa-rocket"></i>
-                    <h3>Космос</h3>
+                    <h3>Техническое</h3>
                     <p>Исследования Вселенной, новые технологии и космические открытия</p>
                     <a href="theme_1.html" class="btn">Исследовать</a>
                 </div>
                 
                 <div class="collection-card">
                     <i class="fas fa-heart"></i>
-                    <h3>Человеческие отношения</h3>
+                    <h3>Человеческое</h3>
                     <p>Психология, коммуникация и эволюция социальных связей</p>
                     <a href="theme_2.html" class="btn">Исследовать</a>
                 </div>
@@ -69,7 +68,7 @@
             <!-- Left Column -->
             <div class="content-column">
                 <h2 class="section-title">
-                    <i class="fas fa-microphone-alt"></i>Пересказы выступлений
+                    <i class="fas fa-microphone-alt"></i> Недавно добавленное
                 </h2>
                 
                 <div class="articles-grid">
@@ -78,7 +77,7 @@
                     <div class="article-card">
 					    <a href="articles/page_02/article8.html">
                         <div class="article-image">
-                            <img src="articles/page_02/images/article8/p00.png" alt="Плазменный ветер">
+                            <img src="articles/page_02/images/article8/p00.png" alt="">
                         </div>
 						</a>
                         <div class="article-content">
@@ -91,94 +90,58 @@
                             <div class="article-authors">Крестный отец ИИ: Я пытался их предупредить, но мы уже потеряли контроль!</div>
 							
 							</a>
-                            <a href="articles/page_02/article8.html" class="read-more">Читать пересказ</a>
+                            <a href="articles/page_02/article8.html" class="read-more"> Читать</a>
                         </div>
                     </div>
                     
                     <!-- Article 2 - Full Card -->
                     <div class="article-card">
-					    <a href="articles/page_02/article4.html">
+					    <a href="articles/page_02/article6.html">
                         <div class="article-image">
-                            <img src="articles/page_02/images/article4/p00.png" alt="Плазменный ветер">
+                            <img src="articles/page_02/images/article6/p00.png" alt="">
                         </div>
 						</a>
                         <div class="article-content">
-						    <a href="articles/page_02/article4.html">
+						    <a href="articles/page_02/article6.html">
 							
-                            <h3 class="article-title">Теренс Тао: Сложнейшие задачи по математике и физике</h3>
+                            <h3 class="article-title">Интервью с Ноамом Брауном 20-06-2025</h3>
 							
 
 							
-                            <div class="article-authors">Один из величайших математиков в истории, которого часто называют математическим Моцартом...</div>
+                            <div class="article-authors">Ноам Браун возглавляет команду по мультиагентным системам в OpenAI. Игры покер и дипломатия, обучение моделей, Илья Суцкевер, мультиагентные цивилизации.</div>
 							
 							</a>
-                            <a href="articles/page_02/article4.html" class="read-more">Читать пересказ</a>
+                            <a href="articles/page_02/article6.html" class="read-more"> Читать</a>
                         </div>
                     </div>
                     
                 </div>
-                
+                <!--
                 <h2 class="section-title">
-                    <i class="fas fa-comments"></i>Другие пересказы
+                    <i class="fas fa-comments"></i> Интересное
                 </h2>
-                
+                -->
                 <div class="compact-articles">
 				    
                     <!-- Article 1 - Compact Card -->
                     <div class="compact-card">
-					    <a href="articles/page_02/article6.html">
+					    <a href="articles/page_02/article4.html">
                         <div class="compact-image">
-                            <img src="articles/page_02/images/article6/p00_80x80.png" alt="">
+                            <img src="articles/page_02/images/article4/p00_80x80.png" alt="">
                         </div>
 						</a>
-                        <div class="compact-content"><a href="articles/page_02/article6.html">
+                        <div class="compact-content"><a href="articles/page_02/article4.html">
 							
-                            <div class="compact-main">Интервью с Ноамом Брауном 20-06-2025</div>
+                            <div class="compact-main">Теренс Тао: Сложнейшие задачи по математике и физике</div>
 							
 							
-                            <div class="compact-description">Ноам Браун возглавляет команду по мультиагентным системам в OpenAI. Игры покер и дипломатия, обучение моделей, Илья Суцкевер, мультиагентные цивилизации.</div></a>
+                            <div class="compact-description">Один из величайших математиков в истории, которого часто называют математическим Моцартом...</div></a>
 							
-                            <a href="articles/page_02/article6.html" class="read-more">Читать пересказ</a>
+                            <a href="articles/page_02/article4.html" class="read-more"> Читать</a>
                         </div>
                     </div>
                     
                     <!-- Article 2 - Compact Card -->
-                    <div class="compact-card">
-					    <a href="articles/page_02/article3.html">
-                        <div class="compact-image">
-                            <img src="articles/page_02/images/article3/p00_80x80.png" alt="">
-                        </div>
-						</a>
-                        <div class="compact-content"><a href="articles/page_02/article3.html">
-							
-                            <div class="compact-main">Tunes of the Kingdom: развитие физики игры и звуковой дизайн для ‘The Legend of Zelda: Tears of the Kingdom’</div>
-							
-							
-                            <div class="compact-description">На GDC 2024 разработчики игры рассказывают о создании расширенного мира Хайрула на основе физического геймплея и усовершенствованного звукового дизайна!</div></a>
-							
-                            <a href="articles/page_02/article3.html" class="read-more">Читать пересказ</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Article 3 - Compact Card -->
-                    <div class="compact-card">
-					    <a href="articles/page_01/article6.html">
-                        <div class="compact-image">
-                            <img src="articles/page_01/images/article6/p00_80x80.png" alt="">
-                        </div>
-						</a>
-                        <div class="compact-content"><a href="articles/page_01/article6.html">
-							
-                            <div class="compact-main">Егор Яковлев совместно с Дмитрием Пучковым. Разбор «Онегина». Начало первой части.</div>
-							
-							
-                            <div class="compact-description">Наконец-то дерзнули мы замахнуться на «наше всё» — приступаем к разбору «Евгения Онегина», сего алмаза русской словесности, вышедшего из-под пера ...</div></a>
-							
-                            <a href="articles/page_01/article6.html" class="read-more">Читать пересказ</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Article 4 - Compact Card -->
                     <div class="compact-card">
 					    <a href="articles/page_02/article7.html">
                         <div class="compact-image">
@@ -192,7 +155,43 @@
 							
                             <div class="compact-description">Известная статья, где автор показывает, что методы, полагающиеся на вычисления, в долгосрочной перспективе побеждают подходы, основанные на внедрении человеческих знаний.</div></a>
 							
-                            <a href="articles/page_02/article7.html" class="read-more">Читать пересказ</a>
+                            <a href="articles/page_02/article7.html" class="read-more"> Читать</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Article 3 - Compact Card -->
+                    <div class="compact-card">
+					    <a href="articles/page_02/article5.html">
+                        <div class="compact-image">
+                            <img src="articles/page_02/images/article5/p00_80x80.png" alt="">
+                        </div>
+						</a>
+                        <div class="compact-content"><a href="articles/page_02/article5.html">
+							
+                            <div class="compact-main">AI Engineer World's Fair 2025</div>
+							
+							
+                            <div class="compact-description">Начало первого дня, пересказ близкий к стенограмме</div></a>
+							
+                            <a href="articles/page_02/article5.html" class="read-more"> Читать</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Article 4 - Compact Card -->
+                    <div class="compact-card">
+					    <a href="articles/page_02/article3.html">
+                        <div class="compact-image">
+                            <img src="articles/page_02/images/article3/p00_80x80.png" alt="">
+                        </div>
+						</a>
+                        <div class="compact-content"><a href="articles/page_02/article3.html">
+							
+                            <div class="compact-main">Tunes of the Kingdom: развитие физики игры и звуковой дизайн для ‘The Legend of Zelda: Tears of the Kingdom’</div>
+							
+							
+                            <div class="compact-description">На GDC 2024 разработчики игры рассказывают о создании расширенного мира Хайрула на основе физического геймплея и усовершенствованного звукового дизайна!</div></a>
+							
+                            <a href="articles/page_02/article3.html" class="read-more"> Читать</a>
                         </div>
                     </div>
                     
@@ -209,9 +208,9 @@
                         <ul>
 														
 							
-							<li><a href="articles/page_02/article5.html"><i class="fas fa-chevron-right"></i> 
+							<li><a href="articles/page_01/article8.html"><i class="fas fa-chevron-right"></i> 
 							        
-									AI Engineer World's Fair 2025
+									Илья Суцкевер: Обучение «sequence-to-sequence» нейронных сетей: прогресс за десятилетие
 									
 							    </a>
 						    </li>
@@ -225,33 +224,17 @@
 						    </li>
 														
 							
-							<li><a href="articles/page_01/article8.html"><i class="fas fa-chevron-right"></i> 
+							<li><a href="articles/page_01/article4.html"><i class="fas fa-chevron-right"></i> 
 							        
-									Илья Суцкевер: Обучение «sequence-to-sequence» нейронных сетей: прогресс за десятилетие
+									Eric Schmidt. Революция в области искусственного интеллекта недооценивается
 									
 							    </a>
 						    </li>
 														
 							
-							<li><a href="articles/page_01/article2.html"><i class="fas fa-chevron-right"></i> 
+							<li><a href="articles/page_01/article1.html"><i class="fas fa-chevron-right"></i> 
 							        
-									Дмитрий Конаныхин про ядерный буксир и военный космос
-									
-							    </a>
-						    </li>
-														
-							
-							<li><a href="articles/page_02/article1.html"><i class="fas fa-chevron-right"></i> 
-							        
-									А.Крайнов, С.Марков в «Богатырёва о ЦИПРе»
-									
-							    </a>
-						    </li>
-														
-							
-							<li><a href="articles/page_01/article7.html"><i class="fas fa-chevron-right"></i> 
-							        
-									Татьяна Черниговская: От потери слуха Бетховену стало даже лучше – ему не мешали внешние звуки
+									Путь к осознанности
 									
 							    </a>
 						    </li>
@@ -265,9 +248,33 @@
 						    </li>
 														
 							
-							<li><a href="articles/page_01/article4.html"><i class="fas fa-chevron-right"></i> 
+							<li><a href="articles/page_01/article7.html"><i class="fas fa-chevron-right"></i> 
 							        
-									Eric Schmidt. Революция в области искусственного интеллекта недооценивается
+									Татьяна Черниговская: От потери слуха Бетховену стало даже лучше – ему не мешали внешние звуки
+									
+							    </a>
+						    </li>
+														
+							
+							<li><a href="articles/page_02/article1.html"><i class="fas fa-chevron-right"></i> 
+							        
+									А.Крайнов, С.Марков в «Богатырёва о ЦИПРе»
+									
+							    </a>
+						    </li>
+														
+							
+							<li><a href="articles/page_01/article6.html"><i class="fas fa-chevron-right"></i> 
+							        
+									Егор Яковлев совместно с Дмитрием Пучковым. Разбор «Онегина». Начало первой части.
+									
+							    </a>
+						    </li>
+														
+							
+							<li><a href="articles/page_01/article2.html"><i class="fas fa-chevron-right"></i> 
+							        
+									Дмитрий Конаныхин про ядерный буксир и военный космос
 									
 							    </a>
 						    </li>
@@ -276,14 +283,6 @@
 							<li><a href="articles/page_01/article5.html"><i class="fas fa-chevron-right"></i> 
 							        
 									Д.Конаныхин, Е.В. Стёпин обсуждают электрореактивные двигатели ядерных планетолётов
-									
-							    </a>
-						    </li>
-														
-							
-							<li><a href="articles/page_01/article1.html"><i class="fas fa-chevron-right"></i> 
-							        
-									Путь к осознанности
 									
 							    </a>
 						    </li>
