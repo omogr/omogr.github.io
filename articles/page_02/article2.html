@@ -7,6 +7,57 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/page.css">
+	<style>
+	.toc-links {
+		max-height: 300px;
+		overflow-y: auto;
+		transition: max-height 0.4s ease;
+	}
+
+	.toc-links.collapsed {
+		max-height: 150px;
+		mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+		-webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+	}
+
+	.toc-toggle {
+		text-align: center;
+		margin-top: 10px;
+		cursor: pointer;
+		color: var(--secondary-color);
+	}
+	
+	
+	.toc-links a.active {
+		color: var(--accent-color);
+		font-weight: 600;
+		transform: translateX(10px);
+	}
+	
+	@media (max-width: 768px) {
+		.toc-section {
+			position: sticky;
+			top: 70px;
+			z-index: 90;
+			background: var(--card-bg);
+			padding: 1rem;
+			box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+		}
+		
+		.toc-links {
+			max-height: 200px;
+		}
+	}
+	.toc-sublist li {
+		transition: transform 0.3s ease, opacity 0.3s ease;
+		transform-origin: left;
+	}
+
+	.toc-category:not(.active) .toc-sublist li {
+		opacity: 0;
+		transform: translateX(-10px);
+	}
+	</style>
 </head>
 <body>
     <!-- Header -->
@@ -247,6 +298,44 @@
                 observer.observe(block);
             });
         });
+		
+		const tocToggle = document.querySelector('.toc-toggle');
+		const tocLinks = document.querySelector('.toc-links');
+
+		tocToggle.addEventListener('click', () => {
+			tocLinks.classList.toggle('collapsed');
+			
+			if (tocLinks.classList.contains('collapsed')) {
+				tocToggle.innerHTML = '<i class="fas fa-chevron-down"></i> Показать полностью';
+			} else {
+				tocToggle.innerHTML = '<i class="fas fa-chevron-up"></i> Свернуть';
+			}
+		});
+
+		// ------------------------------------------
+		// Highlight active section
+		window.addEventListener('scroll', () => {
+			const sections = document.querySelectorAll('.article-block');
+			const scrollPosition = window.scrollY + 100;
+			
+			sections.forEach(section => {
+				const id = section.getAttribute('id');
+				const tocLink = document.querySelector(`.toc-links a[href="#${id}"]`);
+				
+				if (tocLink) {
+					const sectionTop = section.offsetTop;
+					const sectionHeight = section.offsetHeight;
+					
+					if (scrollPosition >= sectionTop && 
+						scrollPosition < sectionTop + sectionHeight) {
+						tocLink.classList.add('active');
+					} else {
+						tocLink.classList.remove('active');
+					}
+				}
+			});
+		});
+
     </script>
 	
 <!-- Yandex.Metrika counter -->
