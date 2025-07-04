@@ -6,13 +6,13 @@
 	<meta name="description" content="Интервью, выступления и обсуждения">
     <title>Интервью и выступления - подробные пересказы</title>
 	<style>
-	:root {
+
+        :root {
             --primary: #2563eb;
             --secondary: #4f46e5;
             --dark: #1e293b;
             --light: #f8fafc;
             --gray: #94a3b8;
-            --series: #8b5cf6;
         }
         
         * {
@@ -26,18 +26,14 @@
             line-height: 1.6;
             color: var(--dark);
             background-color: #f1f5f9;
-            padding: 0px;
-        }
-		body-padding {
-			padding: 20px;
+            padding: 20px;
         }
         
         header {
             max-width: 1200px;
             margin: 0 auto 40px;
+            padding: 20px 0;
             border-bottom: 1px solid var(--gray);
-            position: relative;
-			padding: 20px 10px;
         }
         
         .site-title {
@@ -102,18 +98,13 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-		.tag a{           
-			text-decoration: none;
-        }        
+        
         .article-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
         
         .article-card:hover {
@@ -121,22 +112,26 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         
-        .thumbnail0 {
+        .thumbnail {
             height: 170px;
             background-size: cover;
             background-position: center;
+            position: relative;
         }
-        .thumbnail {
-		  height: 170px;
-		  width: 100%;
-		  object-fit: cover; /* Сохраняет пропорции изображения */
-		  display: block;
-		}
+        
+        .content-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
         .card-content {
             padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
         
         .article-title {
@@ -145,34 +140,25 @@
             line-height: 1.4;
         }
         
-        .meta-info {
+        .speaker {
             display: flex;
             align-items: center;
+            color: var(--secondary);
+            font-weight: 600;
             margin-bottom: 12px;
-            gap: 15px;
-            color: var(--dark);
         }
         
-        .speaker {
-            font-weight: 600;
-            color: var(--secondary);
-        }   
-        .reading-time {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.9rem;
-        }       
-        .reading-time::before {
-            content: "⏱";
+        .speaker::before {
+            content: "•";
+            margin-right: 6px;
+            font-weight: bold;
         }
         
         .card-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: auto;
-            padding-top: 15px;
+            margin-top: 15px;
         }
         
         .card-tag {
@@ -183,56 +169,15 @@
             font-size: 0.8rem;
         }
         
-        /* Стили для серий статей */
-        .series-header {
-            grid-column: 1 / -1;
-            display: flex;
-            align-items: center;
-            margin: 20px 0 10px;
-            padding-bottom: 10px;
-            padding-left: 10px;
-            border-bottom: 2px solid var(--series);
-        }
-        
-        .series-title {
-            font-size: 1.5rem;
-            color: var(--series);
-            margin-right: 15px;
-        }
-        
-        .series-badge {
-            background-color: var(--series);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 50px;
+        footer {
+            max-width: 1200px;
+            margin: 50px auto 0;
+            text-align: center;
+            padding: 30px 0;
+            color: var(--gray);
             font-size: 0.9rem;
         }
         
-        .series-grid {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            background: rgba(139, 92, 246, 0.05);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .about-link {
-            position: absolute;
-            top: 20px;
-            right: 0;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .about-link:hover {
-            text-decoration: underline;
-        }
-        
-
         @media (max-width: 768px) {
             .articles-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -242,54 +187,31 @@
             .site-title {
                 font-size: 2rem;
             }
-            
-            .series-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-link {
-                position: static;
-                display: inline-block;
-                margin-top: 15px;
-            }
         }
-	.article-card 	a {
-		text-decoration: none;
-		color: var(--secondary-color);
-		transition: var(--transition);
-	}
 
-	.article-card 	a:hover {
-		color: var(--accent-color);
-	}
     </style>
-
+	
 </head>
 <body>
 <div class="body-padding>">
     <header>
         <h1 class="site-title">Интервью и выступления</h1>
         <p>Подробные пересказы устных выступлений</p>        
-        <a href="lib/page_00/about.html" class="about-link">О сайте</a>
+        <a href="about/about.html" class="about-link">О сайте</a>
 		<div class="tags-container">
-            <div class="tag"><a href="#block-1">Y Combinator</a></div>
-            <div class="tag"><a href="#block-2">Искусственный интеллект</a></div>
+            <div class="tag"><a href="#block-1">Искусственный интеллект</a></div>
+            <div class="tag"><a href="#block-2">Y Combinator</a></div>
             <div class="tag"><a href="#block-3">Разное</a></div>
         </div>
     </header>    
     <main class="articles-grid">
-    
-	
-	
+
         <!-- Серия статей -->
-        <div class="series-header" id="block-1">		    
+        <div class="series-header" id="block-2">
             <h2 class="series-title">Серия: Y Combinator</h2>
+            <!-- <div class="series-badge">3 статьи</div> -->
         </div>
         <div class="series-grid">    
-	 
-	
-	
-	
     <article class="article-card">
 	    <a href="lib/page_03/article6.html">
 		<img src="lib/page_03/images/article6/p00.webp" alt="Как придумать идею для стартапа" class="thumbnail" loading="lazy">
@@ -302,9 +224,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_03/article4.html">
@@ -318,9 +237,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_03/article5.html">
@@ -334,9 +250,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_03/article3.html">
@@ -350,9 +263,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_03/article2.html">
@@ -366,9 +276,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_03/article1.html">
@@ -382,9 +289,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_02/article9.html">
@@ -398,24 +302,14 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
-	
-	</div>
-	 
-	
-	
-	
+			</div>
+
         <!-- Серия статей -->
-        <div class="series-header" id="block-2">		    
-            <h2 class="series-title">Серия: Развитие искусственного интеллекта</h2>
+        <div class="series-header" id="block-1">
+            <h2 class="series-title">Серия: Развитие ИИ</h2>
+            <!-- <div class="series-badge">3 статьи</div> -->
         </div>
         <div class="series-grid">    
-	 
-	
-	
-	
     <article class="article-card">
 	    <a href="lib/page_02/article8.html">
 		<img src="lib/page_02/images/article8/p00.webp" alt="Интервью с Джеффри Хинтоном 16-06-2025" class="thumbnail" loading="lazy">
@@ -428,10 +322,7 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
-	
+
     <article class="article-card">
 	    <a href="lib/page_02/article6.html">
 		<img src="lib/page_02/images/article6/p00.webp" alt="Интервью с Ноамом Брауном 20-06-2025" class="thumbnail" loading="lazy">
@@ -444,9 +335,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_02/article5.html">
@@ -460,8 +348,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
 	
 	
     <article class="article-card">
@@ -476,9 +362,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_01/article8.html">
@@ -492,22 +375,13 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
-	
 	</div>
-	 
-	
-	
-	
         <!-- Серия статей -->
-        <div class="series-header" id="block-3"> 
+        <div class="series-header" id="block-3">
+            
+            <!-- <div class="series-badge">3 статьи</div> -->
         </div>
-	 
-	
-	
-	
+
     <article class="article-card">
 	    <a href="lib/page_02/article7.html">
 		<img src="lib/page_02/images/article7/p00.webp" alt="Горький урок (Ричард Саттон)" class="thumbnail" loading="lazy">
@@ -520,10 +394,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
-	
     <article class="article-card">
 	    <a href="lib/page_02/article4.html">
 		<img src="lib/page_02/images/article4/p00.webp" alt="Теренс Тао: Сложнейшие задачи по математике и физике" class="thumbnail" loading="lazy">
@@ -536,9 +406,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_02/article3.html">
@@ -552,10 +419,7 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
-	
+
     <article class="article-card">
 	    <a href="lib/page_01/article1.html">
 		<img src="lib/page_01/images/article1/p00.webp" alt="Путь к осознанности" class="thumbnail" loading="lazy">
@@ -568,7 +432,6 @@
 		</div>
 		</a>
 	</article>     
-	 
 	 
     </main>
 </div> <!-- body-padding -->
@@ -619,7 +482,10 @@ footer {
         <div class="container footer-content">        
             <div class="copyright">© 2025 Интервью и выступления</div>
             <div class="footer-links">
-                <a href="lib/page_00/about.html">О сайте</a>
+                <!-- <a href="index.html">Главная</a> -->
+                <a href="other/index.html">Другое</a>
+                <a href="about/about.html">О сайте</a>
+                <!-- <a href="#">Контакты</a> -->
             </div>    
         </div>
     </footer> 

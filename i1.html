@@ -37,6 +37,8 @@
             margin: 0 auto 40px;
             border-bottom: 1px solid var(--gray);
             position: relative;
+            /*padding-left: 10px;
+            padding-top: 20px;*/
 			padding: 20px 10px;
         }
         
@@ -89,6 +91,11 @@
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s;
+			
+        }
+        .tag a{
+            
+			text-decoration: none;
         }
         
         .tag:hover {
@@ -102,9 +109,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-		.tag a{           
-			text-decoration: none;
-        }        
+        
         .article-card {
             background: white;
             border-radius: 12px;
@@ -263,33 +268,28 @@
 		color: var(--accent-color);
 	}
     </style>
-
+	
 </head>
 <body>
 <div class="body-padding>">
     <header>
         <h1 class="site-title">Интервью и выступления</h1>
         <p>Подробные пересказы устных выступлений</p>        
-        <a href="lib/page_00/about.html" class="about-link">О сайте</a>
+        <a href="about/about.html" class="about-link">О сайте</a>
 		<div class="tags-container">
-            <div class="tag"><a href="#block-1">Y Combinator</a></div>
-            <div class="tag"><a href="#block-2">Искусственный интеллект</a></div>
+            <div class="tag"><a href="#block-2">Y Combinator</a></div>
+            <div class="tag"><a href="#block-1">Искусственный интеллект</a></div>
             <div class="tag"><a href="#block-3">Разное</a></div>
         </div>
     </header>    
     <main class="articles-grid">
-    
-	
-	
+
         <!-- Серия статей -->
-        <div class="series-header" id="block-1">		    
+        <div class="series-header" id="block-2">
             <h2 class="series-title">Серия: Y Combinator</h2>
+            <!-- <div class="series-badge">3 статьи</div> -->
         </div>
         <div class="series-grid">    
-	 
-	
-	
-	
     <article class="article-card">
 	    <a href="lib/page_03/article6.html">
 		<img src="lib/page_03/images/article6/p00.webp" alt="Как придумать идею для стартапа" class="thumbnail" loading="lazy">
@@ -302,9 +302,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_03/article4.html">
@@ -318,9 +315,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_03/article5.html">
@@ -334,9 +328,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_03/article3.html">
@@ -350,9 +341,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_03/article2.html">
@@ -366,9 +354,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_03/article1.html">
@@ -382,9 +367,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_02/article9.html">
@@ -398,24 +380,14 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
-	
-	</div>
-	 
-	
-	
-	
+			</div>
+
         <!-- Серия статей -->
-        <div class="series-header" id="block-2">		    
-            <h2 class="series-title">Серия: Развитие искусственного интеллекта</h2>
+        <div class="series-header" id="block-1">
+            <h2 class="series-title">Серия: Развитие ИИ</h2>
+            <!-- <div class="series-badge">3 статьи</div> -->
         </div>
         <div class="series-grid">    
-	 
-	
-	
-	
     <article class="article-card">
 	    <a href="lib/page_02/article8.html">
 		<img src="lib/page_02/images/article8/p00.webp" alt="Интервью с Джеффри Хинтоном 16-06-2025" class="thumbnail" loading="lazy">
@@ -428,10 +400,7 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
-	
+
     <article class="article-card">
 	    <a href="lib/page_02/article6.html">
 		<img src="lib/page_02/images/article6/p00.webp" alt="Интервью с Ноамом Брауном 20-06-2025" class="thumbnail" loading="lazy">
@@ -444,9 +413,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_02/article5.html">
@@ -460,8 +426,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
 	
 	
     <article class="article-card">
@@ -476,9 +440,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_01/article8.html">
@@ -492,22 +453,13 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
-	
 	</div>
-	 
-	
-	
-	
         <!-- Серия статей -->
-        <div class="series-header" id="block-3"> 
+        <div class="series-header" id="block-3">
+            
+            <!-- <div class="series-badge">3 статьи</div> -->
         </div>
-	 
-	
-	
-	
+
     <article class="article-card">
 	    <a href="lib/page_02/article7.html">
 		<img src="lib/page_02/images/article7/p00.webp" alt="Горький урок (Ричард Саттон)" class="thumbnail" loading="lazy">
@@ -520,10 +472,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
-	
     <article class="article-card">
 	    <a href="lib/page_02/article4.html">
 		<img src="lib/page_02/images/article4/p00.webp" alt="Теренс Тао: Сложнейшие задачи по математике и физике" class="thumbnail" loading="lazy">
@@ -536,9 +484,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
 	
     <article class="article-card">
 	    <a href="lib/page_02/article3.html">
@@ -552,10 +497,7 @@
 		</div>
 		</a>
 	</article>     
-	 
-	
-	
-	
+
     <article class="article-card">
 	    <a href="lib/page_01/article1.html">
 		<img src="lib/page_01/images/article1/p00.webp" alt="Путь к осознанности" class="thumbnail" loading="lazy">
@@ -568,7 +510,6 @@
 		</div>
 		</a>
 	</article>     
-	 
 	 
     </main>
 </div> <!-- body-padding -->
@@ -619,7 +560,10 @@ footer {
         <div class="container footer-content">        
             <div class="copyright">© 2025 Интервью и выступления</div>
             <div class="footer-links">
-                <a href="lib/page_00/about.html">О сайте</a>
+                <!-- <a href="index.html">Главная</a> -->
+                <a href="other/index.html">Другое</a>
+                <a href="about/about.html">О сайте</a>
+                <!-- <a href="#">Контакты</a> -->
             </div>    
         </div>
     </footer> 
