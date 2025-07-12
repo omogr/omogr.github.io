@@ -489,7 +489,6 @@ footer {
         }
 		
         .about-link {
-0
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
@@ -497,11 +496,4 @@ footer {
         
         .about-link:hover {
             text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-
-            
-            .about-link {
-0
-            }
         }
