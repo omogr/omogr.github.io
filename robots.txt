@@ -1,3 +1,6 @@
 User-Agent: *
+Disallow: /articles
 Allow: /
 Sitemap: https://omogr.github.io/sitemap.xml
+
+
