@@ -12,7 +12,6 @@
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 	<link rel="manifest" href="/site.webmanifest" />
-
 	<style>
 	:root {
             --primary: #2563eb;
@@ -21,8 +20,7 @@
             --light: #f8fafc;
             --gray: #94a3b8;
             --series: #8b5cf6;
-        }
-        
+        }        
         * {
             box-sizing: border-box;
             margin: 0;
@@ -240,8 +238,7 @@
             .articles-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 20px;
-            }
-            
+            }            
             .site-title {
                 font-size: 2rem;
             }
@@ -265,8 +262,17 @@
 	.article-card 	a:hover {
 		color: var(--accent-color);
 	}
-    </style>
+    /* lazyload */
+	.thumbnail.lazyload {
+	  filter: blur(8px);
+	  transition: filter 0.4s ease;
+	}
+	.thumbnail {
+	  filter: blur(0);
+	  transition: filter 0.4s ease;
+	}
 
+	</style>
 </head>
 <body>
 <div class="body-padding>">
@@ -281,12 +287,14 @@
         </div>
     </header>    
     <main class="articles-grid">
-    
-	
+    	
 	
     <article class="article-card">
 	    <a href="lib/page_05/article2.html">
-		<img src="lib/page_05/images/article2/p00.webp" alt="Элон Маск и его Neuralink" class="thumbnail" loading="lazy">
+		<img src="lib/page_05/images/article2/p00-lq.webp"
+		data-src="lib/page_05/images/article2/p00.webp" 
+		class="thumbnail lazyload" alt="Элон Маск и его Neuralink" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Элон Маск и его Neuralink</h2>
 			<div class="meta-info">
@@ -297,12 +305,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_05/article1.html">
-		<img src="lib/page_05/images/article1/p00.webp" alt="Беседа с Тоддом Ховардом" class="thumbnail" loading="lazy">
+		<img src="lib/page_05/images/article1/p00-lq.webp"
+		data-src="lib/page_05/images/article1/p00.webp" 
+		class="thumbnail lazyload" alt="Беседа с Тоддом Ховардом" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Беседа с Тоддом Ховардом</h2>
 			<div class="meta-info">
@@ -313,12 +323,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_04/article4.html">
-		<img src="lib/page_04/images/article4/p00.webp" alt="Человеческий язык, психолингвистика, синтаксис, грамматика и языковые модели" class="thumbnail" loading="lazy">
+		<img src="lib/page_04/images/article4/p00-lq.webp"
+		data-src="lib/page_04/images/article4/p00.webp" 
+		class="thumbnail lazyload" alt="Человеческий язык, психолингвистика, синтаксис, грамматика и языковые модели" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Человеческий язык, психолингвистика, синтаксис, грамматика и языковые модели</h2>
 			<div class="meta-info">
@@ -329,12 +341,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_04/article3.html">
-		<img src="lib/page_04/images/article3/p00.webp" alt="Интервью с легендарным инвестором Биллом Акманом" class="thumbnail" loading="lazy">
+		<img src="lib/page_04/images/article3/p00-lq.webp"
+		data-src="lib/page_04/images/article3/p00.webp" 
+		class="thumbnail lazyload" alt="Интервью с легендарным инвестором Биллом Акманом" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Интервью с легендарным инвестором Биллом Акманом</h2>
 			<div class="meta-info">
@@ -345,12 +359,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_04/article1.html">
-		<img src="lib/page_04/images/article1/p00.webp" alt="Тим Суини: Fortnite, Unreal Engine и будущее гейминга" class="thumbnail" loading="lazy">
+		<img src="lib/page_04/images/article1/p00-lq.webp"
+		data-src="lib/page_04/images/article1/p00.webp" 
+		class="thumbnail lazyload" alt="Тим Суини: Fortnite, Unreal Engine и будущее гейминга" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Тим Суини: Fortnite, Unreal Engine и будущее гейминга</h2>
 			<div class="meta-info">
@@ -361,12 +377,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_02/article7.html">
-		<img src="lib/page_02/images/article7/p00.webp" alt="Горький урок (Ричард Саттон)" class="thumbnail" loading="lazy">
+		<img src="lib/page_02/images/article7/p00-lq.webp"
+		data-src="lib/page_02/images/article7/p00.webp" 
+		class="thumbnail lazyload" alt="Горький урок (Ричард Саттон)" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Горький урок (Ричард Саттон)</h2>
 			<div class="meta-info">
@@ -377,12 +395,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_02/article4.html">
-		<img src="lib/page_02/images/article4/p00.webp" alt="Теренс Тао: Сложнейшие задачи по математике и физике" class="thumbnail" loading="lazy">
+		<img src="lib/page_02/images/article4/p00-lq.webp"
+		data-src="lib/page_02/images/article4/p00.webp" 
+		class="thumbnail lazyload" alt="Теренс Тао: Сложнейшие задачи по математике и физике" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Теренс Тао: Сложнейшие задачи по математике и физике</h2>
 			<div class="meta-info">
@@ -393,12 +413,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_02/article3.html">
-		<img src="lib/page_02/images/article3/p00.webp" alt="Физика игры и звуковой дизайн ‘The Legend of Zelda: Tears of the Kingdom’" class="thumbnail" loading="lazy">
+		<img src="lib/page_02/images/article3/p00-lq.webp"
+		data-src="lib/page_02/images/article3/p00.webp" 
+		class="thumbnail lazyload" alt="Физика игры и звуковой дизайн ‘The Legend of Zelda: Tears of the Kingdom’" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Физика игры и звуковой дизайн ‘The Legend of Zelda: Tears of the Kingdom’</h2>
 			<div class="meta-info">
@@ -409,12 +431,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_04/article5.html">
-		<img src="lib/page_04/images/article5/p00.webp" alt="Фреймворки для нейросетей, беспилотные технологии, безопасность AGI, ..." class="thumbnail" loading="lazy">
+		<img src="lib/page_04/images/article5/p00-lq.webp"
+		data-src="lib/page_04/images/article5/p00.webp" 
+		class="thumbnail lazyload" alt="Фреймворки для нейросетей, беспилотные технологии, безопасность AGI, ..." loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Фреймворки для нейросетей, беспилотные технологии, безопасность AGI, ...</h2>
 			<div class="meta-info">
@@ -425,12 +449,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_01/article1.html">
-		<img src="lib/page_01/images/article1/p00.webp" alt="Путь к осознанности" class="thumbnail" loading="lazy">
+		<img src="lib/page_01/images/article1/p00-lq.webp"
+		data-src="lib/page_01/images/article1/p00.webp" 
+		class="thumbnail lazyload" alt="Путь к осознанности" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Путь к осознанности</h2>
 			<div class="meta-info">
@@ -441,8 +467,7 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
         <!-- Серия статей -->
         <div class="series-header" id="block-2">		    
@@ -450,12 +475,14 @@
         </div>
         <div class="series-grid">    
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_03/article9.html">
-		<img src="lib/page_03/images/article9/p00.webp" alt="Генеральный директор Anthropic о Claude, AGI и будущем искусственного интеллекта и человечества" class="thumbnail" loading="lazy">
+		<img src="lib/page_03/images/article9/p00-lq.webp"
+		data-src="lib/page_03/images/article9/p00.webp" 
+		class="thumbnail lazyload" alt="Генеральный директор Anthropic о Claude, AGI и будущем искусственного интеллекта и человечества" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Генеральный директор Anthropic о Claude, AGI и будущем искусственного интеллекта и человечества</h2>
 			<div class="meta-info">
@@ -466,12 +493,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_03/article7.html">
-		<img src="lib/page_03/images/article7/p00.webp" alt="Будущее программирования с использованием искусственного интеллекта" class="thumbnail" loading="lazy">
+		<img src="lib/page_03/images/article7/p00-lq.webp"
+		data-src="lib/page_03/images/article7/p00.webp" 
+		class="thumbnail lazyload" alt="Будущее программирования с использованием искусственного интеллекта" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Будущее программирования с использованием искусственного интеллекта</h2>
 			<div class="meta-info">
@@ -482,12 +511,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_04/article2.html">
-		<img src="lib/page_04/images/article2/p00.webp" alt="Интервью с CEO Perplexity" class="thumbnail" loading="lazy">
+		<img src="lib/page_04/images/article2/p00-lq.webp"
+		data-src="lib/page_04/images/article2/p00.webp" 
+		class="thumbnail lazyload" alt="Интервью с CEO Perplexity" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Интервью с CEO Perplexity</h2>
 			<div class="meta-info">
@@ -498,12 +529,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_02/article8.html">
-		<img src="lib/page_02/images/article8/p00.webp" alt="Интервью с Джеффри Хинтоном 16-06-2025" class="thumbnail" loading="lazy">
+		<img src="lib/page_02/images/article8/p00-lq.webp"
+		data-src="lib/page_02/images/article8/p00.webp" 
+		class="thumbnail lazyload" alt="Интервью с Джеффри Хинтоном 16-06-2025" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Интервью с Джеффри Хинтоном 16-06-2025</h2>
 			<div class="meta-info">
@@ -514,12 +547,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_02/article6.html">
-		<img src="lib/page_02/images/article6/p00.webp" alt="Интервью с Ноамом Брауном 20-06-2025" class="thumbnail" loading="lazy">
+		<img src="lib/page_02/images/article6/p00-lq.webp"
+		data-src="lib/page_02/images/article6/p00.webp" 
+		class="thumbnail lazyload" alt="Интервью с Ноамом Брауном 20-06-2025" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Интервью с Ноамом Брауном 20-06-2025</h2>
 			<div class="meta-info">
@@ -530,12 +565,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_02/article5.html">
-		<img src="lib/page_02/images/article5/p00.webp" alt="AI Engineer World's Fair 2025" class="thumbnail" loading="lazy">
+		<img src="lib/page_02/images/article5/p00-lq.webp"
+		data-src="lib/page_02/images/article5/p00.webp" 
+		class="thumbnail lazyload" alt="AI Engineer World's Fair 2025" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">AI Engineer World's Fair 2025</h2>
 			<div class="meta-info">
@@ -546,12 +583,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_02/article2.html">
-		<img src="lib/page_02/images/article2/p00.webp" alt="Илья Суцкевер, выступление в Университете Торонто 6-6-2025" class="thumbnail" loading="lazy">
+		<img src="lib/page_02/images/article2/p00-lq.webp"
+		data-src="lib/page_02/images/article2/p00.webp" 
+		class="thumbnail lazyload" alt="Илья Суцкевер, выступление в Университете Торонто 6-6-2025" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Илья Суцкевер, выступление в Университете Торонто 6-6-2025</h2>
 			<div class="meta-info">
@@ -562,12 +601,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_03/article8.html">
-		<img src="lib/page_03/images/article8/p00.webp" alt="Мета-запросы и модели рассуждений" class="thumbnail" loading="lazy">
+		<img src="lib/page_03/images/article8/p00-lq.webp"
+		data-src="lib/page_03/images/article8/p00.webp" 
+		class="thumbnail lazyload" alt="Мета-запросы и модели рассуждений" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Мета-запросы и модели рассуждений</h2>
 			<div class="meta-info">
@@ -578,12 +619,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_01/article8.html">
-		<img src="lib/page_01/images/article8/p00.webp" alt="Обучение «sequence-to-sequence» нейронных сетей: прогресс за десятилетие" class="thumbnail" loading="lazy">
+		<img src="lib/page_01/images/article8/p00-lq.webp"
+		data-src="lib/page_01/images/article8/p00.webp" 
+		class="thumbnail lazyload" alt="Обучение «sequence-to-sequence» нейронных сетей: прогресс за десятилетие" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Обучение «sequence-to-sequence» нейронных сетей: прогресс за десятилетие</h2>
 			<div class="meta-info">
@@ -594,13 +637,11 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
 	</div>
 	 
-	
-	
+		
 	
         <!-- Серия статей -->
         <div class="series-header" id="block-1">		    
@@ -608,12 +649,14 @@
         </div>
         <div class="series-grid">    
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_03/article6.html">
-		<img src="lib/page_03/images/article6/p00.webp" alt="Как придумать идею для стартапа" class="thumbnail" loading="lazy">
+		<img src="lib/page_03/images/article6/p00-lq.webp"
+		data-src="lib/page_03/images/article6/p00.webp" 
+		class="thumbnail lazyload" alt="Как придумать идею для стартапа" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Как придумать идею для стартапа</h2>
 			<div class="meta-info">
@@ -624,12 +667,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_03/article3.html">
-		<img src="lib/page_03/images/article3/p00.webp" alt="Как спланировать MVP (минимально жизнеспособный продукт)" class="thumbnail" loading="lazy">
+		<img src="lib/page_03/images/article3/p00-lq.webp"
+		data-src="lib/page_03/images/article3/p00.webp" 
+		class="thumbnail lazyload" alt="Как спланировать MVP (минимально жизнеспособный продукт)" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Как спланировать MVP (минимально жизнеспособный продукт)</h2>
 			<div class="meta-info">
@@ -640,12 +685,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_03/article5.html">
-		<img src="lib/page_03/images/article5/p00.webp" alt="Современные методы промптинга для ИИ-агентов" class="thumbnail" loading="lazy">
+		<img src="lib/page_03/images/article5/p00-lq.webp"
+		data-src="lib/page_03/images/article5/p00.webp" 
+		class="thumbnail lazyload" alt="Современные методы промптинга для ИИ-агентов" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Современные методы промптинга для ИИ-агентов</h2>
 			<div class="meta-info">
@@ -656,12 +703,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_03/article4.html">
-		<img src="lib/page_03/images/article4/p00.webp" alt="Стартап-идеи, которые теперь можно реализовать с помощью ИИ" class="thumbnail" loading="lazy">
+		<img src="lib/page_03/images/article4/p00-lq.webp"
+		data-src="lib/page_03/images/article4/p00.webp" 
+		class="thumbnail lazyload" alt="Стартап-идеи, которые теперь можно реализовать с помощью ИИ" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Стартап-идеи, которые теперь можно реализовать с помощью ИИ</h2>
 			<div class="meta-info">
@@ -672,12 +721,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_03/article2.html">
-		<img src="lib/page_03/images/article2/p00.webp" alt="Самые значимые тренды стартапов в 2024 году" class="thumbnail" loading="lazy">
+		<img src="lib/page_03/images/article2/p00-lq.webp"
+		data-src="lib/page_03/images/article2/p00.webp" 
+		class="thumbnail lazyload" alt="Самые значимые тренды стартапов в 2024 году" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Самые значимые тренды стартапов в 2024 году</h2>
 			<div class="meta-info">
@@ -688,12 +739,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_03/article1.html">
-		<img src="lib/page_03/images/article1/p00.webp" alt="Как найти идеи для стартапа в сфере ИИ" class="thumbnail" loading="lazy">
+		<img src="lib/page_03/images/article1/p00-lq.webp"
+		data-src="lib/page_03/images/article1/p00.webp" 
+		class="thumbnail lazyload" alt="Как найти идеи для стартапа в сфере ИИ" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Как найти идеи для стартапа в сфере ИИ</h2>
 			<div class="meta-info">
@@ -704,12 +757,14 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
     <article class="article-card">
 	    <a href="lib/page_02/article9.html">
-		<img src="lib/page_02/images/article9/p00.webp" alt="Вайб-кодинг: будущее программирования" class="thumbnail" loading="lazy">
+		<img src="lib/page_02/images/article9/p00-lq.webp"
+		data-src="lib/page_02/images/article9/p00.webp" 
+		class="thumbnail lazyload" alt="Вайб-кодинг: будущее программирования" loading="lazy">
+		
 		<div class="card-content">
 			<h2 class="article-title">Вайб-кодинг: будущее программирования</h2>
 			<div class="meta-info">
@@ -720,15 +775,13 @@
 		</a>
 	</article>     
 	 
-	
-	
+		
 	
 	</div>
 	 
 	 
     </main>
 </div> <!-- body-padding -->
-
 <style>
 footer {
 	background: var(--dark);
@@ -778,7 +831,37 @@ footer {
                 <a href="lib/page_00/about.html">О сайте</a>
             </div>    
         </div>
-    </footer> 
+    </footer>
+	
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+	  // Измененный селектор с учетом ваших классов
+	  const lazyImages = document.querySelectorAll("img.thumbnail.lazyload");
+	  
+	  if (window.IntersectionObserver) {
+		const lazyImageObserver = new IntersectionObserver((entries) => {
+		  entries.forEach(entry => {
+			if (entry.isIntersecting) {
+			  const img = entry.target;
+			  img.src = img.dataset.src;
+			  img.classList.remove("lazyload"); // Убираем класс-маркер
+			  lazyImageObserver.unobserve(img);
+			}
+		  });
+		});
+
+		lazyImages.forEach(img => lazyImageObserver.observe(img));
+	  } else {
+		// Fallback для старых браузеров
+		lazyImages.forEach(img => {
+		  img.src = img.dataset.src;
+		  img.classList.remove("lazyload");
+		});
+	  }
+	});
+
+</script>
+	
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
