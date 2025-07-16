@@ -1,147 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
   <loc>https://omogr.github.io/</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
+  <lastmod>2025-07-16T15:43:21+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://omogr.github.io/lib/page_00/about.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_05/article1.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_04/article4.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_04/article3.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_04/article1.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_02/article7.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_02/article4.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_02/article3.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
+  <lastmod>2025-07-12T11:04:09+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://omogr.github.io/lib/page_01/article1.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_04/article2.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_03/article9.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_03/article7.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_03/article8.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_02/article8.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_02/article6.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_02/article5.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://omogr.github.io/lib/page_02/article2.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
+  <lastmod>2025-07-09T08:01:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://omogr.github.io/lib/page_01/article8.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
+  <lastmod>2025-07-09T08:01:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://omogr.github.io/lib/page_03/article6.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
+  <loc>https://omogr.github.io/lib/page_02/article2.html</loc>
+  <lastmod>2025-07-03T13:06:05+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://omogr.github.io/lib/page_03/article3.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
+  <loc>https://omogr.github.io/lib/page_02/article3.html</loc>
+  <lastmod>2025-07-09T08:01:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://omogr.github.io/lib/page_03/article5.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
+  <loc>https://omogr.github.io/lib/page_02/article4.html</loc>
+  <lastmod>2025-07-06T19:12:55+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://omogr.github.io/lib/page_03/article4.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
+  <loc>https://omogr.github.io/lib/page_02/article5.html</loc>
+  <lastmod>2025-07-09T07:57:40+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://omogr.github.io/lib/page_03/article2.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
+  <loc>https://omogr.github.io/lib/page_02/article6.html</loc>
+  <lastmod>2025-07-03T13:54:34+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://omogr.github.io/lib/page_03/article1.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
+  <loc>https://omogr.github.io/lib/page_02/article7.html</loc>
+  <lastmod>2025-07-09T08:06:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_02/article8.html</loc>
+  <lastmod>2025-07-03T13:56:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://omogr.github.io/lib/page_02/article9.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
+  <lastmod>2025-07-05T20:46:54+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://omogr.github.io/index.html</loc>
-  <lastmod>2025-07-09T22:02:06+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://omogr.github.io/lib/page_03/article1.html</loc>
+  <lastmod>2025-07-05T20:49:27+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
-
-
+<url>
+  <loc>https://omogr.github.io/lib/page_03/article2.html</loc>
+  <lastmod>2025-07-05T20:51:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_03/article3.html</loc>
+  <lastmod>2025-07-07T18:25:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_03/article4.html</loc>
+  <lastmod>2025-07-09T08:06:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_03/article5.html</loc>
+  <lastmod>2025-07-07T17:35:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_03/article6.html</loc>
+  <lastmod>2025-07-09T08:06:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_03/article7.html</loc>
+  <lastmod>2025-07-09T08:06:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_03/article8.html</loc>
+  <lastmod>2025-07-12T05:57:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_03/article9.html</loc>
+  <lastmod>2025-07-12T10:45:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_04/article1.html</loc>
+  <lastmod>2025-07-12T10:49:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_04/article2.html</loc>
+  <lastmod>2025-07-12T10:47:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_04/article3.html</loc>
+  <lastmod>2025-07-12T10:54:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_04/article4.html</loc>
+  <lastmod>2025-07-09T08:06:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_04/article5.html</loc>
+  <lastmod>2025-07-12T05:48:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_05/article1.html</loc>
+  <lastmod>2025-07-11T20:41:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_05/article2.html</loc>
+  <lastmod>2025-07-12T10:56:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_05/article4.html</loc>
+  <lastmod>2025-07-16T15:39:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 </urlset>
