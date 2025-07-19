@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пропорциональная фотогалерея с Masonry</title>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+		a {
+			text-decoration: none;
+			/* color: var(--secondary-color); */
+			color: var(--primary-color);
+			transition: var(--transition);
+		}
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .control-btn {
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        
+        .control-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        }
+        
+        .control-btn.active {
+            background: #2c3e50;
+        }
+        
+        .grid {
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+        
+        .grid-sizer {
+            width: calc(33.333% - 15px);
+        }
+        
+        .grid-item {
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            background: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        
+        .grid-item.wide {
+            width: calc(66.666% - 15px);
+        }
+        
+        .grid-item.tall {
+            /* Высокие элементы остаются с базовой шириной */
+        }
+        
+        .grid-item.small {
+            /* Маленькие элементы остаются с базовой шириной */
+        }
+        
+        .photo-card {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .img-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        
+        .img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        
+        .grid-item:hover .img-container img {
+            transform: scale(1.03);
+        }
+        
+        .caption {
+            padding: 15px 5px 5px;
+            font-size: 1rem;
+            line-height: 1.4;
+            color: #495057;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .size-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+        
+        .ratio-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+        
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+            border-radius: 5px;
+        }
+        
+        .modal-caption {
+            margin: 15px auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #e9ecef;
+            font-size: 1.3rem;
+            padding: 10px 0;
+            line-height: 1.6;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .grid-sizer, .grid-item {
+                width: 100%;
+            }
+            
+            .grid-item.wide {
+                width: 100%;
+            }
+            
+            header {
+                padding: 20px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .grid-sizer {
+                width: calc(50% - 15px);
+            }
+            
+            .grid-item {
+                width: calc(50% - 15px);
+            }
+            
+            .grid-item.wide {
+                width: calc(100% - 15px);
+            }
+        }
+        
+        @media (min-width: 1201px) {
+            .grid-sizer {
+                width: calc(33.333% - 15px);
+            }
+            
+            .grid-item {
+                width: calc(33.333% - 15px);
+            }
+            
+            .grid-item.wide {
+                width: calc(66.666% - 15px);
+            }
+        }
+        
+        /* Кнопка "Наверх" */
+        .to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 99;
+        }
+        
+        .to-top.visible {
+            opacity: 0.9;
+        }
+        
+        .to-top:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+            background: #2980b9;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><a href="simple.html">Фотогалерея</a></h1>
+            <p class="subtitle">Размер карточек пропорционален реальным размерам фотографий. Широкие изображения занимают 2 колонки, сохраняя пропорции.</p>
+         
+            <div class="controls">
+                <button class="control-btn active" data-filter="all">Все фото</button>
+                <button class="control-btn" data-filter="landscape">Пейзажи</button>
+                <button class="control-btn" data-filter="portrait">Портреты</button>
+                <button class="control-btn" data-filter="square">Квадраты</button>
+            </div>
+        </header>
+        
+        <div class="grid">
+            <div class="grid-sizer"></div>
+            <!-- Фотографии будут добавлены с помощью JavaScript -->
+        </div>
+    </div>
+    
+    <div class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="expandedImg">
+        <div id="modalCaption" class="modal-caption"></div>
+    </div>
+    
+    <div class="to-top">↑</div>
+    
+    <footer>
+        <p>Фотогалерея с пропорциональным масштабированием | Masonry Layout | Все изображения отображаются целиком</p>
+    </footer>
+
+    <script>
+        // Массив фотографий с разными пропорциями
+        const photos = [
+            {
+<<<<<<< HEAD
+                url: "photo_2025-07-19_16-27-03.jpg",
+                caption: "26спец Ашки",
+                width: 640,
+                height: 640,
+                ratio: 1.0,
+=======
+                url: "https://images.unsplash.com/photo-1501854140801-50d01698950b",
+                caption: "Горный пейзаж с озером",
+                width: 4032,
+                height: 3024,
+                ratio: 1.33,
+>>>>>>> 43440887bf9e83f33fa8b39c54e7e4906edd10d9
+                category: "landscape"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1433086966358-54859d0ed716",
+                caption: "Лесной водопад",
+                width: 4000,
+                height: 6000,
+                ratio: 0.67,
+                category: "portrait"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1",
+                caption: "Каменный пляж и волны",
+                width: 6000,
+                height: 4000,
+                ratio: 1.0,
+                category: "landscape"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1476820865390-c52aeebb9891",
+                caption: "Грозовое небо над полем",
+                width: 6000,
+                height: 4000,
+                ratio: 1.0,
+                category: "landscape"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3",
+                caption: "Звездное небо в горах",
+                width: 3000,
+                height: 2000,
+                ratio: 1.0,
+                category: "landscape"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05",
+                caption: "Туманный лес ранним утром",
+                width: 6000,
+                height: 4000,
+                ratio: 1.0,
+                category: "landscape"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+                caption: "Скалы на побережье",
+                width: 5472,
+                height: 3648,
+                ratio: 1.5,
+                category: "landscape"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1414609245224-afa02bfb3fda",
+                caption: "Солнечные лучи в лесу",
+                width: 2000,
+                height: 3000,
+                ratio: 0.67,
+                category: "portrait"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e",
+                caption: "Каменная арка в пустыне",
+                width: 4000,
+                height: 2667,
+                ratio: 0.5,
+                category: "landscape"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1500534623283-312aade485b7",
+                caption: "Тропический пляж",
+                width: 2000,
+                height: 2000,
+                ratio: 1,
+                category: "square"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1439396087961-98bc12c21176",
+                caption: "Пустынный каньон",
+                width: 4000,
+                height: 2667,
+                ratio: 0.5,
+                category: "landscape"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e",
+                caption: "Заснеженные горные вершины",
+                width: 6000,
+                height: 4000,
+                ratio: 0.5,
+                category: "landscape"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1506260408121-e353d10b87c7",
+                caption: "Осенний лес",
+                width: 3648,
+                height: 5472,
+                ratio: 0.67,
+                category: "portrait"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1426604966848-d7adac402bff",
+                caption: "Дом в поле с цветами",
+                width: 6000,
+                height: 4000,
+                ratio: 0.5,
+                category: "landscape"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1444464666168-49d633b86797",
+                caption: "Птица в полете",
+                width: 3000,
+                height: 3000,
+                ratio: 1,
+                category: "square"
+            }
+        ];
+        
+        // Генерация HTML для фотографий
+        function generatePhotoGrid() {
+            const grid = document.querySelector('.grid');
+            
+            // Очищаем сетку, кроме grid-sizer
+            const gridSizer = document.querySelector('.grid-sizer');
+            grid.innerHTML = '';
+            grid.appendChild(gridSizer);
+            
+            photos.forEach(photo => {
+                const item = document.createElement('div');
+                item.className = 'grid-item';
+                item.dataset.category = photo.category;
+                
+                // Широкие изображения (соотношение > 1.4) занимают 2 колонки
+                if (photo.ratio > 1.4) {
+                    item.classList.add('wide');
+                }
+                
+                // Высокие изображения (соотношение < 0.7)
+                if (photo.ratio < 0.7) {
+                    item.classList.add('tall');
+                }
+                
+                // Маленькие изображения (площадь < 5 млн пикселей)
+                if (photo.width * photo.height < 5000000) {
+                    item.classList.add('small');
+                }
+                
+                const card = document.createElement('div');
+                card.className = 'photo-card';
+                
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'img-container';
+                
+                const img = document.createElement('img');
+                img.src = `${photo.url}?auto=format&fit=crop&w=500&q=80`;
+                img.alt = photo.caption;
+                img.dataset.original = `${photo.url}?auto=format&fit=crop&w=1200&q=80`;
+                img.dataset.caption = photo.caption;
+                
+                const size = document.createElement('div');
+                size.className = 'size-info';
+                size.textContent = `${photo.width}×${photo.height}`;
+                
+                const ratio = document.createElement('div');
+                ratio.className = 'ratio-info';
+                ratio.textContent = ``; // `Соотношение: ${photo.ratio.toFixed(2)}`;
+                
+                const caption = document.createElement('div');
+                caption.className = 'caption';
+                caption.textContent = photo.caption;
+                
+                imgContainer.appendChild(img);
+                card.appendChild(size);
+                card.appendChild(ratio);
+                card.appendChild(imgContainer);
+                card.appendChild(caption);
+                item.appendChild(card);
+                grid.appendChild(item);
+            });
+            
+            // Инициализация Masonry после загрузки изображений
+            imagesLoaded(grid, function() {
+                const msnry = new Masonry(grid, {
+                    itemSelector: '.grid-item',
+                    columnWidth: '.grid-sizer',
+                    percentPosition: true,
+                    transitionDuration: '0.4s',
+                    gutter: 15
+                });
+                
+                // Перестраиваем сетку при изменении размеров окна
+                window.addEventListener('resize', () => {
+                    msnry.layout();
+                });
+                
+                // Фильтрация
+                document.querySelectorAll('.control-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        document.querySelectorAll('.control-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        const filter = this.dataset.filter;
+                        
+                        // Показываем/скрываем элементы
+                        document.querySelectorAll('.grid-item').forEach(item => {
+                            if (filter === 'all' || item.dataset.category === filter) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                        
+                        // Перестраиваем Masonry после изменения видимости
+                        msnry.layout();
+                    });
+                });
+            });
+        }
+        
+        // Модальное окно
+        function initModal() {
+            const modal = document.querySelector('.modal');
+            const modalImg = document.getElementById('expandedImg');
+            const captionText = document.getElementById('modalCaption');
+            const closeBtn = document.querySelector('.close');
+            
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.img-container img')) {
+                    const img = e.target.closest('.img-container img');
+                    modal.style.display = 'block';
+                    modalImg.src = img.dataset.original;
+                    captionText.innerHTML = img.dataset.caption;
+                }
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+        
+        // Кнопка "Наверх"
+        function initScrollToTop() {
+            const toTopBtn = document.querySelector('.to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    toTopBtn.classList.add('visible');
+                } else {
+                    toTopBtn.classList.remove('visible');
+                }
+            });
+            
+            toTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Инициализация после загрузки страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            generatePhotoGrid();
+            initModal();
+            initScrollToTop();
+        });
+    </script>
+</body>
+</html>
