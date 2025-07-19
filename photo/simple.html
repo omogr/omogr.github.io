@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивная галерея фотографий</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+		a {
+			text-decoration: none;
+			/* color: var(--secondary-color); */
+			color: var(--primary-color);
+			transition: var(--transition);
+		}
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #7f8c8d;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .image-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background: #f1f5f9;
+            min-height: 250px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .caption {
+            padding: 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .caption h3 {
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .caption p {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .fullscreen-content {
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+        }
+
+        .fullscreen-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .fullscreen-caption {
+            color: white;
+            padding: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-container {
+                min-height: 200px;
+                padding: 10px;
+            }
+            
+            header {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><a href="masonry.html">Фотогалерея</a></h1>
+            <p class="description">Все изображения отображаются полностью без обрезки. Кликните на фото для просмотра в полноэкранном режиме.</p>
+         
+        </header>
+
+        <div class="gallery">
+            <!-- Вертикальное фото -->
+            <div class="photo-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=80" 
+                         alt="Портрет мужчины">
+                </div>
+                <div class="caption">
+                    <h3>Портрет</h3>
+                    <p>Вертикальная композиция</p>
+                </div>
+            </div>
+
+            <!-- Горизонтальное фото -->
+            <div class="photo-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGxhbmRzY2FwZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Горный пейзаж">
+                </div>
+                <div class="caption">
+                    <h3>Горный пейзаж</h3>
+                    <p>Широкоформатный снимок</p>
+                </div>
+            </div>
+
+            <!-- Квадратное фото -->
+            <div class="photo-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" 
+                         alt="Кот в корзине">
+                </div>
+                <div class="caption">
+                    <h3>Домашний любимец</h3>
+                    <p>Квадратный формат</p>
+                </div>
+            </div>
+
+            <!-- Большое фото -->
+            <div class="photo-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2FsbHBhcGVyfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Природа">
+                </div>
+                <div class="caption">
+                    <h3>Природный ландшафт</h3>
+                    <p>Высокое разрешение</p>
+                </div>
+            </div>
+
+            <!-- Маленькое фото -->
+            <div class="photo-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Ym9va3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                         alt="Книги">
+                </div>
+                <div class="caption">
+                    <h3>Натюрморт</h3>
+                    <p>Компактное изображение</p>
+                </div>
+            </div>
+
+            <!-- Очень широкое фото -->
+            <div class="photo-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlfGVufDB8fDB8fHww&auto=format&fit=crop&w=1500&q=80" 
+                         alt="Природный пейзаж">
+                </div>
+                <div class="caption">
+                    <h3>Панорамный вид</h3>
+                    <p>Экстремально широкий формат</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fullscreen-overlay" id="overlay">
+        <div class="close-btn" id="closeBtn">&times;</div>
+        <div class="fullscreen-content">
+            <img id="fullscreen-img" src="" alt="Fullscreen">
+            <div class="fullscreen-caption">
+                <h3 id="fullscreen-title"></h3>
+                <p id="fullscreen-desc"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.photo-card');
+            const overlay = document.getElementById('overlay');
+            const fullscreenImg = document.getElementById('fullscreen-img');
+            const fullscreenTitle = document.getElementById('fullscreen-title');
+            const fullscreenDesc = document.getElementById('fullscreen-desc');
+            const closeBtn = document.getElementById('closeBtn');
+            
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    const title = this.querySelector('h3').textContent;
+                    const desc = this.querySelector('p').textContent;
+                    
+                    fullscreenImg.src = img.src;
+                    fullscreenImg.alt = img.alt;
+                    fullscreenTitle.textContent = title;
+                    fullscreenDesc.textContent = desc;
+                    
+                    overlay.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
