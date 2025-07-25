@@ -357,45 +357,6 @@ footer {
 	color: white;
 }
 
-/* ============================================ */
-/* ... остальные базовые стили ...
-
-@media (min-width: 768px) {
-	.block-image {
-		max-width: 35%;
-		float: left;
-		margin: 0 20px 10px 0;
-	}
-	
-	.block-image.right {
-		float: right;
-		margin: 0 0 10px 20px;
-	}
-	
-	.clearfix::after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-}
-
-.toc-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 10px;
-	cursor: pointer;
-	border-left: 3px solid var(--accent);
-	padding-left: 10px;
-}
-
-.nav-button:hover {
-	background: var(--accent);
-}
-
-/* ... остальные стили без изменений ... ============================================== */
-		/* ... остальные базовые стили ... */
-
 .article-block {
 	clear: both; /* Ключевое изменение - очистка обтекания */
 }
@@ -439,8 +400,6 @@ footer {
 	}
 }
 
-/* ... остальные стили без изменений ... */
-
 /* Стили для .author из первого примера */
 .intro .author {
 	font-weight: 600;
@@ -464,32 +423,8 @@ footer {
 	content: "»";
 	color: var(--gray);
 }
-
-
-        .about-link0 {
-            position: absolute;
-            top: 20px;
-            right: 0;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .about-link0:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-
-            
-            .about-link0 {
-                position: static;
-                display: inline-block;
-                margin-top: 15px;
-            }
-        }
 		
         .about-link {
-0
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
@@ -498,10 +433,4 @@ footer {
         .about-link:hover {
             text-decoration: underline;
         }
-        @media (max-width: 768px) {
 
-            
-            .about-link {
-0
-            }
-        }

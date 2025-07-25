@@ -12,267 +12,8 @@
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 	<link rel="manifest" href="/site.webmanifest" />
-	<style>
-	:root {
-            --primary: #2563eb;
-            --secondary: #4f46e5;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #94a3b8;
-            --series: #8b5cf6;
-        }        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: #f1f5f9;
-            padding: 0px;
-        }
-		body-padding {
-			padding: 20px;
-        }
-        
-        header {
-            max-width: 1200px;
-            margin: 0 auto 40px;
-            border-bottom: 1px solid var(--gray);
-            position: relative;
-			padding: 20px 10px;
-        }
-        
-        .site-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 10px;
-        }
-        
-        .search-container {
-            display: flex;
-            max-width: 600px;
-            margin-top: 20px;
-        }
-        
-        .search-container input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid var(--gray);
-            border-radius: 8px 0 0 8px;
-            font-size: 1rem;
-        }
-        
-        .search-container button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0 24px;
-            border-radius: 0 8px 8px 0;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        
-        .tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .tag {
-            background-color: #e0f2fe;
-            color: #0369a1;
-            padding: 6px 12px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .tag:hover {
-            background-color: #bae6fd;
-        }
-        
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-		.tag a{           
-			text-decoration: none;
-        }        
-        .article-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        
-        .thumbnail {
-		  height: 215px;
-		  width: 100%;
-		  object-fit: cover; /* Сохраняет пропорции изображения */
-		  display: block;
-		}
+    <link rel="stylesheet" href="lib/css/index.css">
 
-        .card-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .article-title {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-        
-        .meta-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            gap: 15px;
-            color: var(--dark);
-        }
-        
-        .speaker {
-            font-weight: 600;
-            color: var(--secondary);
-        }   
-        .reading-time {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.9rem;
-        }       
-        .reading-time::before {
-            content: "⏱";
-        }
-        
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: auto;
-            padding-top: 15px;
-        }
-        
-        .card-tag {
-            background-color: #ede9fe;
-            color: #5b21b6;
-            padding: 4px 10px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-        }
-        
-        /* Стили для серий статей */
-        .series-header {
-            grid-column: 1 / -1;
-            display: flex;
-            align-items: center;
-            margin: 20px 0 10px;
-            padding-bottom: 10px;
-            padding-left: 10px;
-            border-bottom: 2px solid var(--series);
-        }
-        
-        .series-title {
-            font-size: 1.5rem;
-            color: var(--series);
-            margin-right: 15px;
-        }
-        
-        .series-badge {
-            background-color: var(--series);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-        }
-        
-        .series-grid {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            background: rgba(139, 92, 246, 0.05);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .about-link {
-            position: absolute;
-            top: 20px;
-            right: 0;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .about-link:hover {
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
-            .articles-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 20px;
-            }            
-            .site-title {
-                font-size: 2rem;
-            }
-            
-            .series-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-link {
-                position: static;
-                display: inline-block;
-                margin-top: 15px;
-            }
-        }
-	.article-card 	a {
-		text-decoration: none;
-		color: var(--secondary-color);
-		transition: var(--transition);
-	}
-
-	.article-card 	a:hover {
-		color: var(--accent-color);
-	}
-    /* lazyload */
-	.thumbnail.lazyload {
-	  filter: blur(8px);
-	  transition: filter 0.4s ease;
-	}
-	.thumbnail {
-	  filter: blur(0);
-	  transition: filter 0.4s ease;
-	}
-
-	</style>
 </head>
 <body>
 <div class="body-padding>">
@@ -304,8 +45,6 @@
 		</div>
 		</a>
 	</article>     
-	 
-		
 	
     <article class="article-card">
 	    <a href="lib/page_05/article4.html">
@@ -775,8 +514,7 @@
 		</a>
 	</article>     
 	 
-		
-	
+
     <article class="article-card">
 	    <a href="lib/page_03/article1.html">
 		<img src="lib/page_03/images/article1/p00-lq.webp"
@@ -818,48 +556,7 @@
 	 
     </main>
 </div> <!-- body-padding -->
-<style>
-footer {
-	background: var(--dark);
-	color: white;
-	padding: 30px 0;
-	margin-top: 40px;
-}
 
-.footer-content {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
-	max-width: 100%;
-	margin: 0 auto;
-	padding: 0 15px;
-}
-
-@media (min-width: 768px) {
-	.footer-content {
-		max-width: 800px;
-		flex-direction: row;
-		justify-content: space-between;
-		padding: 0 20px;
-	}
-}
-
-.footer-links {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 15px;
-}
-
-.footer-links a {
-	color: #cbd5e1;
-	text-decoration: none;
-	font-size: 0.9rem;
-}
-
-.footer-links a:hover {
-	color: white;
-}
-</style>
     <footer>
         <div class="container footer-content">        
             <div class="copyright">© 2025 Интервью и выступления</div>
@@ -898,21 +595,6 @@ footer {
 
 </script>
 	
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-   ym(102424835, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true
-   });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
 </body>
 </html>
