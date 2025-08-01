@@ -604,6 +604,35 @@
         line-height: 1.3;
     }
 }
+
+
+@media (max-width: 768px) {
+    /* ... существующие стили ... */
+    
+    .gallery-item.featured {
+        grid-column: span 1 !important; /* Убираем расширение на 2 колонки */
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Увеличиваем минимальную ширину */
+        gap: 20px; /* Увеличиваем промежуток */
+        padding: 10px;
+    }
+    
+    .gallery-container {
+        padding: 0 15px 30px; /* Оптимизируем отступы */
+    }
+}
+
+@media (max-width: 480px) {
+    /* ... существующие стили ... */
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
     </style>
 </head>
 <body>
