@@ -573,7 +573,7 @@
     
     .header-content p {
         font-size: 1.1rem;
-        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);  /* Добавляем тень к тексту */
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);  /* Добавляем тень к тексту */
     }
     
     .polaroid-frame {
@@ -583,7 +583,7 @@
         /* Сдвигаем вниз, чтобы не перекрывал текст */
         bottom: -80px;
         transform: rotate(3deg);
-        z-index: 3; /* Убедимся, что поверх фона */
+        /* z-index: 3; Убедимся, что поверх фона */
     }
 }
 
@@ -594,18 +594,18 @@
     }
     
     .header-content h1 {
-        font-size: 1.8rem;
+        font-size: 2.8rem;
     }
     
     .header-content p {
         font-size: 0.95rem;
     }
     
-    .polaroid-frame {
+    /*.polaroid-frame {
         width: 120px;
         height: 150px;
         bottom: -70px;
-    }
+    }*/
     
     /* Уменьшаем высоту шапки на очень маленьких экранах */
     header {
@@ -613,6 +613,78 @@
     }
 }
 
+/*-----------------------------------------*/
+/* Header Styles */
+.header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+    /* Добавим фоновый оверлей для лучшей читаемости
+    background: rgba(0, 0, 0, 0.3); */
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* Для мобильных: перемещаем polaroid под текст */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 20px 15px 150px; /* Добавляем место снизу для polaroid */
+    }
+    
+    /*.polaroid-frame {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%) rotate(3deg);
+        top: auto;
+        right: auto;
+        width: 150px;
+        height: 190px;
+    }*/
+    
+    .header-content {
+        margin-top: 30px;
+        /* background: rgba(0, 0, 0, 0.5); Усиливаем контраст */
+        padding: 15px;
+        max-width: 95%;
+    }
+    
+    .header-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Для очень узких экранов */
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    /*.polaroid-frame {
+        width: 130px;
+        height: 170px;
+        bottom: 15px;
+    }*/
+    
+    .header-content {
+        padding: 12px;
+        margin-top: 20px;
+    }
+}
+
+/* Защита от перекрытия на средних экранах */
+@media (min-width: 769px) and (max-width: 900px) {
+    .header-content {
+        max-width: 65%;
+    }
+    
+    .polaroid-frame {
+        bottom: 50px;
+    }
+}
     </style>
 </head>
 <body>
