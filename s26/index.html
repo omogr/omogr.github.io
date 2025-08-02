@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Фотоальбом</title>
+    <title>Фотоальбом 26спец 1967-1977 Ашки</title>
+	<meta name="description" content="Фотоальбом 26-ая спец школа 1967-1977 Ашки">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -54,6 +55,13 @@
             max-width: 800px;
             padding: 20px;
         }
+		/* Header Styles */
+		.header-content {
+
+			/*border-radius: 8px;
+			backdrop-filter: blur(4px);
+			-webkit-backdrop-filter: blur(4px);*/
+		}
         .header-content h1 {
             font-size: 3.5rem;
             color: white;
@@ -190,7 +198,7 @@
         }
         /* Single Photo View */
 		
-		/* Single Photo View — компактный режим для мобильных */
+/* Single Photo View — компактный режим для мобильных */
 .single-photo-view {
     display: none;
     position: fixed;
@@ -333,7 +341,7 @@
 /* Responsive Design — Оптимизация под мобильные устройства */
 
 
-		/* Стили для контейнера с кнопками навигации под фото */
+/* Стили для контейнера с кнопками навигации под фото */
 .nav-buttons {
     display: flex;
     justify-content: space-between;
@@ -546,18 +554,6 @@
 }
 
 /* ----------------------------- */
-/* Header Styles */
-.header-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    padding: 20px;
-    /* Добавляем фон для лучшей читаемости
-    background-color: rgba(0, 0, 0, 0.4); */
-    border-radius: 8px;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-}
 
 /* Мобильная адаптация */
 @media (max-width: 768px) {
@@ -600,12 +596,7 @@
     .header-content p {
         font-size: 0.95rem;
     }
-    
-    /*.polaroid-frame {
-        width: 120px;
-        height: 150px;
-        bottom: -70px;
-    }*/
+   
     
     /* Уменьшаем высоту шапки на очень маленьких экранах */
     header {
@@ -633,18 +624,7 @@
         flex-direction: column;
         padding: 20px 15px 150px; /* Добавляем место снизу для polaroid */
     }
-    
-    /*.polaroid-frame {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%) rotate(3deg);
-        top: auto;
-        right: auto;
-        width: 150px;
-        height: 190px;
-    }*/
-    
+       
     .header-content {
         margin-top: 30px;
         /* background: rgba(0, 0, 0, 0.5); Усиливаем контраст */
@@ -685,7 +665,8 @@
         bottom: 50px;
     }
 }
-    </style>
+
+</style>
 </head>
 <body>
     <!-- Header with featured photo -->
@@ -699,8 +680,8 @@
             <p>Фотографии от Алексея Волканова
         </div>
         <div class="polaroid-frame">
-            <img src="vlk/arc16.webp" 
-                 alt="Summer Camp">
+            <img src="vlk/arc16-lq.webp" 
+                 alt="">
         </div>
     </header>
     <div class="gallery-container">
@@ -716,7 +697,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                         data-highres="vlk/arc16.webp" 
                         class="photo placeholder" 
-                        alt="Graduation">
+                        alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">16</div>
@@ -728,7 +709,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc14.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">14</div>
@@ -743,7 +724,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'><rect width='300' height='400' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='14' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc7.webp" 
                          class="photo placeholder" 
-                         alt="Playground Fun">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">7</div>
@@ -756,7 +737,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc8.webp" 
                          class="photo placeholder" 
-                         alt="Art Class">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">8</div>
@@ -770,7 +751,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'><rect width='300' height='400' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='14' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc10.webp" 
                          class="photo placeholder" 
-                         alt="Science Experiment">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">10</div>
@@ -784,7 +765,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc15.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">15</div>
@@ -798,7 +779,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc6.webp" 
                          class="photo placeholder" 
-                         alt="Summer Camp">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">6</div>
@@ -813,7 +794,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc26.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">26</div>
@@ -826,7 +807,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc21.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">21</div>
@@ -838,7 +819,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc24.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">24</div>
@@ -851,7 +832,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc11.webp" 
                          class="photo placeholder" 
-                         alt="Library Time">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">11</div>
@@ -864,7 +845,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc13.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">13</div>
@@ -881,7 +862,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'><rect width='300' height='400' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='14' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc12.webp" 
                          class="photo placeholder" 
-                         alt="Music Class">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">12</div>
@@ -894,7 +875,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc17.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">17</div>
@@ -906,7 +887,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc18.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">18</div>
@@ -920,7 +901,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc36.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">36</div>
@@ -932,7 +913,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc38.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">38</div>
@@ -945,7 +926,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/archv4.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">a4</div>
@@ -957,7 +938,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/archv5.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">a5</div>
@@ -969,7 +950,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc42.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">42</div>
@@ -983,7 +964,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/archv1.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">a1</div>
@@ -995,7 +976,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc40.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">40</div>
@@ -1007,7 +988,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc41.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">41</div>
@@ -1020,7 +1001,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc23.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">23</div>
@@ -1032,7 +1013,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc20.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">20</div>
@@ -1047,7 +1028,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc22.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">22</div>
@@ -1060,7 +1041,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc19.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">19</div>
@@ -1072,7 +1053,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc39.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">39</div>
@@ -1086,7 +1067,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc27.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">27</div>
@@ -1098,7 +1079,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc28.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">28</div>
@@ -1111,7 +1092,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/archv3.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">a3</div>
@@ -1124,7 +1105,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc30.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">30</div>
@@ -1137,7 +1118,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/archv2.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">a2</div>
@@ -1150,7 +1131,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc9.webp" 
                          class="photo placeholder" 
-                         alt="Sports Day">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">9</div>
@@ -1163,7 +1144,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc25.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">25</div>
@@ -1176,7 +1157,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/oct________001.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">o1</div>
@@ -1188,7 +1169,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/oct________2 001.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">o2</div>
@@ -1200,7 +1181,7 @@
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/starsh_________001.webp" 
                          class="photo placeholder" 
-                         alt="Graduation">
+                         alt="">
                 </div>
                 <div class="photo-info">
                     <div class="photo-id">o3</div>
