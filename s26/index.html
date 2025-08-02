@@ -12,6 +12,7 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
 :root {
 	--primary: #4a6fa5;
 	--secondary: #8aa8b8;
@@ -23,6 +24,7 @@
 	--border: #e0d3c5;
 	--shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
+
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	background-color: var(--light);
@@ -34,11 +36,14 @@ body {
 	background-size: 20px 20px;
 	min-height: 100vh;
 }
+
 /* Header Styles */
+
 header {
 	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
 				url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f9b572" opacity="0.1"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23e0d3c5" stroke-width="0.5"/></svg>'),
-				url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><text x="50%" y="50%" font-family="Arial" font-size="24" fill="%23ffffff" opacity="0.05" text-anchor="middle" dominant-baseline="middle">ENDLESS SUMMER</text></svg>');
+				url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><text x="50%" y="50%" font-family="Arial" font-size="24" fill="%23ffffff" opacity="0.05" text-anchor="middle" dominant-baseline="middle">Everlasting Summer</text></svg>');
+
 	background-size: cover, 20px 20px, cover;
 	height: 400px;
 	position: relative;
@@ -49,6 +54,7 @@ header {
 	overflow: hidden;
 	margin-bottom: 30px;
 }
+
 .header-content {
 	position: relative;
 	z-index: 2;
@@ -56,22 +62,6 @@ header {
 	padding: 20px;
 }
 
-
-/*-----------------------------------------*/
-/* Header Styles */
-.header-content {
-
-	/*border-radius: 8px;
-	backdrop-filter: blur(4px);
-	-webkit-backdrop-filter: blur(4px);*/
-}
-
-/* Header Styles */
-.header-content {
-	/*border-radius: 8px;
-	backdrop-filter: blur(4px);
-	-webkit-backdrop-filter: blur(4px);*/
-}
 .header-content h1 {
 	font-size: 3.5rem;
 	color: white;
@@ -79,9 +69,9 @@ header {
 	margin-bottom: 20px;
 	letter-spacing: 1px;
 	font-weight: 700;
-	/*text-transform: uppercase;*/
 	font-family: 'Times New Roman', serif;
 }
+
 .header-content p {
 	font-size: 1.4rem;
 	color: rgba(255, 255, 255, 0.9);
@@ -89,6 +79,7 @@ header {
 	margin: 0 auto;
 	font-style: italic;
 }
+
 .polaroid-frame {
 	position: absolute;
 	bottom: 20px;
@@ -101,11 +92,13 @@ header {
 	overflow: hidden;
 	background: white;
 }
+
 .polaroid-frame img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
+
 .polaroid-frame::after {
 	content: "";
 	position: absolute;
@@ -117,18 +110,21 @@ header {
 	transform: rotate(-2deg);
 	z-index: -1;
 }
+
 /* Gallery Styles */
 .gallery-container {
 	max-width: 1400px;
 	margin: 0 auto;
 	padding: 0 20px 40px;
 }
+
 .view-toggle {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 25px;
 	gap: 15px;
 }
+
 .view-btn {
 	background: white;
 	border: 2px solid var(--border);
@@ -143,11 +139,13 @@ header {
 	box-shadow: var(--shadow);
 	color: var(--text);
 }
+
 .view-btn.active, .view-btn:hover {
 	background: var(--primary);
 	color: white;
 	border-color: var(--primary);
 }
+
 /* Grid View */
 .gallery-grid {
 	display: grid;
@@ -155,6 +153,7 @@ header {
 	gap: 25px;
 	padding: 10px;
 }
+
 .gallery-item {
 	background: var(--card-bg);
 	border-radius: 8px;
@@ -164,19 +163,23 @@ header {
 	position: relative;
 	border: 1px solid var(--border);
 }
+
 .gallery-item:hover {
 	transform: translateY(-5px);
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
+
 .gallery-item.featured {
 	grid-column: span 2;
 }
+
 .photo-container {
 	position: relative;
 	width: 100%;
 	padding-top: 75%; /* 4:3 aspect ratio */
 	overflow: hidden;
 }
+
 .photo {
 	position: absolute;
 	top: 0;
@@ -206,9 +209,9 @@ header {
 	color: var(--text);
 	min-height: 40px;
 }
+
 /* Single Photo View */
 
-/* Single Photo View — компактный режим для мобильных */
 .single-photo-view {
 	display: none;
 	position: fixed;
@@ -294,6 +297,7 @@ header {
 }
 		
 /* Nostalgic Elements */
+
 .sun {
 	position: absolute;
 	top: 20px;
@@ -306,6 +310,7 @@ header {
 	filter: blur(2px);
 	z-index: -1;
 }
+
 .cloud {
 	position: absolute;
 	background: white;
@@ -313,25 +318,30 @@ header {
 	opacity: 0.2;
 	filter: blur(3px);
 }
+
 .cloud-1 {
 	top: 80px;
 	left: 10%;
 	width: 80px;
 	height: 40px;
 }
+
 .cloud-2 {
 	top: 150px;
 	right: 15%;
 	width: 100px;
 	height: 50px;
 }
+
 .cloud-3 {
 	bottom: 100px;
 	left: 25%;
 	width: 120px;
 	height: 60px;
 }
+
 /* Footer */
+
 footer {
 	text-align: center;
 	padding: 30px 0 40px;
@@ -340,18 +350,15 @@ footer {
 	border-top: 1px solid var(--border);
 	margin-top: 20px;
 }
+
 .footer-logo {
 	font-weight: 700;
 	color: var(--primary);
 	font-size: 1.2rem;
 }
-/* Responsive Design */
-
-
-/* Responsive Design — Оптимизация под мобильные устройства */
-
 
 /* Стили для контейнера с кнопками навигации под фото */
+
 .nav-buttons {
 	display: flex;
 	justify-content: space-between;
@@ -388,6 +395,7 @@ footer {
 	background-color: rgba(255,255,255,0.3);
 	transform: scale(1.1);
 }
+
 .photo-details {
 	color: white;
 	text-align: center;
@@ -400,6 +408,7 @@ footer {
 	box-sizing: border-box;
 }
 
+/* ---------- Responsive Design ------------ */
 
 @media (max-width: 768px) {
 	/* Single Photo View — ещё компактнее */
@@ -421,13 +430,6 @@ footer {
 		max-height: 65vh;
 	}
 
-	.photo-details {
-		margin-top: 10px;
-		max-width: 95%;
-		padding: 0 8px;
-		font-size: 0.9rem;
-	}
-
 	.single-photo-id {
 		font-size: 1rem;
 		margin-bottom: 6px;
@@ -436,43 +438,40 @@ footer {
 	.single-photo-caption {
 		font-size: 0.95rem;
 	}
-}
-
-
-@media (max-width: 768px) {
+	
     .gallery-item.featured {
-        grid-column: span 1 !important; /* Убираем расширение на 2 колонки */
+        /* grid-column: span 1 !important; Убираем расширение на 2 колонки */
+        grid-column: unset !important;
     }
     
     .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Увеличиваем минимальную ширину */
-        gap: 20px; /* Увеличиваем промежуток */
-        padding: 10px;
-    }
-    
-    .gallery-container {
-        padding: 0 15px 30px; /* Оптимизируем отступы */
-    }
-}
-
-@media (max-width: 768px) {
-    .gallery-grid {
         display: flex;
         flex-direction: column;
         gap: 12px;
         padding: 5px;
     }
     
+    .gallery-container {
+        padding: 0 15px 30px; /* Оптимизируем отступы */
+    }
     .gallery-item {
         width: 100%;
         height: auto;
     }
-    
+   
     .photo-container {
         padding-top: 0 !important;
         height: auto;
     }
     
+	.photo-details {
+		margin-top: 10px;
+		max-width: 95%;
+		padding: 0 8px;
+		font-size: 0.9rem;
+	}
+
     .photo {
         position: static !important;
         width: 100%;
@@ -494,19 +493,20 @@ footer {
         padding-bottom: 5px;
     }
     
-    .gallery-item.featured {
-        grid-column: unset !important;
+    header {
+        flex-direction: column;
+        padding: 20px 15px 150px; /* Добавляем место снизу для polaroid */
     }
-}
-
-@media (max-width: 768px) {
+	
     .header-content {
-        padding: 15px;
-        margin: 0 15px; /* Добавляем боковые отступы */
+        /*  Добавляем боковые отступы */
+        margin: 0 15px;
+        padding: 10px;
+        max-width: 95%;
     }
     
     .header-content h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); /* Усиливаем тень */
     }
     
@@ -517,33 +517,11 @@ footer {
     
     .polaroid-frame {
         width: 150px;
-        height: 150px;
+        height: 100px;
         right: 10px;
-        /* Сдвигаем вниз, чтобы не перекрывал текст 
-        bottom: -80px;
-        transform: rotate(3deg);*/
-        /* z-index: 3; Убедимся, что поверх фона */
     }
 }
 
-/* Для мобильных: перемещаем polaroid под текст */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 20px 15px 150px; /* Добавляем место снизу для polaroid */
-    }
-       
-    .header-content {
-        margin-top: 30px;
-        /* background: rgba(0, 0, 0, 0.5); Усиливаем контраст */
-        padding: 15px;
-        max-width: 95%;
-    }
-    
-    .header-content h1 {
-        font-size: 2.5rem;
-    }
-}
 
 @media (max-width: 480px) {
     .single-photo-view {
@@ -581,7 +559,6 @@ footer {
 
     .gallery-grid {
         grid-template-columns: 1fr;
-
         gap: 8px;
     }
     
@@ -592,43 +569,25 @@ footer {
     .photo-info {
         padding: 8px 6px;
     }
+    /* Уменьшаем высоту шапки */
+    header {
+        height: 350px;
+    }
 
     .header-content {
         padding: 12px;
         margin: 0 10px;
-    }
+        margin-top: 20px;
+	}
     
     .header-content h1 {
-        font-size: 2.8rem;
+        font-size: 2rem;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); /* Усиливаем тень */
     }
     
     .header-content p {
         font-size: 0.95rem;
-    }
-	
-    /* Уменьшаем высоту шапки на очень маленьких экранах */
-    header {
-        height: 350px;
-    }
-}
-
-
-
-/* Для очень узких экранов */
-@media (max-width: 480px) {
-    .header-content h1 {
-        font-size: 2rem;
-    }
-    
-    /*.polaroid-frame {
-        width: 130px;
-        height: 170px;
-        bottom: 15px;
-    }*/
-    
-    .header-content {
-        padding: 12px;
-        margin-top: 20px;
+		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);  /* Добавляем тень к тексту */
     }
 }
 
@@ -643,15 +602,12 @@ footer {
     }
 	
 	.header-content h1 {
-        font-size: 2.2rem;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); /* Усиливаем тень */
+        font-size: 2.2rem;        
     }
     
     .header-content p {
-        font-size: 1.1rem;
-        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);  /* Добавляем тень к тексту */
+        font-size: 1.1rem;        
     }
-
 }
 
 </style>
@@ -664,8 +620,8 @@ footer {
         <div class="cloud cloud-2"></div>
         <div class="cloud cloud-3"></div>
         <div class="header-content">
-            <h1>26спец Ашки</h1> <h1>1967-1977</h1>
-            <p>Фотографии от Алексея Волканова</p>
+            <h1>26спец Ашки<br>1967-1977</h1>
+            <p>Фотографии от<br>Алексея Волканова</p>
         </div>
         <div class="polaroid-frame">
             <img src="vlk/arc16-lq.webp" 
@@ -705,7 +661,6 @@ footer {
                 </div>
             </div>
 			
-
             <!-- Regular photos -->
             <div class="gallery-item">
                 <div class="photo-container">
@@ -732,8 +687,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
-            
-            
+                        
             <div class="gallery-item">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'><rect width='300' height='400' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='14' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -746,8 +700,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
-			
-			
+						
             <div class="gallery-item featured">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -775,8 +728,6 @@ footer {
                 </div>
             </div>
 			
-			
-
             <div class="gallery-item">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -802,6 +753,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
             <div class="gallery-item">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -840,11 +792,8 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
-
             
-            <!-- Regular photos -->
-            
-            
+            <!-- Regular photos -->           
             <div class="gallery-item">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'><rect width='300' height='400' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='14' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -870,6 +819,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+
             <div class="gallery-item">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -883,7 +833,6 @@ footer {
                 </div>
             </div>
 
-
             <div class="gallery-item featured">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -896,6 +845,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
             <div class="gallery-item featured">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -921,6 +871,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
             <div class="gallery-item">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -933,6 +884,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
             <div class="gallery-item">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -946,7 +898,6 @@ footer {
                 </div>
             </div>
 
-
             <div class="gallery-item featured">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -959,6 +910,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
             <div class="gallery-item featured">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -971,6 +923,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
             <div class="gallery-item featured">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -996,6 +949,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
             <div class="gallery-item">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -1008,8 +962,6 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
-
-
 
             <div class="gallery-item">
                 <div class="photo-container">
@@ -1036,6 +988,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
             <div class="gallery-item">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -1049,7 +1002,6 @@ footer {
                 </div>
             </div>
 
-
             <div class="gallery-item featured">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -1062,6 +1014,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
             <div class="gallery-item featured">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -1152,6 +1105,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
             <div class="gallery-item featured">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -1164,6 +1118,7 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
             <div class="gallery-item featured">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
@@ -1176,9 +1131,9 @@ footer {
                     <!-- <div class="photo-caption"></div> -->
                 </div>
             </div>
+			
         </div>
-		<p><br>
-		</p>
+		<p><br></p>
         <div class="view-toggle">
             <button class="view-btn" onclick="window.location.href='masonry.html'"
             >Другой вид</button>
@@ -1373,6 +1328,7 @@ footer {
    });
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->	
+<!-- /Yandex.Metrika counter -->
+
 </body>
 </html>
