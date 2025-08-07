@@ -6,12 +6,17 @@
 
 <url>
   <loc>https://omogr.github.io/</loc>
-  <lastmod>2025-08-07T08:16:33+00:00</lastmod>
+  <lastmod>2025-08-07T16:22:54+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://omogr.github.io/lib/page_00/about.html</loc>
   <lastmod>2025-07-12T11:04:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_00/article1.html</loc>
+  <lastmod>2025-08-07T16:11:49+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -162,6 +167,11 @@
 <url>
   <loc>https://omogr.github.io/lib/page_05/article7.html</loc>
   <lastmod>2025-08-07T08:16:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://omogr.github.io/lib/page_05/article8.html</loc>
+  <lastmod>2025-08-07T16:10:04+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>

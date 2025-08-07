@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автомобили - Интервью и выступления</title>
+
+	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="manifest" href="/site.webmanifest">
+	
+	<meta name="description" content="Автомобили - Впечатления и тест-драйвы актуальных моделей">
+	
+    <link rel="stylesheet" href="../css/page.css">	
+	<style>
+	.block-image.lazyload {
+	  filter: blur(8px);
+	  transition: filter 0.4s ease;
+	}
+	.block-image {
+	  filter: blur(0);
+	  transition: filter 0.4s ease;
+	}
+	.block-image.right.lazyload {
+	  filter: blur(8px) grayscale(20%);
+	}
+	</style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container header-content">
+            <a href="../page_00/article1.html" class="logo">Обзоры и впечатления</a>
+            <a href="../page_00/about.html" class="about-link">О сайте</a>
+        </div>
+    </header>   
+    <!-- Основной контент -->
+    <div class="container">
+        <div class="article-header">
+            <h1 class="article-title">Автомобили</h1>
+        </div>        
+        <!-- Введение -->
+		
+        <div class="intro">
+            <p>Впечатления и тест-драйвы актуальных моделей</p>			
+			
+        </div>
+		        
+        <!-- Оглавление -->
+		
+        <div class="toc-section">
+            <div class="toc-header" id="tocHeader">
+                <h2 class="toc-title">Содержание</h2>
+                <button class="toc-toggle" id="tocToggle">
+                    <span id="tocIcon">▼</span>
+                    <span id="tocText">Показать</span>
+                </button>
+            </div>
+            <div class="toc-content" id="tocContent">
+                <ul class="toc-list">
+				    
+						<li><a href="#block-1">Toyota Highlander 2025</a></li>
+					
+						<li><a href="#block-2">Обзор Mitsubishi Outlander 2024</a></li>
+					
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Основное содержание -->
+        <div class="article-content">
+			
+            <!-- Блок 1 -->
+            <div class="article-block" id="block-1">
+				
+                 <div class="block-header">
+                    <h2 class="block-title">Toyota Highlander 2025</h2>
+                </div>
+				
+                <div class="block-text">
+					
+					<p>Тест-драйв Toyota Highlander в максимальной комплектации 2025 года. Надежность, комфорт и практичность без лишних фанфар.</p><br/><a href="../page_05/article7.html" class="review-link">Читать обзор</a><br/><br/><br/>
+                </div>
+            </div>
+			
+            <!-- Блок 2 -->
+            <div class="article-block" id="block-2">
+				
+                 <div class="block-header">
+                    <h2 class="block-title">Обзор Mitsubishi Outlander 2024</h2>
+                </div>
+				
+                <div class="block-text">
+					
+					<p>Тест-драйв Mitsubishi Outlander 2024.</p><br/><a href="../page_05/article8.html" class="review-link">Читать обзор</a><br/><br/><br/>
+                </div>
+            </div>
+			
+        </div>       
+        <!-- Навигация -->
+        <div class="navigation">
+            <button class="nav-button" onclick="location.href='../page_00/article1.html'">
+                <span>←</span> На главную
+            </button>
+            <button class="nav-button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <span>↑</span> К началу статьи
+            </button>
+        </div>
+    </div>
+    <!-- Кнопка "Вверх" -->
+    <a href="#" class="back-to-top">↑</a>
+    <!-- Подвал -->
+    <footer>
+        <div class="container footer-content">       
+            <div class="copyright">© 2025 Интервью и выступления</div>
+            <div class="footer-links">
+                <a href="../../index.html">Главная</a>
+                <a href="../page_00/about.html">О сайте</a>
+            </div>
+        
+        </div>
+    </footer>
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+	  // Измененный селектор с учетом ваших классов
+	  const lazyImages = document.querySelectorAll("img.block-image.lazyload");
+	  
+	  if (window.IntersectionObserver) {
+		const lazyImageObserver = new IntersectionObserver((entries) => {
+		  entries.forEach(entry => {
+			if (entry.isIntersecting) {
+			  const img = entry.target;
+			  img.src = img.dataset.src;
+			  img.classList.remove("lazyload"); // Убираем класс-маркер
+			  lazyImageObserver.unobserve(img);
+			}
+		  });
+		});
+		lazyImages.forEach(img => lazyImageObserver.observe(img));
+	  } else {
+		// Fallback для старых браузеров
+		lazyImages.forEach(img => {
+		  img.src = img.dataset.src;
+		  img.classList.remove("lazyload");
+		});
+	  }
+	});
+	// Оглавление - переключение видимости
+	document.getElementById('tocHeader').addEventListener('click', function() {
+		const tocContent = document.getElementById('tocContent');
+		const tocIcon = document.getElementById('tocIcon');
+		const tocText = document.getElementById('tocText');
+		
+		tocContent.classList.toggle('expanded');
+		
+		if (tocContent.classList.contains('expanded')) {
+			tocIcon.textContent = '▲';
+			tocText.textContent = 'Скрыть';
+		} else {
+			tocIcon.textContent = '▼';
+			tocText.textContent = 'Показать';
+		}
+	});
+	// Плавная прокрутка для ссылок в оглавлении
+	document.querySelectorAll('.toc-list a').forEach(anchor => {
+		anchor.addEventListener('click', function(e) {
+			e.preventDefault();
+			const targetId = this.getAttribute('href');
+			const targetElement = document.querySelector(targetId);
+			
+			window.scrollTo({
+				top: targetElement.offsetTop - 70,
+				behavior: 'smooth'
+			});			
+			// Закрываем оглавление после выбора пункта
+			document.getElementById('tocContent').classList.remove('expanded');
+			document.getElementById('tocIcon').textContent = '▼';
+			document.getElementById('tocText').textContent = 'Показать';
+		});
+	});	
+	// Показать/скрыть кнопку "Наверх"
+	window.addEventListener('scroll', function() {
+		const backToTop = document.querySelector('.back-to-top');
+		if (window.pageYOffset > 500) {
+			backToTop.style.display = 'flex';
+		} else {
+			backToTop.style.display = 'none';
+		}
+	});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(102424835, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>

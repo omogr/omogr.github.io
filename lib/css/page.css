@@ -434,3 +434,17 @@ footer {
             text-decoration: underline;
         }
 
+        .review-link {
+            align-self: flex-start;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .review-link:hover {
+            background: var(--secondary);
+        }
