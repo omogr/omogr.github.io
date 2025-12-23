@@ -1,0 +1,307 @@
+/* Переменные */
+:root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #666666;
+    --border: #e0e0e0;
+    --accent: #0066cc;
+    --card-bg: #f5f5f5;
+}
+
+/* Базовые стили */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header */
+header {
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+}
+header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+.current-date {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+header nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+header nav a:hover, header nav a.active {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+}
+
+/* Grid layout для основного контента */
+.main-layout {
+    display: grid;
+    grid-template-areas: 
+        "top top top"
+        "main main sidebar"
+        "bottom bottom bottom"
+        "brief brief brief";
+    grid-template-columns: 1fr 1fr 320px;
+    gap: 2rem;
+}
+
+#top-stories { grid-area: top; }
+#news-grid { grid-area: main; }
+#sidebar-stories { grid-area: sidebar; }
+#bottom-stories { grid-area: bottom; }
+#brief-stories { grid-area: brief; }
+
+/* Главные новости */
+#top-stories {
+    margin-bottom: 0;
+}
+.top-story {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+}
+.top-story h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.top-story h2 a {
+    color: var(--text);
+    text-decoration: none;
+}
+.top-story h2 a:hover {
+    color: var(--accent);
+}
+
+/* Сетка новостей */
+#news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    height: fit-content;
+}
+.news-card {
+    background: var(--card-bg);
+    padding: 1.2rem;
+    border-radius: 6px;
+}
+.news-card h3, .news-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+.news-card h3 a, .news-card h4 a {
+    color: var(--text);
+    text-decoration: none;
+}
+.news-card h3 a:hover, .news-card h4 a:hover {
+    color: var(--accent);
+}
+
+/* Сайдбар */
+#sidebar-stories {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    height: fit-content;
+}
+.section-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+.sidebar-card {
+    background: var(--bg);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+}
+.sidebar-card:last-child {
+    margin-bottom: 0;
+}
+
+/* Нижний блок */
+#bottom-stories {
+    margin-top: 1rem;
+}
+.bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Блок кратких новостей */
+#brief-stories {
+    margin-top: 1rem;
+}
+.brief-item {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border);
+}
+.brief-item:last-child {
+    border-bottom: none;
+}
+.brief-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.brief-link {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    flex: 1;
+}
+.brief-link:hover {
+    color: var(--accent);
+}
+.brief-item .read-more-btn {
+    margin-top: 0;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* Метаданные */
+.meta {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+}
+.date::after {
+    content: " • ";
+    margin: 0 0.3rem;
+}
+.category-tag {
+    font-weight: 600;
+}
+
+/* Анонс */
+.excerpt {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--muted);
+}
+
+/* Адаптивность */
+@media (max-width: 900px) {
+    .main-layout {
+        grid-template-areas: 
+            "top"
+            "main"
+            "sidebar"
+            "bottom"
+            "brief";
+        grid-template-columns: 1fr;
+    }
+    #sidebar-stories {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    header nav { gap: 0.8rem; }
+    header nav a { font-size: 0.9rem; }
+    #news-grid, .bottom-grid { 
+        grid-template-columns: 1fr; 
+    }
+    .brief-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .brief-item .read-more-btn {
+        align-self: flex-start;
+    }
+}
+
+/* Раскрытый контент */
+.full-content {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    animation: slideDown 0.3s ease-out;
+}
+.full-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.full-article-link {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+.full-article-link:hover {
+    text-decoration: underline;
+}
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        max-height: 2000px;
+        transform: translateY(0);
+    }
+}
+
+/* Кнопка "Читать далее" */
+.read-more-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.read-more-btn:hover {
+    color: var(--accent);
+}
+.read-more-btn::after {
+    content: "↓";
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    color: var(--muted);
+}
+.read-more-btn.expanded::after {
+    transform: rotate(180deg);
+}

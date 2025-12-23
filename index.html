@@ -3,689 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Космическое путешествие: Солнечная система</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --space-dark: #0b0d1a;
-            --space-blue: #1a1f38;
-            --neon-blue: #4fc3f7;
-            --neon-pink: #ff4081;
-            --star-yellow: #fff59d;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Space Mono', monospace;
-            background: var(--space-dark);
-            color: #e0e0ff;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 2px),
-                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 1px),
-                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 2px);
-            background-size: 550px 550px, 350px 350px, 250px 250px;
-            background-position: 0 0, 40px 60px, 130px 270px;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header Styles */
-        header {
-            background: rgba(11, 13, 26, 0.8);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(79, 195, 247, 0.3);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px rgba(79, 195, 247, 0.7);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            color: #e0e0ff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 5px 0;
-        }
-        
-        .nav-links a:hover {
-            color: var(--neon-blue);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--neon-blue);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            padding: 0 20px;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, transparent 40%, var(--space-dark) 70%);
-            z-index: -1;
-        }
-        
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: white;
-            text-shadow: 0 0 15px rgba(79, 195, 247, 0.8);
-            animation: pulse 3s infinite;
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin-bottom: 40px;
-            color: var(--neon-blue);
-        }
-        
-        .cta-button {
-            background: transparent;
-            border: 2px solid var(--neon-blue);
-            color: var(--neon-blue);
-            padding: 12px 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .cta-button:hover {
-            background: rgba(79, 195, 247, 0.1);
-            box-shadow: 0 0 20px rgba(79, 195, 247, 0.5);
-            transform: translateY(-3px);
-        }
-        
-        /* Solar System Animation */
-        .solar-system {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            z-index: -1;
-        }
-        
-        .sun {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, #ffeb3b, #ff9800 70%, #f44336);
-            border-radius: 50%;
-            box-shadow: 0 0 50px #ff9800, 0 0 100px #ff5722;
-            animation: sun-pulse 4s infinite alternate;
-        }
-        
-        .orbit {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        .planet {
-            position: absolute;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 100px 0;
-        }
-        
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: white;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
-        }
-        
-        /* Planet Cards */
-        .planets-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .planet-card {
-            background: rgba(26, 31, 56, 0.6);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            border: 1px solid rgba(79, 195, 247, 0.2);
-            backdrop-filter: blur(10px);
-            position: relative;
-            height: 400px;
-        }
-        
-        .planet-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 10px 30px rgba(79, 195, 247, 0.3);
-            border-color: var(--neon-blue);
-        }
-        
-        .planet-image {
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .planet-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            position: relative;
-            animation: float 6s infinite ease-in-out;
-        }
-        
-        .planet-info {
-            padding: 25px;
-        }
-        
-        .planet-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .planet-info p {
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            color: #c5c5e0;
-        }
-        
-        .planet-facts {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-        }
-        
-        .fact {
-            text-align: center;
-            flex: 1;
-        }
-        
-        .fact-value {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--neon-blue);
-        }
-        
-        .fact-label {
-            font-size: 0.8rem;
-            color: #a0a0c0;
-        }
-        
-        /* Fun Facts Section */
-        .fun-facts {
-            background: rgba(11, 13, 26, 0.7);
-            border-top: 1px solid rgba(79, 195, 247, 0.2);
-            border-bottom: 1px solid rgba(79, 195, 247, 0.2);
-        }
-        
-        .facts-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .fact-card {
-            background: rgba(26, 31, 56, 0.4);
-            border-radius: 15px;
-            padding: 30px;
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(255, 64, 129, 0.2);
-        }
-        
-        .fact-card:hover {
-            transform: scale(1.05);
-            border-color: var(--neon-pink);
-            background: rgba(26, 31, 56, 0.6);
-        }
-        
-        .fact-card h3 {
-            color: var(--neon-pink);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-        
-        /* Footer */
-        footer {
-            background: rgba(11, 13, 26, 0.9);
-            padding: 50px 0 20px;
-            text-align: center;
-            border-top: 1px solid rgba(79, 195, 247, 0.3);
-        }
-        
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
-        }
-        
-        .footer-links a {
-            color: var(--neon-blue);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            text-shadow: 0 0 10px rgba(79, 195, 247, 0.7);
-        }
-        
-        .copyright {
-            color: #a0a0c0;
-            font-size: 0.9rem;
-            margin-top: 30px;
-        }
-        
-        /* Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        @keyframes pulse {
-            0% { text-shadow: 0 0 15px rgba(79, 195, 247, 0.8); }
-            50% { text-shadow: 0 0 25px rgba(79, 195, 247, 1), 0 0 40px rgba(79, 195, 247, 0.6); }
-            100% { text-shadow: 0 0 15px rgba(79, 195, 247, 0.8); }
-        }
-        
-        @keyframes sun-pulse {
-            0% { box-shadow: 0 0 50px #ff9800, 0 0 100px #ff5722; }
-            100% { box-shadow: 0 0 70px #ff9800, 0 0 140px #ff5722; }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .planets-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-		
-		.planet-card {
-    /* Заменяем фиксированную высоту на минимальную */
-    min-height: 400px;
-    height: auto; /* Автоматическая высота по содержимому */
-}
-
-.planet-info {
-    padding: 20px;
-    /* Гарантируем, что контент не выйдет за пределы */
-    display: flex;
-    flex-direction: column;
-    height: calc(100% - 200px); /* 200px - высота изображения */
-}
-
-.planet-info p {
-    flex-grow: 1; /* Текст занимает доступное пространство */
-    margin-bottom: 15px;
-    overflow: hidden; /* Скрываем переполнение */
-    text-overflow: ellipsis; /* Добавляем многоточие если текст не помещается */
-}
-
-.planet-facts {
-    margin-top: auto; /* Прижимаем факты к низу */
-    padding-top: 10px;
-    border-top: 1px solid rgba(79, 195, 247, 0.2);
-}
-    </style>
+    <title>Новости 360 — Главная</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
-            <nav>
-                <div class="logo">КОСМОС</div>
-                <div class="nav-links">
-                    <a href="#solar-system">Планеты</a>
-                    <a href="#facts">Факты</a>
-                    <a href="#gallery">Галерея</a>
-                    <a href="talks.html">Обсуждения</a>
-                    <a href="#about">О проекте</a>
-                </div>
-            </nav>
+            <h1>Новости 360</h1>
+            <div class="current-date" id="current-date"></div>
+			<nav>
+				
+				
+				  
+				  <a href="index.html" class="active">Главные</a>
+				
+				  
+				  <a href="sport.html">Спорт</a>
+				
+				  
+				  <a href="society.html">Общество</a>
+				
+				  
+				  <a href="politics.html">Власть</a>
+				
+				  
+				  <a href="tech.html">Технологии</a>
+				
+				  
+				  <a href="life.html">Жизнь</a>
+				
+				  
+				  <a href="culture.html">Культура</a>
+				
+				  
+				  <a href="economy.html">Экономика</a>
+				
+			</nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="solar-system" id="solar-system">
-            <div class="sun"></div>
-            <!-- Orbits would be generated with JS -->
-        </div>
-        <h1>ПУТЕШЕСТВИЕ ПО СОЛНЕЧНОЙ СИСТЕМЕ</h1>
-        <p>Откройте для себя удивительные миры, вращающиеся вокруг нашего Солнца</p>
-        <button class="cta-button">Начать исследование</button>
-    </section>
+    <main class="container main-layout">
+        <!-- Главные новости -->
+        <section id="top-stories">
+            
+            <article class="top-story">
+                <h2><a href="спорт/ufc-323-бой-петр-ян-vs-мераб-двалишвили-реванш-года-в-московском-ufc.html">UFC 323: бой Петр Ян vs Мераб Двалишвили — реванш года в московском UFC</a></h2>
+                <div class="meta">
+                    <span class="date">2025-12-19</span>
+                    <span class="category-tag" style="color: #5856d6">Спорт</span>
+                </div>
+                <p class="excerpt">После поражения в 2023 году Ян вернулся с силой — в UFC 323 он победил Двалишвили и вернул титул. Это не просто бой, это борьба душ и нации.</p>
+                <button class="read-more-btn" data-target="full-1" aria-expanded="false">Читать далее</button>
+                <div id="full-1" class="full-content" hidden>
+                    <p>Петр Ян вернул титул чемпиона легчайшего веса, победив Мераба Двалишвили в реванш-бою на UFC 323. Это важное событие для фанатов России и Грузии, символизирующее борьбу за славу и честь. Бой стал ключевым моментом в истории их противостояния.</p>
+                    <a href="спорт/ufc-323-бой-петр-ян-vs-мераб-двалишвили-реванш-года-в-московском-ufc.html" class="full-article-link">Открыть отдельной страницей →</a>
+                </div>
+            </article>
+            
+            <article class="top-story">
+                <h2><a href="власть/итоги-года-с-путиным-2025.html">Итоги года с Путиным 2025</a></h2>
+                <div class="meta">
+                    <span class="date">2025-12-21</span>
+                    <span class="category-tag" style="color: #ff3b30">Власть</span>
+                </div>
+                <p class="excerpt">Путин объявил: Россия достигла полного цифрового суверенитета благодаря мессенджеру MAX. Теперь страна не зависит от западных технологий — и это только начало.</p>
+                <button class="read-more-btn" data-target="full-2" aria-expanded="false">Читать далее</button>
+                <div id="full-2" class="full-content" hidden>
+                    <p>В 2025 году цифровой суверенитет стал ключевым элементом внешней и внутренней политики России, что проявилось в развитии национальных технологий, таких как мессенджер Max и проекты в авиации, транспорте и промышленности. Путин подчеркнул достижение полной цифровой независимости и готовность рассмотреть вопросы безопасности на выборах в Украине. Статья показывает, как Россия противодействует западным санкциям и укрепляет технологическую автономию.</p>
+                    <a href="власть/итоги-года-с-путиным-2025.html" class="full-article-link">Открыть отдельной страницей →</a>
+                </div>
+            </article>
+            
+        </section>
 
-    <!-- Planets Section -->
-    <section id="planets">
-        <div class="container">
-            <h2 class="section-title">Планеты Солнечной системы</h2>
-            <div class="planets-grid">
-                <!-- Mercury -->
-                <div class="planet-card">
-                    <div class="planet-image">
-                        <div class="planet-img" style="background: linear-gradient(135deg, #a9a9a9, #7a7a7a);"></div>
-                    </div>
-                    <div class="planet-info">
-                        <h3>Меркурий</h3>
-                        <p>Ближайшая к Солнцу планета. Меркурий совершает полный оборот вокруг Солнца всего за 88 земных дней.</p>
-                        <div class="planet-facts">
-                            <div class="fact">
-                                <div class="fact-value">88 дн.</div>
-                                <div class="fact-label">Год</div>
-                            </div>
-                            <div class="fact">
-                                <div class="fact-value">4 879 км</div>
-                                <div class="fact-label">Диаметр</div>
-                            </div>
-                            <div class="fact">
-                                <div class="fact-value">0</div>
-                                <div class="fact-label">Спутники</div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Основная сетка новостей -->
+        <section id="news-grid">
+            
+            <article class="news-card">
+                <h3><a href="жизнь/снижение-ключевой-ставки-цб.html">Снижение ключевой ставки ЦБ</a></h3>
+                <div class="meta">
+                    <span class="date">2025-12-23</span>
+                    <span class="category-tag" style="color: #30d158">Жизнь</span>
                 </div>
+                <p class="excerpt">Ключевая ставка может снизиться — ипотека станет дешевле, кредиты — доступнее. Что это значит для вас и как это повлияет на рубль, вклады и инфляцию?</p>
+                <button class="read-more-btn" data-target="full-3" aria-expanded="false">Читать далее</button>
+                <div id="full-3" class="full-content" hidden>
+                    <p>Снижение ключевой ставки ЦБ РФ делает кредиты и ипотеку более доступными, стимулируя потребление и бизнес, но одновременно снижает доходность вкладов и ослабляет рубль. Решение обусловлено падением инфляции и прогнозируется в 2026 году, однако остаётся под угрозой рост инфляционных ожиданий.</p>
+                    <a href="жизнь/снижение-ключевой-ставки-цб.html" class="full-article-link">Открыть отдельной страницей →</a>
+                </div>
+            </article>
+            
+            <article class="news-card">
+                <h3><a href="общество/нападение-в-школе-в-одинцово.html">Нападение в школе в Одинцово</a></h3>
+                <div class="meta">
+                    <span class="date">2025-12-23</span>
+                    <span class="category-tag" style="color: #ff9500">Общество</span>
+                </div>
+                <p class="excerpt">15-летний Тимофей Кулямов напал на утренние занятия в школе в Одинцово — снял происходящее, привёл в соцсети и выявлял национальность учеников. Что за мотивы, как избежать подобного?</p>
+                <button class="read-more-btn" data-target="full-4" aria-expanded="false">Читать далее</button>
+                <div id="full-4" class="full-content" hidden>
+                    <p>В школе в Одинцово 16 декабря 2025 года 15-летний ученик Тимофей Кулямов напал на учеников, проявляя националистические взгляды и ультраправые убеждения. Он снял происходящее и транслировал в социальных сетях, а его поведение связано с конфликтами в семье и стрессом. В отношении Кулямова возбуждено уголовное дело по статьям об убийстве и покушении на убийство.</p>
+                    <a href="общество/нападение-в-школе-в-одинцово.html" class="full-article-link">Открыть отдельной страницей →</a>
+                </div>
+            </article>
+            
+            <article class="news-card">
+                <h3><a href="общество/дело-долиной-и-лурье.html">Дело Долиной и Лурье</a></h3>
+                <div class="meta">
+                    <span class="date">2025-12-23</span>
+                    <span class="category-tag" style="color: #ff9500">Общество</span>
+                </div>
+                <p class="excerpt">Сколько стоит честность? Когда квартира продается за 112 млн — а на рынке стоит 300 — и обвиняют в мошенничестве?</p>
+                <button class="read-more-btn" data-target="full-5" aria-expanded="false">Читать далее</button>
+                <div id="full-5" class="full-content" hidden>
+                    <p>Сделка по продаже квартиры Ларисы Долиной Полине Лурье вызвала споры вокруг юридической честности, мошенничества и рыночной справедливости, сопровождаясь общественной реакцией и обсуждением как "схемы Долиной". Суд признал сделку законной, однако дело остаётся в центре дискуссий о доверии в недвижимости и этических границах сделок.</p>
+                    <a href="общество/дело-долиной-и-лурье.html" class="full-article-link">Открыть отдельной страницей →</a>
+                </div>
+            </article>
+            
+            <article class="news-card">
+                <h3><a href="власть/безопасность-выборов-в-украине.html">Безопасность выборов в Украине</a></h3>
+                <div class="meta">
+                    <span class="date">2025-12-23</span>
+                    <span class="category-tag" style="color: #ff3b30">Власть</span>
+                </div>
+                <p class="excerpt">Голосование в Украине — не просто выборы, а битва за безопасность, легитимность и будущее. Что скрывает Путин? Как Россия и международные силы влияют на выборы?</p>
+                <button class="read-more-btn" data-target="full-6" aria-expanded="false">Читать далее</button>
+                <div id="full-6" class="full-content" hidden>
+                    <p>Статья рассматривает безопасность выборов в Украине как ключевой элемент политической стабильности, подвергающийся влиянию военных угроз, дипломатических переговоров и международных давлений. Россия, включая прямые заявления президента Путина, рассматривает возможность вмешательства в выборы, в том числе через мораторий на удары, что создаёт неопределённость. Легитимность власти на Украине остаётся предметом споров, особенно в контексте международных и внутренних оценок.</p>
+                    <a href="власть/безопасность-выборов-в-украине.html" class="full-article-link">Открыть отдельной страницей →</a>
+                </div>
+            </article>
+            
+            <article class="news-card">
+                <h3><a href="спорт/сафонов-отбил-4-пенальти.html">Сафонов отбил 4 пенальти</a></h3>
+                <div class="meta">
+                    <span class="date">2025-12-23</span>
+                    <span class="category-tag" style="color: #5856d6">Спорт</span>
+                </div>
+                <p class="excerpt">Сафонов отбил 4 пенальти — первый в истории ФИФА! Вратарь ПСЖ в финале Межконтинентального кубка в Эр-Райяне выдержал все удары, став символом стойкости и мастерства под давлением.</p>
+                <button class="read-more-btn" data-target="full-7" aria-expanded="false">Читать далее</button>
+                <div id="full-7" class="full-content" hidden>
+                    <p>Матвей Сафонов в финале Межконтинентального кубка в Эр-Райяне отразил четыре пенальти подряд, установив первый в истории ФИФА рекорд отбивания 11-метровых ударов и статья посвящена этому достижению, его значению и реакции на него. Это стало ключевым фактором победы «ПСЖ» и подчеркнуло его статус как одного из великих вратарей современного футбола.</p>
+                    <a href="спорт/сафонов-отбил-4-пенальти.html" class="full-article-link">Открыть отдельной страницей →</a>
+                </div>
+            </article>
+            
+        </section>
+
+        <!-- Сайдбар -->
+        <aside id="sidebar-stories">
+            <h3 class="section-title">Популярное</h3>
+            
+            <p style="padding: 20px; text-align: center; color: #999;">Нет статей</p>
+            
+        </aside>
+
+        <!-- Нижний блок -->
+        <section id="bottom-stories">
+            <h3 class="section-title">В тренде</h3>
+            <div class="bottom-grid">
                 
-                <!-- Venus -->
-                <div class="planet-card">
-                    <div class="planet-image">
-                        <div class="planet-img" style="background: linear-gradient(135deg, #e39e54, #b76935);"></div>
-                    </div>
-                    <div class="planet-info">
-                        <h3>Венера</h3>
-                        <p>Вторая планета от Солнца, известная как "сестра Земли" из-за схожего размера, но с экстремальными условиями.</p>
-                        <div class="planet-facts">
-                            <div class="fact">
-                                <div class="fact-value">225 дн.</div>
-                                <div class="fact-label">Год</div>
-                            </div>
-                            <div class="fact">
-                                <div class="fact-value">12 104 км</div>
-                                <div class="fact-label">Диаметр</div>
-                            </div>
-                            <div class="fact">
-                                <div class="fact-value">0</div>
-                                <div class="fact-label">Спутники</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <p style="padding: 20px; text-align: center; color: #999;">Нет статей</p>
                 
-                <!-- Earth -->
-                <div class="planet-card">
-                    <div class="planet-image">
-                        <div class="planet-img" style="background: linear-gradient(135deg, #64b5f6, #4caf50);"></div>
-                    </div>
-                    <div class="planet-info">
-                        <h3>Земля</h3>
-                        <p>Наш дом - единственная известная планета, поддерживающая жизнь. Третья планета от Солнца.</p>
-                        <div class="planet-facts">
-                            <div class="fact">
-                                <div class="fact-value">365 дн.</div>
-                                <div class="fact-label">Год</div>
-                            </div>
-                            <div class="fact">
-                                <div class="fact-value">12 742 км</div>
-                                <div class="fact-label">Диаметр</div>
-                            </div>
-                            <div class="fact">
-                                <div class="fact-value">1</div>
-                                <div class="fact-label">Спутники</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Mars -->
-                <div class="planet-card">
-                    <div class="planet-image">
-                        <div class="planet-img" style="background: linear-gradient(135deg, #ef5350, #b71c1c);"></div>
-                    </div>
-                    <div class="planet-info">
-                        <h3>Марс</h3>
-                        <p>"Красная планета" - четвертая от Солнца. Имеет самую высокую гору в Солнечной системе - Олимп.</p>
-                        <div class="planet-facts">
-                            <div class="fact">
-                                <div class="fact-value">687 дн.</div>
-                                <div class="fact-label">Год</div>
-                            </div>
-                            <div class="fact">
-                                <div class="fact-value">6 779 км</div>
-                                <div class="fact-label">Диаметр</div>
-                            </div>
-                            <div class="fact">
-                                <div class="fact-value">2</div>
-                                <div class="fact-label">Спутники</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Fun Facts Section -->
-    <section class="fun-facts" id="facts">
-        <div class="container">
-            <h2 class="section-title">Удивительные космические факты</h2>
-            <div class="facts-container">
-                <div class="fact-card">
-                    <h3>Бесконечные просторы</h3>
-                    <p>Если бы вы могли лететь на самолете к Плутону, путешествие заняло бы более 800 лет!</p>
-                </div>
-                <div class="fact-card">
-                    <h3>Гигантский шторм</h3>
-                    <p>Большое Красное Пятно на Юпитере - это гигантский шторм, который бушует более 350 лет и в два раза больше Земли!</p>
-                </div>
-                <div class="fact-card">
-                    <h3>Ледяные вулканы</h3>
-                    <p>На спутнике Сатурна Энцеладе есть ледяные вулканы, извергающие воду в космос, что делает его одним из самых вероятных мест для внеземной жизни.</p>
-                </div>
-                <div class="fact-card">
-                    <h3>Алмазные дожди</h3>
-                    <p>На Юпитере и Сатурне могут идти дожди из алмазов! Мощные штормы превращают метан в углерод, который под давлением превращается в алмазы.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Краткие новости -->
+        <section id="brief-stories">
+            <h3 class="section-title">Кратко</h3>
+            
+            <p style="padding: 20px; text-align: center; color: #999;">Нет статей</p>
+            
+        </section>
+    </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="logo">КОСМОС</div>
-                <p>Исследуйте удивительные миры нашей Солнечной системы</p>
-                <div class="footer-links">
-                    <a href="#">Главная</a>
-                    <a href="#">Планеты</a>
-                    <a href="#">Факты</a>
-                    <a href="#">Контакты</a>
-                </div>
-                <div class="copyright">
-                    © 2023 Космическое путешествие. Все права защищены.
-                </div>
-            </div>
+            <p>© 2025 Новости 360.</p>
         </div>
     </footer>
 
-    <script>
-        // Create solar system orbits and planets
-        document.addEventListener('DOMContentLoaded', function() {
-            const solarSystem = document.querySelector('.solar-system');
-            const planets = [
-                { name: 'mercury', radius: 120, size: 10, color: '#a9a9a9', orbitTime: 4 },
-                { name: 'venus', radius: 170, size: 16, color: '#e39e54', orbitTime: 8 },
-                { name: 'earth', radius: 220, size: 17, color: '#64b5f6', orbitTime: 12 },
-                { name: 'mars', radius: 280, size: 14, color: '#ef5350', orbitTime: 20 },
-                { name: 'jupiter', radius: 350, size: 40, color: '#e0a56b', orbitTime: 30 },
-                { name: 'saturn', radius: 420, size: 35, color: '#e3cda5', orbitTime: 40 },
-                { name: 'uranus', radius: 480, size: 25, color: '#a6d1e6', orbitTime: 50 },
-                { name: 'neptune', radius: 540, size: 24, color: '#5b9bd5', orbitTime: 60 }
-            ];
-            
-            planets.forEach(planet => {
-                // Create orbit
-                const orbit = document.createElement('div');
-                orbit.className = 'orbit';
-                orbit.style.width = `${planet.radius * 2}px`;
-                orbit.style.height = `${planet.radius * 2}px`;
-                solarSystem.appendChild(orbit);
-                
-                // Create planet
-                const planetEl = document.createElement('div');
-                planetEl.className = 'planet';
-                planetEl.style.width = `${planet.size}px`;
-                planetEl.style.height = `${planet.size}px`;
-                planetEl.style.background = planet.color;
-                planetEl.style.left = '50%';
-                planetEl.style.top = '0';
-                planetEl.style.animation = `orbit ${planet.orbitTime}s linear infinite`;
-                orbit.appendChild(planetEl);
-                
-                // Add animation keyframes dynamically
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes orbit {
-                        0% { transform: translate(-50%, -50%) rotate(0deg) translateX(${planet.radius}px) rotate(0deg); }
-                        100% { transform: translate(-50%, -50%) rotate(360deg) translateX(${planet.radius}px) rotate(-360deg); }
-                    }
-                `;
-                document.head.appendChild(style);
-            });
-            
-            // Floating animation for planet cards
-            const planetCards = document.querySelectorAll('.planet-card');
-            planetCards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.2}s`;
-            });
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
-	
-	
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -702,6 +201,7 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-	
+
+
 </body>
 </html>

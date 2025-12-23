@@ -1,0 +1,181 @@
+/* Структура страницы статьи */
+.article-page {
+    max-width: 720px;
+    margin: 0 auto 3rem;
+    padding: 2rem 0;
+}
+
+.article-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.article-category {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.article-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+}
+
+.article-meta {
+    display: flex;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.article-author::before {
+    content: "•";
+    margin-right: 1rem;
+}
+
+/* Основное содержание */
+.article-content {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+}
+
+.article-lead {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent);
+}
+
+/* Цитаты */
+blockquote {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-left: 4px solid var(--accent);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Изображения */
+figure.article-image {
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+figure.article-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+figcaption {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    background: var(--card-bg);
+    text-align: center;
+}
+
+/* Подвал статьи */
+.article-footer {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.article-tags {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--card-bg);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Похожие статьи */
+.related-articles {
+    max-width: 720px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.related-articles .news-card {
+    background: none;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+}
+
+.related-articles .news-card:last-child {
+    border-bottom: none;
+}
+
+.related-articles h4 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.related-articles .meta {
+    margin-bottom: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .article-title {
+        font-size: 1.8rem;
+    }
+    
+    .article-content {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .article-lead {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .article-page {
+        padding: 1rem 0;
+    }
+    
+    .article-header {
+        margin-bottom: 1.5rem;
+    }
+}
