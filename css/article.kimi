@@ -181,40 +181,46 @@ figcaption {
 }
 
 /* В article.css добавить */
-/* В CSS article.css добавить: */
-.intro-divider,
-.conclusion-divider {
-    text-align: center;
-    margin: 2.5rem 0;
-    position: relative;
+.article-content .section-marker {
+  position: relative;
+  margin: 3rem 0 2rem;
+  text-align: center;
 }
 
-.intro-divider::before,
-.conclusion-divider::before {
-    content: "";
-    display: block;
-    height: 1px;
-    background: var(--border);
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    z-index: 1;
+.article-content .section-marker::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+  z-index: 1;
 }
 
-.intro-divider::after,
-.conclusion-divider::after {
-    content: "★";
-    display: inline-block;
-    background: var(--bg);
-    color: var(--accent);
-    padding: 0 1.5rem;
-    position: relative;
-    z-index: 2;
+.section-marker .marker-icon {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  z-index: 2;
+  font-size: 1.5rem;
+  line-height: 36px;
+  color: var(--accent);
+}
+
+/* Для мобильных уменьшить размер */
+@media (max-width: 768px) {
+  .section-marker {
+    margin: 2rem 0 1.5rem;
+  }
+  .section-marker .marker-icon {
+    width: 32px;
+    height: 32px;
+    line-height: 28px;
     font-size: 1.2rem;
-}
-
-/* Вариант с другой иконкой для заключения */
-.conclusion-divider::after {
-    content: "◆";
+  }
 }
