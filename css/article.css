@@ -180,8 +180,7 @@ figcaption {
     }
 }
 
-/* В article.css добавить */
-/* В CSS article.css добавить: */
+/* Разделители для вступления и заключения */
 .intro-divider,
 .conclusion-divider {
     text-align: center;
@@ -230,4 +229,43 @@ figcaption {
     border-left: 4px solid var(--accent);
     background: var(--card-bg);
     border-radius: 0 4px 4px 0;
+}
+
+/* Блок для других фактов (тонкое визуальное выделение)
+.other-facts-block {
+    margin: 2.5rem 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.other-facts-block p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.other-facts-block p:last-child {
+    margin-bottom: 0;
+}
+ */
+/* Блок для других фактов (светлый фон) */
+.other-facts-block {
+    margin: 2.5rem 0;
+    padding: 1.5rem 1.25rem;
+    background: var(--card-bg);
+    border-radius: 4px;
+    border-left: 3px solid var(--muted);
+}
+
+.other-facts-block p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.other-facts-block p:last-child {
+    margin-bottom: 0;
 }
