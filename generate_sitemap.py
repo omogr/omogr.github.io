@@ -65,16 +65,20 @@ def generate_sitemap(base_dir, base_url, output_file):
                 
                 if 'yandex_1523a6f7ab9df206' in full_url:
                     continue
+                if 'googleeaa269f218e1c5fa' in full_url:
+                    continue
                 if 'omogr.github.io/articles' in full_url:
                     continue
-                    
+                changefreq = DEFAULT_CHANGEFREQ
                 if 'omogr.github.io/pages' in full_url:
+                    priority = 0.8
+                if 'https://omogr.github.io/' == full_url:
                     priority = 0.9
-                
+                    changefreq = 'daily'
                 urls.append({
                     'loc': full_url,
                     'lastmod': lastmod,
-                    'changefreq': DEFAULT_CHANGEFREQ,
+                    'changefreq': changefreq,
                     'priority': f"{priority:.1f}"
                 })
     
