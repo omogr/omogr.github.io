@@ -611,7 +611,121 @@ footer {
         font-size: 1.1rem;        
     }
 }
+/* ========================================== */
 
+@media (min-width: 1280px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 колонки равной ширины */
+        gap: 30px;
+        max-width: 1600px;
+    }
+    
+    /* 50% ширины — половина экрана (как раньше) */
+    .gallery-item.featured {
+        grid-column: span 2;
+    }
+    
+    /* 75% ширины — крупное фото, но не на всю ширину */
+    .gallery-item.large {
+        grid-column: span 3;
+    }
+    
+    /* 100% ширины — на весь экран */
+    .gallery-item.full {
+        grid-column: span 4;
+    }
+    
+    /* Обычные фото — 25% ширины (компактные) */
+    .gallery-item:not(.featured):not(.large):not(.full) {
+        grid-column: span 1;
+    }
+    
+    /* Увеличиваем высоту для крупных фото */
+    .gallery-item.featured .photo-container,
+    .gallery-item.large .photo-container,
+    .gallery-item.full .photo-container {
+        padding-top: 60%;
+        max-height: 70vh;
+    }
+}
+
+/* ============================================
+   ПОЛНОЭКРАННЫЙ ПРОСМОТР (Single Photo View)
+   ============================================ */
+@media (min-width: 769px) {
+    .single-photo-view {
+        padding: 0;
+        background: rgba(0, 0, 0, 0.98);
+    }
+    
+    .single-photo-container {
+        max-width: 100vw;
+        max-height: 95vh;
+        width: 100%;
+        height: 100%;
+        padding: 20px 20px 120px 20px; /* место снизу для подписи и кнопок */
+    }
+    
+    .single-photo {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        border: none; /* убираем рамку для максимального размера */
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Подпись делаем компактнее и повыше */
+    .photo-details {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px 30px;
+        border-radius: 30px;
+        backdrop-filter: blur(10px);
+        margin: 0;
+        max-width: 90%;
+    }
+    
+    /* Кнопки навигации делаем крупнее и заметнее */
+    .nav-buttons {
+        bottom: 50%;
+        transform: translate(-50%, 50%);
+        max-width: 95vw;
+    }
+    
+    .nav-button {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .nav-button:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Для очень широких экранов (>1600px) можно делать фото еще шире */
+@media (min-width: 1600px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .gallery-item.featured {
+        grid-column: span 2; /* 50% ширины - компромисс между размером и сеткой */
+    }
+    
+    .gallery-item.wide {
+        grid-column: span 3; /* 75% ширины */
+    }
+    
+    .gallery-item.full {
+        grid-column: span 4; /* 100% ширины */
+    }
+}
 </style>
 </head>
 <body>
@@ -639,7 +753,7 @@ footer {
         <div class="gallery-grid" id="gallery-grid">
 
 
-			 <div class="gallery-item featured">
+			 <div class="gallery-item full">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                         data-highres="ok/1975-05.webp" 
@@ -653,7 +767,7 @@ footer {
             </div>
 
 
-			 <div class="gallery-item featured">
+			 <div class="gallery-item full">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                         data-highres="ok/1975-05-names.webp" 
@@ -702,7 +816,7 @@ footer {
                 </div>
             </div>
 
-			 <div class="gallery-item featured">
+			 <div class="gallery-item full">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                         data-highres="ok/1977.webp" 
@@ -717,7 +831,7 @@ footer {
 
 
              <!-- Volk Photo Gallery Grid -->
-			 <div class="gallery-item featured">
+			 <div class="gallery-item full">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                         data-highres="vlk/arc16.webp" 
@@ -732,7 +846,7 @@ footer {
 
 
 
-			 <div class="gallery-item featured">
+			 <div class="gallery-item full">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                         data-highres="vlk/photo_2026-01-31_13-30-51.jpg" 
@@ -746,7 +860,7 @@ footer {
             </div>
 
 
-            <div class="gallery-item featured">
+            <div class="gallery-item full">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc14.webp" 
@@ -878,7 +992,7 @@ footer {
                 </div>
             </div>
 
-            <div class="gallery-item featured">
+            <div class="gallery-item full">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc13.webp" 
@@ -931,7 +1045,7 @@ footer {
                 </div>
             </div>
 
-            <div class="gallery-item featured">
+            <div class="gallery-item full">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc36.webp" 
@@ -944,7 +1058,7 @@ footer {
                 </div>
             </div>
 			
-            <div class="gallery-item featured">
+            <div class="gallery-item full">
                 <div class="photo-container">
                     <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
                          data-highres="vlk/arc38.webp" 
@@ -1422,6 +1536,22 @@ footer {
                     openSinglePhotoView(index);
                 });
             });
+			// ===================================
+			// Двойной клик по фото в модальном окне переключает полный экран
+			modalImg.addEventListener('dblclick', function() {
+				if (!document.fullscreenElement) {
+					if (modal.requestFullscreen) {
+						modal.requestFullscreen();
+					} else if (modal.webkitRequestFullscreen) {
+						modal.webkitRequestFullscreen();
+					}
+				} else {
+					if (document.exitFullscreen) {
+						document.exitFullscreen();
+					}
+				}
+			});
+			// ===================================
         });
     </script>
 	
