@@ -1,881 +1,983 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Фотоальбом</title>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <title>Фотоальбом 26спец 1967-1977 Ашки (другой вид, masonry)</title>
-	<meta name="description" content="Фотоальбом (другой вид, masonry). 26-ая спец школа 1967-1977 Ашки">
-	
-	
+    <title>Фотоальбом 26спец 1967-1977 Ашки</title>
+	<meta name="description" content="Фотоальбом 26-ая спец школа 1967-1977 Ашки">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px;
-            min-height: 100vh;
-            line-height: 1.6;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            color: #4a4a4a;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            color: #e91e63;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 10px auto 0;
-            color: #5a5a5a;
-        }
-        
-        .year-section {
-            margin: 40px 0 20px;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .year-title {
-            font-size: 1.8rem;
-            color: #2196f3;
-			border-bottom: 2px solid #ff9800;
-            /*border-bottom: 2px dashed #ff9800;*/
-            padding-bottom: 5px;
-        }
-        
-        .featured-photo {
-            width: 100%;
-            height: 570px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
-            border: 5px solid white;
-        }
-        
-        .featured-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            display: block;
-        }
-        
-        .featured-photo:hover .featured-img {
-            transform: scale(1.03);
-        }
-        
-        .featured-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 30px 20px 20px;
-            color: white;
-        }
-        
-        .grid {
-            margin: 0 auto;
-			
-        }
-        
-        .grid-sizer, .grid-item {
-            width: calc(33.333% - 20px);
-            margin-bottom: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(5px);
-            will-change: transform, opacity;
-        }
-        
-        .grid-item:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            z-index: 10;
-        }
-        
-        .grid-item--width2 { 
-            width: calc(66.666% - 20px); 
-        }
-        
-        .photo-container {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
-        
-        .photo {
-            width: 100%;
-            display: block;
-            transition: all 0.4s ease;
-            border-bottom: 3px solid #ff9800;
-        }
-        
-        .photo.blur {
-            filter: blur(10px);
-            transform: scale(1.05);
-        }
-        
-        .caption {
-            padding: 15px;
-            font-size: 0.95rem;
-            background: white;
-        }
-        
-        /* Стиль для хокку */
-        .haiku {
-            font-style: italic;
-            font-family: Georgia, serif;
-            text-align: center;
-            padding: 15px 10px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #5a5a5a;
-            border-top: 1px dashed #ff9800;
-            background: #fff9e6;
-        }
-        
-        .gutter-sizer {
-            width: 20px;
-        }
-        
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-        }
-        
-        .lightbox.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-        }
-        
-        .lightbox-img {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: 5px;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.8);
-            border: 2px solid white;
-        }
-        
-        .lightbox-caption {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 1.2rem;
-            color: #fff;
-            padding: 10px 20px;
-            background: rgba(0,0,0,0.7);
-            border-radius: 5px;
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 2.5rem;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(0,0,0,0.5);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-        }
-        
-        .close-btn:hover {
-            transform: rotate(90deg);
-            background: rgba(200,0,0,0.7);
-        }
-        
-        .loader {
-            text-align: center;
-            padding: 30px;
-            font-size: 1.2rem;
-            display: none;
-        }
-        
-        .loader.active {
-            display: block;
-        }
-        
-        .loader-dots {
-            display: inline-block;
-            margin-left: 10px;
-        }
-        
-        .loader-dots span {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #ff9800;
-            margin: 0 3px;
-            animation: bounce 1.5s infinite ease-in-out both;
-        }
-        
-        .loader-dots span:nth-child(1) { animation-delay: -0.32s; }
-        .loader-dots span:nth-child(2) { animation-delay: -0.16s; }
-        
-        @keyframes bounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
-        
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            background: rgba(255, 255, 255, 0.7);
-            border: none;
-            color: #5a5a5a;
-            padding: 10px 25px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255,152,0,0.3);
-        }
-        
-        .filter-btn:hover, .filter-btn.active {
-            background: #ff9800;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .nav-btn:hover {
-            background: rgba(255,152,0,0.8);
-        }
-        
-        .prev-btn {
-            left: 20px;
-        }
-        
-        .next-btn {
-            right: 20px;
-        }
-        
-        @media (max-width: 1100px) {
-            .grid-sizer, .grid-item { width: calc(50% - 15px); }
-            .grid-item--width2 { width: calc(100% - 15px); }
-        }
-        
-        @media (max-width: 768px) {
-            .featured-photo { height: 350px; }
-            .grid-sizer, .grid-item { width: 100%; }
-            .grid-item--width2 { width: 100%; }
-            h1 { font-size: 2.2rem; }
-            .controls { gap: 10px; }
-            .filter-btn { padding: 8px 18px; font-size: 0.9rem; }
-        }
-        
-        @media (max-width: 480px) {
-            body { padding: 10px; }
-            .featured-photo { height: 250px; }
-            .featured-caption { padding: 15px 10px 10px; }
-            header { padding: 10px; }
-            .year-title { font-size: 1.5rem; }
-        }
-        
-        .album-title {
-            text-align: center;
-            font-size: 1.5rem;
-            color: #ff5722;
-            margin: 5px 0 20px;
-            padding: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 5px;
-            display: inline-block;
-        }
-        
-        .retro-frame {
-            border: 15px solid #f5f5dc;
-            border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75'%3E%3Cpath d='M0 0h15v15H0zM30 0h15v15H30zM60 0h15v15H60zM0 30h15v15H0zM30 30h15v15H30zM60 30h15v15H60zM0 60h15v15H0zM30 60h15v15H30zM60 60h15v15H60z' fill='%23d7ccc8'/%3E%3C/svg%3E") 30 stretch;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-        }
-		
-		
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
-    </style>	
+:root {
+	--primary: #4a6fa5;
+	--secondary: #8aa8b8;
+	--accent: #f9b572;
+	--light: #fff9e6;
+	--dark: #333;
+	--text: #5a5a5a;
+	--card-bg: #fff;
+	--border: #e0d3c5;
+	--shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: var(--light);
+	color: var(--text);
+	line-height: 1.6;
+	background-image: 
+		linear-gradient(rgba(240, 230, 210, 0.3) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(240, 230, 210, 0.3) 1px, transparent 1px);
+	background-size: 20px 20px;
+	min-height: 100vh;
+}
+
+/* Header Styles */
+
+header {
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+				url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f9b572" opacity="0.1"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23e0d3c5" stroke-width="0.5"/></svg>'),
+				url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><text x="50%" y="50%" font-family="Arial" font-size="24" fill="%23ffffff" opacity="0.05" text-anchor="middle" dominant-baseline="middle">Everlasting Summer</text></svg>');
+
+	background-size: cover, 20px 20px, cover;
+	height: 400px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+
+.header-content {
+	position: relative;
+	z-index: 2;
+	max-width: 800px;
+	padding: 20px;
+}
+
+.header-content h1 {
+	font-size: 3.5rem;
+	color: white;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	margin-bottom: 20px;
+	letter-spacing: 1px;
+	font-weight: 700;
+	font-family: 'Times New Roman', serif;
+	
+}
+
+.header-content p {
+	font-size: 1.4rem;
+	color: rgba(255, 255, 255, 0.9);
+	max-width: 700px;
+	margin: 0 auto;
+	font-style: italic;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.polaroid-frame {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	width: 200px;
+	height: 250px;
+	border: 12px solid #fff;
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+	transform: rotate(3deg);
+	overflow: hidden;
+	background: white;
+}
+
+.polaroid-frame img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.polaroid-frame::after {
+	content: "";
+	position: absolute;
+	bottom: -15px;
+	left: 10px;
+	width: 180px;
+	height: 30px;
+	background: #f0e0d0;
+	transform: rotate(-2deg);
+	z-index: -1;
+}
+
+/* Gallery Styles */
+.gallery-container {
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0 20px 40px;
+}
+
+.view-toggle {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 25px;
+	gap: 15px;
+}
+
+.view-btn {
+	background: white;
+	border: 2px solid var(--border);
+	padding: 10px 25px;
+	border-radius: 30px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	box-shadow: var(--shadow);
+	color: var(--text);
+}
+
+.view-btn.active, .view-btn:hover {
+	background: var(--primary);
+	color: white;
+	border-color: var(--primary);
+}
+
+/* Grid View */
+.gallery-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 25px;
+	padding: 10px;
+}
+
+.gallery-item {
+	background: var(--card-bg);
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: var(--shadow);
+	transition: transform 0.3s ease;
+	position: relative;
+	border: 1px solid var(--border);
+}
+
+.gallery-item:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-item.featured {
+	grid-column: span 2;
+}
+
+.photo-container {
+	position: relative;
+	width: 100%;
+	padding-top: 75%; /* 4:3 aspect ratio */
+	overflow: hidden;
+}
+
+.photo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	background: #f8f5f0;
+	transition: opacity 0.5s ease;
+}
+.photo.placeholder {
+	filter: blur(8px);
+	opacity: 0.7;
+}
+.photo-info {
+	padding: 15px;
+	text-align: center;
+}
+.photo-id {
+	font-size: 0.85rem;
+	color: var(--accent);
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+.photo-caption {
+	font-size: 0.95rem;
+	color: var(--text);
+	min-height: 40px;
+}
+
+/* Single Photo View */
+
+.single-photo-view {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.95);
+	z-index: 1000;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* Было padding: 20px — теперь уменьшаем на мобильных */
+	padding: 10px;
+}
+
+.single-photo-view.active {
+	display: flex;
+}
+
+.close-btn {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	color: white;
+	font-size: 2.2rem;
+	cursor: pointer;
+	transition: all 0.3s;
+	z-index: 1001;
+}
+
+.close-btn:hover {
+	color: var(--accent);
+	transform: scale(1.1);
+}
+
+.single-photo-container {
+	max-width: 95%;
+	max-height: 80vh;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.single-photo {
+	max-width: 100%;
+	max-height: 75vh;
+	object-fit: contain;
+	border: 3px solid white;
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+	background: #222;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}
+
+.single-photo.loaded {
+	opacity: 1;
+}
+
+.photo-details {
+	color: white;
+	text-align: center;
+	margin-top: 12px;
+	width: 100%;
+	max-width: 90%;
+	padding: 0 10px;
+	font-size: 0.95rem;
+	line-height: 1.4;
+}
+
+.single-photo-id {
+	font-size: 1.1rem;
+	color: var(--accent);
+	margin-bottom: 8px;
+	font-weight: 600;
+}
+
+.single-photo-caption {
+	font-size: 1rem;
+	line-height: 1.4;
+	min-height: auto;
+}
+		
+/* Nostalgic Elements */
+
+.sun {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 60px;
+	height: 60px;
+	background: radial-gradient(circle, #ffd54f, #ff9800);
+	border-radius: 50%;
+	opacity: 0.8;
+	filter: blur(2px);
+	z-index: -1;
+}
+
+.cloud {
+	position: absolute;
+	background: white;
+	border-radius: 50%;
+	opacity: 0.2;
+	filter: blur(3px);
+}
+
+.cloud-1 {
+	top: 80px;
+	left: 10%;
+	width: 80px;
+	height: 40px;
+}
+
+.cloud-2 {
+	top: 150px;
+	right: 15%;
+	width: 100px;
+	height: 50px;
+}
+
+.cloud-3 {
+	bottom: 100px;
+	left: 25%;
+	width: 120px;
+	height: 60px;
+}
+
+/* Footer */
+
+footer {
+	text-align: center;
+	padding: 30px 0 40px;
+	color: var(--text);
+	font-size: 0.9rem;
+	border-top: 1px solid var(--border);
+	margin-top: 20px;
+}
+
+.footer-logo {
+	font-weight: 700;
+	color: var(--primary);
+	font-size: 1.2rem;
+}
+
+/* Стили для контейнера с кнопками навигации под фото */
+
+.nav-buttons {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 800px;
+	/* Фиксируем положение на 40px от нижнего края экрана */
+	position: fixed;
+	bottom: 40px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1001;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+
+.nav-button {
+	background-color: rgba(255,255,255,0.2);
+	color: white;
+	border: none;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	font-size: 1.5rem;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.3s ease;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px); /* Для Safari */
+}
+
+.nav-button:hover {
+	background-color: rgba(255,255,255,0.3);
+	transform: scale(1.1);
+}
+
+.photo-details {
+	color: white;
+	text-align: center;
+	margin-top: 20px;
+	width: 100%;
+	max-width: 800px;
+	padding: 0 20px;
+	/* Добавляем отступ снизу, чтобы не приближаться к кнопкам */
+	margin-bottom: 100px;
+	box-sizing: border-box;
+}
+
+/* ---------- Responsive Design ------------ */
+
+@media (max-width: 768px) {
+	/* Single Photo View — ещё компактнее */
+	.single-photo-view {
+		padding: 6px;
+	}
+
+	.close-btn {
+		top: 10px;
+		right: 10px;
+		font-size: 2rem;
+	}
+
+	.single-photo-container {
+		max-height: 70vh;
+	}
+
+	.single-photo {
+		max-height: 65vh;
+	}
+
+	.single-photo-id {
+		font-size: 1rem;
+		margin-bottom: 6px;
+	}
+
+	.single-photo-caption {
+		font-size: 0.95rem;
+	}
+	
+    .gallery-item.featured {
+        /* grid-column: span 1 !important; Убираем расширение на 2 колонки */
+        grid-column: unset !important;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Увеличиваем минимальную ширину */
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 5px;
+    }
+    
+    .gallery-container {
+        padding: 0 15px 30px; /* Оптимизируем отступы */
+    }
+    .gallery-item {
+        width: 100%;
+        height: auto;
+    }
+   
+    .photo-container {
+        padding-top: 0 !important;
+        height: auto;
+    }
+    
+	.photo-details {
+		margin-top: 10px;
+		max-width: 95%;
+		padding: 0 8px;
+		font-size: 0.9rem;
+	}
+
+    .photo {
+        position: static !important;
+        width: 100%;
+        height: auto;
+        max-height: 70vh;
+        object-fit: contain;
+    }
+    
+    .photo.placeholder {
+        min-height: 200px;
+    }
+    
+    .photo-info {
+        padding: 10px 8px;
+    }
+    
+    .photo-caption {
+        min-height: auto;
+        padding-bottom: 5px;
+    }
+    
+    header {
+        flex-direction: column;
+        padding: 20px 15px 150px; /* Добавляем место снизу для polaroid */
+    }
+	
+    .header-content {
+        /*  Добавляем боковые отступы */
+        margin: 0 15px;
+        padding: 10px;
+        max-width: 95%;
+    }
+    
+    .header-content h1 {
+        font-size: 2.5rem;
+        /* text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); Усиливаем тень */
+    }
+    
+    .header-content p {
+        font-size: 1.1rem;
+        /* text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);  Добавляем тень к тексту */
+    }
+    
+    .polaroid-frame {
+        width: 150px;
+        height: 100px;
+        right: 10px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .single-photo-view {
+        padding: 4px;
+    }
+
+    .close-btn {
+        top: 8px;
+        right: 8px;
+        font-size: 1.8rem;
+    }
+
+    .single-photo-container {
+        max-height: 65vh;
+    }
+
+    .single-photo {
+        max-height: 60vh;
+    }
+
+    .photo-details {
+        margin-top: 8px;
+        padding: 0 6px;
+        font-size: 0.85rem;
+    }
+
+    .single-photo-id {
+        font-size: 0.95rem;
+    }
+
+    .single-photo-caption {
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .photo.placeholder {
+        min-height: 150px;
+    }
+    
+    .photo-info {
+        padding: 8px 6px;
+    }
+    /* Уменьшаем высоту шапки */
+    header {
+        height: 350px;
+    }
+
+    .header-content {
+        padding: 12px;
+        margin: 0 10px;
+        margin-top: 20px;
+	}
+    
+    .header-content h1 {
+        font-size: 2rem;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); /* Усиливаем тень */
+    }
+    
+    .header-content p {
+        font-size: 0.95rem;
+		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);  /* Добавляем тень к тексту */
+    }
+}
+
+/* Защита от перекрытия на средних экранах */
+@media (min-width: 769px) and (max-width: 900px) {
+    .header-content {
+        max-width: 65%;
+    }
+    
+    .polaroid-frame {
+        bottom: 50px;
+    }
+	
+	.header-content h1 {
+        font-size: 2.2rem;        
+    }
+    
+    .header-content p {
+        font-size: 1.1rem;        
+    }
+}
+/* ========================================== */
+
+@media (min-width: 1280px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 колонки равной ширины */
+        gap: 30px;
+        max-width: 1600px;
+    }
+    
+    /* 50% ширины — половина экрана (как раньше) */
+    .gallery-item.featured {
+        grid-column: span 2;
+    }
+    
+    /* 75% ширины — крупное фото, но не на всю ширину */
+    .gallery-item.large {
+        grid-column: span 3;
+    }
+    
+    /* 100% ширины — на весь экран */
+    .gallery-item.full {
+        grid-column: span 4;
+    }
+    
+    /* Обычные фото — 25% ширины (компактные) */
+    .gallery-item:not(.featured):not(.large):not(.full) {
+        grid-column: span 1;
+    }
+    
+    /* Увеличиваем высоту для крупных фото */
+    .gallery-item.featured .photo-container,
+    .gallery-item.large .photo-container,
+    .gallery-item.full .photo-container {
+        padding-top: 60%;
+        max-height: 70vh;
+    }
+}
+
+/* ============================================
+   ПОЛНОЭКРАННЫЙ ПРОСМОТР (Single Photo View)
+   ============================================ */
+@media (min-width: 769px) {
+    .single-photo-view {
+        padding: 0;
+        background: rgba(0, 0, 0, 0.98);
+    }
+    
+    .single-photo-container {
+        max-width: 100vw;
+        max-height: 95vh;
+        width: 100%;
+        height: 100%;
+        padding: 20px 20px 120px 20px; /* место снизу для подписи и кнопок */
+    }
+    
+    .single-photo {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        border: none; /* убираем рамку для максимального размера */
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Подпись делаем компактнее и повыше */
+    .photo-details {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px 30px;
+        border-radius: 30px;
+        backdrop-filter: blur(10px);
+        margin: 0;
+        max-width: 90%;
+    }
+    
+    /* Кнопки навигации делаем крупнее и заметнее */
+    .nav-buttons {
+        bottom: 50%;
+        transform: translate(-50%, 50%);
+        max-width: 95vw;
+    }
+    
+    .nav-button {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .nav-button:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Для очень широких экранов (>1600px) можно делать фото еще шире */
+@media (min-width: 1600px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .gallery-item.featured {
+        grid-column: span 2; /* 50% ширины - компромисс между размером и сеткой */
+    }
+    
+    .gallery-item.wide {
+        grid-column: span 3; /* 75% ширины */
+    }
+    
+    .gallery-item.full {
+        grid-column: span 4; /* 100% ширины */
+    }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-
-        <header>
-           <h1>26спец Ашки</h1>
-            
-            <p class="subtitle">Фотографии от Алексея Волканова</p>
-            <div class="album-title">Выпуск 1967-1977</div>
-        </header>
-        <div class="featured-photo retro-frame">
-            <img src="vlk/arc16-lq.webp" 
-                 data-src="vlk/arc16.webp" 
-                 alt="Школьный класс" class="featured-img blur">
-            <div class="featured-caption">
-                <h2></h2>
-                <p></p>
-            </div>            
+    <!-- Header with featured photo -->
+    <header>
+        <div class="sun"></div>
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        <div class="header-content">
+            <h1>26спец Ашки<br>1967-1977</h1>
+            <p>Другие Фотографии</p>
         </div>
-        <div class="controls">
-            
-            <button class="filter-btn" onclick="window.location.href='index.html'"
-            >Другой вид</button>
-
+        <div class="polaroid-frame">
+            <img src="vlk/arc16-polaroid.webp" 
+                 alt="">
         </div>
-
-        <div class="loader" id="loader">
-            Загрузка изображений <span class="loader-dots"><span></span><span></span><span></span></span>
+    </header>
+    <div class="gallery-container">
+        <div class="view-toggle">
+            <button class="view-btn" onclick="window.location.href='index.html'"
+            >Фотографии от Алексея Волканова</button>
         </div>
-        <div class="year-section">
-		<h2 class="year-title">Фотографии от А Волканова</h2></div>
-        <div class="grid" id="grid">
-			
-            <div class="grid-sizer"></div>
-            <!-- Фотографии будут добавлены с помощью JavaScript  year-section-->
-        </div>
+        <!-- Photo Gallery Grid -->
+        <div class="gallery-grid" id="gallery-grid">
 
-        <div class="lightbox" id="lightbox">
-            <div class="close-btn">&times;</div>
-            <div class="lightbox-content">
-                <img src="" alt="" class="lightbox-img" id="lightbox-img">
-                <div class="lightbox-caption" id="lightbox-caption"></div>
+
+
+
+			 <div class="gallery-item full">
+                <div class="photo-container">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
+                        data-highres="vlk/photo_2026-01-31_13-30-51.jpg" 
+                        class="photo placeholder" 
+                        alt="">
+                </div>
+                <div class="photo-info">
+                    <div class="photo-id">Это в гостях у Ирины. Справа не очень вошедшая в кадр ее внучка. 90-е годы, конец.</div>
+                    <div class="photo-caption"></div>
+                </div>
             </div>
+
+			 <div class="gallery-item full">
+                <div class="photo-container">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f0e0d0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%235a5a5a' text-anchor='middle'>Loading...</text></svg>" 
+                        data-highres="pls/IMG_20260131_214625_665.jpg" 
+                        class="photo placeholder" 
+                        alt="">
+                </div>
+                <div class="photo-info">
+                    <div class="photo-id"></div>
+                    <div class="photo-caption"></div>
+                </div>
+            </div>
+
+
+			
         </div>
-		
+		<p><br></p>
+        <div class="view-toggle">
+            <button class="view-btn" onclick="window.location.href='index.html'"
+            >Фотографии от Алексея Волканова</button>
+			<p>Этот фотоальбом – собранная по крупицам летопись наших школьных лет. И ключевая фигура в его создании – Алексей Волканов. За его внешней скромностью скрывается решительность человека действия и тонкий вкус ценителя важных моментов. Когда время было непростым, именно Алексей проявил мужество, прислав фотографии, ставшие основой альбома. Благодаря его смелому поступку и эстетическому чутью, мы можем сегодня переживать эти мгновения вновь.</p>
+        </div>
+    </div>
+    <!-- Single Photo View Modal -->
+    <div class="single-photo-view" id="single-photo-view">
+        <span class="close-btn" id="close-modal">&times;</span>
+        <div class="single-photo-container">
+            <img src="" class="single-photo" id="modal-photo">
+        </div>
+        <div class="photo-details">
+            <div class="single-photo-id" id="modal-id"></div>
+            <div class="single-photo-caption" id="modal-caption"></div>
+        </div>
+        <!-- Новые кнопки навигации под фото -->
+        <div class="nav-buttons">
+            <button class="nav-button" id="prev-button">←</button>
+            <button class="nav-button" id="next-button">→</button>
+        </div>
     </div>
 
+    <footer>
+        <div class="footer-logo">Другие Фотографии</div>
+        <p>Фотоальбом • 26спец 1967-1977 Ашки</p>
+		
+    </footer>
     <script>
-        // Данные фотографий с категориями
-        const photos = [
-            {
-                low: 'vlk/arc6-lq.webp',
-                high: 'vlk/arc6.webp',
-                caption: "Время, как песок сквозь пальцы, уносит мгновения радости. В этот день три души соединились в едином веселье, а музыка и новости стали связующими нитями их сердец. (6)",
-                width: 1,
-                category: 'forest'
-            },
-            {
-                low: 'vlk/arc7-lq.webp',
-                high: 'vlk/arc7.webp',
-                caption: '(7)',
-                width: 1,
-                category: 'forest'
-            },
-            {
-                low: 'vlk/arc8-lq.webp',
-                high: 'vlk/arc8.webp',
-                caption: '(8)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc9-lq.webp',
-                high: 'vlk/arc9.webp',
-                caption: '(9)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc10-lq.webp',
-                high: 'vlk/arc10.webp',
-                caption: '(10)',
-                width: 1,
-                category: 'mountains'
-            },
-            {
-                low: 'vlk/arc11-lq.webp',
-                high: 'vlk/arc11.webp',
-                caption: 'В лесной тишине, где время замедляется, души детей сливаются с природой — вот истинное счастье. 🌳(11)',
-                width: 1,
-                category: 'mountains'
-            },
-            {
-                low: 'vlk/arc12-lq.webp',
-                high: 'vlk/arc12.webp',
-                caption: "На снежном пути, как в жизни, каждый шаг — испытание и урок. (12)",
-                width: 1,
-                category: 'forest'
-            },
-            {
-                low: 'vlk/arc13-lq.webp',
-                high: 'vlk/arc13.webp',
-                caption: '(13)',
-                width: 2,
-                category: 'forest'
-            },
-            {
-                low: 'vlk/arc14-lq.webp',
-                high: 'vlk/arc14.webp',
-                caption: 'В объятиях детства, как ветви дерева, мы стояли вместе — символы единства и надежды. (14)',
-                width: 2,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc15-lq.webp',
-                high: 'vlk/arc15.webp',
-                caption: 'Время, как песок сквозь пальцы, уносит дни, но в сердце остаются следы тех, кто был рядом. (15)',
-                width: 2,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc16-lq.webp',
-                high: 'vlk/arc16.webp',
-                caption: '(16)',
-                width: 2,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc17-lq.webp',
-                high: 'vlk/arc17.webp',
-                caption: '(17)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc18-lq.webp',
-                high: 'vlk/arc18.webp',
-                caption: '(18)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc19-lq.webp',
-                high: 'vlk/arc19.webp',
-                caption: '(19)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc20-lq.webp',
-                high: 'vlk/arc20.webp',
-                caption: '(20)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc21-lq.webp',
-                high: 'vlk/arc21.webp',
-                caption: '(21)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc22-lq.webp',
-                high: 'vlk/arc22.webp',
-                caption: '(22)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc23-lq.webp',
-                high: 'vlk/arc23.webp',
-                caption: "(23)",
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc24-lq.webp',
-                high: 'vlk/arc24.webp',
-                caption: '(24)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc25-lq.webp',
-                high: 'vlk/arc25.webp',
-                caption: '(25)',
-                width: 1,
-                category: 'mountains'
-            },
-            {
-                low: 'vlk/arc26-lq.webp',
-                high: 'vlk/arc26.webp',
-                caption: '(26)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc27-lq.webp',
-                high: 'vlk/arc27.webp',
-                caption: 'Встреча двух душ, где слова таят в улыбках, а взгляды пересекаются как нити судьбы. (27)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc28-lq.webp',
-                high: 'vlk/arc28.webp',
-                caption: "(28)",
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc30-lq.webp',
-                high: 'vlk/arc30.webp',
-                caption: '(30)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc36-lq.webp',
-                high: 'vlk/arc36.webp',
-                caption: '(36)',
-                width: 2,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc38-lq.webp',
-                high: 'vlk/arc38.webp',
-                caption: '(38)',
-                width: 2,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc39-lq.webp',
-                high: 'vlk/arc39.webp',
-                caption: '(39)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc40-lq.webp',
-                high: 'vlk/arc40.webp',
-                caption: '(40)',
-                width: 2,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc41-lq.webp',
-                high: 'vlk/arc41.webp',
-                caption: '(41)',
-                width: 2,
-                category: 'water'
-            },
-            {
-                low: 'vlk/arc42-lq.webp',
-                high: 'vlk/arc42.webp',
-                caption: '(42)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/archv1-lq.webp',
-                high: 'vlk/archv1.webp',
-                caption: '(a1)',
-                width: 2,
-                category: 'water'
-            },
-            {
-                low: 'vlk/archv2-lq.webp',
-                high: 'vlk/archv2.webp',
-                caption: '(a2)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/archv3-lq.webp',
-                high: 'vlk/archv3.webp',
-                caption: '(a3)',
-                width: 2,
-                category: 'water'
-            },
-            {
-                low: 'vlk/archv4-lq.webp',
-                high: 'vlk/archv4.webp',
-                caption: '(a4)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/archv5-lq.webp',
-                high: 'vlk/archv5.webp',
-                caption: '(a5)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/oct________001-lq.webp',
-                high: 'vlk/oct________001.webp',
-                caption: '(o1)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/oct________2 001-lq.webp',
-                high: 'vlk/oct________2 001.webp',
-                caption: 'В детских глазах — бескрайние горизонты, где каждый взгляд становится путеводной звездой к неизведанному. (o2)',
-                width: 1,
-                category: 'water'
-            },
-            {
-                low: 'vlk/starsh_________001-lq.webp',
-                high: 'vlk/starsh_________001.webp',
-                caption: '(o3) <p>Этот фотоальбом – собранная по крупицам летопись наших школьных лет. И ключевая фигура в его создании – Алексей Волканов. За его внешней скромностью скрывается решительность человека действия и тонкий вкус ценителя важных моментов. Когда время было непростым, именно Алексей проявил мужество, прислав фотографии, ставшие основой альбома. Благодаря его смелому поступку и эстетическому чутью, мы можем сегодня переживать эти мгновения вновь.</p>',
-                width: 2,
-                category: 'water'
-            }
-        ];
-
-        // Элементы DOM
-        const grid = document.getElementById('grid');
-        const loader = document.getElementById('loader');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-        const closeBtn = document.querySelector('.close-btn');
-        const featuredImg = document.querySelector('.featured-img');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-
-        // Переменные для управления Masonry
-        let msnry = null;
-        let resizeTimer;
-        
-        // Отображаем загрузчик
-        loader.classList.add('active');
-
-        // Функция для создания элемента фотографии
-        function createPhotoElement(photo, index) {
-            const widthClass = photo.width === 2 ? 'grid-item--width2' : '';
-            
-            return `
-                <div class="grid-item ${widthClass} ${photo.category}" data-index="${index}">
-                    <div class="photo-container">
-                        <img src="${photo.low}" 
-                             data-src="${photo.high}" 
-                             alt="${photo.caption}" 
-                             class="photo blur">
-                    </div>
-                    <div class="caption">${photo.caption}</div>
-                </div>
-            `;
-        }
-
-        // Добавляем фотографии в сетку
-        photos.forEach((photo, index) => {
-            grid.innerHTML += createPhotoElement(photo, index);
-        });
-
-        // Инициализация Masonry
-        function initMasonry() {
-            if (msnry) {
-                msnry.destroy();
-            }
-            
-            msnry = new Masonry(grid, {
-                itemSelector: '.grid-item',
-                columnWidth: '.grid-sizer',
-                gutter: 20,
-                percentPosition: true,
-                transitionDuration: 0
-            });
-        }
-        
-        // Функция для обновления Masonry
-        function layoutMasonry() {
-            if (msnry) {
-                msnry.layout();
-            }
-        }
-        
-        // Функция для загрузки изображений высокого качества
-        function loadHighQualityImages() {
-            const lowQualityImages = document.querySelectorAll('.photo.blur');
-            let loadedCount = 0;
-            const totalImages = lowQualityImages.length + 1; // +1 для главного изображения
-            
-            // Функция для обработки загрузки изображения
-            function imageLoaded() {
-                loadedCount++;
-                
-                // Обновляем Masonry после загрузки всех изображений
-                if (loadedCount === totalImages) {
-                    loader.classList.remove('active');
-                    initMasonry();
-                }
-            }
-            
-            // Загружаем главное изображение в высоком качестве
-            const featuredHighRes = new Image();
-            featuredHighRes.src = featuredImg.dataset.src;
-            featuredHighRes.onload = function() {
-                featuredImg.src = this.src;
-                featuredImg.classList.remove('blur');
-                imageLoaded();
-            };
-            
-            // Загружаем изображения галереи в высоком качестве
-            lowQualityImages.forEach(img => {
-                const highRes = new Image();
-                highRes.src = img.dataset.src;
-                highRes.onload = function() {
-                    img.src = this.src;
-                    img.classList.remove('blur');
-                    imageLoaded();
-                };
-            });
-        }
-        
-        // Инициализация Masonry после загрузки DOM
         document.addEventListener('DOMContentLoaded', function() {
-            initMasonry();
-            setTimeout(loadHighQualityImages, 300);
-        });
-        
-        // Оптимизированный обработчик изменения размера окна
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
-                layoutMasonry();
-            }, 250);
-        });
-
-        // Фильтрация изображений
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Убираем активный класс у всех кнопок
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Добавляем активный класс текущей кнопке
-                this.classList.add('active');
+            // View toggle functionality
+            const galleryGrid = document.getElementById('gallery-grid');
+            const singlePhotoView = document.getElementById('single-photo-view');
+            
+            // Progressive image loading
+            function loadHighResImage(imgElement) {
+                const highResSrc = imgElement.dataset.highres;
+                if (!highResSrc) return;
+                imgElement.classList.add('placeholder');
+                const tempImg = new Image();
+                tempImg.src = highResSrc;
+                tempImg.onload = function() {
+                    imgElement.src = highResSrc;
+                    setTimeout(() => {
+                        imgElement.classList.remove('placeholder');
+                    }, 300);
+                };
+            }
+            
+            // Initialize all gallery images
+            const galleryImages = document.querySelectorAll('.gallery-item .photo');
+            const photoItems = document.querySelectorAll('.gallery-item');
+            galleryImages.forEach(img => {
+                // Load immediately for better user experience
+                loadHighResImage(img);
                 
-                const filterValue = this.getAttribute('data-filter');
+                // Add click event for single photo view
+                img.closest('.gallery-item').addEventListener('click', function() {
+                    openSinglePhotoView(Array.from(galleryImages).indexOf(img));
+                });
+            });
+            
+            // Single Photo View functionality
+            const modal = document.getElementById('single-photo-view');
+            const modalImg = document.getElementById('modal-photo');
+            const modalId = document.getElementById('modal-id');
+            const modalCaption = document.getElementById('modal-caption');
+            const closeModal = document.getElementById('close-modal');
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
+            let currentPhotoIndex = 0;
+            
+            function openSinglePhotoView(index) {
+                currentPhotoIndex = index;
+                updateModalContent();
+                modal.classList.add('active');
+                // Preload adjacent images
+                if (index > 0) loadHighResImage(galleryImages[index - 1]);
+                if (index < galleryImages.length - 1) loadHighResImage(galleryImages[index + 1]);
+            }
+            
+            function updateModalContent() {
+                const item = photoItems[currentPhotoIndex];
+                const img = galleryImages[currentPhotoIndex];
+                const id = item.querySelector('.photo-id').textContent;
+                const photoCaption = item.querySelector('.photo-caption');
+                let caption = "";
+                if (photoCaption) {  
+                    caption = photoCaption.textContent;
+                }
                 
-                if (msnry) {
-                    msnry.arrange({
-                        filter: filterValue
-                    });
+                // Set low-res first
+                modalImg.src = img.src;
+                modalImg.classList.remove('loaded');
+                
+                // Then load high-res
+                const highResSrc = img.dataset.highres;
+                const tempImg = new Image();
+                tempImg.src = highResSrc;
+                tempImg.onload = function() {
+                    modalImg.src = highResSrc;
+                    setTimeout(() => {
+                        modalImg.classList.add('loaded');
+                    }, 50);
+                };
+                
+                modalId.textContent = id;
+                modalCaption.textContent = caption;
+            }
+            
+            function showNextPhoto() {
+                currentPhotoIndex = (currentPhotoIndex + 1) % galleryImages.length;
+                updateModalContent();
+            }
+            
+            function showPrevPhoto() {
+                currentPhotoIndex = (currentPhotoIndex - 1 + galleryImages.length) % galleryImages.length;
+                updateModalContent();
+            }
+            
+            closeModal.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+            
+            prevButton.addEventListener('click', showPrevPhoto);
+            nextButton.addEventListener('click', showNextPhoto);
+            
+            // Close modal when clicking outside image
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
                 }
             });
-        });
-
-        // Открытие изображения в лайтбоксе
-        grid.addEventListener('click', function(e) {
-            const gridItem = e.target.closest('.grid-item');
-            if (gridItem) {
-                const index = gridItem.dataset.index;
-                const photo = photos[index];
-                
-                lightboxImg.src = photo.high;
-                lightboxCaption.textContent = photo.caption;
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        });
-
-        // Закрытие лайтбокса
-        closeBtn.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === lightbox) closeLightbox();
-        });
-
-        // Функция закрытия лайтбокса
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Закрытие по Esc
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeLightbox();
-        });
-        
-        // Обновление Masonry при прокрутке для решения проблем с прорисовкой
-        let lastScrollPosition = 0;
-        window.addEventListener('scroll', function() {
-            const currentScrollPosition = window.pageYOffset;
             
-            // Обновляем Masonry только если пользователь прокрутил более 100px
-            if (Math.abs(currentScrollPosition - lastScrollPosition) > 100) {
-                layoutMasonry();
-                lastScrollPosition = currentScrollPosition;
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (!modal.classList.contains('active')) return;
+                if (e.key === 'Escape') {
+                    modal.classList.remove('active');
+                } else if (e.key === 'ArrowRight') {
+                    showNextPhoto();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevPhoto();
+                }
+            });
+            
+            // Mobile swipe gestures
+            let touchStartX = 0;
+            let touchEndX = 0;
+            modal.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].screenX;
+            });
+            modal.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        // Swipe left - next
+                        showNextPhoto();
+                    } else {
+                        // Swipe right - previous
+                        showPrevPhoto();
+                    }
+                }
             }
+            
+            // Добавляем обработчики кликов к элементам галереи
+            photoItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    openSinglePhotoView(index);
+                });
+            });
+			// ===================================
+			// Двойной клик по фото в модальном окне переключает полный экран
+			modalImg.addEventListener('dblclick', function() {
+				if (!document.fullscreenElement) {
+					if (modal.requestFullscreen) {
+						modal.requestFullscreen();
+					} else if (modal.webkitRequestFullscreen) {
+						modal.webkitRequestFullscreen();
+					}
+				} else {
+					if (document.exitFullscreen) {
+						document.exitFullscreen();
+					}
+				}
+			});
+			// ===================================
         });
-        
-        // Решение для принудительной перерисовки элементов
-        function forceRedraw() {
-            grid.style.display = 'none';
-            grid.offsetHeight; // Принудительный пересчет
-            grid.style.display = '';
-            layoutMasonry();
-        }
-        
-        // Периодическое обновление Masonry для решения проблем с прорисовкой
-        // setInterval(forceRedraw, 3000);
     </script>
 	
 <!-- Yandex.Metrika counter -->
@@ -894,6 +996,6 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-	
+
 </body>
 </html>
