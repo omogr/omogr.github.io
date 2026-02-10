@@ -2739,7 +2739,7 @@ var CardUtil = (function()
 			GameUI.updateUndoButton(); // ← ДОБАВИТЬ
 			}, this);
 		CardUtil.getMaxTableuPosition(0);
-		BoardManager.undoDisabled = true;
+		// BoardManager.undoDisabled = true;
 		Card.disableSelect = true;
 		SimpleGame.myGame.time.events.add(450, function()
 			{
