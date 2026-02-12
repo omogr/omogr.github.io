@@ -398,7 +398,7 @@ var GameUI = (function()
 	GameUI.restartGame = function ()
 		{
 		new NewGamePrompt(true); ///++++++++
-		// new GameWonPrompt2();
+		//new GameWonPrompt2();
 		}
 
 	GameUI.resetMenuButton = function()
@@ -488,6 +488,46 @@ var GameUI = (function()
 	return GameUI;
 	}());
 
+function getRandomVictoryPhrase() {
+    const phrases = [
+        // Классические
+        "You Won!",
+        "Victory!",
+        "Congratulations!",
+        "Well Done!",
+        
+		/*
+        // Тематические (паук/пасьянс)
+        "Web Conquered!",
+        "Spider Tamed!",
+        "All Spiders Caught!",
+        "The Web is Clear!",
+        "Eight Legs Down!",
+        // Игривые
+        "Arachnid Victory!",
+        "Spider Slayer!",
+        "Web Weaver!",
+        "Caught in Your Web!",
+        "Tangled No More!",
+        */
+		
+        // Карточные
+        "Cards Conquered!",
+        "Suits Complete!",
+        "Full House!",
+        "Deck Mastered!",
+        "Perfect Sort!",
+        
+        
+        // Минималистичные
+        "Solved!",
+        "Complete!",
+        "Perfect!",
+        "Flawless!"
+    ];
+    
+    return phrases[Math.floor(Math.random() * phrases.length)];
+}
 
 var GameWonAnim = (function()
 	{
@@ -495,8 +535,10 @@ var GameWonAnim = (function()
 		{
 		this.colornum = 0;
 		this.loopEvent1 = SimpleGame.myGame.time.events.loop(10, this.update1, this);
+		
+		victory_phrase = getRandomVictoryPhrase() // STRING_WIN
 
-		this.text = SimpleGame.myGame.make.bitmapText(x, y + 3, "ArialBlackWhiteBig", STRING_WIN, 51.5);
+		this.text = SimpleGame.myGame.make.bitmapText(x, y + 3, "ArialBlackWhiteBig", victory_phrase, 51.5);
 		this.text.height = 60;
 		this.text.tint = 0xFFFFFF;
 		this.text.anchor.set(0.5, 0.5);
@@ -3234,15 +3276,18 @@ var GameWonPrompt2 = (function()
 		{
 		var game = SimpleGame.myGame;
 		var self = this;
+		
+		// width: 880, height: 572
+		// game.world.centerX, game.world.centerY
 
 
 		// Позиции для залпов (фиксированные точки + случайные)
 		var fixedPositions = [
-			{x: 200, y: 450},
-			{x: 440, y: 350},
-			{x: 680, y: 450},
-			{x: 320, y: 400},
-			{x: 560, y: 400}
+			{x: 200, y: 250},
+			{x: 440, y: 200},
+			{x: 680, y: 240},
+			{x: 320, y: 220},
+			{x: 560, y: 190}
 		];
 		
 		var launchCount = 0;
@@ -3268,7 +3313,7 @@ var GameWonPrompt2 = (function()
 				// Остальные - случайные позиции
 				pos = {
 					x: 150 + Math.random() * 580,
-					y: 300 + Math.random() * 150
+					y: 120 + Math.random() * 150
 				};
 				}
 			
