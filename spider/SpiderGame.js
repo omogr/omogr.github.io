@@ -13,7 +13,7 @@ var STRING_MEDIUM = "";
 var STRING_HARD = "";
 var STRING_SCORE = "";
 var STRING_MOVES = "";
-var STRING_WIN = "";
+//var STRING_WIN = "";
 
 var showRestartGame = true;
 var cardsAreMoving = false;
@@ -38,7 +38,7 @@ if (userLanguage.substring(0,2)=="es")
 	STRING_HARD = "Difficult: Four Suits";
 	STRING_SCORE = "Score: ";
 	STRING_MOVES = "Moves: ";
-	STRING_WIN = "You Won!";
+	//STRING_WIN = "You Won!";
 	}
 
 var Consts = (function()
@@ -398,7 +398,7 @@ var GameUI = (function()
 	GameUI.restartGame = function ()
 		{
 		new NewGamePrompt(true); ///++++++++
-		//new GameWonPrompt2();
+		// new GameWonPrompt2();
 		}
 
 	GameUI.resetMenuButton = function()
@@ -487,7 +487,7 @@ var GameUI = (function()
 	GameUI.gameStarted = false;
 	return GameUI;
 	}());
-
+/*
 function getRandomVictoryPhrase() {
     const phrases = [
         // Классические
@@ -496,20 +496,20 @@ function getRandomVictoryPhrase() {
         "Congratulations!",
         "Well Done!",
         
-		/*
+
         // Тематические (паук/пасьянс)
-        "Web Conquered!",
-        "Spider Tamed!",
-        "All Spiders Caught!",
-        "The Web is Clear!",
-        "Eight Legs Down!",
+        //"Web Conquered!",
+        //"Spider Tamed!",
+        //"All Spiders Caught!",
+        //"The Web is Clear!",
+        //"Eight Legs Down!",
         // Игривые
-        "Arachnid Victory!",
-        "Spider Slayer!",
-        "Web Weaver!",
-        "Caught in Your Web!",
-        "Tangled No More!",
-        */
+        //"Arachnid Victory!",
+        //"Spider Slayer!",
+        //"Web Weaver!",
+        //"Caught in Your Web!",
+        //"Tangled No More!",
+
 		
         // Карточные
         "Cards Conquered!",
@@ -572,6 +572,7 @@ var GameWonAnim = (function()
 		};
 	return GameWonAnim;
 	}());
+*/
 
 var BoardData = (function()
 	{
@@ -2621,7 +2622,7 @@ var CardUtil = (function()
 
 			CardUtil.uncoverTableu(c);
 			BoardManager.generateBoardSnapshot();
-			BoardManager.undoDisabled = true;
+			// BoardManager.undoDisabled = true;
 			BoardManager.sort();
 			});
 		};
@@ -3241,7 +3242,7 @@ var GameWonPrompt = (function()
 	return GameWonPrompt;
 	}());
 
-
+/*
 // Цвета для частиц салюта
 var FIREWORK_COLORS = [0xFF0000, 0x00FF00, 0x0000FF, 0xFFFF00, 0xFF00FF, 0x00FFFF, 0xFFA500, 0xFFFFFF];
 
@@ -3266,7 +3267,7 @@ var GameWonPrompt2 = (function()
 		GameUI.promptLayer.add(this.blackbg);
 
 		// Мигающий текст победы
-		new GameWonAnim(GameUI.promptLayer, 440, 300);
+		// new GameWonAnim(GameUI.promptLayer, 440, 300);
 		
 		// ===== САЛЮТ =====
 		this.createFireworks();
@@ -3332,8 +3333,6 @@ var GameWonPrompt2 = (function()
 			{
 			if (this.fireworkTimer)
 				{
-									   
-									   
 				game.time.events.remove(this.fireworkTimer);
 				}
 			}, this);
@@ -3366,9 +3365,6 @@ var GameWonPrompt2 = (function()
 			{
 			particle.tint = color;
 			});
-		
-								  
-							
   
 		// Добавляем в слой поверх всего ДО запуска
 		GameUI.promptLayer.add(emitter);
@@ -3403,7 +3399,181 @@ var GameWonPrompt2 = (function()
 	return GameWonPrompt2;
 	}());
 
+*/
 
+// Цвета для частиц салюта
+var FIREWORK_COLORS = [0xFF0000, 0x00FF00, 0x0000FF, 0xFFFF00, 0xFF00FF, 0x00FFFF, 0xFFA500, 0xFFFFFF];
+
+var GameWonPrompt2 = (function()
+	{
+	function GameWonPrompt2(gameWon)
+		{
+		if (gameWon === void 0)
+			{
+			gameWon = true;
+			}
+
+		GameUI.gameStarted = false;
+		
+		// Чёрный фон
+		this.blackbg = SimpleGame.myGame.make.graphics(0, 0);
+		this.blackbg.beginFill(0x000000);
+		this.blackbg.drawRect(0, 40, 880, 600);
+		this.blackbg.endFill();
+		this.blackbg.alpha = 0.00001;
+		this.blackbg.inputEnabled = true;
+		GameUI.promptLayer.add(this.blackbg);
+		
+		// ===== МАСШТАБНЫЙ САЛЮТ =====
+		this.createFireworks();
+		}
+
+	GameWonPrompt2.prototype.createFireworks = function()
+		{
+		var game = SimpleGame.myGame;
+		var self = this;
+		
+		// Больше фиксированных позиций для плотного покрытия
+		var fixedPositions = [
+			{x: 150, y: 280}, {x: 300, y: 220}, {x: 440, y: 180}, 
+			{x: 580, y: 220}, {x: 730, y: 280},
+			{x: 220, y: 150}, {x: 660, y: 150},
+			{x: 100, y: 200}, {x: 780, y: 200},
+			{x: 440, y: 320}
+		];
+		
+		var launchCount = 0;
+		var maxLaunches = 150; // Много залпов для насыщенного эффекта
+		
+		// Функция запуска одного залпа
+		var launchSingleFirework = function()
+			{
+			if (launchCount >= maxLaunches)
+				{
+				return;
+				}
+			
+			var pos;
+			
+			// Первые 10 залпов - из фиксированных позиций
+			if (launchCount < fixedPositions.length)
+				{
+				pos = fixedPositions[launchCount];
+				}
+			else
+				{
+				// Остальные - случайные позиции с запасом по краям
+				pos = {
+					x: 80 + Math.random() * 720,
+					y: 100 + Math.random() * 200
+					};
+				}
+			
+			// Случайный размер взрыва для разнообразия
+			var scale = 0.7 + Math.random() * 0.6;
+			self.launchFirework(pos.x, pos.y, scale);
+			
+			launchCount++;
+			};
+		
+		// Немедленный первый залп
+		launchSingleFirework();
+		
+		// Частые залпы: каждые 250-400ms 300/15000/35
+		this.fireworkTimer = game.time.events.loop(50, launchSingleFirework, this);
+		
+		// Дополнительные залпы-двойники для эффекта "залпа"
+		this.doubleTimer = game.time.events.loop(800, function()
+			{
+			if (launchCount < maxLaunches - 1)
+				{
+				// Два залпа одновременно с разных сторон
+				var y = 120 + Math.random() * 180;
+				self.launchFirework(120 + Math.random() * 100, y, 0.8);
+				self.launchFirework(660 + Math.random() * 100, y, 0.8);
+				launchCount += 2;
+				}
+			}, this);
+		
+		// Останавливаем через 15 секунд
+		game.time.events.add(15000, function()
+			{
+			if (this.fireworkTimer)
+				{
+				game.time.events.remove(this.fireworkTimer);
+				}
+			if (this.doubleTimer)
+				{
+				game.time.events.remove(this.doubleTimer);
+				}
+			}, this);
+		};
+
+	GameWonPrompt2.prototype.launchFirework = function(x, y, scale)
+		{
+		var game = SimpleGame.myGame;
+		scale = scale || 1;
+		
+		// Случайный цвет
+		var color = FIREWORK_COLORS[Math.floor(Math.random() * FIREWORK_COLORS.length)];
+		
+		// Создаём эмиттер
+		var particleCount = Math.floor(40 * scale);
+		var emitter = game.add.emitter(x, y, particleCount);
+		emitter.makeParticles('firework_particle');
+		
+		// Настройки взрыва с учётом масштаба
+		emitter.gravity = 120;
+		emitter.setAlpha(1, 0, 2000, Phaser.Easing.Linear.None);
+		emitter.setScale(0.8 * scale, 0, 0.8 * scale, 0, 2000, Phaser.Easing.Quadratic.Out);
+		
+		// Скорость с учётом масштаба
+		var speed = 200 * scale;
+		emitter.minParticleSpeed.setTo(-speed, -speed);
+		emitter.maxParticleSpeed.setTo(speed, speed * 0.4);
+		
+		emitter.minParticleAngle = 0;
+		emitter.maxParticleAngle = 360;
+		
+		// Окрашиваем частицы
+		emitter.forEach(function(particle)
+			{
+			particle.tint = color;
+			});
+		
+		GameUI.promptLayer.add(emitter);
+		
+		// Запускаем взрыв
+		emitter.explode(2000, particleCount);
+		
+		// Удаляем эмиттер
+		game.time.events.add(2500, function()
+			{
+			if (emitter && emitter.exists)
+				{
+				emitter.destroy();
+				}
+			}, this);
+		};
+
+	GameWonPrompt2.prototype.destroy = function()
+		{
+		if (this.fireworkTimer)
+			{
+			SimpleGame.myGame.time.events.remove(this.fireworkTimer);
+			}
+		if (this.doubleTimer)
+			{
+			SimpleGame.myGame.time.events.remove(this.doubleTimer);
+			}
+		if (this.blackbg)
+			{
+			this.blackbg.destroy();
+			}
+		};
+
+	return GameWonPrompt2;
+	}());
 
 var NewGamePrompt = (function()
 	{
