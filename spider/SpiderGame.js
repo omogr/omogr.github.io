@@ -397,8 +397,8 @@ var GameUI = (function()
 
 	GameUI.restartGame = function ()
 		{
-		new NewGamePrompt(true); ///++++++++
-		// new GameWonPrompt2();
+		//new NewGamePrompt(true); ///++++++++
+		new GameWonPrompt2();
 		}
 
 	GameUI.resetMenuButton = function()
@@ -3443,7 +3443,7 @@ var GameWonPrompt2 = (function()
 		];
 		
 		var launchCount = 0;
-		var maxLaunches = 150; // Много залпов для насыщенного эффекта
+		var maxLaunches = 350; // Много залпов для насыщенного эффекта
 		
 		// Функция запуска одного залпа
 		var launchSingleFirework = function()
@@ -3480,7 +3480,7 @@ var GameWonPrompt2 = (function()
 		launchSingleFirework();
 		
 		// Частые залпы: каждые 250-400ms 300/15000/35
-		this.fireworkTimer = game.time.events.loop(50, launchSingleFirework, this);
+		this.fireworkTimer = game.time.events.loop(30, launchSingleFirework, this);
 		
 		// Дополнительные залпы-двойники для эффекта "залпа"
 		this.doubleTimer = game.time.events.loop(800, function()
