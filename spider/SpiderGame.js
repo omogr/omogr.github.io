@@ -397,8 +397,8 @@ var GameUI = (function()
 
 	GameUI.restartGame = function ()
 		{
-		//new NewGamePrompt(true); ///++++++++
-		new GameWonPrompt2();
+		new NewGamePrompt(true); ///++++++++
+		// new GameWonPrompt2();
 		}
 
 	GameUI.resetMenuButton = function()
