@@ -3443,7 +3443,7 @@ var GameWonPrompt2 = (function()
 		];
 		
 		var launchCount = 0;
-		var maxLaunches = 250; // 350; // Много залпов для насыщенного эффекта
+		var maxLaunches = 220; // 350; // Много залпов для насыщенного эффекта
 		
 		// Функция запуска одного залпа
 		var launchSingleFirework = function()
