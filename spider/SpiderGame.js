@@ -397,8 +397,8 @@ var GameUI = (function()
 
 	GameUI.restartGame = function ()
 		{
-		new NewGamePrompt(true); ///++++++++
-		// new GameWonPrompt2();
+		 new NewGamePrompt(true); ///++++++++
+		 //new GameWonPrompt2();
 		}
 
 	GameUI.resetMenuButton = function()
@@ -3443,7 +3443,9 @@ var GameWonPrompt2 = (function()
 		];
 		
 		var launchCount = 0;
-		var maxLaunches = 220; // 350; // Много залпов для насыщенного эффекта
+		var nextLanch = 0;
+		var lanchStep = 23;
+		var maxLaunches = 350; // 350; // Много залпов для насыщенного эффекта
 		
 		// Функция запуска одного залпа
 		var launchSingleFirework = function()
@@ -3452,6 +3454,14 @@ var GameWonPrompt2 = (function()
 				{
 				return;
 				}
+
+			if (launchCount < nextLanch)
+				{
+					launchCount += 1;
+				return;
+				}
+			nextLanch += lanchStep;
+			lanchStep -= 1;
 			
 			var pos;
 			
