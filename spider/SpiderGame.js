@@ -134,7 +134,7 @@ var SimpleGame = (function()
 		SimpleGame.fontsLoadedFlag = true;
 		Card.preload();
 		
-		this.game.load.image('firework_particle', "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIjSURBVEhL7dI/axRBHMbxZ2b/unsXL8ceEu0sghhNIfEF2NmItrEWxNfgexBL30LARkhjkxcgJFWwECFJ4Z9gDu9udmfmNzO7Y7Ugg3cWluZTDvPMtxng0qV/xcKDPyES285gl0XxNuc8d6Q/eyn3hhsbB+Hd0MqA9z5Wi+lradmLrBxw23aw1iFJYqi5QOaafV8Mnk4mExFueysDrRVvjKbn4BFmwkAZB2MsrHXovAesxTDu9m9u3XkUbntLA50VD7TpDqI4QwSF6XSGWe2gtYRSEq71YDxByjly7h/e3dl5H74BADw86NU/58+ojcA8wZBGLTUMCWg5gxIXkItz6PoCZDTI2d1w31sekOa+VhKL+QKzeQMiA6sbGClg5AKmmYO1Et5JMOBeuO8tDTjbJkQWQlkIqaFVA9kIaClgdA20BNZaxMyBc5aH+97SAJH8SESwxkIpBUMKRkkYo8HAcCXNkKUJijRBnsWn4b63NJBzv0eyhtYKRBqWNJxz4DzBcDhCVY1RjdZQjceo1tffhfve0l/kj4/TT6Y+mjtsWdPAaoWubZGmGYo8w6hMMCxL5Gvjb8TKW1VVLcI3sCoAAF+Pj27/kOZAtf5a5x04i5CmKfI0wSCLcXUw+B4X5eNyVH0It72VAQA4Ozy8Lhl/1cX5E59kWRxHSKOoGWbR2yJLXpZV9SXc/O6vgd7JyUleFOs3LGORnJ2fbW5uUnjn0n/qFy6VFG2rcRZXAAAAAElFTkSuQmCC");
+		
 
 		this.game.load.image("game_bg_score", "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABgCAYAAABYFz0dAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5wcCEQ4ZOLDZCAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAA4ElEQVR42u3TwQ2AIADAwGLY2zg5DiD8fdyN0KSjWgFbs6pbCPh46lIBzgwCBgGDgEHAIGAQMAgYBAwCBgEMAgYBg4BBwCBgEDAIGAQMAgYBDAIGAYOAQcAgYBAwCBgEDAIYBAwCBgGDgEHAIGAQMAgYBAwCGAQMAgYBg4BBwCBgEDAIGAQwCBgEDAIGAYOAQcAgYBAwCBgEMAgYBAwCBgGDgEHAIGAQMAhgEDAIGAQMAgYBg4BBwCBgEDAIYBAwCBgEDAIGAYOAQcAgYBDAIGAQMAgYBAwCBoH/G9WSAfZePQIDvxy9zfoAAAAASUVORK5CYII=");
 		this.game.load.image("game_bg_card", "data:image/png;base64,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");
@@ -398,7 +398,7 @@ var GameUI = (function()
 	GameUI.restartGame = function ()
 		{
 		 new NewGamePrompt(true); ///++++++++
-		 //new GameWonPrompt2();
+		 // new GameWonPrompt2();
 		}
 
 	GameUI.resetMenuButton = function()
@@ -470,7 +470,6 @@ var GameUI = (function()
 			GameUI.buttonUndo.inputEnabled = canUndo;
 			}
 		};	
-	// /---
 	
 	GameUI.onMenuButtonPressed = function()
 		{
@@ -487,92 +486,7 @@ var GameUI = (function()
 	GameUI.gameStarted = false;
 	return GameUI;
 	}());
-/*
-function getRandomVictoryPhrase() {
-    const phrases = [
-        // Классические
-        "You Won!",
-        "Victory!",
-        "Congratulations!",
-        "Well Done!",
-        
 
-        // Тематические (паук/пасьянс)
-        //"Web Conquered!",
-        //"Spider Tamed!",
-        //"All Spiders Caught!",
-        //"The Web is Clear!",
-        //"Eight Legs Down!",
-        // Игривые
-        //"Arachnid Victory!",
-        //"Spider Slayer!",
-        //"Web Weaver!",
-        //"Caught in Your Web!",
-        //"Tangled No More!",
-
-		
-        // Карточные
-        "Cards Conquered!",
-        "Suits Complete!",
-        "Full House!",
-        "Deck Mastered!",
-        "Perfect Sort!",
-        
-        
-        // Минималистичные
-        "Solved!",
-        "Complete!",
-        "Perfect!",
-        "Flawless!"
-    ];
-    
-    return phrases[Math.floor(Math.random() * phrases.length)];
-}
-
-var GameWonAnim = (function()
-	{
-	function GameWonAnim(parent, x, y)
-		{
-		this.colornum = 0;
-		this.loopEvent1 = SimpleGame.myGame.time.events.loop(10, this.update1, this);
-		
-		victory_phrase = getRandomVictoryPhrase() // STRING_WIN
-
-		this.text = SimpleGame.myGame.make.bitmapText(x, y + 3, "ArialBlackWhiteBig", victory_phrase, 51.5);
-		this.text.height = 60;
-		this.text.tint = 0xFFFFFF;
-		this.text.anchor.set(0.5, 0.5);
-
-		parent.add(this.text);
-		}
-
-	GameWonAnim.prototype.update1 = function()
-		{
-		var colors = [[0, 167, 33],[21, 86, 165],[143, 29, 165],[255, 0, 0],[255, 255, 0]];
-		var color_speed = 300;
-		this.colornum += 2;
-		var t = this.colornum % (colors.length * color_speed);
-		var next = (Math.ceil(t / color_speed) < colors.length) ? Math.ceil(t / color_speed) : 0;
-		var previous = Math.floor(t / color_speed);
-		var dr = (colors[next][0] - colors[previous][0]) / color_speed;
-		var dg = (colors[next][1] - colors[previous][1]) / color_speed;
-		var db = (colors[next][2] - colors[previous][2]) / color_speed;
-		var r = Math.floor(colors[previous][0] + dr * (t % color_speed));
-		var g = Math.floor(colors[previous][1] + dg * (t % color_speed));
-		var b = Math.floor(colors[previous][2] + db * (t % color_speed));
-		var color = this.rgb2hex(r, g, b);
-		this.colornum = this.colornum % 0xffffff;
-		this.text.tint = color;
-		};
-
-	GameWonAnim.prototype.rgb2hex = function(red, green, blue)
-		{
-		var rgb = blue | (green << 8) | (red << 16);
-		return "0x" + (0x1000000 + rgb).toString(16).slice(1);
-		};
-	return GameWonAnim;
-	}());
-*/
 
 var BoardData = (function()
 	{
@@ -2402,7 +2316,7 @@ var CardUtil = (function()
 			SimpleGame.myGame.time.events.add(150, function()
 				{
 				GameUI.score--;
-				GameUI.updateUndoButton(); // ///+++ ← ДОБАВИТЬ
+				GameUI.updateUndoButton(); // ///+++ ДОБАВИЛ
 				});
 			}
 		};
@@ -3242,167 +3156,6 @@ var GameWonPrompt = (function()
 	return GameWonPrompt;
 	}());
 
-/*
-// Цвета для частиц салюта
-var FIREWORK_COLORS = [0xFF0000, 0x00FF00, 0x0000FF, 0xFFFF00, 0xFF00FF, 0x00FFFF, 0xFFA500, 0xFFFFFF];
-
-var GameWonPrompt2 = (function()
-	{
-	function GameWonPrompt2(gameWon)
-		{
-		if (gameWon === void 0)
-			{
-			gameWon = true;
-			}
-
-		GameUI.gameStarted = false;
-		
-		// Чёрный фон
-		this.blackbg = SimpleGame.myGame.make.graphics(0, 0);
-		this.blackbg.beginFill(0x000000);
-		this.blackbg.drawRect(0, 40, 880, 600);
-		this.blackbg.endFill();
-		this.blackbg.alpha = 0.00001;
-		this.blackbg.inputEnabled = true;
-		GameUI.promptLayer.add(this.blackbg);
-
-		// Мигающий текст победы
-		// new GameWonAnim(GameUI.promptLayer, 440, 300);
-		
-		// ===== САЛЮТ =====
-		this.createFireworks();
-		}
-
-	GameWonPrompt2.prototype.createFireworks = function()
-		{
-		var game = SimpleGame.myGame;
-		var self = this;
-		
-		// width: 880, height: 572
-		// game.world.centerX, game.world.centerY
-
-
-		// Позиции для залпов (фиксированные точки + случайные)
-		var fixedPositions = [
-			{x: 200, y: 250},
-			{x: 440, y: 200},
-			{x: 680, y: 240},
-			{x: 320, y: 220},
-			{x: 560, y: 190}
-		];
-		
-		var launchCount = 0;
-		var maxLaunches = 15; // Общее количество залпов (длительность ~8-10 секунд)
-		
-		// Функция запуска одного залпа
-		var launchSingleFirework = function()
-			{
-			if (launchCount >= maxLaunches)
-				{
-				return; // Прекращаем после достижения лимита
-				}
-			
-			var pos;
-			
-			// Первые 5 залпов - из фиксированных позиций
-			if (launchCount < fixedPositions.length)
-				{
-				pos = fixedPositions[launchCount];
-				}
-			else
-				{
-				// Остальные - случайные позиции
-				pos = {
-					x: 150 + Math.random() * 580,
-					y: 120 + Math.random() * 150
-				};
-				}
-			
-			self.launchFirework(pos.x, pos.y);
-			launchCount++;
-			};
-		
-		// Запускаем первый залп сразу
-		launchSingleFirework();
-		
-		// Затем запускаем залпы с интервалом 600-1000ms (более редкие, чем было)
-		this.fireworkTimer = game.time.events.loop(800, launchSingleFirework, this);
-		
-		// Останавливаем таймер через 12 секунд (на всякий случай)
-		game.time.events.add(12000, function()
-			{
-			if (this.fireworkTimer)
-				{
-				game.time.events.remove(this.fireworkTimer);
-				}
-			}, this);
-		};
-
-	GameWonPrompt2.prototype.launchFirework = function(x, y)
-		{
-		var game = SimpleGame.myGame;
-		var color = FIREWORK_COLORS[Math.floor(Math.random() * FIREWORK_COLORS.length)];
-		
-		// Создаём эмиттер для одного залпа
-		var emitter = game.add.emitter(x, y, 50);
-		emitter.makeParticles('firework_particle');
-		
-		// Настройки взрыва
-		emitter.gravity = 150;
-		emitter.setAlpha(1, 0, 2500, Phaser.Easing.Linear.None);
-		emitter.setScale(0.8, 0, 0.8, 0, 2500, Phaser.Easing.Quadratic.Out);
-		
-		// Разлёт частиц во все стороны (включая вверх)
-		emitter.minParticleSpeed.setTo(-250, -250);
-		emitter.maxParticleSpeed.setTo(250, 100);
-		
-		// Увеличиваем разброс углов для более красивого взрыва
-		emitter.minParticleAngle = 0;
-		emitter.maxParticleAngle = 360;
-		
-		// Окрашиваем частицы ДО запуска взрыва
-		emitter.forEach(function(particle)
-			{
-			particle.tint = color;
-			});
-  
-		// Добавляем в слой поверх всего ДО запуска
-		GameUI.promptLayer.add(emitter);
-		
-		// Запускаем взрыв: 2500ms жизнь, 30-50 частиц
-		var particleCount = 30 + Math.floor(Math.random() * 20);
-		emitter.explode(2500, particleCount);
-		
-		// Удаляем эмиттер после окончания
-		game.time.events.add(3000, function()
-			{
-			if (emitter && emitter.exists)
-				{
-				emitter.destroy();
-				}
-			}, this);
-		};
-
-	GameWonPrompt2.prototype.destroy = function()
-		{
-		// Очищаем таймер при уничтожении
-		if (this.fireworkTimer)
-			{
-			SimpleGame.myGame.time.events.remove(this.fireworkTimer);
-			}
-		if (this.blackbg)
-			{
-			this.blackbg.destroy();
-			}
-		};
-
-	return GameWonPrompt2;
-	}());
-
-*/
-
-// Цвета для частиц салюта
-var FIREWORK_COLORS = [0xFF0000, 0x00FF00, 0x0000FF, 0xFFFF00, 0xFF00FF, 0x00FFFF, 0xFFA500, 0xFFFFFF];
 
 var GameWonPrompt2 = (function()
 	{
@@ -3435,17 +3188,17 @@ var GameWonPrompt2 = (function()
 		
 		// Больше фиксированных позиций для плотного покрытия
 		var fixedPositions = [
-			{x: 150, y: 280}, {x: 300, y: 220}, {x: 440, y: 180}, 
-			{x: 580, y: 220}, {x: 730, y: 280},
-			{x: 220, y: 150}, {x: 660, y: 150},
-			{x: 100, y: 200}, {x: 780, y: 200},
-			{x: 440, y: 320}
+			{x: 200, y: 150}, {x: 300, y: 120}, {x: 400, y: 100}, 
+			{x: 500, y: 110}, {x: 600, y: 80},
+			{x: 220, y: 150}, {x: 450, y: 150},
+			{x: 320, y: 200}, {x: 650, y: 200},
+			{x: 440, y: 140}
 		];
 		
 		var launchCount = 0;
 		var nextLanch = 0;
 		var lanchStep = 23;
-		var maxLaunches = 350; // 350; // Много залпов для насыщенного эффекта
+		var maxLaunches = 350; // Много залпов для насыщенного эффекта
 		
 		// Функция запуска одного залпа
 		var launchSingleFirework = function()
@@ -3461,10 +3214,10 @@ var GameWonPrompt2 = (function()
 				return;
 				}
 			nextLanch += lanchStep;
-			lanchStep -= 1;
+			lanchStep -= 0.5;
 			
 			var pos;
-			
+
 			// Первые 10 залпов - из фиксированных позиций
 			if (launchCount < fixedPositions.length)
 				{
@@ -3474,13 +3227,13 @@ var GameWonPrompt2 = (function()
 				{
 				// Остальные - случайные позиции с запасом по краям
 				pos = {
-					x: 80 + Math.random() * 720,
-					y: 100 + Math.random() * 200
+					x: 100 + Math.random() * 700,
+					y: 100 + Math.random() * 100
 					};
 				}
-			
+		
 			// Случайный размер взрыва для разнообразия
-			var scale = 0.7 + Math.random() * 0.6;
+			var scale = 0.6 + Math.random() * 0.4;
 			self.launchFirework(pos.x, pos.y, scale);
 			
 			launchCount++;
@@ -3490,17 +3243,18 @@ var GameWonPrompt2 = (function()
 		launchSingleFirework();
 		
 		// Частые залпы: каждые 250-400ms 300/15000/35
-		this.fireworkTimer = game.time.events.loop(30, launchSingleFirework, this);
-		
+		this.fireworkTimer = game.time.events.loop(100, launchSingleFirework, this);
+		// width: 880, height: 572
 		// Дополнительные залпы-двойники для эффекта "залпа"
-		this.doubleTimer = game.time.events.loop(800, function()
+		this.doubleTimer = game.time.events.loop(1000, function()
 			{
 			if (launchCount < maxLaunches - 1)
 				{
 				// Два залпа одновременно с разных сторон
-				var y = 120 + Math.random() * 180;
-				self.launchFirework(120 + Math.random() * 100, y, 0.8);
-				self.launchFirework(660 + Math.random() * 100, y, 0.8);
+				var y1 = 100 + Math.random() * 100;
+				var y2 = 100 + Math.random() * 100;
+				self.launchFirework(300 + Math.random() * 100, y1, 0.8);
+				self.launchFirework(480 + Math.random() * 100, y2, 0.8);
 				launchCount += 2;
 				}
 			}, this);
@@ -3519,25 +3273,25 @@ var GameWonPrompt2 = (function()
 			}, this);
 		};
 
-	GameWonPrompt2.prototype.launchFirework = function(x, y, scale)
-		{
+    GameWonPrompt2.prototype.launchFirework = function(x, y, scale)
+	{
 		var game = SimpleGame.myGame;
 		scale = scale || 1;
 		
-		// Случайный цвет
-		var color = FIREWORK_COLORS[Math.floor(Math.random() * FIREWORK_COLORS.length)];
 		
-		// Создаём эмиттер
 		var particleCount = Math.floor(40 * scale);
 		var emitter = game.add.emitter(x, y, particleCount);
-		emitter.makeParticles('firework_particle');
 		
-		// Настройки взрыва с учётом масштаба
+		var randomCardName = CardUtil.cardNameArray[Math.floor(Math.random() * CardUtil.cardNameArray.length)];
+		emitter.makeParticles(randomCardName);
+		
 		emitter.gravity = 120;
 		emitter.setAlpha(1, 0, 2000, Phaser.Easing.Linear.None);
-		emitter.setScale(0.8 * scale, 0, 0.8 * scale, 0, 2000, Phaser.Easing.Quadratic.Out);
 		
-		// Скорость с учётом масштаба
+		// --- ИЗМЕНЕНИЕ 2: Уменьшаем масштаб для карт ---
+		emitter.setScale(0.8 * scale, 0, 0.8 * scale, 0, 2000, Phaser.Easing.Quadratic.Out);
+		//emitter.setScale(1.0 * scale, 0, 1.0 * scale, 0, 2000, Phaser.Easing.Quadratic.Out);
+		
 		var speed = 200 * scale;
 		emitter.minParticleSpeed.setTo(-speed, -speed);
 		emitter.maxParticleSpeed.setTo(speed, speed * 0.4);
@@ -3545,26 +3299,19 @@ var GameWonPrompt2 = (function()
 		emitter.minParticleAngle = 0;
 		emitter.maxParticleAngle = 360;
 		
-		// Окрашиваем частицы
-		emitter.forEach(function(particle)
-			{
-			particle.tint = color;
-			});
 		
 		GameUI.promptLayer.add(emitter);
 		
-		// Запускаем взрыв
 		emitter.explode(2000, particleCount);
 		
-		// Удаляем эмиттер
 		game.time.events.add(2500, function()
-			{
+		{
 			if (emitter && emitter.exists)
-				{
+			{
 				emitter.destroy();
-				}
-			}, this);
-		};
+			}
+		}, this);
+	};
 
 	GameWonPrompt2.prototype.destroy = function()
 		{
