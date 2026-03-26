@@ -412,67 +412,67 @@ footer {
 
 /* ---------- Responsive Design ------------ */
 
+/* Мобильные устройства - до 768px */
 @media (max-width: 768px) {
-	/* Single Photo View — ещё компактнее */
-	.single-photo-view {
-		padding: 6px;
-	}
+    .single-photo-view {
+        padding: 6px;
+    }
 
-	.close-btn {
-		top: 10px;
-		right: 10px;
-		font-size: 2rem;
-	}
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 2rem;
+    }
 
-	.single-photo-container {
-		max-height: 70vh;
-	}
+    .single-photo-container {
+        max-height: 70vh;
+    }
 
-	.single-photo {
-		max-height: 65vh;
-	}
+    .single-photo {
+        max-height: 65vh;
+    }
 
-	.single-photo-id {
-		font-size: 1rem;
-		margin-bottom: 6px;
-	}
+    .single-photo-id {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
 
-	.single-photo-caption {
-		font-size: 0.95rem;
-	}
-	
+    .single-photo-caption {
+        font-size: 0.95rem;
+    }
+
     .gallery-item.featured {
-        /* grid-column: span 1 !important; Убираем расширение на 2 колонки */
         grid-column: unset !important;
     }
-    
+
     .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Увеличиваем минимальную ширину */
+        grid-template-columns: 1fr;
         display: flex;
         flex-direction: column;
         gap: 12px;
         padding: 5px;
     }
-    
+
     .gallery-container {
-        padding: 0 15px 30px; /* Оптимизируем отступы */
+        padding: 0 15px 30px;
     }
+
     .gallery-item {
         width: 100%;
         height: auto;
     }
-   
+
     .photo-container {
         padding-top: 0 !important;
         height: auto;
     }
-    
-	.photo-details {
-		margin-top: 10px;
-		max-width: 95%;
-		padding: 0 8px;
-		font-size: 0.9rem;
-	}
+
+    .photo-details {
+        margin-top: 10px;
+        max-width: 95%;
+        padding: 0 8px;
+        font-size: 0.9rem;
+    }
 
     .photo {
         position: static !important;
@@ -481,42 +481,39 @@ footer {
         max-height: 70vh;
         object-fit: contain;
     }
-    
+
     .photo.placeholder {
         min-height: 200px;
     }
-    
+
     .photo-info {
         padding: 10px 8px;
     }
-    
+
     .photo-caption {
         min-height: auto;
         padding-bottom: 5px;
     }
-    
+
     header {
         flex-direction: column;
-        padding: 20px 15px 150px; /* Добавляем место снизу для polaroid */
+        padding: 20px 15px 150px;
     }
-	
+
     .header-content {
-        /*  Добавляем боковые отступы */
         margin: 0 15px;
         padding: 10px;
         max-width: 95%;
     }
-    
+
     .header-content h1 {
         font-size: 2.5rem;
-        /* text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); Усиливаем тень */
     }
-    
+
     .header-content p {
         font-size: 1.1rem;
-        /* text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);  Добавляем тень к тексту */
     }
-    
+
     .polaroid-frame {
         width: 150px;
         height: 100px;
@@ -524,7 +521,31 @@ footer {
     }
 }
 
+/* Планшеты и небольшие десктопы - 769px до 1279px */
+/* Здесь была проблема: auto-fill создавал непредсказуемое количество колонок */
+@media (min-width: 769px) and (max-width: 1279px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* Фиксируем 2 колонки */
+        gap: 20px;
+    }
 
+    /* full всегда на всю ширину (2 колонки) */
+    .gallery-item.full {
+        grid-column: span 2;
+    }
+
+    /* featured по одной колонке */
+    .gallery-item.featured {
+        grid-column: span 1;
+    }
+
+    /* обычные по одной колонке */
+    .gallery-item:not(.featured):not(.full) {
+        grid-column: span 1;
+    }
+}
+
+/* Очень маленькие мобильные */
 @media (max-width: 480px) {
     .single-photo-view {
         padding: 4px;
@@ -563,15 +584,15 @@ footer {
         grid-template-columns: 1fr;
         gap: 8px;
     }
-    
+
     .photo.placeholder {
         min-height: 150px;
     }
-    
+
     .photo-info {
         padding: 8px 6px;
     }
-    /* Уменьшаем высоту шапки */
+
     header {
         height: 350px;
     }
@@ -580,16 +601,16 @@ footer {
         padding: 12px;
         margin: 0 10px;
         margin-top: 20px;
-	}
-    
+    }
+
     .header-content h1 {
         font-size: 2rem;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); /* Усиливаем тень */
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
     }
-    
+
     .header-content p {
         font-size: 0.95rem;
-		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);  /* Добавляем тень к тексту */
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
     }
 }
 
@@ -598,19 +619,83 @@ footer {
     .header-content {
         max-width: 65%;
     }
-    
+
     .polaroid-frame {
         bottom: 50px;
     }
-	
-	.header-content h1 {
+
+    .header-content h1 {
         font-size: 2.2rem;        
     }
-    
+
     .header-content p {
         font-size: 1.1rem;        
     }
 }
+
+/* Большие экраны - 1280px и выше */
+/* 4 колонки: full=4, featured=2, обычные=1 */
+@media (min-width: 1280px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        max-width: 1600px;
+    }
+
+    /* full - всегда 4 колонки (вся ширина) */
+    .gallery-item.full {
+        grid-column: span 4 !important;
+    }
+
+    /* featured - 2 колонки */
+    .gallery-item.featured {
+        grid-column: span 2;
+    }
+
+    /* large - 3 колонки (если есть такой класс) */
+    .gallery-item.large {
+        grid-column: span 3;
+    }
+
+    /* обычные - 1 колонка */
+    .gallery-item:not(.featured):not(.full):not(.large) {
+        grid-column: span 1;
+    }
+
+    /* Увеличиваем высоту для крупных фото */
+    .gallery-item.featured .photo-container,
+    .gallery-item.large .photo-container,
+    .gallery-item.full .photo-container {
+        padding-top: 60%;
+        max-height: 70vh;
+    }
+}
+
+/* Очень большие экраны - 1600px и выше */
+/* Та же логика, но можно сделать больше отступы */
+@media (min-width: 1600px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+    }
+
+    .gallery-item.full {
+        grid-column: span 4 !important;
+    }
+
+    .gallery-item.featured {
+        grid-column: span 2;
+    }
+
+    .gallery-item.wide {
+        grid-column: span 3;
+    }
+
+    .gallery-item:not(.featured):not(.full):not(.wide) {
+        grid-column: span 1;
+    }
+}
+
 /* ========================================== */
 
 @media (min-width: 1280px) {
