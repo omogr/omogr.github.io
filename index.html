@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Последний сон, который не забыли</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Последний сон, который не забыли — Ледяная хроника снов</title>
     <style>
         * {
             margin: 0;
@@ -12,202 +12,357 @@
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            color: #e8e8e8;
-            line-height: 1.8;
-            padding: 40px 20px;
+            background: #0a0f1e;
+            background-image: radial-gradient(circle at 10% 20%, rgba(70, 130, 200, 0.08) 0%, rgba(10, 15, 30, 0.95) 90%);
+            color: #e0eaf4;
+            font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+            line-height: 1.55;
+            font-weight: 400;
+            scroll-behavior: smooth;
+        }
+
+        /* лёгкая текстура льда */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" opacity="0.08"><path fill="none" stroke="%23c0e0ff" stroke-width="0.6" d="M0 400 L1200 400 M200 0 L200 800 M400 0 L400 800 M600 0 L600 800 M800 0 L800 800 M1000 0 L1000 800 M0 200 L1200 200 M0 600 L1200 600"/><circle cx="300" cy="500" r="1.5" fill="%23ffffff"/><circle cx="850" cy="150" r="1" fill="%23ffffff"/><circle cx="1100" cy="680" r="1.2" fill="%23ffffff"/></svg>');
+            background-repeat: repeat;
+            z-index: -1;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
+            padding: 0 24px 64px 24px;
+        }
+
+        /* баннер с лабораторией */
+        .hero-image {
+            margin: 2rem 0 2rem 0;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(140, 200, 255, 0.2) inset;
+            transition: all 0.3s ease;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.01);
+        }
+
+        /* заголовок и основной текст */
+        .story-header {
+            text-align: center;
+            margin: 2rem 0 2.5rem 0;
+            border-bottom: 1px solid rgba(100, 180, 250, 0.3);
+            padding-bottom: 1.2rem;
         }
 
         h1 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            font-size: 3.4rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            background: linear-gradient(135deg, #f0fcff, #b4e0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .sub {
+            color: #7f9fbf;
+            font-size: 0.85rem;
             letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
             font-weight: 300;
         }
 
-        .story-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* предисловие */
+        .preface {
+            background: rgba(20, 35, 55, 0.55);
+            backdrop-filter: blur(3px);
+            border-left: 4px solid #6bb5ff;
+            padding: 1.6rem 2rem;
+            margin: 2rem 0 3rem 0;
+            border-radius: 28px;
+            font-style: normal;
+            font-size: 1.2rem;
+            color: #cde5ff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
         }
 
-        .story-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+        .preface p {
+            margin: 0;
+            line-height: 1.5;
         }
 
-        .story-number {
-            position: absolute;
-            top: -15px;
-            left: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        /* части рассказа */
+        .part {
+            margin-bottom: 4rem;
         }
 
-        .story-content {
-            white-space: pre-wrap;
-            font-size: 1.1rem;
-            color: #d4d4d4;
-            line-height: 1.9;
+        .part-title {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(80, 160, 255, 0.5);
+            display: inline-block;
+            letter-spacing: -0.2px;
+            font-family: 'Cormorant Garamond', serif;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.3);
         }
 
-        .story-content strong {
-            color: #fff;
-            font-weight: 600;
+        .part-content {
+            font-size: 1.18rem;
         }
 
-        .story-content em {
-            color: #b8c5ff;
+        .part-content p {
+            margin-bottom: 1.4rem;
+        }
+
+        /* дневниковые записи, цитаты */
+        .dream-journal {
+            background: rgba(10, 25, 45, 0.7);
+            backdrop-filter: blur(4px);
+            border-left: 4px solid #88ccff;
+            padding: 1.2rem 1.8rem;
+            margin: 1.8rem 0;
+            border-radius: 20px;
+            font-family: 'Cormorant Garamond', monospace;
+            font-style: normal;
+            color: #d0edff;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+        }
+
+        .dream-journal p {
+            margin-bottom: 0.8rem;
+        }
+
+        .dream-journal strong, .dream-journal em {
+            color: #ffecb3;
+        }
+
+        blockquote {
+            margin: 1.5rem 0;
+            padding-left: 1.2rem;
+            border-left: 3px solid #5398d9;
             font-style: italic;
+            color: #cfe4ff;
         }
 
-        .divider {
+        /* акцент на ключевые слова */
+        em {
+            font-style: italic;
+            color: #c2e0ff;
+            text-shadow: 0 0 1px #a0d0ff;
+        }
+
+        strong {
+            color: #ffe1a0;
+            font-weight: 500;
+        }
+
+        /* подсказка для будущих глав */
+        .future-chapters {
+            margin-top: 4rem;
+            padding: 2rem 1.5rem;
+            background: rgba(15, 30, 50, 0.6);
+            border-radius: 48px;
             text-align: center;
-            margin: 40px 0;
-            opacity: 0.3;
-            font-size: 1.5rem;
-            letter-spacing: 10px;
-            color: #667eea;
+            border: 1px dashed rgba(100, 170, 240, 0.5);
+            backdrop-filter: blur(3px);
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 20px 15px;
-            }
+        .future-chapters p {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            font-family: system-ui, sans-serif;
+            color: #9bbee0;
+        }
 
+        .future-chapters span {
+            display: inline-block;
+            background: #1e334f;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            color: #c3defa;
+        }
+
+        /* декоративные льдинки */
+        .ice-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #6da5e0, #b8dcff, #6da5e0, transparent);
+            width: 80%;
+            margin: 2.5rem auto;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #6c86a3;
+            border-top: 1px solid rgba(100, 160, 210, 0.3);
+            padding-top: 2rem;
+            font-family: system-ui, sans-serif;
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                padding: 0 20px 40px 20px;
+            }
             h1 {
-                font-size: 1.8rem;
-                margin-bottom: 30px;
+                font-size: 2.2rem;
             }
-
-            .story-card {
-                padding: 25px;
+            .part-title {
+                font-size: 1.7rem;
             }
-
-            .story-number {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-                top: -12px;
-            }
-
-            .story-content {
+            .part-content {
                 font-size: 1rem;
             }
-        }
-
-        /* Анимация появления */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+            .preface {
+                padding: 1.2rem;
+                font-size: 1rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .hero-image {
+                border-radius: 20px;
             }
         }
 
-        .story-card {
-            animation: fadeInUp 0.6s ease forwards;
+        /* эффект кристалла для важных строк */
+        .crystal-note {
+            font-weight: 500;
+            background: linear-gradient(145deg, #ebf5ff10, #6ca9ff10);
+            display: inline-block;
+            padding: 0.1rem 0.3rem;
+            border-radius: 12px;
         }
-
-        .story-card:nth-child(2) { animation-delay: 0.1s; }
-        .story-card:nth-child(3) { animation-delay: 0.2s; }
-        .story-card:nth-child(4) { animation-delay: 0.3s; }
-        .story-card:nth-child(5) { animation-delay: 0.4s; }
-        .story-card:nth-child(6) { animation-delay: 0.5s; }
-        .story-card:nth-child(7) { animation-delay: 0.6s; }
     </style>
-<base target="_blank">
 </head>
 <body>
 <div class="container">
-<h1>📚 Последний сон, который не забыли</h1>
-        <div class="story-card">
-            <div class="story-content">
-<strong>Предисловие<strong>
+    <!-- изображение лаборатории в антарктических льдах -->
+    <div class="hero-image">
+        <img src="story/lab/lab.png" alt="Заброшенная лаборатория во льдах Антарктиды. Металлический корпус, свет изнутри, ледяные наросты.">
+    </div>
 
-В будущем, где сон стал измеряемым ресурсом и товаром, люди перестали сниться по-настоящему. Их сны превращаются в данные, анализируются и коммерциализируются. Но есть один человек — учёный-психофизик Элиан — который способен сниться без причин. Его сны не уходят и не превращаются в цифровой след. Они живут. И каждый раз, засыпая, он вспоминает не то, что видел, а то, что <em>был</em> в момент начала сна.
-</div></div>
-<div class="story-card"><div class="story-content"><div class="story-number">1</div>
-Лед — не просто покров. Лед — это память, которую никто не хочет вспоминать.
+    <div class="story-header">
+        <h1>Последний сон,<br> который не забыли</h1>
+        <div class="sub">хроника забытых сновидений</div>
+    </div>
 
-Элиан шёл по краю Антарктиды, где ветер не шумел, а <em>дышал</em>. Он проникал сквозь лёд, как через тонкую кожу, оставляя за собой след тишины — не просто отсутствие звука, а то, что звук <em>не мог быть</em>. Воздух был чист, как стекло, и каждый шаг на льду оставлял след, будто лёд сам вспоминал, где уже был.
+    <!-- Предисловие -->
+    <div class="preface">
+        <p>В будущем, где сон стал измеряемым ресурсом и товаром, люди перестали сниться по-настоящему. Их сны превращаются в данные, анализируются и коммерциализируются. Но есть один человек — учёный-психофизик Элиан — который способен сниться без причин. Его сны не уходят и не превращаются в цифровой след. Они живут. И каждый раз, засыпая, он вспоминает не то, что видел, а то, что <em>был</em> в момент начала сна.</p>
+    </div>
 
-Он нес с собой карту — старую, на которой отмечены посты, заброшенные в 1970-х, когда сон ещё не был измеряем, а люди снались, не зная, что это — ресурс. На карте — точка, обозначенная кружочком с названием: <em>Лаборатория Статики</em>. Слово «статика» было выделено жирным шрифтом, как будто оно было не просто названием, а предупреждением.
+    <!-- ЧАСТЬ ПЕРВАЯ -->
+    <div class="part">
+        <h2 class="part-title">Часть первая · Ледяная память</h2>
+        <div class="part-content">
+            <p>Лед — не просто покров земли. В Антарктиде он — память. Тонкая, хрупкая, но несокрушимая. Там, где ветер не шепчет, а гулко дышит, где каждый снег — как страница забытого дневника, ледники хранят то, что человечество уже не помнит.</p>
+            <p>Элиан шёл по краю, как по краю собственной души. Его куртка — толстовка из синтетического шерстяного волокна, но в ней не было тепла. Всё, что оставалось, — это тишина, которую он нес с собой. Он не смотрел на часы. Не смотрел на сон. Он смотрел на лёд.</p>
+            <p>Задание института было простое: изучить сон как ресурс. Сон — теперь товар. Сон, который можно измерить, продавать, анализировать. Сон, в котором мозг выделяет биомаркеры, а сны — данные, подлежащие кластеризации. Сон, который можно «перепродавать» по тарифам, как электроэнергию.</p>
+            <p>Но Элиан не изучал сон. Он искал то, что <em>не</em> измеряется.</p>
+            <p>Он шёл по старым картам — картам, на которых отмечались заброшенные посты, не включённые в современные базы данных. Карты, на которых линии рисовали не маршруты, а <em>память</em>. Карты, где каждая точка — место, где сон не уходил.</p>
+            <p>Ветер шептал, но не шёл. Он был тяжёл, как снег, скользил по льду, оставляя за собой следы — не от ног, а от мыслей. Лед — он не просто покрывал землю. Он <em>запечатлевал</em>. Каждый снег — как сон, который не ушёл. Каждая трещина — как воспоминание, которое не было уничтожено.</p>
+            <p>На склоне, где лед начинал уступать место тьме, Элиан увидел дверь.</p>
+            <p>Металлический корпус — старый, покрытый льдом, как кожа, на которой высохли слёзы. Двери были полуоткрыты. Внутри — тишина. Не та, что идёт от отсутствия звука. Тишина, которая <em>дышала</em>.</p>
+            <p>Окна были не закрыты. В них — следы света. Не от солнца. Не от ламп. Свет, который не проходил сквозь стекло, а <em>выходил</em> изнутри. Как будто внутри лаборатории кто-то ещё дышал.</p>
+            <p>Элиан вдруг почувствовал, как его сердце замедлилось.</p>
+            <p>Он не знал, что ищет. Но он знал, что <em>увидел</em>.</p>
+            <p>Лед — он не просто покрывал землю.</p>
+            <p>Лед — он хранил сны.</p>
+            <p>И те, что не были проданы.</p>
+            <p>И те, что не были забыты.</p>
+            <p>Он вдруг понял: сон, который не забыли — не просто сон.</p>
+            <p>Сон — это не данные.</p>
+            <p>Сон — это <em>действие</em>.</p>
+            <p>А это — не просто сон.</p>
+            <p>Это — <strong><em>последний сон, который не забыли</em></strong>.</p>
+        </div>
+    </div>
 
-Элиан — учёный-психофизик, специалист по сну как физико-психологическому явлению. В его институте сон уже не считался состоянием, а — ресурсом. Сны превращались в данные: анализировались, классифицировались, продавались. Люди засыпали, чтобы <em>заплатить</em> за сон. А те, кто не засыпал, — теряли сознание. Или, как говорили в отчётах, <em>переходили в статус «неактивного»</em>.
+    <div class="ice-divider"></div>
 
-Но Элиан — он не засыпал. Он <em>был</em>.
+    <!-- ЧАСТЬ ВТОРАЯ -->
+    <div class="part">
+        <h2 class="part-title">Часть вторая · Дыхание ушедших</h2>
+        <div class="part-content">
+            <p>Элиан вдруг остановился на пороге.</p>
+            <p>Дверь скрипнула — не от руки, а от самого воздуха, будто лед вдруг вдохнул и открыл рот.</p>
+            <p>Внутри — тишина. Не та, что идёт от отсутствия звука. Тишина, которая <em>дышала</em>.</p>
+            <p>Пыль — не просто на полу. Она <em>двигалась</em>. Капли, будто всплывшие из глубин, медленно поднимались к потолку, оставляя за собой следы — тонкие, тёмные, как следы от пальцев на стекле.</p>
+            <p>Запах старой электроники — не электрический, не цифровой. Это запах ухода. Запах того, что когда-то работало, а теперь только <em>помнит</em>, что работало.</p>
+            <p>Элиан шагнул вперёд. Каждый шаг — как возвращение.</p>
+            <p>Коридор был узкий, устаревший. Стены — не из кирпича, а из тонких пластин, покрытых слоем льда, будто кожа, которую не снимают. На полу — следы, не от обуви, а от <em>сна</em>. Каждый след — как отпечаток, оставленный в момент, когда сон не ушёл, а <em>остался</em>.</p>
+            <p>На стене — старый дневник.</p>
+            <p>Он не был закрыт. Страницы были открыты.</p>
+            <p>Надпись на обложке:</p>
+            <div class="dream-journal">
+                <strong>«Дневник 3.14 — 1987. Год, когда мы поняли, что сон — не сон. Сон — это память, которая не уходит.»</strong>
+            </div>
+            <p>Элиан подошёл. Пальцы коснулись обложки.</p>
+            <p>Тепло. Не от ладони. От бумаги.</p>
+            <p>Он открыл дневник.</p>
+            <div class="dream-journal">
+                <p><em>«Мы не хотим, чтобы люди забывали. Мы хотим, чтобы они *вспоминали*. Но не как воспоминание. Как *действие*. Как будто сон — это не то, что мы видим, а то, что мы *были*. Мы не можем запечатлеть сон. Мы можем запечатлеть *сознание*. Но сознание — это не статика. Сознание — это движение. Это *дыхание*. Это то, что продолжает думать, когда мозг уже не работает.»</em></p>
+                <p><em>«Мы пробовали записывать сны. Но сны — не данные. Сны — это *жизнь*. Когда человек засыпает, он не теряет себя. Он *переходит*. Мы хотим, чтобы после смерти он не исчез. Мы хотим, чтобы он *вспоминал*, как был. Как дышал. Как любил. Как плакал. Как смеялся. Как *был*.»</em></p>
+            </div>
+            <p>Элиан замолчал.</p>
+            <p>На следующей странице — рисунок. Не схема. Не график. Рисунок — мозг. Но не человеческий. Он — как кристалл. Светящийся. Изнутри — тень. И в центре — глаз.</p>
+            <div class="dream-journal">
+                <p><strong>«Это — не хранилище. Это — канал. Каждый сон, который не забыли, — это поток. Каждый сон — это *действие*. Каждый сон — это *дыхание*. Каждый сон — это *я*.»</strong></p>
+            </div>
+            <p>Элиан пошёл дальше.</p>
+            <p>Коридор разделился на два. Слева — пусто. Справа — дверь, закрытая. На двери — цифры. <strong>01.03.1989</strong></p>
+            <p>Элиан подошёл. На двери — не код. На двери — рисунок. Тот же кристалл. Но теперь — с человеком. Человек сидит. Смотрит в пространство. На лице — улыбка. Но улыбка — не от радости. Улыбка — от <em>воспоминания</em>.</p>
+            <div class="dream-journal">
+                <p><em>«Это — не сон. Это — сон, который не забыли. Это — сон, который *вспоминает*. Это — сон, который *дышит*. Это — сон, который *не ушёл*.»</em></p>
+            </div>
+            <p>Элиан вдруг почувствовал, как его рука дрожит.</p>
+            <p>Он не знал, что ищет. Но он знал, что <em>увидел</em>.</p>
+            <p>Он не знал, что сон — это ресурс. Но он знал, что сон — это <em>действие</em>. И что <em>действие</em> — не уходит. Оно <em>живёт</em>. Оно <em>вспоминает</em>. Оно <em>дышит</em>.</p>
+            <p>Он посмотрел на кристалл, который лежал в его руке. Он не держал его. Он просто <em>чувствовал</em>. Как будто кристалл — не вещь. А <em>сознание</em>. Как будто каждый сон, который не забыли — не просто сон. А <em>возвращение</em>.</p>
+            <p>Каждый сон — это не память. Это — <strong>возвращение к себе</strong>.</p>
+            <p>И каждый раз, когда кто-то засыпает, и сон не превращается в данные,<br>— он <em>возвращается</em>.<br>— он <em>вспоминает</em>.<br>— он <em>дышит</em>.<br>— он <em>живёт</em>.</p>
+            <p>Элиан закрыл дневник.</p>
+            <p>И впервые с тех пор, как начал изучать сон как ресурс, он не чувствовал, что засыпает. Он чувствовал, что <em>будет</em>.</p>
+            <p>И что, когда он снова заснёт — он не увидит сна. Он <em>вспомнит</em>. Он <em>будет</em>. Он <em>дышит</em>.</p>
+            <p>Он — <strong><em>последний сон, который не забыли</em></strong>.</p>
+        </div>
+    </div>
 
-Каждый раз, когда он засыпал, он не вспоминал сны. Он вспоминал <em>то, что был</em> — момент, когда начался сон. Как будто сон не приходил, а <em>выходил</em> из него. Как будто сон — не след, а начало.
+    <!-- Блок для будущих глав (больше десяти) -->
+    <div class="future-chapters">
+        <p>❄️ Сны продолжают дышать ❄️</p>
+        <p>К этой хронике будут добавлены новые главы. Лёд хранит ещё много страниц.<!-- <br>Здесь появятся: третья часть, четвёртая и дальше — больше десяти фрагментов забытых сновидений.--></p>
+        <span>Скоро: «Голос кристалла», «Спящие станции», «Обратный отсчёт»</span>
+    </div> 
 
-Он не знал, зачем он пришёл сюда. Институт дал ему задание: «изучить сон как ресурс в экстремальных условиях». Но Элиан знал — он пришёл не изучать сон. Он пришёл, чтобы <em>вспомнить</em>, что такое сон, когда он не превращается в цифру.
-
-Когда он подошёл к склону, где лёд начинал уступать место тьме, ветер вдруг замедлился. Лёд на склоне — как будто он дышал. И вдруг — дверь.
-
-Металлический корпус лаборатории, покрытый льдом, как обёрткой. Двери — полуоткрыты. Внутри — тишина. Не та, что отсутствует. Тишина, как будто она <em>ждала</em>. В окнах — следы света. Не от солнца. Не от ламп. Свет, как будто он <em>вспоминал</em>, что был здесь.
-
-Элиан вдруг почувствовал, как его сердце замедлилось. Он не знал, что это — сон. Он знал, что это — <em>последний сон, который не забыли</em>.
-
-Потому что в лаборатории, в углу, на полу, лежал кристалл.
-
-Не из камня. Не из металла. Он был — как мозг, но не из клеток. Из света. Из тишины. Из того, что <em>было</em>, когда человек засыпал, и не ушёл.
-
-Элиан подошёл. Кристалл не светился. Он просто <em>был</em>. И когда Элиан коснулся его, он не почувствовал холода. Он почувствовал — <em>вспоминал</em>.
-
-Он вспомнил, как засыпал в детстве. Как не знал, что сон — это ресурс. Как знал, что сон — это <em>действие</em>. Как знал, что когда ты засыпаешь, ты не уходишь. Ты <em>возвращаешься</em>.
-
-И впервые за долгое время — Элиан <em>не вспомнил сон</em>. Он вспомнил, что <em>был</em> в момент начала сна.
-
-И кристалл — впервые — <em>открыл глаза</em>.
+    <footer>
+        <p>«Сон — это действие, которое не уходит. Оно живёт в тех, кто помнит, как <em>быть</em>.»</p>
+        <p style="margin-top: 0.8rem; font-size: 0.7rem;">Антарктическая лаборатория · Архив неизмеряемого</p>
+    </footer>
 </div>
-</div>
-
-<p><a href="spider.html" class="full-article-link">Spider (только для десктопа)</a></p>
-	
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-   ym(102424835, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true
-   });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
 </body>
 </html>
