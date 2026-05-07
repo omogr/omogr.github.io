@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Собранный рассказ из частей">
+    <title></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+
+:root {
+    --bg: #0c0c0f;
+    --text: #b0b3b8;
+    --heading: #e2e0db;
+    --link: #8a929a;
+    --link-hover: #d4d8dc;
+    --divider: #25252a;
+    --accent-vital: #c9b896;
+    --accent-important: #9aa4b4;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+    --container-max: 780px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    background-image: radial-gradient(circle at 50% 10%, #141418 0%, var(--bg) 60%);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.65;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 1.5rem;
+}
+
+.reader-container {
+    max-width: var(--container-max);
+    width: 100%;
+    animation: fadeIn 1.2s ease-out;
+    background: transparent;
+    padding: 0;
+    margin: 0 auto;
+}
+
+/* Заголовок рассказа */
+.story-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 1.2rem;
+}
+h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+.story-sub {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--link);
+    font-weight: 300;
+}
+
+/* Заголовки частей */
+.part-header {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin: 2.5rem 0 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--divider);
+    letter-spacing: 0.01em;
+}
+.part-header:first-of-type {
+    margin-top: 0;
+}
+
+/* Основной текст */
+p {
+    margin-bottom: 1.6rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+}
+
+/* Выделения */
+.vital {
+    font-weight: 500;
+    color: var(--accent-vital);
+    background: rgba(201, 184, 150, 0.08);
+    padding: 0.1rem 0.2rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+.important {
+    font-style: italic;
+    color: var(--accent-important);
+    border-bottom: 1px dashed rgba(154, 164, 180, 0.4);
+    padding-bottom: 1px;
+}
+
+/* Финальная фраза */
+.final-phrase {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    border-top: 1px solid var(--divider);
+}
+.final-phrase .vital {
+    background: none;
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+
+/* Анимация */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    body { padding: 2rem 1rem; }
+    h1 { font-size: 2rem; }
+    .part-header { font-size: 1.5rem; }
+    p { font-size: 0.98rem; }
+}
+
+/* Навигация (назад к оглавлению) */
+.back-link {
+    display: inline-block;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--link);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.back-link::before {
+    content: '←';
+    margin-right: 0.5rem;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.back-link:hover {
+    color: var(--link-hover);
+}
+.back-link:hover::before {
+    transform: translateX(-3px);
+}
+
+
+    </style>
+</head>
+<body>
+    <main class="reader-container"><a href="../index.html" class="back-link">К оглавлению</a>
+        
+        <p>G.Gnedina</p>
+<p><strong class="vital">The last day of Tugotron's</strong></p>
+<p>What can be said about that evening? That evening, there were no streetlights on. The dacha settlements were lost in deep darkness. The broken-down dachas held secrets that had been forgotten for years. Lonely watchdogs barked mournfully. The wind blew through the dry branches, then disappeared. The distant lights flickered like cold stars. It seemed that people would never return to those places again.</p>
+<p>Sergey Raskat walked slowly along the path, stepping over those tough-looking roots. But he really wanted to run away from here as quickly as possible. If it weren’t for Storm, he wouldn’t have come here alone this evening at all.</p>
+<p>Somewhere, there was a brief barking sound, followed by a whining cry. Poor dog! It must have done this many times before, carrying that empty tin bowl around on its tongue. Sergey walked faster.</p>
+<p>Storm wasn’t chosen as the guard. He couldn’t stand being alone, and he was happy to see everyone who came through the gate. In the morning, he needs to be taken back to the city.</p>
+<p>As Sergey approached, the dog started barking loudly and hopped around on its hind legs, while its chain rattled loudly. After freeing Storm from his excitement, Sergey rushed up the steps and unlocked the heavy, rusty lock. The дача seemed like an impregnable fortress in the darkness. Entering the house, Sergey felt completely safe. He stumbled over the logs that were stacked in the hallway. He turned on the light, picked up a handful of logs, and, accompanied by Storm’s cheerful barking, entered the room. He began to light the fireplace.</p>
+<p>Soon, Sergey was already sitting at the kitchen table, eating the jam that he had saved from the winter storage. Storm, meanwhile, watched with a smug smile as the fire kept burning.</p>
+<p>In the next room, an old clock slowly ticked away. That clock’s ticking sound was very long and sad.</p>
+<p>At first, they just hummed a little. Then, they started playing some song that had been forgotten for a long time. They were kept going for a week at a time. During that week, they lived their lonely and sad lives, keeping time every quarter of an hour in that empty house. After humming for a while, the clocks stopped humming. Sergey yawned and looked out the window. Thin streaks of autumn rain stretched across the sky.</p>
+<p>“It’s better to turn off the stove and go to sleep,” thought Sergey.</p>
+<p>The wood was burning quickly and in unison. Sergey placed a box of bullets in front of him, then began to make sticks for the old hunting rifle. After making a few sticks, Sergey stirred the wood in the fireplace. The clock in the next room chimed the nine o’clock again. The storm suddenly stirred up, raising its head slightly; its ears stood on end. It listened carefully, then rushed towards the door, barking loudly.</p>
+<p>“Who’s there?” screamed Sergey.</p>
+<p>No one replied.</p>
+<p>“Probably, a cat!” Sergey moved the toy closer to himself again.</p>
+<p>But Storm kept barking more and more loudly. Sergey became worried. “Yenka would say that I’m acting crazy,” thought Sergey.</p>
+<p>“Forward, Storm!” he shouted. Then, taking the unloaded rifle, he stepped out into the yard.</p>
+<p>No one there! Sergey quickly pushed the latch aside and opened the door to the porch. The storm screeched as it rushed down the steps. There was a bicycle lying on the ground. It seemed like it had fallen from the porch. Sergey placed the rifle down and looked around. It was quiet and deserted everywhere. The rain had stopped, but the drops of water were still splashing against the puddles on the ground. Serzh stepped down from the steps and approached Storm, who was sniffing at the bicycle. “Where did he come from?” Serzh turned on his pocket flashlight.</p>
+<p>It was a very strange bicycle. Its wings resembled curved tubes, and they ended at the bottom with a thick, lavender-colored “rat.” There were some light-colored buttons on the handlebars. Sergey picked up the bicycle, and it seemed to shake slightly.</p>
+<p>“Okay, I’ll figure everything out tomorrow morning,” decided Sergey. Then he took the bicycle into the barn.</p>
+<p>Serezh put the bicycle in the back of the shed, leaning it against a bag of potatoes. “It seems like it just fell from the sky,” thought Serezh, as he locked the door of the shed.</p>
+<p>The storm continued to cause chaos for a while longer. It entered the house along with Sergey.</p>
+<p>The wood in the stove had turned into a magical palace made of red coals. It crumbled under the first blow of the sticks. Sergey approached the barometer that hung on the wall and tapped it with his finger. For some reason, the barometer showed “clear”. Sergey put the gun back in its place, stored the box with the sticks in the closet, and went to sleep. Storm, on the other hand, continued to fiddle with the stove for a long time. He would fall asleep and wake up frequently, making noises like “huh-huh”. Finally, he stopped moving, and the house became completely quiet, as if there wasn’t a single sound anywhere in the world.</p>
+<p>The barometer wasn’t wrong. The morning was surprisingly clear.</p>
+<p>It was so clear that Sergey could even distinguish the small holes in the birch bark caused by woodpeckers. And those woodpeckers, sitting on the bare branches of the birches, resembled huge black parrots with red feathers.</p>
+<p>Somewhere, high up in the blue sky, a plane was flying quietly. It was like that during hot summer days, when there’s a lazy silence around. In short, this November morning wasn’t like any other November morning.</p>
+<p>Sergey jumped from the bed onto the cold floor. Immediately, he remembered about the bicycle. What an adventure! Storm rushed into the room, knocking loudly with its paws. It started to attack Sergey’s bare feet. Quickly getting dressed, Sergey left the house and headed towards the shed. He opened the door and went inside. There wasn’t any bicycle nearby. Behind Sergey, Storm started to bark loudly. Looking around, Sergey saw the bicycle right outside the door. It moved slowly along the wall! There was no sound at all! No signs of a motor running at all! Now, its front wheel turned around… and the bicycle came out of the shed.</p>
+<p>The storm howled violently, and rushed out of the shed right after the bicycle. Sergey rushed into the yard.</p>
+<p>The bicycle accelerated suddenly. The white buttons on the handlebars glimmered in the light. “What if he just leaves?” thought Sergey.</p>
+<p>“Ah, it’s gone now!” he shouted. He got onto his horse and pressed one of the buttons.</p>
+<p>At that moment, the bicycle tilted to one side. Sergey thought he was about to fall, but then he realized that he couldn’t get away from the bicycle. So he pressed the second button. The bicycle hummed loudly, then stood up straight again. It moved away from the ground and began to spin in a huge spiral. Sergey lost his breath. He felt like he was being pulled into an invisible vortex. He pressed the third button with all his strength. For a moment, he was blinded by the whirlwind of air. When he opened his eyes again, he saw a completely unfamiliar landscape beneath him. They passed by some yellow fields. There was a long, blue lake in sight. The trees were green. The warm air carried the scent of strawberries. There was also a meadow covered with daisies. It was the height of summer!</p>
+<p>The bicycle was rising higher and higher. It moved upward at a constant speed, with a cheerful humming sound. Sergey looked ahead, and immediately tried his best to turn the handlebars. A strange, flying object was approaching him. It was a round platform, similar to a blue plate, covered with a cover with a cut-off top. It slowly rotated in the air, like a carousel, while also moving forward. Sergey looked down again. The lake now resembled a puddle. Sergey couldn’t see Romashek anymore. He clung to the steering wheel even more tightly. The round platform floated so close that one could reach out and touch its walls.</p>
+<p>Sergey reached out and touched the cold metal surface. The platform continued to rotate slightly. Sergey saw a protrusion with a ring around it. He grabbed onto that protrusion and, holding onto the ring, continued to float along with the strange flying device.</p>
+<p>So, he flew in the warm summer air. Swallows circled around him. Time passed. Then, he heard voices coming from the covered platform. He held his breath and listened carefully. It seemed that people were indeed talking under the canopy of the platform.</p>
+<p>“My head hurts,” said someone. “I’ll fly to the Island. You, please finish this matter.”</p>
+<p>“It’s better to take my head instead. It’s completely new,” replied the person.</p>
+<p>I really need her! She isn’t ready yet.</p>
+<p>Silence fell. Then, a second voice spoke:</p>
+<p>I can’t do it without you. It’s only been two weeks yet.</p>
+<p>And I can’t stay here anymore, because my head is broken. I need repairs!</p>
+<p>There was a sound of something hitting metal.</p>
+<p>“Can you hear it? In a little while, it will break completely,” said the first person. “I’ll leave right away.”</p>
+<p>“Please give me the instructions,” asked the second person.</p>
+<p>It was given to you on the Island. Try to find it in your own mind. You probably forgot your name, right? I remind you that your name is Durakon-45.</p>
+<p>“I know that,” replied the second person.</p>
+<p>So, take care to heat up the sky properly. Duplex!</p>
+<p>The platform began to shake. Sergey noticed that the top of the cover opened up, and a narrow beam of light came out of it. Then, someone in a spacesuit emerged onto the platform and dragged something along with him. It looked like both a rocket and a fish with large fins. The person in the spacesuit placed the fish-like object vertically, then opened its door and entered inside it, like a wall cabinet. At that moment, two needle-like blue beams came out of his head.</p>
+<p>“He noticed me,” thought Sergey in horror. He pulled his head back into his shoulders. The blue, needle-like rays continued to blind him. They moved over his body like terrifying tentacles. Then, a creaking sound came from inside the spacesuit. A hoarse voice emerged from it.</p>
+<p>I’m sending a super-urgent message. There’s an unknown device attached to the Durakon-45 platform. I can’t stay there anymore. My head hurts. I’m going to get out of there for repairs. The Durakon-45 is still in service, with its head filled with 13% of its capacity.</p>
+<p>“Have you not yet left yet?” calmly asked the person who was called Durakoman-45.</p>
+<p>“Don’t push me to the limit!” replied the voice from the spacesuit. “I’m telling you, there’s some unknown device sitting on that platform.”</p>
+<p>Well, what then? – asked Durakon-45 again, calmly.</p>
+<p>“Well, so what? Show some interest! Find out who he is.”</p>
+<p>A-ah, replied Durakon-45. “I have it.”</p>
+<p>There was a clicking sound from some buttons.</p>
+<p>It’s ready, said Durakon-45. I’ve found it! There’s proper etiquette, greetings, and all that. I’ve also turned on the self-ventilation system.</p>
+<p>“Oh! There’s a crack starting from the head down to the back of my body,” croaked the person who was leaving the platform.</p>
+<p>The hatch of the rocket closed, and a sound of the engine came from inside. The flying vehicle easily detached from the roof of the platform, and began to descend gracefully and smoothly, just like a swimmer jumping off a cliff into the water.</p>
+<p>Sergey heard some noise coming from inside the flying platform. At first, there was a faint ringing sound on the metal surface of the platform, as if someone was carefully removing nuts with a screwdriver. Then, footsteps sounded behind the wall, and the lid of the dome slowly opened with a creaking sound.</p>
+<p>The fish-like rocket, which launched from the platform, landed at the main airport of that celestial body. Among its inhabitants, this celestial body is known as “Ostrov Tugotronov”.</p>
+<p>The Tugotrons that inhabited this island didn’t even think about why there was no water around their island at all. The truth is that Tugotrons weren’t capable of thinking at all. It can’t be said that their heads were defective. No! Their heads were of good quality, and they worked perfectly. They could make decisions, remember instructions, and solve problems quickly, even those with many unknown variables. The head was considered the most valuable part of the body, and Tugotrons cherished it very much.</p>
+<p>It was precisely because of this reason that Hamian-14 rushed off the platform so quickly, when he realized that there was a crack suddenly appearing in his head. After landing, he got out of the rocket. With heavy steps, he walked towards the Autoskok and Autoshlep robots, who quickly approached him on their rollers. Both robots had lights on their heads. From a distance, Hamian-14 could see the following inscriptions on their screens: “1 111 000000 11”.</p>
+<p>In the language of togotrons, which wasn’t written with letters, but with numbers, using only two units and zero, it meant the following: “Where is the unknown togotron?”</p>
+<p>Haman-14 immediately pressed one of the buttons on the yellow plastic glove with his front limb. On his screen, the message “11 0 11 00000 1101010” appeared. This meant, “Silence! I don’t have time for you!” Then, Haman-14 switched to voice signals.</p>
+<p>AutoSkok and AutoShlep also switched to normal conversation mode. On their screens, images of forget-me-nots and baby’s eyes appeared, as a sign of sympathy for Hamian-14.</p>
+<p>What happened to your beautiful head? – asked AutoSkok.</p>
+<p>“A small crack!” replied Hamian-14. “Is Autotrama’s workshop still working?”</p>
+<p>I’ll find out now. I’ll turn on the radio communication. I’ll call the repair shop for heads.</p>
+<p>A small antenna popped out from behind AutoScoop. AutoScoop slapped its ear with its paws, thereby turning on the miniature receiver. It then received the signal from the repair shop.</p>
+<p>“There’s a break right now for internal lubrication,” he said.</p>
+<p>It doesn’t matter, grunted Hamian-14. They will accept me even during the break.</p>
+<p>And do you have a serious crack in there? – asked AutoShlep. – Do you really have to replace your precious head? What will happen to the “thought muffler”?</p>
+<p>“Ah, so that’s how it is!” snapped Hamian-14. “They’ve become smart now! They’re starting to ask questions! I’ll turn on the sound now.”</p>
+<p>AutoSkok and AutoShlep immediately turned off their screens. This meant that they no longer had any thoughts or ideas in their minds at all.</p>
+<p>Hamian-14 approached Autošlep and opened the lid of his head. From there, several pink bubbles emerged, which melted away in the air. Hamian-14 took out from Autošlep’s head several tiny coils, each wrapped in a thin, narrow ribbon.</p>
+<p>“What’s he doing here?” he muttered, staring at the tiny numbers written on the strip… “Team number one: to clean up the airport. Team number two: to fix the door in the hangar. Team number three: to play chess with AutoSkok.” After that, there’s some kind of chess-related nonsense.</p>
+<p>Hamian-14 put the memory coils back in place, and then closed the lid over its head.</p>
+<p>“Excellent!” said Hamian-14. “No new ideas at all! You can turn your heads around.”</p>
+<p>The screens of AutoSkok and AutoShlep were once again lit up, but there were no messages displayed on them yet. The light on the screens was flickering and changing colors.</p>
+<p>“Two times two!” said Hamian as he said goodbye. Then he left the airport and went to the workshop.</p>
+<p>Meanwhile, something equally strange happened to Sergey. The door of the flying platform opened, and before Sergey could react, a huge metal claw grabbed him. He was brought inside along with his bicycle, and placed on the floor of the round cabin, which was illuminated by soft pink light.</p>
+<p>The tentacles that were holding Sergey were released, and he jumped off the bicycle. The bicycle fell to the ground with a loud noise. There was a silence, broken only by the ticking of some clocks and the monotonous humming sound, similar to the noise of a overheated transformer.</p>
+<p>Hello… Answer… Question… On… I’m the 45th Durakon. Suddenly, a pleasant voice began to sing.</p>
+<p>Then, again, there was a buzzing sound. Sergey saw that there stood a figure wearing a metal helmet, armor, and chainmail. The knight’s face was covered by a metal shield.</p>
+<p>“It must be an artist,” thought Sergey. And he asked:</p>
+<p>In which movie are you acting?</p>
+<p>“There are no movies in my program,” replied the knight clearly. “I play checkers, chess, dominoes, lotto, ‘Don’t buy black and white cards – don’t risk your head’, ‘Eagle or Ace’…”</p>
+<p>“That’s great!” said Sergey, in admiration. “Let’s play ‘The Goat’.”</p>
+<p>How is this done in “kozla”?</p>
+<p>It’s just like playing dominoes, only with more noise involved. In our neighborhood, the old people use “kozla” to make noise.</p>
+<p>“I don’t have any words for ‘old men’ and ‘parks’,” replied the knight in a calm voice.</p>
+<p>“What a strange guy!” thought Sergey. “He must be rehearsing a medieval role from a movie about crusades. That’s why they put him on that flying platform, so he could get distracted from his usual surroundings.”</p>
+<p>“Well, then let’s play domino, shall we?” he offered, in a cheerful tone.</p>
+<p>“Let’s play!” agreed the knight. “But on what?”</p>
+<p>“In some of the boxes maybe.” suggested Sergey. “There must be some boxes here, right?”</p>
+<p>“I’m asking you, how do you want to play this game?” the knight said, with a hint of annoyance in his voice. Should it be through verbal commands, or through a television signal?</p>
+<p>Sergey looked at the iron helmet of his opponent and advised:</p>
+<p>Please take off your helmet! It’s probably crushing your head.</p>
+<p>Nothing is pressing down on my head. It’s still almost empty in there. For now, it’s just filled with games. I suggest playing dominoes using verbal commands.</p>
+<p>Please tell me, would you please say that it wasn’t you who was recently called “Fool-45”?</p>
+<p>“When did this happen?” asked the knight.</p>
+<p>Well, about five minutes ago… Before the missile left your ship.</p>
+<p>“We must always specify the exact time,” said the knight grumpily. “Here, we measure everything with an accuracy of plus or minus one trillionth of a second. The rocket left this flying platform exactly five minutes, forty-two and ninety-five thousandth of a second ago. You can check the readings of the instruments yourself.”</p>
+<p>Dozens of screens lit up instantly. The pointers on countless scales began to tremble. Numbers, graphs, flashing curves, and recording tapes—all of these elements overwhelmed Sergey with the overwhelming power of this measuring technology.</p>
+<p>“It gets complicated,” he thought.</p>
+<p>And who was actually called “Fool-45” five minutes and forty-two seconds, and ninety-five thousand seconds ago? – he asked.</p>
+<p>“While we’re talking, some more time has passed,” said the meticulous knight dryly. He added, “My name is Durakоном-45.”</p>
+<p>“Then it’s clear,” thought Sergey. “It’s just some local idiot.”</p>
+<p>And why, asked Sergey, “are you… exactly… the 45th?” Well, how should I put it…</p>
+<p>“Why am I Durakon with the number 45?” the knight asked. “It’s obvious that you’re from another island.”</p>
+<p>Who?</p>
+<p>“Tugotron!” repeated the knight. “Why don’t you turn on your screen?”</p>
+<p>And then, the panel that covered the knight’s face lit up, just like a screen. On the screen, numbers appeared. At the same time, a voice spoke:</p>
+<p>I’m Durakon-45. It was assembled ten days ago. Please turn on your screen immediately and give me a name. Duplex!</p>
+<p>Sergey remained silent.</p>
+<p>Well, what then? – came the impatient voice of Durakon-45.</p>
+<p>“I don’t have a screen,” replied Sergey, very quietly. “I’m a human.” His face became almost as white as the screen.</p>
+<p>“Don’t act like a mini-tank!” said Duracon-45 in a surprisingly rude manner, switching to a more informal tone. “Mini-tanks are only twenty centimeters in height. And you… you’re… one meter, fifty centimeters, and four millimeters in height.” He announced this with a laugh. “What kind of mini-tank are you really?”</p>
+<p>It turns out that Durakon-45 was able to measure Sergei’s height from a distance.</p>
+<p>And I’m not saying that I’m some kind of “mini-tank”. I’m just an ordinary person.</p>
+<p>“I don’t have such a word in my memory,” replied Durakon-45. “Maybe it’s because I was assembled just ten days ago…”</p>
+<p>At that moment, a deafening roar came from the flying platform. At first, it sounded like the shouting of football fans. Then, the roar turned into the wailing of a siren. Finally, it stopped abruptly. In the silence that followed, a soft voice could be heard…</p>
+<p>It has been observed a significant drop in air temperature. Please explain how the furnace works in heating the air.</p>
+<p>“Oh, I got distracted!” cried Durakon-45. He rushed towards the panel with the switches. “Now, right now!” he said, hurriedly speaking into some kind of microphone.</p>
+<p>Durakon-45’s iron tentacles worked with incredible speed and agility. They carefully pressed buttons, moved various levers, and scattered sparks around them. On the screen, in the center of Durakon-45’s head, numbers appeared, along with mysterious patterns.</p>
+<p>“It works like a machine,” thought Sergey in admiration. And suddenly, he had an incredible idea. He even blinked his eyes in surprise.</p>
+<p>Of course, it’s a robot! It has a metal head. It doesn’t know even the most basic things. It operates at an insanely fast speed! Maybe those robots are descendants of our own robots… It’s still unknown how they will react to me. What if I also pretended to be a robot?</p>
+<p>At that time, Durakon-45 finished moving the levers, and then stepped forward to speak into the microphone.</p>
+<p>“It’s a flying platform,” he said, and clicked the controls with his teeth. “I’ve set up the heating system for the sky. Duplex! Triplex! Simplex! Complex!”</p>
+<p>The temperature of the air did indeed start to rise. This was noted by all the thermometers on Tugotron’s island. There were countless thermometers there. Every resident of Tugotron had several of these instruments, and they monitored the readings from these thermometers with just as much interest as a city dweller would read the morning newspaper. For Tugotronians, the temperature of the air was of great importance.</p>
+<p>The country of the minitaks was located behind the Blue Lake. The little people never crossed that lake. They were afraid of getting caught by the caterpillars of those minitaks. And those caterpillars weren’t very curious at all. All they needed from the minitaks was food, which they received regularly through helicopters. It was a mixture of organic and inorganic substances that served as food for the minitaks.</p>
+<p>The Minitaks themselves were very small in size. This was due to the fact that they always worked on producing tiny objects. However, one of the old Minitaks told us that his grandfather, Minilap, once saw a Minitak that reached a height of thirty centimeters. This giant Minitak, whose name was Stiroflex, could lift a weight of about one kilogram with just one hand.</p>
+<p>“One day, we were sitting with Stiroflex,” said Grandpa Minilap. “We really wanted to smoke… But our cigarettes were gone. There was a chamomile plant nearby. ‘Shall we make cigarettes from the chamomile flowers?’ I asked Stiroflex. Well, Stiroflex agreed. But Grandpa Minilap couldn’t control himself at that time. He laughed loudly, with a trembling voice. Stiroflex picked a big flower from the chamomile plant. But he couldn’t make any cigarettes. That’s because his hands were huge and rough.” That’s what our giant, Stiroflex, was like! – said Grandpa Minilap.</p>
+<p>Stiroflex’s precise work wasn’t allowed to be done.</p>
+<p>He couldn’t even see a single molecule without a microscope. And the crystals he created were always distorted. The thin films he made either cracked or became too thick. As a result, he ruined even the simplest of components for the tachyon heads. The Minitaks knew 150 recipes for creating these components. They also made sure that the temperature on the island always remained exactly 25.5 degrees Celsius. It was at this temperature that the tachyon heads worked perfectly. Decreases in temperature happened rarely. The tachyon heads continued to function properly, and they continuously heated the sky with powerful beams from special flying platforms.</p>
+<p>It’s not difficult to understand why there was such a stir on the Island when, due to the negligence of Durakon-45, the air temperature dropped suddenly to 15 degrees Celsius. In the laboratories, the liquid filler for the tokotron heads became solidified, like sour milk. The tokotron heads were removed from their holders and placed in non-combustible cabinets. Only temporary covers remained, along with supplies of instructions and solutions. Panic spread everywhere. AutoSkok forgot the way to his friend Shpunik, and ended up at a factory that produced iron masks. The tokotron poet, Stichoslep, had his switch broken, and he could only write poems with incorrect punctuation marks. Due to the cold weather, he also ruined his poem dedicated to Durakon-45.</p>
+<p>I solve the equations.</p>
+<p>What is twice two? It’s five.</p>
+<p>I write poems instantly.</p>
+<p>I give them to you as a memento.</p>
+<p>The poems were printed on a narrow, long strip of paper that came out of the poet’s ear. It looked like this: “11 00 11 000……11 00000 11”.</p>
+<p>In the memory of the robots, everything was encoded in the form of numbers. The young robots, who were just made from metal, didn’t need to learn how to read or write. They could immediately pronounce the words that were written in numerical form in their memory devices. Each new robot had a small instruction manual in its mind, also created by Stichoshlep. This manual was inscribed on the head of the robot. If it were written out in words, it would read as follows:</p>
+<p>Regulate, monitor</p>
+<p>Please save a microsecond.</p>
+<p>Don’t send any signals, stupid.</p>
+<p>Don’t remember nonsense.</p>
+<p>As can be seen, in this early poem, Stichoshlepa has mixed up the emphasis on certain words. It’s obvious that the “switch” in his mind was malfunctioning, even before the temperature dropped.</p>
+<p>Meanwhile, the panic on Ostrvo gradually subsided. Around those incinerators, lines of people waiting to have their heads cremated began to form.</p>
+<p>Among the crowd of ordinary people, there was also Hamian-14. He was caught in a panic on his way from the airport to the repair shop. He also had to put his precious head into an incinerator. His head had the shape of a thin, spring-like cucumber, with a curled shape at the back. Hamian-14 kept only the pink-colored headpiece, along with a dozen small decorations. Keeping his identity hidden among the chaotic crowd, he waited anxiously for his turn to go through the incinerator. Finally, he received his head, which was decorated with pink strands made from waste materials. He carefully carried it to the oil pump.</p>
+<p>Several turkotrons, upon seeing the strange knob on Hamian-14, rushed away from it.</p>
+<p>“Turn off those thoughts! Turn off the fuses!” The crowd became noisy. This is Hamian-14. He’s about to turn off those thoughts. Be careful of those rays! Be careful of the fuses!</p>
+<p>The fuses clicked, and all the text on the screens disappeared.</p>
+<p>Hamian-14 angrily shook the pink-shaped device with its small screen. He didn’t want to be seen attaching his “ruptured head” to his body in front of others. So, he moved away from the lubrication point and headed towards a pile of junk, where all kinds of metal scraps were usually thrown away. There, Hamian-14 managed to fix his head in place using a small screw.</p>
+<p>Then, he pressed the black button behind his ear. His head started to move slowly, with a creaking sound. From time to time, sparks would fly out of his eyes. The crack on the back of his head, which resembled a soft mark, would flicker on and off, like a broken light bulb used for evening lighting.</p>
+<p>“It’s a terrible situation,” thought Hamian-14. He pressed the button on the noise-cancelling device, then waited for it to warm up. A buzzing sound came from the transformer in his neck. Hamian-14 opened the shield on his nose, allowing the probing rays to pass through. Minutes passed, but those rays never appeared.</p>
+<p>“It’s broken!” A panicked thought rushed through Hamian-14’s empty mind. That speaker, that device that allowed him to communicate with the inhabitants of the Isle of Machines, had broken, just like some old-fashioned regulator. It was completely useless now.</p>
+<p>Hamian-14 placed its head on all the coils, and began to think. The extremely thin magnetic tapes moved smoothly and silently in his head, just like the caramels that move along a conveyor belt in a bakery.</p>
+<p>“Who and when created that famous ‘tomato head’ with a suppressor that blocks new thoughts?”, remembered Hamian. “Why do turbos fear such a suppressor?” But his memory couldn’t give him any answers to these questions.</p>
+<p>All the Hamianas, from the 1st to the 14th, inherited from their predecessors a “head” with a headset that silenced any new thoughts. But where did this “head” come from, exactly?</p>
+<p>Hamian-14 didn’t know this.</p>
+<p>“Let’s not lose hope,” said Hamian to himself. “As long as there’s a repair shop on the Island, there’s no reason for despair.”</p>
+<p>He walked from the alley onto the street, where trucks were rushing along quickly, heading in various directions. Some of them moved smoothly along the railings, without stopping. Others approached the lubrication stations and quickly sprayed the heated parts with thin oil from the sprayer.</p>
+<p>Hamian-14 remembered that it hadn’t been inspected technically for a long time. His knees were creaking, and it was time to overhaul and lubricate them. The main oil pump hadn’t been filled with solid lubricating fluid since ancient times. The internal mechanisms were so dry that they were rubbing against each other like hot nuts.</p>
+<p>Hamian-14 approached the door, on which there was a sign with a glowing message: “1111-0000-00101101101”. This meant: “Don’t put yourself to the test!”</p>
+<p>Hamian-14 entered the column and received from the machine a set of wrench keys, along with a bottle containing the “Velvet” mixture. He carried all of this to one of the available stands.</p>
+<p>There were many lubricating devices in the area. Some of them were used to lubricate the shoulder joints. Others were used to lubricate the heated contacts. The young Tugotrons from Idiod, Klistron, and Vakukum talked loudly about the cold weather on the Island. They also frequently clicked their new switches under their arms.</p>
+<p>Hamian-14 listened to what they said, and quickly calmed down.</p>
+<p>No new ideas came up! Everything is fine! Then he remembered that his “thought suppressor” was broken. He became sad again.</p>
+<p>“Damn it! What a nuisance! I need to get my head fixed as soon as possible,” he muttered.</p>
+<p>Hamian-14 sat down on one of the stools. He unscrewed the first screw from the lid that covered the “belly” of the device. Usually, this lid was secured with five large screws, each shaped like a bell. But Hamian-14’s “belly” was now only held in place by one screw. The other screws were either lost or broken. So, as soon as Hamian-14 removed that single screw, the lid came off with a loud noise. Idiot pushed it towards Klistron, who in turn pushed it towards Vakum. And Vakum handed it over to Hamian-14.</p>
+<p>“Don’t you recognize me at all, idiot?” Hamian-14 wanted to shout this out. But he forgot to turn on the voice signal. So this question appeared only on the screen, in the form of numbers.</p>
+<p>But that was enough. On Ostrov, there wasn’t a single Tugotron that wouldn’t recognize that iron-like structure on Hamian-14’s head. On the screens of Idiod, Klistron, and Vakukum, a digital message instantly appeared, indicating the same thing that they had said in unison through their voice signals.</p>
+<p>We’re at fault! We got it wrong.</p>
+<p>After that, there was a period of silence, broken only by the sound of the lubricating fluid “Velvet” being sprayed on Hamian-14’s heated internal organs. After securing the lid with a screw, Hamian-14 covered his stomach with it. Then, he began to speak, paying attention to the crowd of people working in the workshop. Among them, he noticed Shatun and Autokopty, who were working in the workshop repairing heads.</p>
+<p>“Come here, please,” he said to them, in a friendly manner. To add some excitement, he also twirled the knob on his head.</p>
+<p>Shatun and Autokopty, with the clatter of their iron joints, approached Hamian-14.</p>
+<p>“Quickly – to the workshop!” he ordered.</p>
+<p>All three of them got out of the lubrication compartment. They stood on the railings and turned on the engines. The diesel engine and the Autokopyty pushed the Hamian-14 along the rails, carefully pushing it from behind, like a carriage carrying a baby. The pink strands of waste material rose above its head, revealing a horrible crack in its surface.</p>
+<p>In Autotram’s workshop, there was a normal, strict order. The plastic floor was polished to a shine. The components were placed on convenient shelves, while the spare parts were stored in colorful boxes with neatly labeled labels. Autotram sat in front of the control screen, observing the beginning of the first thoughts that would eventually become part of one of the young robots.</p>
+<p>Autotram decided to play a trial game with his new “head” in the toss-up game. He turned on all the settings of his “head” and already anticipated the pleasure of winning easily over this inexperienced new “head”. But then, the door opened, and Autotram saw that Shatun and Autokopyto had brought in Hamian-14, who was completely broken.</p>
+<p>“What happened?” Avtotram asked. For safety’s sake, he also turned off that corner of pleasant memories in his mind. He also feared the effects of Haminov’s mind-altering drug.</p>
+<p>Hamian-14 sat in a relaxed position, and threw one leg over the other.</p>
+<p>“You can go ahead,” he said to Shatun and Autokopty. “But stay nearby and wait for further instructions.”</p>
+<p>On Shatun’s and Autokoptyt’s screens, little bunches of forget-me-nots appeared, indicating that the memory function had been activated. They then disappeared. Hamian-14 unscrewed his head and placed it carelessly on Autotram’s desk. Now, with only his pink head remaining, he resembled Don Quixote, who was made up of pieces of broken objects. That tiny head with its screen turned towards Autotram, and a voice like Hamian-14’s voice came from it.</p>
+<p>Check to see if the doors to the workshop are properly locked. Then, get to work on fixing my head.</p>
+<p>The autotram reluctantly stopped playing that silly game and went to lock the door. He often repaired Hamian-14’s head, and he knew how suspicious he was.</p>
+<p>“It’s too loud,” Autotram thought angrily about Hamian-14. “That makes it difficult to maintain contact.”</p>
+<p>All the problems that occurred to Hamian-14 were usually easily resolved. It was forbidden to talk about the mysterious “silencer” that existed inside the iron head. Autotram never touched that black partition that separated the top part of Hamian’s head from the rest of his body.</p>
+<p>The old master stepped over to the table and began to examine Hamian-14’s head, which was buzzing with activity. When he saw the huge crack in Hamian-14’s head, Autotram whistled. (Tougtronos really liked to whistle with their ears. Autotram, being particularly musical, could whistle well with both his left and right ears.) The master opened the cover of Hamian-14’s head and started to check the circuits inside.</p>
+<p>“Tek-s,” he said, and then he took out the “Skokshlep” diagram.</p>
+<p>He connected it to the control panel. It worked smoothly, just like a nutcracker. Then he checked all the “flip-flop” circuits. They were a little sluggish, but it wasn’t a serious issue. Then the old mechanic started to remove the main destabilizing circuit. And then, there was a faint, barely audible crunching sound. This sound was so faint that even the collision of a mosquito with the window glass would seem like a thunderclap compared to it. But the sound detectors amplified this sound so much that the mechanic immediately realized the seriousness of the situation. He released powerful beams of light from his eyes, and began to carefully inspect the system that was causing the instability. Red lights appeared on his forehead. What all the technicians had feared happened. The connection between the system that caused the instability and the “thought suppressor” failed.</p>
+<p>The autotram hummed softly, filled with excitement. After all, in order to replace the three-wheeled vehicle, one had to open the cover of the “thought suppressor”. He looked towards Hamian-14. The small screen was turned toward him, and numbers appeared on it, indicating local swear words.</p>
+<p>“It’s not a good joke to play with him,” thought Autotram. “What should I do? Give up on fixing my head? Lose my title as the best master on Ostrov, and end up becoming scrap metal? Or open that box of mind suppressants? Do something that no one has ever dared to do?” He looked again at that hated Haman-14 screen. The numbers on it continued to glow, indicating insults and threats.</p>
+<p>“Ah, it was no use at all!” said Autotram to himself. Then, he started to use a screwdriver to pry open the black panel at the top of Hamian-14’s head.</p>
+<p>To his great surprise, the lid was secured using four standard-sized screws.</p>
+<p>“It’s strange that there’s no automatic lock with a secret mechanism,” thought Autotram. “Ah, I see,” he guessed. “Now, a current will strike me.” Then, he put on his red rubber shoes. After that, he took a screwdriver in his hands and began to unscrew the bolts.</p>
+<p>Nothing happened again. So, Autotram decided to take action.</p>
+<p>He removed the cover from it… and… it was empty! The “thought suppressor” box was actually empty!</p>
+<p>At that time, Sergey was preparing to jump from a flying platform using a rocket parachute. The Durakon-45 was ordered to immediately send a new tugboat to Ostrov.</p>
+<p>Sergey has already gotten into the rocket that’s mounted on the cut-off roof of the platform. He’s listening to the last explanations given by Durakon-45.</p>
+<p>It was very simple: the red button meant “起飞”, the white button meant “braking”, and the black button meant “landing”. But Durakon45 kept giving me boring and trivial advice.</p>
+<p>Don’t forget to tell them on the Island that your screen has been damaged for a long time. Otherwise, there will be rumors that I’ve actually torn off your head.</p>
+<p>“Try it out!” said Sergey quietly. “Okay!” he said loudly. “Don’t worry, Durakon! Give me the bicycle.”</p>
+<p>“What kind of bicycle?” asked Durakon-45. His contacts snapped into place. Ah, so that’s it. He grabbed the handlebars with his tentacles and easily lifted the bicycle up.</p>
+<p>Serezhya took the bicycle from the iron hand of the Tugotron and placed it on the rear wheel of the rocket. The Durakon-45 closed the hatch.</p>
+<p>Serezhka pressed the red button, and he heard a dull humming sound somewhere at the rear of the rocket. Through the transparent window, he saw blue beams emanating from the eyes of the rocket. But then, he quickly closed his eyes, as the rocket shook him violently, and he felt like he was being pressed down to the ground, as if weights were tied around his legs. The rocket separated from the flying platform and rushed upward, like a burst of fireworks. Serezhka opened his eyes again. The window moved from side to side, and then downward. The rocket began to descend.</p>
+<p>The most important thing is not to miss the moment when it’s necessary to turn off the engine and release the parachute. Then, the rocket will begin to descend slowly towards the ground. Sergey’s finger kept gently touching the black button. Finally, he couldn’t hold back any longer and pressed it. He completely forgot that he needed to slow down the rocket first. And then, what Durakon-45 had warned him about happened. The parachute was released too early, and it burst. The rocket continued to fall down at a terrifying speed. Sergey searched desperately for other buttons, trying to find something that could help him. The bicycle wheel pressed hard against his foot. He pulled his foot away from under the wheel. Suddenly, he saw some kind of pedal on the floor.</p>
+<p>Sergey also kicked it.</p>
+<p>Fortunately, it turned out to be an emergency switch. A huge green parachute came out of the rocket, and the rocket began to descend gracefully towards the ground. Sergey saw water below him. The rocket continued to descend, and he could now see the bridges in the distance. He flew over the bridges, and ended up on the other side of the lake, in the territory of the minitakks. He continued to fly almost right above the ground, covered in shiny green leaves. Eventually, the rocket crashed into the branches of some trees, and then it landed on the ground.</p>
+<p>It became completely quiet. Somewhere above, leaves were rustling.</p>
+<p>In the transparent window of the rocket, a sunbeam appeared. Sergey pulled on the handle located near the window. The wall began to move sideways, just like a door in a train carriage. He stepped out of the rocket and found himself surrounded by huge thistles. After taking a few steps, he stopped. Beneath the thistles, there was a lot of noise, shouting, and chaos. The thistles were swaying back and forth.</p>
+<p>“Stop!” someone shouted.</p>
+<p>A wave ran across the grass. Serzh stepped forward and saw a small, exhausted man with messy red hair.</p>
+<p>“The fences are gone!” he cried. Then, he disappeared back into the thick bushes.</p>
+<p>Surprised, Sergey saw that the dandelions surrounding him began to fall to the ground with a crunching sound. A crowd of little creatures rushed towards Sergey. They were Miniatiks. They pushed each other away, shouting and screaming.</p>
+<p>...</p>
+    </main>
+</body>
+</html>
