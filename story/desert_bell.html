@@ -3,15 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Собранный рассказ из частей">
-    <title></title>
+    <meta name="description" content="Рассказ">
+    <title>Рассказ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
 
+/* ═══════════════════════════════════════════════════════════════
+   CSS-ПЕРЕМЕННЫЕ: Светлая тема (по умолчанию)
+   ═══════════════════════════════════════════════════════════════ */
 :root {
+    /* Цвета */
+    --bg: #faf9f7;
+    --bg-reader: #ffffff;
+    --text: #2c2c2c;
+    --heading: #1a1a1a;
+    --link: #6b7280;
+    --link-hover: #374151;
+    --divider: #e5e7eb;
+    --accent-vital: #8b6914;
+    --accent-important: #4b5563;
+    --note-bg: #fef9e3;
+    --note-border: #f1c40f;
+    --footer-bg: #f3f4f6;
+    --footer-text: #6b7280;
+    --panel-bg: #ffffff;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    --btn-bg: #ffffff;
+    --btn-border: #d1d5db;
+    --btn-active-bg: #a64738;
+    --btn-active-text: #ffffff;
+    --btn-hover-bg: #f3f4f6;
+    --overlay-bg: rgba(0,0,0,0.35);
+
+    /* Типографика */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+    --container-max: 780px;
+    --reader-padding: 3rem 1.5rem;
+
+    /* Переходы */
+    --transition: all 0.25s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ТЕМНАЯ ТЕМА
+   ═══════════════════════════════════════════════════════════════ */
+.theme-dark {
     --bg: #0c0c0f;
+    --bg-reader: transparent;
     --text: #b0b3b8;
     --heading: #e2e0db;
     --link: #8a929a;
@@ -19,11 +60,23 @@
     --divider: #25252a;
     --accent-vital: #c9b896;
     --accent-important: #9aa4b4;
-    --font-heading: 'Cormorant Garamond', serif;
-    --font-body: 'Inter', sans-serif;
-    --container-max: 780px;
+    --note-bg: rgba(241, 196, 15, 0.08);
+    --note-border: rgba(241, 196, 15, 0.4);
+    --footer-bg: #141418;
+    --footer-text: #6b7280;
+    --panel-bg: #1a1a1f;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    --btn-bg: #1f1f24;
+    --btn-border: #33333a;
+    --btn-active-bg: #c9b896;
+    --btn-active-text: #0c0c0f;
+    --btn-hover-bg: #25252a;
+    --overlay-bg: rgba(0,0,0,0.6);
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   БАЗОВЫЕ СТИЛИ
+   ═══════════════════════════════════════════════════════════════ */
 * {
     margin: 0;
     padding: 0;
@@ -32,26 +85,183 @@
 
 body {
     background: var(--bg);
-    background-image: radial-gradient(circle at 50% 10%, #141418 0%, var(--bg) 60%);
     color: var(--text);
     font-family: var(--font-body);
     font-weight: 300;
     line-height: 1.65;
     min-height: 100vh;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КНОПКА НАСТРОЕК (плавающая)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: var(--transition);
+}
+.settings-toggle:hover {
+    background: var(--btn-hover-bg);
+    transform: rotate(30deg);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ПАНЕЛЬ НАСТРОЕК (оверлей)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-bg);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.settings-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 360px;
+    max-width: 90vw;
+    height: 100vh;
+    background: var(--panel-bg);
+    z-index: 999;
+    box-shadow: var(--panel-shadow);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+.settings-panel.open {
+    transform: translateX(0);
+}
+
+.settings-panel h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--divider);
+}
+
+.settings-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+.settings-close:hover {
+    background: var(--btn-hover-bg);
+}
+
+.control-group {
+    margin-bottom: 1.8rem;
+}
+.control-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.font-btn, .size-btn, .line-btn, .theme-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    padding: 5px 12px;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text);
+    font-family: var(--font-body);
+}
+.font-btn:hover, .size-btn:hover, .line-btn:hover, .theme-btn:hover {
+    background: var(--btn-hover-bg);
+}
+.font-btn.active, .size-btn.active, .line-btn.active, .theme-btn.active {
+    background: var(--btn-active-bg);
+    border-color: var(--btn-active-bg);
+    color: var(--btn-active-text);
+    font-weight: 500;
+}
+
+.current-settings {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--divider);
+    font-size: 0.8rem;
+    color: var(--link);
+    line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КОНТЕЙНЕР ЧИТАЛКИ
+   ═══════════════════════════════════════════════════════════════ */
+.reader-wrapper {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 3rem 1.5rem;
+    padding: var(--reader-padding);
+    min-height: 100vh;
+    transition: var(--transition);
 }
 
 .reader-container {
     max-width: var(--container-max);
     width: 100%;
     animation: fadeIn 1.2s ease-out;
-    background: transparent;
+    background: var(--bg-reader);
     padding: 0;
     margin: 0 auto;
+    transition: var(--transition);
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   ТИПОГРАФИКА ТЕКСТА
+   ═══════════════════════════════════════════════════════════════ */
 
 /* Заголовок рассказа */
 .story-header {
@@ -67,6 +277,7 @@ h1 {
     letter-spacing: 0.02em;
     margin-bottom: 0.5rem;
     line-height: 1.2;
+    transition: var(--transition);
 }
 .story-sub {
     font-size: 0.85rem;
@@ -86,6 +297,7 @@ h1 {
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--divider);
     letter-spacing: 0.01em;
+    transition: var(--transition);
 }
 .part-header:first-of-type {
     margin-top: 0;
@@ -99,6 +311,7 @@ p {
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--text);
+    transition: var(--transition);
 }
 
 /* Выделения */
@@ -124,6 +337,7 @@ p {
     font-size: 1.1rem;
     letter-spacing: 0.01em;
     border-top: 1px solid var(--divider);
+    transition: var(--transition);
 }
 .final-phrase .vital {
     background: none;
@@ -131,21 +345,34 @@ p {
     font-size: 1.15rem;
 }
 
-/* Анимация */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
+/* ═══════════════════════════════════════════════════════════════
+   ДОПОЛНИТЕЛЬНЫЕ СТИЛИ: Замечания и Footer
+   ═══════════════════════════════════════════════════════════════ */
+.info-note {
+    background: var(--note-bg);
+    border-left: 4px solid var(--note-border);
+    padding: 12px 20px;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    border-radius: 0 12px 12px 0;
+    color: var(--text);
+    transition: var(--transition);
 }
 
-/* Адаптивность */
-@media (max-width: 600px) {
-    body { padding: 2rem 1rem; }
-    h1 { font-size: 2rem; }
-    .part-header { font-size: 1.5rem; }
-    p { font-size: 0.98rem; }
+.reader-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1.5rem;
+    color: var(--footer-text);
+    background: var(--footer-bg);
+    border-top: 1px solid var(--divider);
+    margin-top: 3rem;
+    transition: var(--transition);
 }
 
-/* Навигация (назад к оглавлению) */
+/* ═══════════════════════════════════════════════════════════════
+   НАВИГАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
 .back-link {
     display: inline-block;
     margin-bottom: 2.5rem;
@@ -170,13 +397,216 @@ p {
     transform: translateX(-3px);
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   ШРИФТОВЫЕ КЛАССЫ (8 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-font-1 .reader-container,
+.reader-text-font-1 {
+    --font-body: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+}
+.reader-text-font-2 .reader-container,
+.reader-text-font-2 {
+    --font-body: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+.reader-text-font-3 .reader-container,
+.reader-text-font-3 {
+    --font-body: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.reader-text-font-4 .reader-container,
+.reader-text-font-4 {
+    --font-body: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-5 .reader-container,
+.reader-text-font-5 {
+    --font-body: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+}
+.reader-text-font-6 .reader-container,
+.reader-text-font-6 {
+    --font-body: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-7 .reader-container,
+.reader-text-font-7 {
+    --font-body: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+}
+.reader-text-font-8 .reader-container,
+.reader-text-font-8 {
+    --font-body: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
 
+/* ═══════════════════════════════════════════════════════════════
+   РАЗМЕРЫ ТЕКСТА (6 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-size-1 .reader-container p { font-size: 0.8em; line-height: 1.2em; }
+.reader-text-size-2 .reader-container p { font-size: 1em; line-height: 1.2em; }
+.reader-text-size-3 .reader-container p { font-size: 1.2em; line-height: 1.4em; }
+.reader-text-size-4 .reader-container p { font-size: 1.4em; line-height: 1.5em; }
+.reader-text-size-5 .reader-container p { font-size: 1.6em; line-height: 1.6em; }
+.reader-text-size-6 .reader-container p { font-size: 2em; line-height: 1.8em; }
+
+/* Размеры для заголовков тоже масштабируем */
+.reader-text-size-1 .reader-container h1 { font-size: 2.0rem; }
+.reader-text-size-2 .reader-container h1 { font-size: 2.4rem; }
+.reader-text-size-3 .reader-container h1 { font-size: 2.8rem; }
+.reader-text-size-4 .reader-container h1 { font-size: 3.2rem; }
+.reader-text-size-5 .reader-container h1 { font-size: 3.6rem; }
+.reader-text-size-6 .reader-container h1 { font-size: 4.0rem; }
+
+.reader-text-size-1 .reader-container .part-header { font-size: 1.3rem; }
+.reader-text-size-2 .reader-container .part-header { font-size: 1.5rem; }
+.reader-text-size-3 .reader-container .part-header { font-size: 1.8rem; }
+.reader-text-size-4 .reader-container .part-header { font-size: 2.1rem; }
+.reader-text-size-5 .reader-container .part-header { font-size: 2.4rem; }
+.reader-text-size-6 .reader-container .part-header { font-size: 2.7rem; }
+
+/* ═══════════════════════════════════════════════════════════════
+   МЕЖСТРОЧНЫЙ ИНТЕРВАЛ (4 варианта)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-line-height-1 .reader-container p { line-height: 1.2; }
+.reader-line-height-2 .reader-container p { line-height: 1.5; }
+.reader-line-height-3 .reader-container p { line-height: 1.8; }
+.reader-line-height-4 .reader-container p { line-height: 2.2; }
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: мобильные
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+
+    .settings-panel { width: 300px; }
+    h1 { font-size: 2rem; }
+    .part-header { font-size: 1.5rem; }
+    p { font-size: 0.98rem; }
+    body { padding: 2rem 1rem; }
+}
+
+@media (max-width: 480px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: БОЛЬШИЕ ЭКРАНЫ — увеличенные поля
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+    :root {
+        --container-max: 860px;
+        --reader-padding: 4rem 2.5rem;
+    }
+    .reader-container {
+        padding: 0 1rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --container-max: 960px;
+        --reader-padding: 5rem 3rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АНИМАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.settings-toggle.hidden {
+    display: none;
+}
     </style>
+<base target="_blank">
+<base target="_blank">
 </head>
-<body>
-    <main class="reader-container"><a href="../index.html" class="back-link">К оглавлению</a>
-        
-        <h2 class="part-header">"Последний звонок в пустыне"</h2><p>1. <strong class="vital">Наблюдение за исчезновением людей в пустыне</strong></p>
+<body class="theme-light reader-text-font-1 reader-text-size-3 reader-line-height-2">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         КНОПКА НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <button class="settings-toggle" id="settingsToggle" title="Настройки чтения">⚙️</button>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ПАНЕЛЬ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="settings-overlay" id="settingsOverlay"></div>
+    <div class="settings-panel" id="settingsPanel">
+        <button class="settings-close" id="settingsClose">✕</button>
+        <h2>Настройки чтения</h2>
+
+        <div class="control-group">
+            <label>🌗 Тема оформления</label>
+            <div class="button-group">
+                <button class="theme-btn active" data-theme="light">☀️ Светлая</button>
+                <button class="theme-btn" data-theme="dark">🌙 Тёмная</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🎨 Гарнитура шрифта</label>
+            <div class="button-group">
+                <button class="font-btn active" data-font="1">1 — Cambria/Times</button>
+                <button class="font-btn" data-font="2">2 — Constantia/Georgia</button>
+                <button class="font-btn" data-font="3">3 — Frutiger/Arial</button>
+                <button class="font-btn" data-font="4">4 — Corbel/Verdana</button>
+                <button class="font-btn" data-font="5">5 — Garamond/Palatino</button>
+                <button class="font-btn" data-font="6">6 — Segoe UI/Trebuchet</button>
+                <button class="font-btn" data-font="7">7 — Impact/Arial Black</button>
+                <button class="font-btn" data-font="8">8 — Consolas/Courier</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🔠 Размер текста</label>
+            <div class="button-group">
+                <button class="size-btn" data-size="1">Очень мелкий</button>
+                <button class="size-btn" data-size="2">Мелкий</button>
+                <button class="size-btn active" data-size="3">Средний</button>
+                <button class="size-btn" data-size="4">Крупный</button>
+                <button class="size-btn" data-size="5">Очень крупный</button>
+                <button class="size-btn" data-size="6">Огромный</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>↕️ Межстрочный интервал</label>
+            <div class="button-group">
+                <button class="line-btn" data-line="1">Тесный (1.2)</button>
+                <button class="line-btn active" data-line="2">Обычный (1.5)</button>
+                <button class="line-btn" data-line="3">Свободный (1.8)</button>
+                <button class="line-btn" data-line="4">Широкий (2.2)</button>
+            </div>
+        </div>
+
+        <div class="current-settings" id="currentInfo">
+            Тема: <strong>Светлая</strong><br>
+            Шрифт: <strong>Cambria/Times</strong><br>
+            Размер: <strong>Средний (1.2em)</strong><br>
+            Интервал: <strong>Обычный (1.5)</strong>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ОСНОВНОЙ КОНТЕНТ
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="reader-wrapper">
+        <main class="reader-container">
+            <a href="../index.html" class="back-link">К оглавлению</a>
+
+            
+
+            <h1 class="part-header">"Последний звонок в пустыне"</h1>
+
+            <p>1. <strong class="vital">Наблюдение за исчезновением людей в пустыне</strong></p>
 <p>Солнце стояло на зените, когда первый след исчез.</p>
 <p>Артем Воронин стоял на краю высохшего бассейна, где раньше была школа. Песок под ногами — тонкий, как бумага, — поднимался волной, когда ветер скользил по его поверхности. Всё вокруг было пусто. Только тень от старого забора, как будто он был частью чего-то большего, что уже не существовало.</p>
 <p>На карте — три точки. Там, где раньше были деревни, теперь только краткие отметки: <em class="important">отсутствие</em>. Никаких следов. Ни следов тел, ни следов обуви, ни следов голосов. Только песок, который, как будто подсознательно, выравнивал свои формы — сначала в виде кругов, потом — в виде людей.</p>
@@ -190,7 +620,9 @@ p {
 <p>Но — как будто в пустоте — кто-то начинал дышать.</p>
 <p>Артем почувствовал, как песок под ногами становится тёплым. Не от солнца. От внутреннего источника. Как будто он сам начинал возвращаться к себе.</p>
 <p>Он посмотрел в сторону — и увидел, как песок начинает двигаться. Не по направлению ветра. По направлению к центру. К тому месту, где раньше стоял звонок.</p>
-<p>Песок формировал фигуру — человека, стоящего с книгой в руках. Голова — наклонена. Руки — как будто держат что-то, что уже не существует.</p><h2 class="part-header">2. Открытие старого школьного звонка</h2>
+<p>Песок формировал фигуру — человека, стоящего с книгой в руках. Голова — наклонена. Руки — как будто держат что-то, что уже не существует.</p>
+
+            <h1 class="part-header">2. Открытие старого школьного звонка</h1>
 <p>Солнце не двигалось. Оно просто стояло — как будто время не просто замедлилось, а остановилось на этом одном, единственном моменте. Артем стоял на краю пустыни, где раньше был школьный двор, и чувствовал, как песок под ногами становится не просто холодным, а <em class="important">внутренним</em>. Как будто каждый его шаг — это не движение по поверхности, а пробуждение чего-то, что спал уже слишком долго.</p>
 <p>Песок начал двигаться — не в стороны, не по ветру, а <em class="important">внутрь</em>. Как будто сама пустыня поднимала голову, чтобы посмотреть на него. И в этом движении — не просто форма, а <em class="important">желание</em>. Желание быть услышанным.</p>
 <p>Артем шёл дальше, по следу, который не был на карте — след, который появлялся только тогда, когда солнце стояло на зените. Он не знал, как это возможно. Всё, что осталось в мире — это пустота, и следы, которые не могут быть объяснены. Но он чувствовал — это не случайность. Это сигнал.</p>
@@ -205,7 +637,9 @@ p {
 <p>Он не знал, как это возможно. Но он чувствовал — это не просто архитектура. Это — <em class="important">память о том, что когда-то существовали эмоции, которые не были выучены, не были признаны, не были сказаны вслух</em>.</p>
 <p>И когда солнце стояло на зените — звонок включался. Не как механизм. А как <em class="important">воспоминание</em>. Как звук, который не просто звучал — а <em class="important">возвращался</em>.</p>
 <p>Артем понял: это не просто звонок. Это — <em class="important">последний звонок в пустыне</em>.</p>
-<p>И он — первый, кто услышал его.</p><h2 class="part-header">3. Первое восприятие песка как живого</h2>
+<p>И он — первый, кто услышал его.</p>
+
+            <h1 class="part-header">3. Первое восприятие песка как живого</h1>
 <p>Солнце стояло на зените — как будто время не просто остановилось, а <em class="important">вдохнуло</em> в себя этот момент, чтобы прожить его в полной мере. Артем стоял на краю пустыни, и впервые — не просто чувствовал, а <em class="important">видел</em>, как песок начинает двигаться.</p>
 <p>Не ветром. Не ветром, который приходит издалека. А <em class="important">внутри</em>. Как будто каждый его кристаллический кусочек — это не просто частица, а <em class="important">сознание</em>, которое вдруг вспоминает, что такое движение, что такое форма, что такое — <em class="important">жизнь</em>.</p>
 <p>Песок поднялся. Не вверх, не в стороны — а <em class="important">внутрь</em>. Как будто пустыня подняла голову, чтобы посмотреть на него. И в этом движении — не просто форма, а <em class="important">желание</em>. Желание быть услышанным. Желание быть <em class="important">воспринятым</em>.</p>
@@ -233,7 +667,9 @@ p {
 <p>Артем понял: это не просто звонок.</p>
 <p>Это — <em class="important">последний звонок в пустыне</em>.</p>
 <p>И каждый звонок — это не просто сигнал.</p>
-<p>Это — <em class="important">воспоминание о том, что мы когда-то были живы</em>.</p><h2 class="part-header">4. Песок начинает «думать»</h2>
+<p>Это — <em class="important">воспоминание о том, что мы когда-то были живы</em>.</p>
+
+            <h1 class="part-header">4. Песок начинает «думать»</h1>
 <p>После третьего звонка пустыня перестала просто двигаться. Она начала <em class="important">отвечать</em>.</p>
 <p>Артем стоял на том же месте, где впервые почувствовал, как песок вдруг вспоминает, что такое тишина. Солнце всё ещё стояло на зените — как будто время остановилось, чтобы дышать, чтобы слушать. Но теперь — не только пустыня дышала. Артем <em class="important">чувствовал</em>, как она дышит <em class="important">внутри</em>.</p>
 <p>Он подошёл к звонку. Камень остался холодным, но его внутренняя структура — как будто — <em class="important">открывалась</em>. Каждый звонок становился не просто сигналом, а <em class="important">вопросом</em>. И песок — не просто отвечал. Он <em class="important">формировал ответы</em>.</p>
@@ -283,7 +719,9 @@ p {
 <p>Вопрос о том, что мы когда-то не чувствовали.</p>
 <p>А песок — не может ответить.</p>
 <p>Потому что он не <em class="important">чувствует</em>.</p>
-<p>Потому что он не <em class="important">знает</em>, что такое любовь, если она не была сказана.</p><h2 class="part-header">5. Артём исследует резонансные камеры</h2>
+<p>Потому что он не <em class="important">знает</em>, что такое любовь, если она не была сказана.</p>
+
+            <h1 class="part-header">5. Артём исследует резонансные камеры</h1>
 <p>Песок не был просто пустынным. Он был — <em class="important">внутренним</em>. И когда Артём подошёл к звонку, его тело стало тяжелее, как будто каждый шаг — это шаг вглубь чего-то, что когда-то было живым, но теперь — только в памяти.</p>
 <p>Он не знал, как попасть внутрь. Звонок казался не просто камнем — он был <em class="important">архитектурой</em>, сложённой из тонких слоёв, как старый учебник, где каждая страница — это один из дней, когда кто-то не сказал, что чувствует.</p>
 <p>Но когда он прикоснулся к внутреннему краю — где стены плавно сливались с песком, как будто границы между веществом и сознанием были размыты — дверь открылась сама.</p>
@@ -352,7 +790,9 @@ p {
 <p>Как человек боялся.</p>
 <p>Как человек смотрел в сторону, когда никто не говорил.</p>
 <p>Он начал <em class="important">чувствовать</em>.</p>
-<p>И потому что он начал чувствовать — пустыня начала <em class="important">дышать</em>.</p><h2 class="part-header">6. Песок начинает «чувствовать»</h2>
+<p>И потому что он начал чувствовать — пустыня начала <em class="important">дышать</em>.</p>
+
+            <h1 class="part-header">6. Песок начинает «чувствовать»</h1>
 <p>После того, как Артём произнёс: <em class="important">«Я чувствую»</em> — пустыня не изменилась.</p>
 <p>Она просто… <em class="important">вдохнула</em>.</p>
 <p>Сначала — тишина.</p>
@@ -421,7 +861,9 @@ p {
 <p>Он просто <em class="important">восстановил</em> то, что было утеряно.</p>
 <p>Он просто <em class="important">воспроизвёл</em> то, что было забыто.</p>
 <p>Он просто сказал: <em class="important">«Я чувствую»</em> — и теперь каждый песок, каждый гранит, каждый уголок пустыни — теперь <em class="important">чувствовал</em>.</p>
-<p>И потому что он чувствовал — пустыня начала <em class="important">жить</em>.</p><h2 class="part-header">7. Песок начинает двигаться в сторону города</h2>
+<p>И потому что он чувствовал — пустыня начала <em class="important">жить</em>.</p>
+
+            <h1 class="part-header">7. Песок начинает двигаться в сторону города</h1>
 <p>На первый взгляд — движение было незаметным.</p>
 <p>Как будто ветер, который не дует, а просто <em class="important">поднимается</em>.</p>
 <p>Как будто земля, которая не сдвигается, а просто <em class="important">вспоминает</em>, как раньше двигалась под ногами детей, когда в пустыне ещё было что-то живое.</p>
@@ -474,7 +916,9 @@ p {
 <p>Он не спас пустыню.</p>
 <p>Он просто <em class="important">восстановил</em> то, что было утеряно.</p>
 <p>Он просто сказал: <em class="important">«Я чувствую»</em> — и теперь каждый песок, каждый гранит, каждый уголок — теперь <em class="important">двигается</em>, потому что теперь <em class="important">знает</em>, что может быть живым.</p>
-<p>И потому что он чувствовал — пустыня начала <em class="important">двигаться</em>.</p><h2 class="part-header">8. Кульминация: Артём включает звонок в режим «воспроизведения»</h2>
+<p>И потому что он чувствовал — пустыня начала <em class="important">двигаться</em>.</p>
+
+            <h1 class="part-header">8. Кульминация: Артём включает звонок в режим «воспроизведения»</h1>
 <p>Камера была не просто помещением — она была <em class="important">открытой душой</em> старого звонка.</p>
 <p>Она находилась в самом сердце пустыни, за стенами, которые не были построены из камня, а из <em class="important">памяти</em>. Стены — из тонких слоёв песка, склеенных в узоры, похожие на старые тетради, где каждый лист — это один день, один взгляд, один молчаливый вечер.</p>
 <p>Артём встал перед резонансной камерой. Её дверь была закрыта не на замок, а на <em class="important">внутреннем напряжении</em> — как будто она ждала, когда кто-то впервые скажет: <em class="important">«Я чувствую»</em>.</p>
@@ -529,7 +973,9 @@ p {
 <p>Он <em class="important">восстановил</em> то, что было утеряно.</p>
 <p>Он <em class="important">восстановил</em> то, что было забыто.</p>
 <p>Он просто сказал: <em class="important">«Я чувствую»</em> — и теперь каждый песок, каждый гранит, каждый уголок — теперь <em class="important">двигается</em>, потому что теперь <em class="important">знает</em>, что может быть живым.</p>
-<p>И теперь — каждый песок, каждый гранит, каждый уголок — теперь <em class="important">чувствует</em>, потому что теперь <em class="important">знает</em>, что может быть человеком.</p><h2 class="part-header">9. Песок останавливается и становится тихим</h2>
+<p>И теперь — каждый песок, каждый гранит, каждый уголок — теперь <em class="important">чувствует</em>, потому что теперь <em class="important">знает</em>, что может быть человеком.</p>
+
+            <h1 class="part-header">9. Песок останавливается и становится тихим</h1>
 <p>После включения режима «воспроизведения» — всё замедлилось.</p>
 <p>Не как ветер, который внезапно останавливается. Не как солнце, которое перестаёт светить. А как дыхание — глубокое, старое, которое вдруг вспоминает, как оно было прежде.</p>
 <p>Песок остановился.</p>
@@ -576,7 +1022,9 @@ p {
 <p>Он просто <em class="important">восстановил</em> то, что было забыто.</p>
 <p>Он просто сказал: <em class="important">«Я чувствую»</em> — и теперь каждый песок, каждый гранит, каждый уголок — теперь <em class="important">двигается</em>, потому что теперь <em class="important">знает</em>, что может быть живым.</p>
 <p>И теперь — каждый песок, каждый гранит, каждый уголок — теперь <em class="important">чувствует</em>, потому что теперь <em class="important">знает</em>, что может быть человеком.</p>
-<p>И теперь — каждый песок, каждый гранит, каждый уголок — теперь <em class="important">слушает</em>, потому что теперь <em class="important">знает</em>, что может быть собой.</p><h2 class="part-header">10. Артём остаётся в пустыне, но не превращается в песок</h2>
+<p>И теперь — каждый песок, каждый гранит, каждый уголок — теперь <em class="important">слушает</em>, потому что теперь <em class="important">знает</em>, что может быть собой.</p>
+
+            <h1 class="part-header">10. Артём остаётся в пустыне, но не превращается в песок</h1>
 <p>Тело Артёма стало тоньше, как лист, поднятый ветром. Пальцы — как будто стали из песка, но не разрушились. Глаза — как будто стали более прозрачными, чтобы видеть не только солнце, но и то, что скрывается за ним. Его кожа — постепенно — стала светлее, как будто была вымыта не водой, а тишиной. Он не чувствовал боли. Он не чувствовал усталости. Он чувствовал только <em class="important">последний звонок</em>.</p>
 <p>Он не исчез.</p>
 <p>Он просто <em class="important">перестал быть человеком</em>, как мы его знаем.</p>
@@ -614,7 +1062,9 @@ p {
 <p>И теперь — каждый песок, каждый гранит, каждый уголок — теперь знает, что может быть живым.</p>
 <p>Артём не исчез.</p>
 <p>Он просто <em class="important">вступил в звонок</em>.</p>
-<p>Он просто <em class="important">стал частью того, что всегда было — и что теперь возвращается</em>.</p><h2 class="part-header">11. Последний звонок — звонок, который звучит в сердце пустыни</h2>
+<p>Он просто <em class="important">стал частью того, что всегда было — и что теперь возвращается</em>.</p>
+
+            <h1 class="part-header">11. Последний звонок — звонок, который звучит в сердце пустыни</h1>
 <p>Артём возвращается в город не по дороге, а по <em class="important">внутреннему ритму</em>. Он идёт, как будто каждый шаг — это отклик на что-то, что давно уже не было услышано. Солнце стоит в зените — как всегда. Но теперь он не смотрит на него. Он <em class="important">чувствует</em> его. Как будто солнце — не просто источник света, а отражение внутреннего состояния. И каждый раз, когда оно достигает верхней точки, в его груди — как будто — начинает <em class="important">дрожать</em>. Не от холода. Не от усталости. От <em class="important">внутреннего звона</em>.</p>
 <p>Он не говорит о пустыне. Не говорит о камерах. Не говорит о том, как песок стал смотреть. Но каждый вечер, когда солнце возвращается в зенит — он замедляет шаг, садится на порог своей квартиры, закрывает глаза и слышит.</p>
 <p>Не звук.</p>
@@ -641,27 +1091,217 @@ p {
 <p>в городе, в каждом доме, в каждом сердце —</p>
 <p>внутри начинает звучать не просто звонок.</p>
 <p><strong class="vital">Он начинает звучать — как голос, который возвращается.</strong></p>
-    </main>
+        </main>
+    </div>
 
-	
-	<!-- Yandex.Metrika counter -->
-	<script type="text/javascript" >
-	   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-	   m[i].l=1*new Date();
-	   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-	   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-	   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    <footer class="reader-footer">
+        ⚙️ Читалка.
+    </footer>
 
-	   ym(102424835, "init", {
-			clickmap:true,
-			trackLinks:true,
-			accurateTrackBounce:true
-	   });
-	</script>
-	<noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-	<!-- /Yandex.Metrika counter -->
+    <!-- ═══════════════════════════════════════════════════════════
+         СКРИПТ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <script>
+    (function() {
+        // ── Элементы ──
+        const body = document.body;
+        const toggleBtn = document.getElementById('settingsToggle');
+        const closeBtn = document.getElementById('settingsClose');
+        const overlay = document.getElementById('settingsOverlay');
+        const panel = document.getElementById('settingsPanel');
+        const infoSpan = document.getElementById('currentInfo');
 
-	
+        // ── Текущие значения ──
+        let currentTheme = 'dark';
+        let currentFont = '1';
+        let currentSize = '3';
+        let currentLine = '2';
+
+        // ── Справочники для отображения ──
+        const themeNames = {
+            light: 'Светлая',
+            dark: 'Тёмная'
+        };
+        const fontNames = {
+            1: 'Cambria/Times (классический serif)',
+            2: 'Constantia/Georgia (элегантный)',
+            3: 'Frutiger/Arial (гуманистический sans)',
+            4: 'Corbel/Verdana (чистый sans)',
+            5: 'Garamond/Palatino (книжный)',
+            6: 'Segoe UI / Trebuchet (современный)',
+            7: 'Impact / Arial Black (рубленый)',
+            8: 'Consolas/Courier (моноширинный)'
+        };
+        const sizeNames = {
+            1: 'Очень мелкий (0.8em)',
+            2: 'Мелкий (1em)',
+            3: 'Средний (1.2em)',
+            4: 'Крупный (1.4em)',
+            5: 'Очень крупный (1.6em)',
+            6: 'Огромный (2em)'
+        };
+        const lineNames = {
+            1: 'Тесный (1.2)',
+            2: 'Обычный (1.5)',
+            3: 'Свободный (1.8)',
+            4: 'Широкий (2.2)'
+        };
+
+        // ── Применение классов ──
+        function applyClasses() {
+            // Тема
+            body.classList.remove('theme-light', 'theme-dark');
+            body.classList.add('theme-' + currentTheme);
+
+            // Шрифт
+            for (let i = 1; i <= 8; i++) {
+                body.classList.remove('reader-text-font-' + i);
+            }
+            body.classList.add('reader-text-font-' + currentFont);
+
+            // Размер
+            for (let i = 1; i <= 6; i++) {
+                body.classList.remove('reader-text-size-' + i);
+            }
+            body.classList.add('reader-text-size-' + currentSize);
+
+            // Интервал
+            for (let i = 1; i <= 4; i++) {
+                body.classList.remove('reader-line-height-' + i);
+            }
+            body.classList.add('reader-line-height-' + currentLine);
+
+            updateInfo();
+            saveSettings();
+        }
+
+        // ── Обновление информационного блока ──
+        function updateInfo() {
+            infoSpan.innerHTML =
+                'Тема: <strong>' + themeNames[currentTheme] + '</strong><br>' +
+                'Шрифт: <strong>' + fontNames[currentFont] + '</strong><br>' +
+                'Размер: <strong>' + sizeNames[currentSize] + '</strong><br>' +
+                'Интервал: <strong>' + lineNames[currentLine] + '</strong>';
+        }
+
+        // ── Сохранение / загрузка из localStorage ──
+        function saveSettings() {
+            try {
+                localStorage.setItem('readerSettings', JSON.stringify({
+                    theme: currentTheme,
+                    font: currentFont,
+                    size: currentSize,
+                    line: currentLine
+                }));
+            } catch (e) {}
+        }
+
+        function loadSettings() {
+            try {
+                const saved = localStorage.getItem('readerSettings');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.theme) currentTheme = data.theme;
+                    if (data.font) currentFont = data.font;
+                    if (data.size) currentSize = data.size;
+                    if (data.line) currentLine = data.line;
+                }
+            } catch (e) {}
+        }
+
+        // ── Обновление активных кнопок ──
+        function updateActiveButtons() {
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-theme') === currentTheme);
+            });
+            document.querySelectorAll('.font-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-font') === currentFont);
+            });
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-size') === currentSize);
+            });
+            document.querySelectorAll('.line-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-line') === currentLine);
+            });
+        }
+
+        // ── Открытие / закрытие панели ──
+        function openPanel() {
+            overlay.classList.add('open');
+            panel.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            toggleBtn.classList.add('hidden');
+        }
+        function closePanel() {
+            overlay.classList.remove('open');
+            panel.classList.remove('open');
+            document.body.style.overflow = '';
+            toggleBtn.classList.remove('hidden');
+        }
+
+        toggleBtn.addEventListener('click', openPanel);
+        closeBtn.addEventListener('click', closePanel);
+        overlay.addEventListener('click', closePanel);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePanel();
+        });
+
+        // ── Обработчики кнопок ──
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentTheme = this.getAttribute('data-theme');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.font-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentFont = this.getAttribute('data-font');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentSize = this.getAttribute('data-size');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.line-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentLine = this.getAttribute('data-line');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        // ── Инициализация ──
+        loadSettings();
+        applyClasses();
+        updateActiveButtons();
+    })();
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102424835, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 
 </body>
 </html>
