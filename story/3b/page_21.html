@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Рассказ">
+    <title>Рассказ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+
+/* ═══════════════════════════════════════════════════════════════
+   CSS-ПЕРЕМЕННЫЕ: Светлая тема (по умолчанию)
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+    /* Цвета */
+    --bg: #faf9f7;
+    --bg-reader: #ffffff;
+    --text: #2c2c2c;
+    --heading: #1a1a1a;
+    --link: #6b7280;
+    --link-hover: #374151;
+    --divider: #e5e7eb;
+    --accent-vital: #8b6914;
+    --accent-important: #4b5563;
+    --note-bg: #fef9e3;
+    --note-border: #f1c40f;
+    --footer-bg: #f3f4f6;
+    --footer-text: #6b7280;
+    --panel-bg: #ffffff;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    --btn-bg: #ffffff;
+    --btn-border: #d1d5db;
+    --btn-active-bg: #a64738;
+    --btn-active-text: #ffffff;
+    --btn-hover-bg: #f3f4f6;
+    --overlay-bg: rgba(0,0,0,0.35);
+
+    /* Типографика */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+    --container-max: 780px;
+    --reader-padding: 3rem 1.5rem;
+
+    /* Переходы */
+    --transition: all 0.25s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ТЕМНАЯ ТЕМА
+   ═══════════════════════════════════════════════════════════════ */
+.theme-dark {
+    --bg: #0c0c0f;
+    --bg-reader: transparent;
+    --text: #b0b3b8;
+    --heading: #e2e0db;
+    --link: #8a929a;
+    --link-hover: #d4d8dc;
+    --divider: #25252a;
+    --accent-vital: #c9b896;
+    --accent-important: #9aa4b4;
+    --note-bg: rgba(241, 196, 15, 0.08);
+    --note-border: rgba(241, 196, 15, 0.4);
+    --footer-bg: #141418;
+    --footer-text: #6b7280;
+    --panel-bg: #1a1a1f;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    --btn-bg: #1f1f24;
+    --btn-border: #33333a;
+    --btn-active-bg: #c9b896;
+    --btn-active-text: #0c0c0f;
+    --btn-hover-bg: #25252a;
+    --overlay-bg: rgba(0,0,0,0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   БАЗОВЫЕ СТИЛИ
+   ═══════════════════════════════════════════════════════════════ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.65;
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КНОПКА НАСТРОЕК (плавающая)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: var(--transition);
+}
+.settings-toggle:hover {
+    background: var(--btn-hover-bg);
+    transform: rotate(30deg);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ПАНЕЛЬ НАСТРОЕК (оверлей)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-bg);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.settings-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 360px;
+    max-width: 90vw;
+    height: 100vh;
+    background: var(--panel-bg);
+    z-index: 999;
+    box-shadow: var(--panel-shadow);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+.settings-panel.open {
+    transform: translateX(0);
+}
+
+.settings-panel h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--divider);
+}
+
+.settings-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+.settings-close:hover {
+    background: var(--btn-hover-bg);
+}
+
+.control-group {
+    margin-bottom: 1.8rem;
+}
+.control-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.font-btn, .size-btn, .line-btn, .theme-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    padding: 5px 12px;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text);
+    font-family: var(--font-body);
+}
+.font-btn:hover, .size-btn:hover, .line-btn:hover, .theme-btn:hover {
+    background: var(--btn-hover-bg);
+}
+.font-btn.active, .size-btn.active, .line-btn.active, .theme-btn.active {
+    background: var(--btn-active-bg);
+    border-color: var(--btn-active-bg);
+    color: var(--btn-active-text);
+    font-weight: 500;
+}
+
+.current-settings {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--divider);
+    font-size: 0.8rem;
+    color: var(--link);
+    line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КОНТЕЙНЕР ЧИТАЛКИ
+   ═══════════════════════════════════════════════════════════════ */
+.reader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--reader-padding);
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+.reader-container {
+    max-width: var(--container-max);
+    width: 100%;
+    animation: fadeIn 1.2s ease-out;
+    background: var(--bg-reader);
+    padding: 0;
+    margin: 0 auto;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ТИПОГРАФИКА ТЕКСТА
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Заголовок рассказа */
+.story-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 1.2rem;
+}
+h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    transition: var(--transition);
+}
+.story-sub {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--link);
+    font-weight: 300;
+}
+
+/* Заголовки частей */
+.part-header {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin: 2.5rem 0 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--divider);
+    letter-spacing: 0.01em;
+    transition: var(--transition);
+}
+.part-header:first-of-type {
+    margin-top: 0;
+}
+
+/* Основной текст */
+p {
+    margin-bottom: 1.6rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+    transition: var(--transition);
+}
+
+/* Выделения */
+.vital {
+    font-weight: 500;
+    color: var(--accent-vital);
+    background: rgba(201, 184, 150, 0.08);
+    padding: 0.1rem 0.2rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+.important {
+    font-style: italic;
+    color: var(--accent-important);
+    border-bottom: 1px dashed rgba(154, 164, 180, 0.4);
+    padding-bottom: 1px;
+}
+
+/* Финальная фраза */
+.final-phrase {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    border-top: 1px solid var(--divider);
+    transition: var(--transition);
+}
+.final-phrase .vital {
+    background: none;
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ДОПОЛНИТЕЛЬНЫЕ СТИЛИ: Замечания и Footer
+   ═══════════════════════════════════════════════════════════════ */
+.info-note {
+    background: var(--note-bg);
+    border-left: 4px solid var(--note-border);
+    padding: 12px 20px;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    border-radius: 0 12px 12px 0;
+    color: var(--text);
+    transition: var(--transition);
+}
+
+.reader-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1.5rem;
+    color: var(--footer-text);
+    background: var(--footer-bg);
+    border-top: 1px solid var(--divider);
+    margin-top: 3rem;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   НАВИГАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+.back-link {
+    display: inline-block;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--link);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.back-link::before {
+    content: '←';
+    margin-right: 0.5rem;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.back-link:hover {
+    color: var(--link-hover);
+}
+.back-link:hover::before {
+    transform: translateX(-3px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ПАГИНАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+.pagination-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--divider);
+    flex-wrap: wrap;
+    user-select: none;
+}
+
+.pagination-bar.top {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    padding-top: 0;
+    padding-bottom: 1.2rem;
+    border-top: none;
+    border-bottom: 1px solid var(--divider);
+}
+
+.page-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: var(--btn-hover-bg);
+    border-color: var(--link-hover);
+}
+
+.page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* Кнопка «Следующая» — заметная, крупная, акцентная */
+.page-btn.next-btn {
+    background: var(--accent-vital);
+    color: #ffffff;
+    border-color: var(--accent-vital);
+    font-weight: 500;
+    padding: 0.85rem 2.2rem;
+    font-size: 1.05rem;
+    border-radius: 12px;
+    letter-spacing: 0.02em;
+}
+
+.page-btn.next-btn:hover:not(:disabled) {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 105, 20, 0.3);
+}
+
+.page-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--link);
+}
+
+.page-input {
+    width: 56px;
+    text-align: center;
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text);
+    padding: 0.5rem 0.3rem;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    -moz-appearance: textfield;
+}
+
+.page-input::-webkit-outer-spin-button,
+.page-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.page-input:focus {
+    outline: none;
+    border-color: var(--accent-vital);
+}
+
+.page-total {
+    color: var(--link);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ШРИФТОВЫЕ КЛАССЫ (8 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-font-1 .reader-container,
+.reader-text-font-1 {
+    --font-body: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+}
+.reader-text-font-2 .reader-container,
+.reader-text-font-2 {
+    --font-body: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+.reader-text-font-3 .reader-container,
+.reader-text-font-3 {
+    --font-body: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.reader-text-font-4 .reader-container,
+.reader-text-font-4 {
+    --font-body: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-5 .reader-container,
+.reader-text-font-5 {
+    --font-body: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+}
+.reader-text-font-6 .reader-container,
+.reader-text-font-6 {
+    --font-body: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-7 .reader-container,
+.reader-text-font-7 {
+    --font-body: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+}
+.reader-text-font-8 .reader-container,
+.reader-text-font-8 {
+    --font-body: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   РАЗМЕРЫ ТЕКСТА (6 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-size-1 .reader-container p { font-size: 0.8em; line-height: 1.2em; }
+.reader-text-size-2 .reader-container p { font-size: 1em; line-height: 1.2em; }
+.reader-text-size-3 .reader-container p { font-size: 1.2em; line-height: 1.4em; }
+.reader-text-size-4 .reader-container p { font-size: 1.4em; line-height: 1.5em; }
+.reader-text-size-5 .reader-container p { font-size: 1.6em; line-height: 1.6em; }
+.reader-text-size-6 .reader-container p { font-size: 2em; line-height: 1.8em; }
+
+/* Размеры для заголовков тоже масштабируем */
+.reader-text-size-1 .reader-container h1 { font-size: 2.0rem; }
+.reader-text-size-2 .reader-container h1 { font-size: 2.4rem; }
+.reader-text-size-3 .reader-container h1 { font-size: 2.8rem; }
+.reader-text-size-4 .reader-container h1 { font-size: 3.2rem; }
+.reader-text-size-5 .reader-container h1 { font-size: 3.6rem; }
+.reader-text-size-6 .reader-container h1 { font-size: 4.0rem; }
+
+.reader-text-size-1 .reader-container .part-header { font-size: 1.3rem; }
+.reader-text-size-2 .reader-container .part-header { font-size: 1.5rem; }
+.reader-text-size-3 .reader-container .part-header { font-size: 1.8rem; }
+.reader-text-size-4 .reader-container .part-header { font-size: 2.1rem; }
+.reader-text-size-5 .reader-container .part-header { font-size: 2.4rem; }
+.reader-text-size-6 .reader-container .part-header { font-size: 2.7rem; }
+
+/* ═══════════════════════════════════════════════════════════════
+   МЕЖСТРОЧНЫЙ ИНТЕРВАЛ (4 варианта)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-line-height-1 .reader-container p { line-height: 1.2; }
+.reader-line-height-2 .reader-container p { line-height: 1.5; }
+.reader-line-height-3 .reader-container p { line-height: 1.8; }
+.reader-line-height-4 .reader-container p { line-height: 2.2; }
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: мобильные
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+
+    .settings-panel { width: 300px; }
+    h1 { font-size: 2rem; }
+    .part-header { font-size: 1.5rem; }
+    p { font-size: 0.98rem; }
+    body { padding: 2rem 1rem; }
+
+    /* Фиксированная нижняя панель пагинации на мобильных */
+    .pagination-bar.bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0.75rem 1rem;
+        background: var(--panel-bg);
+        border-top: 1px solid var(--divider);
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+        z-index: 500;
+        justify-content: space-between;
+    }
+    .pagination-bar.bottom .page-input-wrapper {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.4rem;
+    }
+    .pagination-bar.bottom .page-btn.next-btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+    }
+    .pagination-bar.bottom .page-btn {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+    }
+    body {
+        padding-bottom: 5rem; /* отступ для фикс. панели */
+    }
+    .reader-footer {
+        margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: БОЛЬШИЕ ЭКРАНЫ — увеличенные поля
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+    :root {
+        --container-max: 860px;
+        --reader-padding: 4rem 2.5rem;
+    }
+    .reader-container {
+        padding: 0 1rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --container-max: 960px;
+        --reader-padding: 5rem 3rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АНИМАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.settings-toggle.hidden {
+    display: none;
+}
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body class="theme-light reader-text-font-1 reader-text-size-3 reader-line-height-2">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         КНОПКА НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <button class="settings-toggle" id="settingsToggle" title="Настройки чтения">⚙️</button>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ПАНЕЛЬ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="settings-overlay" id="settingsOverlay"></div>
+    <div class="settings-panel" id="settingsPanel">
+        <button class="settings-close" id="settingsClose">✕</button>
+        <h2>Настройки чтения</h2>
+
+        <div class="control-group">
+            <label>🌗 Тема оформления</label>
+            <div class="button-group">
+                <button class="theme-btn active" data-theme="light">☀️ Светлая</button>
+                <button class="theme-btn" data-theme="dark">🌙 Тёмная</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🎨 Гарнитура шрифта</label>
+            <div class="button-group">
+                <button class="font-btn active" data-font="1">1 — Cambria/Times</button>
+                <button class="font-btn" data-font="2">2 — Constantia/Georgia</button>
+                <button class="font-btn" data-font="3">3 — Frutiger/Arial</button>
+                <button class="font-btn" data-font="4">4 — Corbel/Verdana</button>
+                <button class="font-btn" data-font="5">5 — Garamond/Palatino</button>
+                <button class="font-btn" data-font="6">6 — Segoe UI/Trebuchet</button>
+                <button class="font-btn" data-font="7">7 — Impact/Arial Black</button>
+                <button class="font-btn" data-font="8">8 — Consolas/Courier</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🔠 Размер текста</label>
+            <div class="button-group">
+                <button class="size-btn" data-size="1">Очень мелкий</button>
+                <button class="size-btn" data-size="2">Мелкий</button>
+                <button class="size-btn active" data-size="3">Средний</button>
+                <button class="size-btn" data-size="4">Крупный</button>
+                <button class="size-btn" data-size="5">Очень крупный</button>
+                <button class="size-btn" data-size="6">Огромный</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>↕️ Межстрочный интервал</label>
+            <div class="button-group">
+                <button class="line-btn" data-line="1">Тесный (1.2)</button>
+                <button class="line-btn active" data-line="2">Обычный (1.5)</button>
+                <button class="line-btn" data-line="3">Свободный (1.8)</button>
+                <button class="line-btn" data-line="4">Широкий (2.2)</button>
+            </div>
+        </div>
+
+        <div class="current-settings" id="currentInfo">
+            Тема: <strong>Светлая</strong><br>
+            Шрифт: <strong>Cambria/Times</strong><br>
+            Размер: <strong>Средний (1.2em)</strong><br>
+            Интервал: <strong>Обычный (1.5)</strong>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ОСНОВНОЙ КОНТЕНТ
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="reader-wrapper">
+        <main class="reader-container">
+            <a href="../../index.html" class="back-link">К оглавлению</a>
+
+            <div class="pagination-bar top">
+    <div class="page-input-wrapper">
+        <span>Страница</span>
+        <input type="number" class="page-input" value="21" min="1" max="100" data-current="21">
+        <span class="page-total">из 100</span>
+    </div>
+</div>
+
+            
+
+            <p>— Конечно, пожалуйста, — Моцзы жестом указал на большой телескоп.</p>
+
+            <p>Ван Мяо подошел к телескопу и сразу заметил проблему: — А как же наблюдать за Солнцем?</p>
+
+            <p>Моцзы достал из деревянного ящика черный круглый диск. — Используйте этот темный фильтр, — сказал он и вставил его в окуляр телескопа.</p>
+
+            <p>Ван Мяо направил телескоп на солнце, которое уже поднялось до половины неба, и невольно восхитился воображением Моцзы: солнце действительно выглядело как отверстие, ведущее в бескрайний океан огня, как крошечная часть чего-то гораздо большего. Но присмотревшись, он заметил, что это солнце немного отличается от того, к которому он привык в реальности: в центре него было крошечное ядро. Если представить солнце в виде глаза, то это ядро было бы его зрачком. Солнечное ядро было маленьким, но очень ярким и плотным, а окружавшая его оболочка казалась почти бесплотной, зыбкой и очень напоминала газ. То, что сквозь толстый внешний слой было видно солнечное ядро, означало, что эта оболочка прозрачна или полупрозрачна, а излучаемый ею свет, скорее всего, был лишь рассеянным сиянием самого ядра.</p>
+
+            <p>Реалистичность и детальность изображения Солнца поразили Ван Мяо. Он вновь убедился, что за внешней простотой картинки автор игры намеренно скрыл огромное количество деталей, которые игрокам предстояло обнаружить.</p>
+
+            <p>Ван Мяо выпрямился, и, задумавшись о том, какой смысл скрыт в строении этого Солнца, сразу почувствовал волнение. Из-за ускорения игрового времени солнце уже сместилось к западу. Ван Мяо снова настроил телескоп и следил за ним до тех пор, пока оно не скрылось за горизонтом. Наступила ночь. Огоньки на земле перекликались с постепенно сгущающимися звездами в ночном небе. Ван Мяо снял с телескопа черный фильтр и продолжил наблюдать за звездным небом. Больше всего его интересовали Фэйсины, и вскоре он нашел две такие звезды. Он успел лишь бегло осмотреть одну из этих звезд, как снова наступил рассвет. Тогда он снова установил фильтр и продолжил наблюдать за Солнцем… … Так Ван Мяо и провел более десяти дней, занимаясь астрономическими наблюдениями и наслаждаясь радостью открытий. На самом деле, то, что время текло быстрее, только шло на пользу астрономическим наблюдениям. Ведь благодаря этому движение и изменения небесных тел становились более заметными.</p>
+
+            <p>На семнадцатый день после начала Вечной Эры прошло уже пять часов с момента восхода солнца, но земля всё еще была окутана ночной темнотой. У подножия пирамиды собралась огромная толпа людей. Бесчисленные факелы колыхались на холодном ветру.</p>
+
+            <p>— Солнце может больше не выйти, и тогда нас ждет та же участь, что и цивилизацию номер 137, — сказал Ван Мяо Моцзы, который в это время составлял первый в этом мире календарь на десять тысяч лет. Моцзы погладил бороду и уверенно улыбнулся Ван Мяо: — Не волнуйся, солнце скоро взойдет, и Вечная Эра продолжится. Я уже понял принципы работы космической машины, так что мой прогноз будет верным.</p>
+
+            <p>Словно подтверждая слова Моцзы, на горизонте забрезжил рассвет, и толпа у подножия пирамиды взорвалась радостными криками.</p>
+
+            <p>Серебристый рассвет разгорался с необычайной скоростью, словно восходящее солнце стремилось наверстать упущенное время. Вскоре свет рассвета залил половину неба, хотя само солнце еще не взошло. Земля стала такой же светлой, как в обычный день. Ван Мяо посмотрел вдаль, туда, где забрезжил рассвет. Он увидел, что горизонт излучает ослепительный свет и выгибается вверх, образуя идеальную дугу во весь обзор. Вскоре он понял, что это вовсе не горизонт, а край солнечного диска — поднималось невероятно огромное солнце. Когда глаза привыкли к яркости, настоящий горизонт снова стал виден, и Ван Мяо заметил, как на его фоне отчетливо поднимаются черные струи дыма от далеких пожаров. У подножия пирамид со стороны восходящего солнца мчался вскачь конь, оставляя за собой четкую серую полосу пыли. Толпа расступалась перед ним, и Ван Мяо услышал, как всадник надрывно кричит: «Обезвоживание! Обезвоживание!»</p>
+
+            <p>Следом за конем бежало целое стадо коров, лошадей и других животных. Животные были охвачены огнем, и вместе они казались живым ковром из пламени, стелющимся по земле. Гигантское солнце поднялось над горизонтом наполовину, заняв полнеба; казалось, земля медленно уходит вниз, задвигаясь под этой ослепительной стеной света. Ван Мяо отчетливо видел детали поверхности Солнца: огненный океан был испещрен волнами и вихрями, темные пятна, словно призраки, плыли по хаотичным траекториям, а солнечная корона лениво раскинулась, подобно золотым рукавам.</p>
+
+            <p>На земле вспыхнули люди — и те, кто уже был обезвожен, и те, кто еще нет. Они были похожи на бесчисленные поленья, брошенные в топку; пламя горело ярче, чем раскаленные угли в печи, но вскоре погасло.</p>
+
+            <p>Гигантское солнце стремительно поднималось, пока не достигло зенита, закрыв собой почти всё небо. Ван Мяо поднял голову и почувствовал, как всё внезапно изменилось: до этого он смотрел вверх, а теперь, казалось, смотрел вниз. Поверхность гигантского солнца напоминала землю из огня. Ему казалось, что он падает прямо в этот сияющий ад!</p>
+
+            <p>Озера начали испаряться, и клубы белоснежного пара, поднимаясь вверх подобно грибам, стали рассеиваться, укрывая прах людей на берегах.</p>
+
+            <p>«Вечная Эра продолжится. Вселенная — это машина, и я создал эту машину. Вечная Эра продолжится, Вселенная — это…»</p>
+
+            <p>Ван Мяо обернулся и увидел, что голос принадлежит Моцзы. Тот находился внутри высокого столба оранжевого пламени; его кожа сморщивалась и обугливалась, но глаза всё еще светились светом, совершенно не похожим на огонь, поглощавший его тело. Его руки, превратившиеся в тлеющие угли, сжимали клочок рассыпающегося в прах шелка — это был первый вечный календарь. Ван Мяо и сам горел; он поднял руки и увидел, что они превратились в два факела.</p>
+
+            <p>Огромное солнце быстро сместилось на запад, открывая собой небо, и стремительно скрылось за горизонтом; казалось, будто земля снова поднимается вверх вдоль этой стены света. Яркий закатный свет мгновенно исчез, и ночь накрыла превратившийся в пепел мир, словно огромное черное полотно, растянутое чьими-то гигантскими руками. Опаленная земля в ночной темноте светилась темно-красным, напоминая кусок угля, который только что вытащили из печи. Ван Мяо на мгновение увидел в ночном небе звезды, но вскоре небо затянуло паром и дымом. Они скрыли и раскаленную землю, и всё, что на ней было, и мир погрузился в кромешную тьму и хаос. Появилась надпись красными буквами:</p>
+
+            <p>Цивилизация №141 была уничтожена в огне. Эта цивилизация достигла уровня развития эпохи Восточной Хань.</p>
+
+            <p>Семена цивилизации всё ещё живы. Она будет перезапущена. Эволюция в мире «Трех тел» снова начинается, и её исход непредсказуем. Добро пожаловать.</p>
+
+            <p>Ван Мяо снял V-устройство. Когда потрясение немного утихло, к нему снова вернулось то самое чувство: «Три тела» намеренно притворяются фальшивкой, но за этим скрывается колоссальная глубина, в то время как реальный мир вокруг кажется похожим на картину «Чинмин Шанхэту» — на первый взгляд сложной и детальной, но на самом деле плоской и поверхностной.</p>
+
+            <p>На следующий день Ван Мяо отправился на работу в Наноцентр. За исключением небольшой неразберихи из-за его вчерашнего отсутствия, всё было как обычно. Он обнаружил, что работа — отличное средство от стресса: с головой погрузившись в неё, можно на время забыть о кошмарных тревогах. Весь день он намеренно держал себя в напряжении, стараясь быть максимально занятым, и покинул лабораторию только с наступлением темноты.</p>
+
+            <p>Стоило Ван Мяо выйти из здания Наноцентра, как его снова накрыло чувство кошмара. Ему казалось, что усыпанное звездами ночное небо — это гигантская лупа, под которой он сам выглядит крошечным голым червем, которому негде спрятаться. Ему нужно было снова занять себя чем-нибудь, и, подумав, что стоит еще раз навестить мать Ян Дун, он поехал к Е Вэньцзе.</p>
+
+            <p>Мать Ян была дома одна. Когда Ван Мяо вошел, она сидела на диване и читала книгу. Только сейчас он заметил, что она страдает и близорукостью, и возрастной дальнозоркостью, поэтому ей приходится менять очки, когда она читает или смотрит вдаль. Мать Ян была очень рада видеть Ван Мяо и заметила, что он выглядит гораздо лучше, чем в прошлый раз.</p>
+
+            <p>— Всё благодаря вашему женьшеню, — с улыбкой сказал Ван Мяо.</p>
+
+            <p>Мать Ян покачала головой: — Тот корень был не очень хорош. А вот раньше вокруг базы можно было найти отличный дикий женьшень. Я как-то раз нашла один, вот такой длины... Не знаю, как там сейчас, говорят, там уже никто не живет. Эх, состарилась я, всё о прошлом вспоминаю.</p>
+
+            <p>— Слышал, что во время Вэньгэ вам пришлось нелегко.</p>
+
+            <p>— Сяо Ша тебе рассказал? — Мать Ян мягко махнула рукой, словно отгоняя невидимую паутинку. — Всё в прошлом, всё уже давно прошло... Вчера звонил Сяо Ша, весь в волнении. Я толком не поняла, что он говорил, но почувствовала, что у тебя какие-то проблемы. Сяо Ван, поверь, когда ты доживешь до моих лет, то поймешь: все те события, которые когда-то казались концом света, на самом деле были пустяками.</p>
+
+            <p>— Спасибо вам, — сказал Ван Мяо, снова почувствовав то редкое ощущение тепла. Теперь эта пожилая женщина, прошедшая через множество испытаний и обретшая внутренний покой, и бесстрашный, хоть и наивный Да Ши стали двумя главными опорами для его надломленного духа.</p>
+
+            <p>Мать Янг продолжила: «Что касается Вэньгэ, мне очень повезло. В тот момент, когда казалось, что жить мне больше не суждено, я неожиданно оказалась в месте, где смогла выжить».</p>
+
+            <p>— Вы имеете в виду базу «Красный Берег»?</p>
+
+            <p>Мать Ян кивнула.</p>
+
+            <p>— Это действительно невероятно. Сначала я думал, что всё это просто легенда.</p>
+
+            <p>— Это не легенда. Если хотите, я расскажу вам о том, что мне пришлось пережить.</p>
+
+            <p>Слова матери Яна заставили Ван Мяо занервничать. — Учитель Е, мне просто любопытно. Если вам неудобно рассказывать, то не стоит.</p>
+
+            <p>— О, ничего страшного. Считайте, что мне просто нужно выговориться, а то в последнее время мне действительно очень хотелось с кем-нибудь поговорить.</p>
+
+            <p>— Вы могли бы заходить в комнату отдыха для пожилых, проводить там время. Если больше общаться с людьми, будет не так одиноко.</p>
+
+            <p>— Многие из тех пенсионеров были моими коллегами по университету, но я так и не смогла с ними сблизиться. Все любят бесконечно вспоминать прошлое, но при этом хотят, чтобы слушали только их, а чужие истории их раздражают. И только ты проявил интерес к событиям на Красном Берегу.</p>
+
+            <p>— Но сейчас всё равно как-то неудобно об этом говорить, не так ли?</p>
+
+            <p>— Это верно, в конце концов, информация всё ещё секретная. Но после выхода той книги многие очевидцы тоже начали об этом говорить, так что теперь это секрет Полишинеля. Автор поступил безответственно: не говоря уже о его целях, многие вещи в книге сильно искажены, так что стоит расставить все точки над i.</p>
+
+            <p>И тогда мать Ян рассказала Ван Мяо о тех событиях прошлого, которые всё ещё были свежи в её памяти.</p>
+
+            <p>12. Красный берег. Часть 2</p>
+
+            <p>Когда Е Вэньцзе только прибыла на базу Красный Берег, ей не поручили никакой постоянной работы — она лишь выполняла разные технические поручения под присмотром сотрудника службы безопасности.</p>
+
+            <p>Ещё на втором курсе университета Е Вэньцзе была хорошо знакома со своим будущим научным руководителем. Он сказал Е Вэньцзе, что в астрофизике даже самые блестящие теории бесполезны, если не владеешь методами экспериментов и не умеешь проводить наблюдения — по крайней мере, в их стране всё было именно так. Это сильно отличалось от взглядов её отца. Но Е Вэньцзе была склонна согласиться с этим: ей всегда казалось, что её отец слишком полагается на теорию. Её научный руководитель был одним из основателей радиоастрономии в стране. Под его влиянием Е Вэньцзе тоже сильно заинтересовалась этой областью и самостоятельно изучила электронику и компьютерные науки (в то время в большинстве вузов эти специальности были объединены в одну), так как именно они служат технической базой для проведения экспериментов и наблюдений в радиоастрономии. За два года обучения в аспирантуре она вместе с научным руководителем занималась настройкой первого в стране малого радиотелескопа, благодаря чему накопила немало опыта в этой области. Она и представить себе не могла, что эти знания когда-нибудь пригодятся ей на базе Красный Берег.</p>
+
+            <p>Сначала Е Вэньцзе занималась обслуживанием и ремонтом оборудования в отделе передатчиков. Вскоре она стала одним из ведущих технических специалистов отдела, что её саму очень удивляло. Она была единственным человеком на базе, кто не носил военную форму. К тому же из-за её особого статуса все держались от неё подальше, поэтому ей оставалось лишь с головой уйти в работу, чтобы заглушить чувство одиночества. Но и это не давало полного ответа. В конце концов, речь шла о важнейшем оборонном проекте. Неужели местные специалисты были настолько бездарны, что их мог так легко заменить человек без технического образования и опыта работы?</p>
+
+            <p>Вскоре она начала понимать, в чем дело. Вопреки первому впечатлению, на базе работали лучшие технические офицеры Второго артиллерийского корпуса. Эти выдающиеся инженеры в области электроники и компьютеров были настолько профессиональны, что она не смогла бы достичь их уровня, даже если бы училась всю жизнь. Однако база находилась в глуши, условия там были плохие, а основная разработка системы «Красный Берег» уже завершилась. Теперь оставалось лишь поддерживать её работу, и возможности для новых технических достижений практически не было, поэтому большинство сотрудников работали без энтузиазма. Они знали, что в проектах такого уровня секретности, однажды заняв ключевой технический пост, уже почти невозможно перевестись куда-то еще. Поэтому люди намеренно занижали свои способности, стараясь при этом не выглядеть совсем бездарными. Если руководство приказывало идти на восток, они с удвоенным рвением шли на запад, прикидываясь дурачками. Так они надеялись, что начальство решит: человек-то старается, но способностей у него мало, и держать его здесь бесполезно — он только мешается под ногами.</p>
+
+            <p>Многим это действительно помогло перевестись. В такой ситуации Е Вэньцзе сама того не замечая стала главной технической опорой базы. Но была и другая причина, по которой она оказалась на этом посту, и эта причина ставила её в тупик: на базе Красный Берег — по крайней мере, в той её части, с которой она сталкивалась, — не было никаких по-настоящему передовых технологий.</p>
+
+            <p>Когда она попала на базу. Е Вэньцзе в основном работала в отделе запусков. Со временем ограничения стали мягче, за ней перестали приставлять надзирателя, и она получила доступ к большинству узлов системы «Красный берег». А также она получила возможность изучать техническую документацию. Конечно, доступ к некоторым вещам был ей по-прежнему закрыт. Например, к блоку управления компьютером ей категорически запрещалось даже приближаться. Но позже Е Вэньцзе обнаружила, что эта часть системы «Красный берег» далеко не так важна, как она думала раньше. Например, компьютеры в отделе запусков представляли собой три машины, которые были даже более устаревшими, чем DJS130. Они использовали громоздкую ферритовую память и ввод с перфоленты, а максимальное время работы без сбоев не превышало пятнадцати часов. Она также видела систему наведения «Красного берега»: точность у неё была крайне низкой, возможно, даже хуже, чем у прицельного прибора обычного артиллерийского орудия.</p>
+
+            <p>В тот день политрук Лэй снова вызвал Е Вэньцзе на разговор. Теперь в её глазах Ян Вэйнин и Лэй Чжичэн поменялись ролями. В те времена Ян Вэйнин, несмотря на статус главного технического руководителя, не обладал большим политическим влиянием: вне своей области он не имел никакого авторитета. С подчиненными ему тоже приходилось быть осторожным: даже с часовыми он разговаривал вежливо, иначе это сочли бы за неправильное отношение интеллигента к принципу «трех сочетаний» и идеологической перековке. Поэтому, когда на работе что-то шло не так, Е Вэньцзе становилась единственным человеком, на котором он мог срывать злость. Но по мере того, как её технические знания становились всё более ценными, политрук Лэй постепенно перестал быть грубым и равнодушным и стал относиться к ней более доброжелательно.</p>
+
+            <p>— Сяоье, к этому моменту ты уже достаточно хорошо освоила систему запуска. Это ударная часть системы «Красный Берег», её основа. Расскажи, что ты думаешь об этой системе в целом? — спросил политрук Лэй. Они сидели у обрыва на Радарном пике — в самом укромном месте базы. Эта отвесная скала казалась бездонной. Поначалу Е Вэньцзе было здесь жутко, но теперь ей очень нравилось приходить сюда в одиночестве.</p>
+
+            <p>Е Вэньцзе была несколько сбита с толку вопросом политрука Лэя. Она отвечала лишь за обслуживание и ремонт оборудования и совершенно не знала, как устроена система «Красный Берег» в целом, как она работает и по каким целям бьет. Ей и знать этого не полагалось, поэтому при каждом обычном запуске она должна была отсутствовать. Она задумалась и хотела что-то сказать, но передумала.</p>
+
+            <div class="pagination-bar bottom">
+    <a href="page_20.html" class="page-btn prev-btn" target="_self">← Предыдущая</a>
+    <div class="page-input-wrapper">
+        <span>Страница</span>
+        <input type="number" class="page-input" value="21" min="1" max="100" data-current="21">
+        <span class="page-total">из 100</span>
+    </div>
+    <a href="page_22.html" class="page-btn next-btn" target="_self">Следующая →</a>
+</div>
+        </main>
+    </div>
+
+    <footer class="reader-footer">
+        ⚙️ Читалка.
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         СКРИПТ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <script>
+    (function() {
+        // ── Элементы ──
+        const body = document.body;
+        const toggleBtn = document.getElementById('settingsToggle');
+        const closeBtn = document.getElementById('settingsClose');
+        const overlay = document.getElementById('settingsOverlay');
+        const panel = document.getElementById('settingsPanel');
+        const infoSpan = document.getElementById('currentInfo');
+
+        // ── Текущие значения ──
+        let currentTheme = 'light';
+        let currentFont = '1';
+        let currentSize = '3';
+        let currentLine = '2';
+
+        // ── Справочники для отображения ──
+        const themeNames = {
+            light: 'Светлая',
+            dark: 'Тёмная'
+        };
+        const fontNames = {
+            1: 'Cambria/Times (классический serif)',
+            2: 'Constantia/Georgia (элегантный)',
+            3: 'Frutiger/Arial (гуманистический sans)',
+            4: 'Corbel/Verdana (чистый sans)',
+            5: 'Garamond/Palatino (книжный)',
+            6: 'Segoe UI / Trebuchet (современный)',
+            7: 'Impact / Arial Black (рубленый)',
+            8: 'Consolas/Courier (моноширинный)'
+        };
+        const sizeNames = {
+            1: 'Очень мелкий (0.8em)',
+            2: 'Мелкий (1em)',
+            3: 'Средний (1.2em)',
+            4: 'Крупный (1.4em)',
+            5: 'Очень крупный (1.6em)',
+            6: 'Огромный (2em)'
+        };
+        const lineNames = {
+            1: 'Тесный (1.2)',
+            2: 'Обычный (1.5)',
+            3: 'Свободный (1.8)',
+            4: 'Широкий (2.2)'
+        };
+
+        // ── Применение классов ──
+        function applyClasses() {
+            // Тема
+            body.classList.remove('theme-light', 'theme-dark');
+            body.classList.add('theme-' + currentTheme);
+
+            // Шрифт
+            for (let i = 1; i <= 8; i++) {
+                body.classList.remove('reader-text-font-' + i);
+            }
+            body.classList.add('reader-text-font-' + currentFont);
+
+            // Размер
+            for (let i = 1; i <= 6; i++) {
+                body.classList.remove('reader-text-size-' + i);
+            }
+            body.classList.add('reader-text-size-' + currentSize);
+
+            // Интервал
+            for (let i = 1; i <= 4; i++) {
+                body.classList.remove('reader-line-height-' + i);
+            }
+            body.classList.add('reader-line-height-' + currentLine);
+
+            updateInfo();
+            saveSettings();
+        }
+
+        // ── Обновление информационного блока ──
+        function updateInfo() {
+            infoSpan.innerHTML =
+                'Тема: <strong>' + themeNames[currentTheme] + '</strong><br>' +
+                'Шрифт: <strong>' + fontNames[currentFont] + '</strong><br>' +
+                'Размер: <strong>' + sizeNames[currentSize] + '</strong><br>' +
+                'Интервал: <strong>' + lineNames[currentLine] + '</strong>';
+        }
+
+        // ── Сохранение / загрузка из localStorage ──
+        function saveSettings() {
+            try {
+                localStorage.setItem('readerSettings', JSON.stringify({
+                    theme: currentTheme,
+                    font: currentFont,
+                    size: currentSize,
+                    line: currentLine
+                }));
+            } catch (e) {}
+        }
+
+        function loadSettings() {
+            try {
+                const saved = localStorage.getItem('readerSettings');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.theme) currentTheme = data.theme;
+                    if (data.font) currentFont = data.font;
+                    if (data.size) currentSize = data.size;
+                    if (data.line) currentLine = data.line;
+                }
+            } catch (e) {}
+        }
+
+        // ── Обновление активных кнопок ──
+        function updateActiveButtons() {
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-theme') === currentTheme);
+            });
+            document.querySelectorAll('.font-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-font') === currentFont);
+            });
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-size') === currentSize);
+            });
+            document.querySelectorAll('.line-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-line') === currentLine);
+            });
+        }
+
+        // ── Открытие / закрытие панели ──
+        function openPanel() {
+            overlay.classList.add('open');
+            panel.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            toggleBtn.classList.add('hidden');
+        }
+        function closePanel() {
+            overlay.classList.remove('open');
+            panel.classList.remove('open');
+            document.body.style.overflow = '';
+            toggleBtn.classList.remove('hidden');
+        }
+
+        toggleBtn.addEventListener('click', openPanel);
+        closeBtn.addEventListener('click', closePanel);
+        overlay.addEventListener('click', closePanel);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePanel();
+        });
+
+        // ── Обработчики кнопок ──
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentTheme = this.getAttribute('data-theme');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.font-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentFont = this.getAttribute('data-font');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentSize = this.getAttribute('data-size');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.line-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentLine = this.getAttribute('data-line');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        // ── Инициализация ──
+        loadSettings();
+        applyClasses();
+        updateActiveButtons();
+
+        /* ── Пагинация (многостраничный режим) ── */
+        (function() {
+            const inputs = document.querySelectorAll('.page-input');
+            if (!inputs.length) return;
+
+            inputs.forEach(function(inp) {
+                inp.addEventListener('change', function() {
+                    let v = parseInt(this.value, 10) || 1;
+                    const max = parseInt(this.max, 10);
+                    if (v < 1) v = 1;
+                    if (v > max) v = max;
+                    const current = parseInt(this.getAttribute('data-current'), 10);
+                    if (v === current) return;
+                    const target = (v === 1) ? 'index.html' : 'page_' + v + '.html';
+                    window.location.href = target;
+                });
+                inp.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        this.blur();
+                    }
+                });
+            });
+        })();
+    })();
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102424835, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+</body>
+</html>
