@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Рассказ">
+    <title>Рассказ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+
+/* ═══════════════════════════════════════════════════════════════
+   CSS-ПЕРЕМЕННЫЕ: Светлая тема (по умолчанию)
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+    /* Цвета */
+    --bg: #faf9f7;
+    --bg-reader: #ffffff;
+    --text: #2c2c2c;
+    --heading: #1a1a1a;
+    --link: #6b7280;
+    --link-hover: #374151;
+    --divider: #e5e7eb;
+    --accent-vital: #8b6914;
+    --accent-important: #4b5563;
+    --note-bg: #fef9e3;
+    --note-border: #f1c40f;
+    --footer-bg: #f3f4f6;
+    --footer-text: #6b7280;
+    --panel-bg: #ffffff;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    --btn-bg: #ffffff;
+    --btn-border: #d1d5db;
+    --btn-active-bg: #a64738;
+    --btn-active-text: #ffffff;
+    --btn-hover-bg: #f3f4f6;
+    --overlay-bg: rgba(0,0,0,0.35);
+
+    /* Типографика */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+    --container-max: 780px;
+    --reader-padding: 3rem 1.5rem;
+
+    /* Переходы */
+    --transition: all 0.25s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ТЕМНАЯ ТЕМА
+   ═══════════════════════════════════════════════════════════════ */
+.theme-dark {
+    --bg: #0c0c0f;
+    --bg-reader: transparent;
+    --text: #b0b3b8;
+    --heading: #e2e0db;
+    --link: #8a929a;
+    --link-hover: #d4d8dc;
+    --divider: #25252a;
+    --accent-vital: #c9b896;
+    --accent-important: #9aa4b4;
+    --note-bg: rgba(241, 196, 15, 0.08);
+    --note-border: rgba(241, 196, 15, 0.4);
+    --footer-bg: #141418;
+    --footer-text: #6b7280;
+    --panel-bg: #1a1a1f;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    --btn-bg: #1f1f24;
+    --btn-border: #33333a;
+    --btn-active-bg: #c9b896;
+    --btn-active-text: #0c0c0f;
+    --btn-hover-bg: #25252a;
+    --overlay-bg: rgba(0,0,0,0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   БАЗОВЫЕ СТИЛИ
+   ═══════════════════════════════════════════════════════════════ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.65;
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КНОПКА НАСТРОЕК (плавающая)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: var(--transition);
+}
+.settings-toggle:hover {
+    background: var(--btn-hover-bg);
+    transform: rotate(30deg);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ПАНЕЛЬ НАСТРОЕК (оверлей)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-bg);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.settings-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 360px;
+    max-width: 90vw;
+    height: 100vh;
+    background: var(--panel-bg);
+    z-index: 999;
+    box-shadow: var(--panel-shadow);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+.settings-panel.open {
+    transform: translateX(0);
+}
+
+.settings-panel h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--divider);
+}
+
+.settings-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+.settings-close:hover {
+    background: var(--btn-hover-bg);
+}
+
+.control-group {
+    margin-bottom: 1.8rem;
+}
+.control-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.font-btn, .size-btn, .line-btn, .theme-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    padding: 5px 12px;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text);
+    font-family: var(--font-body);
+}
+.font-btn:hover, .size-btn:hover, .line-btn:hover, .theme-btn:hover {
+    background: var(--btn-hover-bg);
+}
+.font-btn.active, .size-btn.active, .line-btn.active, .theme-btn.active {
+    background: var(--btn-active-bg);
+    border-color: var(--btn-active-bg);
+    color: var(--btn-active-text);
+    font-weight: 500;
+}
+
+.current-settings {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--divider);
+    font-size: 0.8rem;
+    color: var(--link);
+    line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КОНТЕЙНЕР ЧИТАЛКИ
+   ═══════════════════════════════════════════════════════════════ */
+.reader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--reader-padding);
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+.reader-container {
+    max-width: var(--container-max);
+    width: 100%;
+    animation: fadeIn 1.2s ease-out;
+    background: var(--bg-reader);
+    padding: 0;
+    margin: 0 auto;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ТИПОГРАФИКА ТЕКСТА
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Заголовок рассказа */
+.story-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 1.2rem;
+}
+h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    transition: var(--transition);
+}
+.story-sub {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--link);
+    font-weight: 300;
+}
+
+/* Заголовки частей */
+.part-header {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin: 2.5rem 0 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--divider);
+    letter-spacing: 0.01em;
+    transition: var(--transition);
+}
+.part-header:first-of-type {
+    margin-top: 0;
+}
+
+/* Основной текст */
+p {
+    margin-bottom: 1.6rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+    transition: var(--transition);
+}
+
+/* Выделения */
+.vital {
+    font-weight: 500;
+    color: var(--accent-vital);
+    background: rgba(201, 184, 150, 0.08);
+    padding: 0.1rem 0.2rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+.important {
+    font-style: italic;
+    color: var(--accent-important);
+    border-bottom: 1px dashed rgba(154, 164, 180, 0.4);
+    padding-bottom: 1px;
+}
+
+/* Финальная фраза */
+.final-phrase {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    border-top: 1px solid var(--divider);
+    transition: var(--transition);
+}
+.final-phrase .vital {
+    background: none;
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ДОПОЛНИТЕЛЬНЫЕ СТИЛИ: Замечания и Footer
+   ═══════════════════════════════════════════════════════════════ */
+.info-note {
+    background: var(--note-bg);
+    border-left: 4px solid var(--note-border);
+    padding: 12px 20px;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    border-radius: 0 12px 12px 0;
+    color: var(--text);
+    transition: var(--transition);
+}
+
+.reader-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1.5rem;
+    color: var(--footer-text);
+    background: var(--footer-bg);
+    border-top: 1px solid var(--divider);
+    margin-top: 3rem;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   НАВИГАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+.back-link {
+    display: inline-block;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--link);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.back-link::before {
+    content: '←';
+    margin-right: 0.5rem;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.back-link:hover {
+    color: var(--link-hover);
+}
+.back-link:hover::before {
+    transform: translateX(-3px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ПАГИНАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+.pagination-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--divider);
+    flex-wrap: wrap;
+    user-select: none;
+}
+
+.pagination-bar.top {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    padding-top: 0;
+    padding-bottom: 1.2rem;
+    border-top: none;
+    border-bottom: 1px solid var(--divider);
+}
+
+.page-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: var(--btn-hover-bg);
+    border-color: var(--link-hover);
+}
+
+.page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* Кнопка «Следующая» — заметная, крупная, акцентная */
+.page-btn.next-btn {
+    background: var(--accent-vital);
+    color: #ffffff;
+    border-color: var(--accent-vital);
+    font-weight: 500;
+    padding: 0.85rem 2.2rem;
+    font-size: 1.05rem;
+    border-radius: 12px;
+    letter-spacing: 0.02em;
+}
+
+.page-btn.next-btn:hover:not(:disabled) {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 105, 20, 0.3);
+}
+
+.page-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--link);
+}
+
+.page-input {
+    width: 56px;
+    text-align: center;
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text);
+    padding: 0.5rem 0.3rem;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    -moz-appearance: textfield;
+}
+
+.page-input::-webkit-outer-spin-button,
+.page-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.page-input:focus {
+    outline: none;
+    border-color: var(--accent-vital);
+}
+
+.page-total {
+    color: var(--link);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ШРИФТОВЫЕ КЛАССЫ (8 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-font-1 .reader-container,
+.reader-text-font-1 {
+    --font-body: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+}
+.reader-text-font-2 .reader-container,
+.reader-text-font-2 {
+    --font-body: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+.reader-text-font-3 .reader-container,
+.reader-text-font-3 {
+    --font-body: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.reader-text-font-4 .reader-container,
+.reader-text-font-4 {
+    --font-body: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-5 .reader-container,
+.reader-text-font-5 {
+    --font-body: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+}
+.reader-text-font-6 .reader-container,
+.reader-text-font-6 {
+    --font-body: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-7 .reader-container,
+.reader-text-font-7 {
+    --font-body: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+}
+.reader-text-font-8 .reader-container,
+.reader-text-font-8 {
+    --font-body: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   РАЗМЕРЫ ТЕКСТА (6 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-size-1 .reader-container p { font-size: 0.8em; line-height: 1.2em; }
+.reader-text-size-2 .reader-container p { font-size: 1em; line-height: 1.2em; }
+.reader-text-size-3 .reader-container p { font-size: 1.2em; line-height: 1.4em; }
+.reader-text-size-4 .reader-container p { font-size: 1.4em; line-height: 1.5em; }
+.reader-text-size-5 .reader-container p { font-size: 1.6em; line-height: 1.6em; }
+.reader-text-size-6 .reader-container p { font-size: 2em; line-height: 1.8em; }
+
+/* Размеры для заголовков тоже масштабируем */
+.reader-text-size-1 .reader-container h1 { font-size: 2.0rem; }
+.reader-text-size-2 .reader-container h1 { font-size: 2.4rem; }
+.reader-text-size-3 .reader-container h1 { font-size: 2.8rem; }
+.reader-text-size-4 .reader-container h1 { font-size: 3.2rem; }
+.reader-text-size-5 .reader-container h1 { font-size: 3.6rem; }
+.reader-text-size-6 .reader-container h1 { font-size: 4.0rem; }
+
+.reader-text-size-1 .reader-container .part-header { font-size: 1.3rem; }
+.reader-text-size-2 .reader-container .part-header { font-size: 1.5rem; }
+.reader-text-size-3 .reader-container .part-header { font-size: 1.8rem; }
+.reader-text-size-4 .reader-container .part-header { font-size: 2.1rem; }
+.reader-text-size-5 .reader-container .part-header { font-size: 2.4rem; }
+.reader-text-size-6 .reader-container .part-header { font-size: 2.7rem; }
+
+/* ═══════════════════════════════════════════════════════════════
+   МЕЖСТРОЧНЫЙ ИНТЕРВАЛ (4 варианта)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-line-height-1 .reader-container p { line-height: 1.2; }
+.reader-line-height-2 .reader-container p { line-height: 1.5; }
+.reader-line-height-3 .reader-container p { line-height: 1.8; }
+.reader-line-height-4 .reader-container p { line-height: 2.2; }
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: мобильные
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+
+    .settings-panel { width: 300px; }
+    h1 { font-size: 2rem; }
+    .part-header { font-size: 1.5rem; }
+    p { font-size: 0.98rem; }
+    body { padding: 2rem 1rem; }
+
+    /* Фиксированная нижняя панель пагинации на мобильных */
+    .pagination-bar.bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0.75rem 1rem;
+        background: var(--panel-bg);
+        border-top: 1px solid var(--divider);
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+        z-index: 500;
+        justify-content: space-between;
+    }
+    .pagination-bar.bottom .page-input-wrapper {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.4rem;
+    }
+    .pagination-bar.bottom .page-btn.next-btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+    }
+    .pagination-bar.bottom .page-btn {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+    }
+    body {
+        padding-bottom: 5rem; /* отступ для фикс. панели */
+    }
+    .reader-footer {
+        margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: БОЛЬШИЕ ЭКРАНЫ — увеличенные поля
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+    :root {
+        --container-max: 860px;
+        --reader-padding: 4rem 2.5rem;
+    }
+    .reader-container {
+        padding: 0 1rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --container-max: 960px;
+        --reader-padding: 5rem 3rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АНИМАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.settings-toggle.hidden {
+    display: none;
+}
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body class="theme-light reader-text-font-1 reader-text-size-3 reader-line-height-2">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         КНОПКА НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <button class="settings-toggle" id="settingsToggle" title="Настройки чтения">⚙️</button>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ПАНЕЛЬ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="settings-overlay" id="settingsOverlay"></div>
+    <div class="settings-panel" id="settingsPanel">
+        <button class="settings-close" id="settingsClose">✕</button>
+        <h2>Настройки чтения</h2>
+
+        <div class="control-group">
+            <label>🌗 Тема оформления</label>
+            <div class="button-group">
+                <button class="theme-btn active" data-theme="light">☀️ Светлая</button>
+                <button class="theme-btn" data-theme="dark">🌙 Тёмная</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🎨 Гарнитура шрифта</label>
+            <div class="button-group">
+                <button class="font-btn active" data-font="1">1 — Cambria/Times</button>
+                <button class="font-btn" data-font="2">2 — Constantia/Georgia</button>
+                <button class="font-btn" data-font="3">3 — Frutiger/Arial</button>
+                <button class="font-btn" data-font="4">4 — Corbel/Verdana</button>
+                <button class="font-btn" data-font="5">5 — Garamond/Palatino</button>
+                <button class="font-btn" data-font="6">6 — Segoe UI/Trebuchet</button>
+                <button class="font-btn" data-font="7">7 — Impact/Arial Black</button>
+                <button class="font-btn" data-font="8">8 — Consolas/Courier</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🔠 Размер текста</label>
+            <div class="button-group">
+                <button class="size-btn" data-size="1">Очень мелкий</button>
+                <button class="size-btn" data-size="2">Мелкий</button>
+                <button class="size-btn active" data-size="3">Средний</button>
+                <button class="size-btn" data-size="4">Крупный</button>
+                <button class="size-btn" data-size="5">Очень крупный</button>
+                <button class="size-btn" data-size="6">Огромный</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>↕️ Межстрочный интервал</label>
+            <div class="button-group">
+                <button class="line-btn" data-line="1">Тесный (1.2)</button>
+                <button class="line-btn active" data-line="2">Обычный (1.5)</button>
+                <button class="line-btn" data-line="3">Свободный (1.8)</button>
+                <button class="line-btn" data-line="4">Широкий (2.2)</button>
+            </div>
+        </div>
+
+        <div class="current-settings" id="currentInfo">
+            Тема: <strong>Светлая</strong><br>
+            Шрифт: <strong>Cambria/Times</strong><br>
+            Размер: <strong>Средний (1.2em)</strong><br>
+            Интервал: <strong>Обычный (1.5)</strong>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ОСНОВНОЙ КОНТЕНТ
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="reader-wrapper">
+        <main class="reader-container">
+            <a href="../../index.html" class="back-link">К оглавлению</a>
+
+            <div class="pagination-bar top">
+    <div class="page-input-wrapper">
+        <span>Страница</span>
+        <input type="number" class="page-input" value="275" min="1" max="321" data-current="275">
+        <span class="page-total">из 321</span>
+    </div>
+</div>
+
+            
+
+            <p>Первый в истории «Держатель Меча» ответил: «Я не знаю».</p>
+
+            <p>Теперь люди надеются лишь на одно: чтобы сдерживание Темного леса привело к такому же благополучному исходу, как и ядерное сдерживание в XX веке.</p>
+
+            <p>Годы шли в странном равновесии. Сдерживание действовало уже шестьдесят лет, и Ло Цзи, которому перевалило за сто, всё еще контролировал его. И то, как люди воспринимали его, тоже постепенно менялось.</p>
+
+            <p>«Ястребы», выступавшие за жесткую политику в отношении Мира Трех Тел, его не любили. Ещё в самом начале создания системы сдерживания «ястребы» предлагали выдвинуть более жесткие условия, чтобы попытаться полностью разоружить Мир Трех Тел. Некоторые планы доходили до полного абсурда. Например, программа «голой миграции» предполагала, что всех трисолярианцев подвергнут обезвоживанию, после чего грузовые корабли доставят их в Облако Оорта, а оттуда человеческие суда перевезут в Солнечную систему. Там их планировали хранить в специальных сухих хранилищах на Луне или Марсе и постепенно размораживать небольшими группами при соблюдении определенных условий.</p>
+
+            <p>Мирные «голуби» тоже не любили Ло Цзи. Их внимание было сосредоточено на том, есть ли жизнь и цивилизация в звездной системе 187J3X1, координаты которой раскрыл Ло Цзи. На этот вопрос астрономы обоих миров не могли дать однозначного ответа: наличие жизни там невозможно было ни подтвердить, ни опровергнуть. Но Ло Цзи определенно подозревали в преступлении по уничтожению мира. Они считали, что для мирного сосуществования людей и Трисолярцев необходимо создать панкосмическую систему прав, основанную на признании полного равенства всех разумных существ во Вселенной. Чтобы такая панкосмическая система прав стала реальностью, над Ло Цзи необходимо было провести суд.</p>
+
+            <p>Ло Цзи не обращал внимания ни на то, ни на другое. Он просто сжимал в руке кнопку запуска гравитационных волн, молча исполняя свой долг Держателя Меча на протяжении полувека.</p>
+
+            <p>Стало понятно, что любые действия человечества в отношении мира Трех Тел невозможны без участия Держателя Меча. Без его признания никакие решения людей не будут иметь никакой силы в мире Трех Тел. Таким образом, Держатель Меча становился диктатором, обладающим такой же огромной властью, как и Лицом к стене.</p>
+
+            <p>Со временем образ Ло Цзи в глазах людей менялся: из спасителя он постепенно превращался в непостижимое чудовище и тирана, способного уничтожить весь мир.</p>
+
+            <p>Люди заметили, что Эра Сдерживания была странным временем: с одной стороны, человечество достигло небывалого уровня развития, а демократия и права человека стали уважаться как никогда прежде. С другой стороны, всё общество находилось в тени диктатора. Некоторые ученые полагают, что наука и технологии когда-то помогали искоренять тоталитаризм, но когда цивилизации грозит гибель, они же могут стать почвой для его возвращения. При традиционном тоталитаризме диктатор может управлять только через посредников, что ведет к низкой эффективности и множеству неопределенностей. Именно поэтому в истории человечества никогда не существовало абсолютно совершенной диктатуры. Однако технологии делают возможным установление такой сверхдиктатуры, и «Лицом к стене», и «Меченосцы» служат тому тревожными примерами. Сочетание супертехнологий и суперкризисов может привести к тому, что человечество вновь погрузится в Темные века.</p>
+
+            <p>Но большинство признает, что сейчас еще не время отказываться от сдерживания. Когда блокада софонов была снята и человечество получило знания из мира Трех Тел, наука начала развиваться стремительно, но она всё еще отстает от технологий этого мира на два-три поколения. Отказываться от сдерживания можно будет только тогда, когда технологический уровень двух миров станет сопоставимым.</p>
+
+            <p>Есть еще один вариант: передать контроль над сдерживанием искусственному интеллекту. Этот вариант серьезно рассматривали и даже провели множество экспериментов. Его главным преимуществом была крайне высокая эффективность сдерживания, но в итоге от этой идеи отказались. Сама мысль о том, чтобы доверить судьбу двух миров машинам, была ужасающей. Эксперименты показали, что А. И. оказывался гораздо ниже, чем у человека, поскольку в таких сложных ситуациях одной лишь логики недостаточно. Кроме того, с политической точки зрения это ничего не решало: диктатура людей просто сменилась бы диктатурой машин, что было бы еще хуже. И самое главное: Софоны по отношению к ИИ... I. ...были слишком сильными. Хотя подобного никогда не случалось, сама возможность такого исхода делала этот вариант неприемлемым.</p>
+
+            <p>Компромиссным решением стала замена Держателя Меча. Даже если не учитывать всё вышесказанное, Ло Цзи уже столетний старик, и его психическое состояние в любой момент может стать нестабильным. Доверять судьбу двух миров человеку в таком возрасте было слишком рискованно.</p>
+
+            <p>Чэн Синь быстро восстановилась. Врачи утверждали, что даже если все десять 7-миллиметровых пуль из этого пистолета попадут в неё и даже если её сердце будет разорвано в клочья, современная медицина сможет её спасти и полностью восстановить здоровье. Но если будет поврежден мозг, то она станет безнадежна.</p>
+
+            <p>По информации полиции, Вид почти добился своего. Последнее убийство в этом мире произошло двадцать восемь лет назад, а в самом городе подобных преступлений не было уже почти сорок лет, поэтому полиция почти разучилась их предотвращать и расследовать. Полицию предупредил другой кандидат в Меченосцы, соперник Вида. Однако никаких доказательств у него не было — он лишь благодаря своей проницательности, несвойственной этой эпохе, сумел разгадать намерения Вида. Полиция отнеслась к предупреждению с сомнением и потеряла много времени, начав действовать только тогда, когда обнаружила, что Вид подделал звонки от АА.</p>
+
+            <p>Чэн Синь навещало множество людей: представители правительства, ООН и флота, люди из самых разных слоев общества и, конечно же, АА с её друзьями. Теперь Чэн Синь легко определяла пол современных людей и постепенно привыкала к тому, что мужчины в эту эпоху выглядят совершенно женственно. Ей казалось, что в них есть изящество, которого не было у мужчин её времени, но они всё равно не могли вызвать у неё влечения.</p>
+
+            <p>Когда чувство чуждости начало исчезать, Чэн Синь захотела узнать об этой эпохе больше, но пока ей приходилось оставаться в палате.</p>
+
+            <p>Однажды в палате АА включила для неё голографический фильм под названием «Сказка о Янцзе». По её словам, картина стала лучшим фильмом этого года на «Оскаре», а в основу сюжета легло стихотворение Ли Чжии «Бусуаньцзы»: «Ты живешь в начале Янцзе, а я — в её устье…» Фильм рассказывает о любви пары в древние времена, когда люди жили в идиллических сельских поселениях. Влюбленные разделены огромным расстоянием: один живет у истоков Янцзы, а другой — в её устье. На протяжении всего фильма расстояние между главными героями остается непреодолимым. Они никогда не виделись, и даже в их воображении не возникало сцен встречи, но их взаимная тоска была передана невероятно трогательно и печально. Визуальный ряд фильма также очень эстетичен: изящная красота земель Цзяннань в устье Янцзы контрастирует с величественным размахом Тибетского нагорья у её истоков, и эта гармония приводит Чэн Синь в полный восторг. В фильме нет и намека на коммерческую вычурность, характерную для той эпохи; сюжет течет так же спокойно и размеренно, как Янцзы, полностью погружая Чэн Синь в атмосферу повествования.</p>
+
+            <p>Чэн Синь подумала о том, что сейчас она находится в самом конце Великой реки времени, а её истоки пусты… …</p>
+
+            <p>Этот фильм пробудил в Чэн Синь интерес к культуре Новой Эры, и когда она снова смогла ходить, АА стала водить её на выставки и концерты. Чэн Синь отчетливо помнила те странные и причудливые вещи, которые видела в арт-квартале «Завод 798» и на Шанхайской биеннале современного искусства еще в прошлом веке; трудно было даже представить, во что превратилось бы то искусство, дойди оно до наших дней. Но картины, которые она видела, были очень мягкими и реалистичными, а в их нежных тонах чувствовались жизнь и эмоции. Ей казалось, что каждое полотно подобно сердцу, которое тихо бьется в такт красоте природы и человеческой души. Что касается музыки, то всё услышанное напоминало ей классические симфонии. Это вновь заставило её вспомнить реку Янцзы из того фильма — такую же величественную, мощную и в то же время спокойную. Чэн Синь словно завороженно смотрела на течение реки, и ей вдруг показалось, что это не вода течет вперед, а люди движутся вверх по течению. Так музыка уносила её всё дальше и дальше… …</p>
+
+            <p>Культура и искусство этой эпохи совершенно не походили на то, что представляла себе Чэн Синь. Это не было простым возвратом к классике, а скорее напоминало новый виток развития после эпохи постмодерна, основанный на совершенно иных эстетических принципах. Так, например, в «Сказках Янцзы» скрывались глубокие метафоры о пространстве и времени во Вселенной. Но больше всего Чэн Синь поразило то, что мрачность, отчаяние и хаос, которыми было пропитано искусство и культура эпохи постмодерна XXI века, исчезли без следа. Им на смену пришло невиданное прежде чувство тепла, спокойствия и оптимизма.</p>
+
+            <p>— Я люблю эту эпоху, но, если подумать, это даже поразительно, — сказала Чэн Синь.</p>
+
+            <p>— Если бы вы знали авторов этих фильмов, картин и музыки, вы бы удивились еще больше: все они — трисолярианцы, которые живут в четырех световых годах от нас, — сказала АА и весело рассмеялась, глядя на ошеломленную Чэн Синь.</p>
+
+            <p>«Прошлое за пределами времени» (отрывок)</p>
+
+            <p>Культурное отражение</p>
+
+            <p>После установления сдерживания была создана Всемирная академия наук — международная организация, равная по статусу ООН. Она была основана для того, чтобы принимать и осваивать научно-технические знания, передаваемые Земле из Мира Трех Тел. Сначала предполагалось, что человечество будет получать из Мира Трех Тел лишь обрывки информации, которые будут выдаваться крайне скупо и неохотно. К тому же эти сведения должны были быть полны намеренных ошибок и лжи, так что ученым с Земли пришлось бы буквально разгадывать загадки, чтобы добраться до настоящих знаний. Однако позиция Мира Трех Тел оказалась совершенно неожиданной: за короткий срок они систематически передали колоссальный объем знаний. В основном это были данные по фундаментальным наукам — математике, физике, космологии, молекулярной биологии (основанной на биологии их собственного мира) и так далее, причем каждая из этих областей представляла собой полноценную научную дисциплину. Столь колоссальный объем информации на время ввел научное сообщество Земли в ступор. Мир Трех Тел также стал непрерывно направлять землян, так что на какое-то время вся Земля превратилась в один огромный университет. Когда Софон снял блокировку с ускорителей, основные положения физики трех тел стали постепенно подтверждаться экспериментально, что позволило человечеству убедиться в достоверности полученных знаний. Мир Трех Тел даже неоднократно жаловался на то, что Всемирная академия наук слишком медленно усваивает знания. Казалось, они с нетерпением ждут, когда человечество достигнет их собственного уровня развития, по крайней мере, в области фундаментальных наук.</p>
+
+            <p>Этому странному явлению нашлось множество объяснений. Одно из наиболее правдоподобных гласит: Мир Трех Тел заметил преимущества ускоренного развития человеческой науки и решил использовать его для получения новых знаний. В этой схеме Земля выступает в роли «аккумулятора знаний», который они пытаются «зарядить», чтобы затем извлечь из него максимальную пользу.</p>
+
+            <p>Мир Трех Тел объясняет это так: такая щедрая передача знаний — лишь знак уважения к земной цивилизации, ведь сами они получают от людей гораздо больше. Человеческая культура открыла миру Трех Тел новые глаза, позволив им увидеть более глубокий смысл жизни и цивилизации, а также почувствовать красоту природы и человеческой натуры, которую они раньше не замечали. Человеческая культура широко распространилась в мире Трех Тел, стремительно и глубоко меняя его облик. За полвека это привело к череде революций, в результате которых социальное устройство и политическая система трисолярианцев стали всё больше напоминать земные. Человеческие ценности нашли признание и уважение в этом далеком обществе, а сама наша культура стала предметом восхищения для всех жителей мира Трех Тел.</p>
+
+            <p>Сначала люди отнеслись к этому с недоверием, но затем последовала еще более невероятная волна культурного отклика, которая подтвердила всё это.</p>
+
+            <p>Спустя десять лет после начала Эры Сдерживания из мира Трех Тел стали поступать не только огромные массивы знаний, но и всё больше произведений искусства, созданных по образцу человеческих: фильмы, романы, стихи, музыка и живопись. Удивительно, но жители мира Трех Тел, похоже, не прошли через стадию неуклюжего подражания человеческой культуре — с самого начала их работы достигли высокого уровня. Ученые назвали это явление культурным отражением. Человеческая цивилизация обрела в космосе зеркало, которое позволило людям взглянуть на самих себя с ракурса, который раньше был невозможен. В следующие десять лет рефлексивная культура стала невероятно популярной. Она вытеснила угасающую и теряющую свою силу земную культуру, став основным течением: она диктовала моду широким массам и служила источником новых эстетических и философских идей для ученых.</p>
+
+            <p>Теперь, если заранее не указать источник, по фильму или роману обычно невозможно понять, кто его автор — человек или трисолярианец. Ведь в произведениях, созданных в мире Трех Тел, все персонажи — люди, а окружающая среда полностью повторяет земную; в них нет ни единого намека на иной мир. Это служит самым убедительным доказательством того, что цивилизация Трех Тел полностью переняла человеческую культуру. При этом сам мир Трех Тел по-прежнему остается окутанным тайной: почти никаких подробностей о нем не передавалось. Трисолярианцы считают, что их примитивная местная культура пока не заслуживает того, чтобы ее показывали людям. В частности, огромные различия в биологии и природной среде могут создать неожиданные препятствия для уже установившегося ценного общения.</p>
+
+            <div class="pagination-bar bottom">
+    <a href="page_274.html" class="page-btn prev-btn" target="_self">← Предыдущая</a>
+    <div class="page-input-wrapper">
+        <span>Страница</span>
+        <input type="number" class="page-input" value="275" min="1" max="321" data-current="275">
+        <span class="page-total">из 321</span>
+    </div>
+    <a href="page_276.html" class="page-btn next-btn" target="_self">Следующая →</a>
+</div>
+        </main>
+    </div>
+
+    <footer class="reader-footer">
+        ⚙️ Читалка.
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         СКРИПТ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <script>
+    (function() {
+        // ── Элементы ──
+        const body = document.body;
+        const toggleBtn = document.getElementById('settingsToggle');
+        const closeBtn = document.getElementById('settingsClose');
+        const overlay = document.getElementById('settingsOverlay');
+        const panel = document.getElementById('settingsPanel');
+        const infoSpan = document.getElementById('currentInfo');
+
+        // ── Текущие значения ──
+        let currentTheme = 'light';
+        let currentFont = '1';
+        let currentSize = '3';
+        let currentLine = '2';
+
+        // ── Справочники для отображения ──
+        const themeNames = {
+            light: 'Светлая',
+            dark: 'Тёмная'
+        };
+        const fontNames = {
+            1: 'Cambria/Times (классический serif)',
+            2: 'Constantia/Georgia (элегантный)',
+            3: 'Frutiger/Arial (гуманистический sans)',
+            4: 'Corbel/Verdana (чистый sans)',
+            5: 'Garamond/Palatino (книжный)',
+            6: 'Segoe UI / Trebuchet (современный)',
+            7: 'Impact / Arial Black (рубленый)',
+            8: 'Consolas/Courier (моноширинный)'
+        };
+        const sizeNames = {
+            1: 'Очень мелкий (0.8em)',
+            2: 'Мелкий (1em)',
+            3: 'Средний (1.2em)',
+            4: 'Крупный (1.4em)',
+            5: 'Очень крупный (1.6em)',
+            6: 'Огромный (2em)'
+        };
+        const lineNames = {
+            1: 'Тесный (1.2)',
+            2: 'Обычный (1.5)',
+            3: 'Свободный (1.8)',
+            4: 'Широкий (2.2)'
+        };
+
+        // ── Применение классов ──
+        function applyClasses() {
+            // Тема
+            body.classList.remove('theme-light', 'theme-dark');
+            body.classList.add('theme-' + currentTheme);
+
+            // Шрифт
+            for (let i = 1; i <= 8; i++) {
+                body.classList.remove('reader-text-font-' + i);
+            }
+            body.classList.add('reader-text-font-' + currentFont);
+
+            // Размер
+            for (let i = 1; i <= 6; i++) {
+                body.classList.remove('reader-text-size-' + i);
+            }
+            body.classList.add('reader-text-size-' + currentSize);
+
+            // Интервал
+            for (let i = 1; i <= 4; i++) {
+                body.classList.remove('reader-line-height-' + i);
+            }
+            body.classList.add('reader-line-height-' + currentLine);
+
+            updateInfo();
+            saveSettings();
+        }
+
+        // ── Обновление информационного блока ──
+        function updateInfo() {
+            infoSpan.innerHTML =
+                'Тема: <strong>' + themeNames[currentTheme] + '</strong><br>' +
+                'Шрифт: <strong>' + fontNames[currentFont] + '</strong><br>' +
+                'Размер: <strong>' + sizeNames[currentSize] + '</strong><br>' +
+                'Интервал: <strong>' + lineNames[currentLine] + '</strong>';
+        }
+
+        // ── Сохранение / загрузка из localStorage ──
+        function saveSettings() {
+            try {
+                localStorage.setItem('readerSettings', JSON.stringify({
+                    theme: currentTheme,
+                    font: currentFont,
+                    size: currentSize,
+                    line: currentLine
+                }));
+            } catch (e) {}
+        }
+
+        function loadSettings() {
+            try {
+                const saved = localStorage.getItem('readerSettings');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.theme) currentTheme = data.theme;
+                    if (data.font) currentFont = data.font;
+                    if (data.size) currentSize = data.size;
+                    if (data.line) currentLine = data.line;
+                }
+            } catch (e) {}
+        }
+
+        // ── Обновление активных кнопок ──
+        function updateActiveButtons() {
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-theme') === currentTheme);
+            });
+            document.querySelectorAll('.font-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-font') === currentFont);
+            });
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-size') === currentSize);
+            });
+            document.querySelectorAll('.line-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-line') === currentLine);
+            });
+        }
+
+        // ── Открытие / закрытие панели ──
+        function openPanel() {
+            overlay.classList.add('open');
+            panel.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            toggleBtn.classList.add('hidden');
+        }
+        function closePanel() {
+            overlay.classList.remove('open');
+            panel.classList.remove('open');
+            document.body.style.overflow = '';
+            toggleBtn.classList.remove('hidden');
+        }
+
+        toggleBtn.addEventListener('click', openPanel);
+        closeBtn.addEventListener('click', closePanel);
+        overlay.addEventListener('click', closePanel);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePanel();
+        });
+
+        // ── Обработчики кнопок ──
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentTheme = this.getAttribute('data-theme');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.font-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentFont = this.getAttribute('data-font');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentSize = this.getAttribute('data-size');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.line-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentLine = this.getAttribute('data-line');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        // ── Инициализация ──
+        loadSettings();
+        applyClasses();
+        updateActiveButtons();
+
+        /* ── Пагинация (многостраничный режим) ── */
+        (function() {
+            const inputs = document.querySelectorAll('.page-input');
+            if (!inputs.length) return;
+
+            inputs.forEach(function(inp) {
+                inp.addEventListener('change', function() {
+                    let v = parseInt(this.value, 10) || 1;
+                    const max = parseInt(this.max, 10);
+                    if (v < 1) v = 1;
+                    if (v > max) v = max;
+                    const current = parseInt(this.getAttribute('data-current'), 10);
+                    if (v === current) return;
+                    const target = (v === 1) ? 'index.html' : 'page_' + v + '.html';
+                    window.location.href = target;
+                });
+                inp.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        this.blur();
+                    }
+                });
+            });
+        })();
+    })();
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102424835, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+</body>
+</html>
