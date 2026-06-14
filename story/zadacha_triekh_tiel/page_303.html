@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zadacha triekh tiel - Liu Tsysin'">
+    <title>Zadacha triekh tiel - Liu Tsysin'</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+
+/* ═══════════════════════════════════════════════════════════════
+   CSS-ПЕРЕМЕННЫЕ: Светлая тема (по умолчанию)
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+    /* Цвета */
+    --bg: #faf9f7;
+    --bg-reader: #ffffff;
+    --text: #2c2c2c;
+    --heading: #1a1a1a;
+    --link: #6b7280;
+    --link-hover: #374151;
+    --divider: #e5e7eb;
+    --accent-vital: #8b6914;
+    --accent-important: #4b5563;
+    --note-bg: #fef9e3;
+    --note-border: #f1c40f;
+    --footer-bg: #f3f4f6;
+    --footer-text: #6b7280;
+    --panel-bg: #ffffff;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    --btn-bg: #ffffff;
+    --btn-border: #d1d5db;
+    --btn-active-bg: #a64738;
+    --btn-active-text: #ffffff;
+    --btn-hover-bg: #f3f4f6;
+    --overlay-bg: rgba(0,0,0,0.35);
+
+    /* Типографика */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+    --container-max: 780px;
+    --reader-padding: 3rem 1.5rem;
+
+    /* Переходы */
+    --transition: all 0.25s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ТЕМНАЯ ТЕМА
+   ═══════════════════════════════════════════════════════════════ */
+.theme-dark {
+    --bg: #0c0c0f;
+    --bg-reader: transparent;
+    --text: #b0b3b8;
+    --heading: #e2e0db;
+    --link: #8a929a;
+    --link-hover: #d4d8dc;
+    --divider: #25252a;
+    --accent-vital: #c9b896;
+    --accent-important: #9aa4b4;
+    --note-bg: rgba(241, 196, 15, 0.08);
+    --note-border: rgba(241, 196, 15, 0.4);
+    --footer-bg: #141418;
+    --footer-text: #6b7280;
+    --panel-bg: #1a1a1f;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    --btn-bg: #1f1f24;
+    --btn-border: #33333a;
+    --btn-active-bg: #c9b896;
+    --btn-active-text: #0c0c0f;
+    --btn-hover-bg: #25252a;
+    --overlay-bg: rgba(0,0,0,0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   БАЗОВЫЕ СТИЛИ
+   ═══════════════════════════════════════════════════════════════ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.65;
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КНОПКА НАСТРОЕК (плавающая)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: var(--transition);
+}
+.settings-toggle:hover {
+    background: var(--btn-hover-bg);
+    transform: rotate(30deg);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ПАНЕЛЬ НАСТРОЕК (оверлей)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-bg);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.settings-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 360px;
+    max-width: 90vw;
+    height: 100vh;
+    background: var(--panel-bg);
+    z-index: 999;
+    box-shadow: var(--panel-shadow);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+.settings-panel.open {
+    transform: translateX(0);
+}
+
+.settings-panel h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--divider);
+}
+
+.settings-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+.settings-close:hover {
+    background: var(--btn-hover-bg);
+}
+
+.control-group {
+    margin-bottom: 1.8rem;
+}
+.control-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.font-btn, .size-btn, .line-btn, .theme-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    padding: 5px 12px;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text);
+    font-family: var(--font-body);
+}
+.font-btn:hover, .size-btn:hover, .line-btn:hover, .theme-btn:hover {
+    background: var(--btn-hover-bg);
+}
+.font-btn.active, .size-btn.active, .line-btn.active, .theme-btn.active {
+    background: var(--btn-active-bg);
+    border-color: var(--btn-active-bg);
+    color: var(--btn-active-text);
+    font-weight: 500;
+}
+
+.current-settings {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--divider);
+    font-size: 0.8rem;
+    color: var(--link);
+    line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КОНТЕЙНЕР ЧИТАЛКИ
+   ═══════════════════════════════════════════════════════════════ */
+.reader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--reader-padding);
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+.reader-container {
+    max-width: var(--container-max);
+    width: 100%;
+    animation: fadeIn 1.2s ease-out;
+    background: var(--bg-reader);
+    padding: 0;
+    margin: 0 auto;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ТИПОГРАФИКА ТЕКСТА
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Заголовок рассказа */
+.story-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 1.2rem;
+}
+h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    transition: var(--transition);
+}
+.story-sub {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--link);
+    font-weight: 300;
+}
+
+/* Заголовки частей */
+.part-header {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin: 2.5rem 0 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--divider);
+    letter-spacing: 0.01em;
+    transition: var(--transition);
+}
+.part-header:first-of-type {
+    margin-top: 0;
+}
+
+/* Основной текст */
+p {
+    margin-bottom: 1.6rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+    transition: var(--transition);
+}
+
+/* Выделения */
+.vital {
+    font-weight: 500;
+    color: var(--accent-vital);
+    background: rgba(201, 184, 150, 0.08);
+    padding: 0.1rem 0.2rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+.important {
+    font-style: italic;
+    color: var(--accent-important);
+    border-bottom: 1px dashed rgba(154, 164, 180, 0.4);
+    padding-bottom: 1px;
+}
+
+/* Финальная фраза */
+.final-phrase {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    border-top: 1px solid var(--divider);
+    transition: var(--transition);
+}
+.final-phrase .vital {
+    background: none;
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ДОПОЛНИТЕЛЬНЫЕ СТИЛИ: Замечания и Footer
+   ═══════════════════════════════════════════════════════════════ */
+.info-note {
+    background: var(--note-bg);
+    border-left: 4px solid var(--note-border);
+    padding: 12px 20px;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    border-radius: 0 12px 12px 0;
+    color: var(--text);
+    transition: var(--transition);
+}
+
+.reader-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1.5rem;
+    color: var(--footer-text);
+    background: var(--footer-bg);
+    border-top: 1px solid var(--divider);
+    margin-top: 3rem;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   НАВИГАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+.back-link {
+    display: inline-block;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--link);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.back-link::before {
+    content: '←';
+    margin-right: 0.5rem;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.back-link:hover {
+    color: var(--link-hover);
+}
+.back-link:hover::before {
+    transform: translateX(-3px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ПАГИНАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+.pagination-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--divider);
+    flex-wrap: wrap;
+    user-select: none;
+}
+
+.pagination-bar.top {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    padding-top: 0;
+    padding-bottom: 1.2rem;
+    border-top: none;
+    border-bottom: 1px solid var(--divider);
+}
+
+.page-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: var(--btn-hover-bg);
+    border-color: var(--link-hover);
+}
+
+.page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* Кнопка «Следующая» — заметная, крупная, акцентная */
+.page-btn.next-btn {
+    background: var(--accent-vital);
+    color: #ffffff;
+    border-color: var(--accent-vital);
+    font-weight: 500;
+    padding: 0.85rem 2.2rem;
+    font-size: 1.05rem;
+    border-radius: 12px;
+    letter-spacing: 0.02em;
+}
+
+.page-btn.next-btn:hover:not(:disabled) {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 105, 20, 0.3);
+}
+
+.page-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--link);
+}
+
+.page-input {
+    width: 56px;
+    text-align: center;
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text);
+    padding: 0.5rem 0.3rem;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    -moz-appearance: textfield;
+}
+
+.page-input::-webkit-outer-spin-button,
+.page-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.page-input:focus {
+    outline: none;
+    border-color: var(--accent-vital);
+}
+
+.page-total {
+    color: var(--link);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ШРИФТОВЫЕ КЛАССЫ (8 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-font-1 .reader-container,
+.reader-text-font-1 {
+    --font-body: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+}
+.reader-text-font-2 .reader-container,
+.reader-text-font-2 {
+    --font-body: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+.reader-text-font-3 .reader-container,
+.reader-text-font-3 {
+    --font-body: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.reader-text-font-4 .reader-container,
+.reader-text-font-4 {
+    --font-body: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-5 .reader-container,
+.reader-text-font-5 {
+    --font-body: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+}
+.reader-text-font-6 .reader-container,
+.reader-text-font-6 {
+    --font-body: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-7 .reader-container,
+.reader-text-font-7 {
+    --font-body: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+}
+.reader-text-font-8 .reader-container,
+.reader-text-font-8 {
+    --font-body: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   РАЗМЕРЫ ТЕКСТА (6 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-size-1 .reader-container p { font-size: 0.8em; line-height: 1.2em; }
+.reader-text-size-2 .reader-container p { font-size: 1em; line-height: 1.2em; }
+.reader-text-size-3 .reader-container p { font-size: 1.2em; line-height: 1.4em; }
+.reader-text-size-4 .reader-container p { font-size: 1.4em; line-height: 1.5em; }
+.reader-text-size-5 .reader-container p { font-size: 1.6em; line-height: 1.6em; }
+.reader-text-size-6 .reader-container p { font-size: 2em; line-height: 1.8em; }
+
+/* Размеры для заголовков тоже масштабируем */
+.reader-text-size-1 .reader-container h1 { font-size: 2.0rem; }
+.reader-text-size-2 .reader-container h1 { font-size: 2.4rem; }
+.reader-text-size-3 .reader-container h1 { font-size: 2.8rem; }
+.reader-text-size-4 .reader-container h1 { font-size: 3.2rem; }
+.reader-text-size-5 .reader-container h1 { font-size: 3.6rem; }
+.reader-text-size-6 .reader-container h1 { font-size: 4.0rem; }
+
+.reader-text-size-1 .reader-container .part-header { font-size: 1.3rem; }
+.reader-text-size-2 .reader-container .part-header { font-size: 1.5rem; }
+.reader-text-size-3 .reader-container .part-header { font-size: 1.8rem; }
+.reader-text-size-4 .reader-container .part-header { font-size: 2.1rem; }
+.reader-text-size-5 .reader-container .part-header { font-size: 2.4rem; }
+.reader-text-size-6 .reader-container .part-header { font-size: 2.7rem; }
+
+/* ═══════════════════════════════════════════════════════════════
+   МЕЖСТРОЧНЫЙ ИНТЕРВАЛ (4 варианта)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-line-height-1 .reader-container p { line-height: 1.2; }
+.reader-line-height-2 .reader-container p { line-height: 1.5; }
+.reader-line-height-3 .reader-container p { line-height: 1.8; }
+.reader-line-height-4 .reader-container p { line-height: 2.2; }
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: мобильные
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+
+    .settings-panel { width: 300px; }
+    h1 { font-size: 2rem; }
+    .part-header { font-size: 1.5rem; }
+    p { font-size: 0.98rem; }
+    body { padding: 2rem 1rem; }
+
+    /* Фиксированная нижняя панель пагинации на мобильных */
+    .pagination-bar.bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0.75rem 1rem;
+        background: var(--panel-bg);
+        border-top: 1px solid var(--divider);
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+        z-index: 500;
+        justify-content: space-between;
+    }
+    .pagination-bar.bottom .page-input-wrapper {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.4rem;
+    }
+    .pagination-bar.bottom .page-btn.next-btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+    }
+    .pagination-bar.bottom .page-btn {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+    }
+    body {
+        padding-bottom: 5rem; /* отступ для фикс. панели */
+    }
+    .reader-footer {
+        margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: БОЛЬШИЕ ЭКРАНЫ — увеличенные поля
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+    :root {
+        --container-max: 860px;
+        --reader-padding: 4rem 2.5rem;
+    }
+    .reader-container {
+        padding: 0 1rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --container-max: 960px;
+        --reader-padding: 5rem 3rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АНИМАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.settings-toggle.hidden {
+    display: none;
+}
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body class="theme-light reader-text-font-1 reader-text-size-3 reader-line-height-2">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         КНОПКА НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <button class="settings-toggle" id="settingsToggle" title="Настройки чтения">⚙️</button>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ПАНЕЛЬ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="settings-overlay" id="settingsOverlay"></div>
+    <div class="settings-panel" id="settingsPanel">
+        <button class="settings-close" id="settingsClose">✕</button>
+        <h2>Настройки чтения</h2>
+
+        <div class="control-group">
+            <label>🌗 Тема оформления</label>
+            <div class="button-group">
+                <button class="theme-btn active" data-theme="light">☀️ Светлая</button>
+                <button class="theme-btn" data-theme="dark">🌙 Тёмная</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🎨 Гарнитура шрифта</label>
+            <div class="button-group">
+                <button class="font-btn active" data-font="1">1 — Cambria/Times</button>
+                <button class="font-btn" data-font="2">2 — Constantia/Georgia</button>
+                <button class="font-btn" data-font="3">3 — Frutiger/Arial</button>
+                <button class="font-btn" data-font="4">4 — Corbel/Verdana</button>
+                <button class="font-btn" data-font="5">5 — Garamond/Palatino</button>
+                <button class="font-btn" data-font="6">6 — Segoe UI/Trebuchet</button>
+                <button class="font-btn" data-font="7">7 — Impact/Arial Black</button>
+                <button class="font-btn" data-font="8">8 — Consolas/Courier</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🔠 Размер текста</label>
+            <div class="button-group">
+                <button class="size-btn" data-size="1">Очень мелкий</button>
+                <button class="size-btn" data-size="2">Мелкий</button>
+                <button class="size-btn active" data-size="3">Средний</button>
+                <button class="size-btn" data-size="4">Крупный</button>
+                <button class="size-btn" data-size="5">Очень крупный</button>
+                <button class="size-btn" data-size="6">Огромный</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>↕️ Межстрочный интервал</label>
+            <div class="button-group">
+                <button class="line-btn" data-line="1">Тесный (1.2)</button>
+                <button class="line-btn active" data-line="2">Обычный (1.5)</button>
+                <button class="line-btn" data-line="3">Свободный (1.8)</button>
+                <button class="line-btn" data-line="4">Широкий (2.2)</button>
+            </div>
+        </div>
+
+        <div class="current-settings" id="currentInfo">
+            Тема: <strong>Светлая</strong><br>
+            Шрифт: <strong>Cambria/Times</strong><br>
+            Размер: <strong>Средний (1.2em)</strong><br>
+            Интервал: <strong>Обычный (1.5)</strong>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ОСНОВНОЙ КОНТЕНТ
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="reader-wrapper">
+        <main class="reader-container">
+            <a href="../../index.html" class="back-link">К оглавлению</a>
+
+            <div class="pagination-bar top">
+    <div class="page-input-wrapper">
+        <span>Страница</span>
+        <input type="number" class="page-input" value="303" min="1" max="343" data-current="303">
+        <span class="page-total">из 343</span>
+    </div>
+</div>
+
+            
+
+            <p>— Это просто пустая оболочка? — спросила Чэн Синь.</p>
+
+            <p>— Нет, — ответили ей.</p>
+
+            <p>Цао Бинь несколько секунд смотрел на Чэн Синь, словно оценивая её смелость, а затем выключил прожекторы катера. Сначала Чэн Синь увидела лишь темноту. Звездный свет пробивался сквозь разлом напротив, словно ночное небо, виднеющееся в дырах крыши разрушенного дома. Но когда глаза Чэн Синь привыкли к темноте, она заметила, что в руинах космического города не было кромешной тьмы — вокруг мерцал слабый синий свет. Чэн Синь почувствовала, как по спине пробежал холодок. Заставив себя успокоиться, она попыталась найти источник света и заметила, что сияние исходит из центра города. Там мерцала точка — она то загоралась, то гасла в случайном ритме, словно чей-то медленно моргающий глаз. Внутри руин всё то появлялось, то исчезало в такт мерцанию этой точки; пустое до этого пространство заполнили странные тени, словно ночную пустошь освещали вспышки молний.</p>
+
+            <p>— Этот свет возникает из-за того, что космическая пыль падает в черную дыру, — сказал Цао Бинь, указывая в сторону мерцания, словно пытаясь успокоить Чэн Синь.</p>
+
+            <p>— Там черная дыра?</p>
+
+            <p>— Да, сейчас до нас... наверное, меньше пяти километров. Это микроскопическая черная дыра: радиус Шварцшильда всего двадцать нанометров, а масса равна массе Ганимеда.</p>
+
+            <p>В этом тусклом голубом свете Цао Бинь рассказал Чэн Синь историю о «Гуансу-2» и Гао Вэе.</p>
+
+            <p>Исследования по снижению скорости света в вакууме начались почти одновременно с проектом «Укрытие». Этот проект стал для человечества вторым шансом на выживание, и международное сообщество вложило в него колоссальные ресурсы. Специально для проекта «Укрытие» был построен огромный космический город, который стал исследовательской базой — это и есть Научный город «Скорость Света-1» в поселении Сатурна.</p>
+
+            <p>Однако за шестьдесят лет масштабных исследований не было достигнуто никаких прорывов, даже в области фундаментальной теории.</p>
+
+            <p>Замедлить свет в какой-либо среде несложно: еще в 2008 году в лабораториях удалось снизить его скорость до невероятных семнадцати метров в секунду. Однако это в корне отличается от снижения скорости света в вакууме. Это достигается лишь за счет поглощения и повторного излучения фотонов атомами среды, при этом сама скорость распространения фотонов остается стандартной скоростью света в вакууме, что совершенно бесполезно для проекта «Черная область».</p>
+
+            <p>Скорость света в вакууме — одна из фундаментальных космологических констант, и изменить её значит изменить сами законы Вселенной. Поэтому для снижения скорости света в вакууме необходим прорыв в самых основах физики, а подобные открытия случаются крайне редко. За последние шестьдесят лет главным достижением фундаментальной науки стало создание солнечного ускорителя, появление которого позволило запустить самый масштабный этап проекта «Черная область» — проект «Черная дыра».</p>
+
+            <p>Ученые пытались воздействовать на скорость света с помощью различных экстремальных физических методов, создав для этого самое мощное искусственное магнитное поле в истории. Но для воздействия на свет в вакууме лучше всего подходит гравитационное поле. Однако создать сильное локальное поле в лабораторных условиях крайне сложно — единственный возможный способ сделать это заключается в использовании черных дыр, а солнечный ускоритель способен создавать миниатюрные черные дыры.</p>
+
+            <p>Главным ученым проекта «Черная дыра» был Гао Вэй. Цао Бинь работал с ним несколько лет и позже описал Чэн Синь этого человека с очень смешанным чувством.</p>
+
+            <p>«У этого человека тяжелый аутизм. И нет, это не то одиночество, которое гении выбирают осознанно, а именно психический изъян. Он был крайне замкнут, ни с кем не общался и никогда не имел отношений с женщинами. Только в нашу эпоху он смог добиться такого успеха в карьере, но окружающие просто использовали его как высокоинтеллектуальную батарейку. Он страдал от своего недуга и постоянно пытался измениться — в этом он совершенно не был похож на других гениев. Кажется, начиная с 8-го года Эры Радиовещания, он с головой ушел в теоретические исследования по снижению скорости света. Он был настолько увлечен, что возникла странная связь: ему казалось, будто скорость света — это отражение его собственного характера, и если удастся изменить её, то он сможет изменить и себя».</p>
+
+            <p>Но скорость света в вакууме оказалась самой непреклонной величиной во Вселенной. Попытки снизить её были похожи на настоящие пытки: свет подвергали самым жестоким физическим воздействиям — его пытались исказить, сломать, расчленить, растянуть, сплющить и даже уничтожить. Однако лучшим результатом стало лишь изменение частоты света в вакууме, сама же его скорость оставалась неподвижной, словно непреодолимая стена. Спустя десятилетия и теоретики, и экспериментаторы впали в отчаяние. Появилось даже мнение, что если Творец и существует, то при создании Вселенной он «намертво приварил» лишь одну вещь — скорость света. Для Гао Вэя это отчаяние было еще глубже. К тому времени, как я находился в анабиозе, ему было уже почти пятьдесят, и он так и не сблизился ни с одной женщиной. Ему казалось, что его судьба так же неизменна и сурова, как скорость света в вакууме, и от этого он стал еще более замкнутым и одиноким.</p>
+
+            <p>Проект «Черная дыра» начался в первый год Эпохи Бункеров и длился одиннадцать лет. На самом деле его создатели не возлагали на него особых надежд: и теоретические расчеты, и астрономические наблюдения подтверждали, что черные дыры не способны изменить скорость света. Эти «демоны вселенной» могут лишь искривлять траекторию лучей и менять их частоту с помощью гравитации, но на скорость света в вакууме они не влияют никак. Однако для продолжения исследований в рамках проекта «Черная область» требовалась среда со сверхплотным гравитационным полем, которую можно было создать только с помощью черной дыры. Был и еще один довод: по своей сути Черная область представляет собой гигантскую черную дыру с низкой скоростью света, поэтому изучение вблизи миниатюрной черной дыры со стандартной скоростью света могло дать неожиданные подсказки.</p>
+
+            <p>Солнечный ускоритель способен за короткое время создавать миниатюрные черные дыры, но из-за малых размеров они быстро испаряются. Чтобы сделать их стабильными, созданные в ускорителе черные дыры тут же извлекают и перемещают внутрь Ганимеда.</p>
+
+            <p>Ганимед — самый маленький спутник Юпитера, по сути просто огромный камень радиусом всего восемь километров. Еще до создания черной дыры его перевели с высокой орбиты так, чтобы он, подобно городам-спутникам, стал спутником Солнца и двигался параллельно Юпитеру. В отличие от других космических городов, он расположен во второй точке Лагранжа между Юпитером и Солнцем — именно там, где мы сейчас находимся. В этой точке можно сохранять стабильную дистанцию от Юпитера без каких-либо затрат на корректировку курса. Это самый массивный объект, который человечество когда-либо перемещало в космосе.</p>
+
+            <p>Микроскопическая черная дыра была выстрелена в Ганимед. Поглощая вещество, она начала стремительно расти, а колоссальное излучение, возникавшее при этом процессе, быстро расплавило окружающие породы. Вскоре весь спутник радиусом восемь километров полностью превратился в раскаленный шар из магмы, светящийся красным. Этот шар постепенно уменьшался в размерах, но становился всё ярче, пока наконец не исчез в мощнейшей вспышке света. Согласно наблюдениям, почти всё вещество Ганимеда было поглощено черной дырой, и лишь малая его часть рассеялась под воздействием радиации. Черная дыра стабилизировалась, а её радиус Шварцшильда — или радиус горизонта событий — увеличился с размера элементарной частицы до 21 нанометра.</p>
+
+            <p>Затем вокруг черной дыры был построен космический город, получивший название «Гуансу-2». Черная дыра располагалась в самом его центре. По сути, это был пустой город, представлявший собой огромный контейнер для удержания черной дыры; внутри него поддерживался вакуум, как в открытом космосе, и он не вращался. В этот космический город могли доставляться люди и оборудование для исследования черной дыры.</p>
+
+            <p>Черные дыры изучали многие годы, но это был первый случай, когда образец черной дыры удалось исследовать в лабораторных условиях. Работа принесла множество результатов и помогла развить фундаментальные основы теоретической физики и космологии. Однако все эти достижения так и не помогли снизить скорость света в вакууме.</p>
+
+            <p>На шестой год исследований образца черной дыры погиб Гао Вэй. Согласно официальному заявлению Всемирной академии наук, он «был затянут в черную дыру» в результате несчастного случая во время работы.</p>
+
+            <p>На самом деле любому, кто обладает базовыми знаниями, понятно, что вероятность того, что Гао Вэя могло «затянуть» в черную дыру, ничтожно мала. Черные дыры становятся суперловушками, способными поглотить даже свет, не из-за огромной общей силы притяжения (хотя у крупных черных дыр, возникших в результате коллапса звезд, она действительно велика), а из-за чрезвычайно высокой плотности гравитации. С большого расстояния их притяжение сопоставимо с притяжением обычного вещества той же массы. Если бы Солнце превратилось в черную дыру, Земля и другие планеты просто продолжили бы двигаться по своим орбитам, их бы не затянуло внутрь. Гравитация черной дыры проявляет свою истинную мощь только на очень близком расстоянии.</p>
+
+            <p>На «Гуансу-2» вокруг черной дыры установлена защитная сеть радиусом пять километров, и персоналу запрещено заходить внутрь этого периметра. Радиус Ганимеда составлял всего восемь километров, поэтому на таком расстоянии гравитация черной дыры примерно такая же, как была на поверхности этого спутника. Эта сила притяжения ничтожна: человек ощущает себя почти в невесомости и может легко выбраться оттуда с помощью двигателей на скафандре. Следовательно, маловероятно, что Гао Вэя просто «засосало» внутрь.</p>
+
+            <p>Получив стабильный образец черной дыры, Гао Вэй стал буквально одержим им. Годами он пытался бросить вызов скорости света, но тщетно: эта константа, равная почти тремстам тысячам километров в секунду, оставалась непоколебимой, и он не мог изменить в ней ни одного знака после запятой. Это вызывало у него чувство бессилия и разочарования. Постоянство скорости света в вакууме — один из фундаментальных законов мироздания, и Гао Вэй одновременно боялся и ненавидел эти законы. Но теперь перед ним был объект, способный сжать Ганимед до двадцати одного нанометра. Там, за горизонтом событий, в пространственно-временной сингулярности, все известные законы Вселенной перестают действовать.</p>
+
+            <p>Гао Вэй часто часами лежал на защитной сетке, не отрывая взгляда от черной дыры в пяти тысячах метров от него, наблюдая за тем, как она призрачно мерцает. Иногда он утверждал, что черная дыра с ним говорит и что в этих вспышках он видит какое-то послание.</p>
+
+            <p>Никто не видел, как Гао Вэя затянуло внутрь, и если записи этого момента и существуют, их так и не опубликовали. Он был одним из ведущих физиков проекта «Черная дыра» и знал код от входа в защитную сетку. Он определенно вошел внутрь и медленно дрейфовал к черной дыре, пока не достиг точки, из которой возвращение стало невозможным из-за силы гравитации. Возможно, он просто хотел поближе взглянуть на объект, который так его завораживал, а может, решил шагнуть в сингулярность, где не действуют законы Вселенной, чтобы сбежать от всего этого.</p>
+
+            <p>Дальше начались по-настоящему странные вещи. После того как Гао Вэя затянуло внутрь, люди начали наблюдать за черной дырой с помощью дистанционного микроскопа. Они обнаружили, что на горизонте событий — этой крошечной сфере радиусом всего двадцать один нанометр — виден человеческий силуэт. Это был Гао Вэй, пересекающий границу горизонта событий.</p>
+
+            <p>Согласно общей теории относительности, для удаленного наблюдателя время вблизи горизонта событий резко замедляется, из-за чего сам процесс падения Гао Вэя кажется бесконечно долгим.</p>
+
+            <p>Но с точки зрения самого Гао Вэя, он уже пересек горизонт событий.</p>
+
+            <p>Еще более странным было то, что пропорции фигуры оставались нормальными. Возможно, из-за малого размера черной дыры приливные силы не подействовали на него. Несмотря на то что Гао Вэй был сжат до невероятно малых размеров, пространственная кривизна в этой точке также была огромной. Поэтому многие физики полагают, что структура его тела на горизонте событий не была разрушена. Другими словами, он может быть всё еще жив.</p>
+
+            <p>Когда источник гравитации воздействует на объект, разные его точки находятся на разном расстоянии от гравитационного поля и притягиваются с разной силой. Эта разница в силе притяжения создает эффект растяжения, который и называется приливными силами.</p>
+
+            <p>В итоге страховая компания отказалась выплачивать пособие по случаю смерти. Хотя с точки зрения самого Гао Вэя он уже пересек горизонт событий и должен был погибнуть, страховой договор был составлен с опорой на систему координат нашего реального мира, а в ней факт его смерти доказать невозможно. Даже подать заявку на выплату нельзя, так как страховые выплаты производятся только после завершения происшествия. Но Гао Вэй всё еще падает в черную дыру. Инцидент еще не окончен — и не закончится никогда.</p>
+
+            <p>В это время одна женщина подала в суд, потребовав, чтобы Всемирная академия наук немедленно прекратила исследования этого образца черной дыры. На данный момент дистанционное наблюдение уже не давало новых результатов, а для дальнейшего изучения потребовалось бы прямое воздействие на объект — например, отправка экспериментальных тел внутрь черной дыры. Это вызвало бы мощное излучение и могло нарушить пространственно-временную среду вблизи горизонта событий, что поставило бы под угрозу жизнь Гао Вэя, если он всё еще жив. Женщина не выиграла суд, но по ряду причин исследования всё равно были остановлены. Проект «Гуансу-2» был полностью заброшен, и теперь остается только ждать, пока черная дыра испарится, что, по расчетам, займет еще полвека.</p>
+
+            <p>— Но теперь мы знаем, что была одна женщина, которая полюбила Гао Вэя, жаль только, что он об этом так и не узнал. Позже она часто приходила сюда и отправляла в черную дыру сообщения с помощью радиоволн или нейтрино и даже вывесила на защитной сетке огромный плакат, чтобы признаться ему в любви. Неизвестно, видит ли он всё это, ведь с точки зрения его собственной системы отсчета он уже пересек горизонт событий и попал в сингулярность… В общем, история довольно грустная.</p>
+
+            <div class="pagination-bar bottom">
+    <a href="page_302.html" class="page-btn prev-btn" target="_self">← Предыдущая</a>
+    <div class="page-input-wrapper">
+        <span>Страница</span>
+        <input type="number" class="page-input" value="303" min="1" max="343" data-current="303">
+        <span class="page-total">из 343</span>
+    </div>
+    <a href="page_304.html" class="page-btn next-btn" target="_self">Следующая →</a>
+</div>
+        </main>
+    </div>
+
+    <footer class="reader-footer">
+        ⚙️ Читалка.
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         СКРИПТ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <script>
+    (function() {
+        // ── Элементы ──
+        const body = document.body;
+        const toggleBtn = document.getElementById('settingsToggle');
+        const closeBtn = document.getElementById('settingsClose');
+        const overlay = document.getElementById('settingsOverlay');
+        const panel = document.getElementById('settingsPanel');
+        const infoSpan = document.getElementById('currentInfo');
+
+        // ── Текущие значения ──
+        let currentTheme = 'light';
+        let currentFont = '1';
+        let currentSize = '3';
+        let currentLine = '2';
+
+        // ── Справочники для отображения ──
+        const themeNames = {
+            light: 'Светлая',
+            dark: 'Тёмная'
+        };
+        const fontNames = {
+            1: 'Cambria/Times (классический serif)',
+            2: 'Constantia/Georgia (элегантный)',
+            3: 'Frutiger/Arial (гуманистический sans)',
+            4: 'Corbel/Verdana (чистый sans)',
+            5: 'Garamond/Palatino (книжный)',
+            6: 'Segoe UI / Trebuchet (современный)',
+            7: 'Impact / Arial Black (рубленый)',
+            8: 'Consolas/Courier (моноширинный)'
+        };
+        const sizeNames = {
+            1: 'Очень мелкий (0.8em)',
+            2: 'Мелкий (1em)',
+            3: 'Средний (1.2em)',
+            4: 'Крупный (1.4em)',
+            5: 'Очень крупный (1.6em)',
+            6: 'Огромный (2em)'
+        };
+        const lineNames = {
+            1: 'Тесный (1.2)',
+            2: 'Обычный (1.5)',
+            3: 'Свободный (1.8)',
+            4: 'Широкий (2.2)'
+        };
+
+        // ── Применение классов ──
+        function applyClasses() {
+            // Тема
+            body.classList.remove('theme-light', 'theme-dark');
+            body.classList.add('theme-' + currentTheme);
+
+            // Шрифт
+            for (let i = 1; i <= 8; i++) {
+                body.classList.remove('reader-text-font-' + i);
+            }
+            body.classList.add('reader-text-font-' + currentFont);
+
+            // Размер
+            for (let i = 1; i <= 6; i++) {
+                body.classList.remove('reader-text-size-' + i);
+            }
+            body.classList.add('reader-text-size-' + currentSize);
+
+            // Интервал
+            for (let i = 1; i <= 4; i++) {
+                body.classList.remove('reader-line-height-' + i);
+            }
+            body.classList.add('reader-line-height-' + currentLine);
+
+            updateInfo();
+            saveSettings();
+        }
+
+        // ── Обновление информационного блока ──
+        function updateInfo() {
+            infoSpan.innerHTML =
+                'Тема: <strong>' + themeNames[currentTheme] + '</strong><br>' +
+                'Шрифт: <strong>' + fontNames[currentFont] + '</strong><br>' +
+                'Размер: <strong>' + sizeNames[currentSize] + '</strong><br>' +
+                'Интервал: <strong>' + lineNames[currentLine] + '</strong>';
+        }
+
+        // ── Сохранение / загрузка из localStorage ──
+        function saveSettings() {
+            try {
+                localStorage.setItem('readerSettings', JSON.stringify({
+                    theme: currentTheme,
+                    font: currentFont,
+                    size: currentSize,
+                    line: currentLine
+                }));
+            } catch (e) {}
+        }
+
+        function loadSettings() {
+            try {
+                const saved = localStorage.getItem('readerSettings');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.theme) currentTheme = data.theme;
+                    if (data.font) currentFont = data.font;
+                    if (data.size) currentSize = data.size;
+                    if (data.line) currentLine = data.line;
+                }
+            } catch (e) {}
+        }
+
+        // ── Обновление активных кнопок ──
+        function updateActiveButtons() {
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-theme') === currentTheme);
+            });
+            document.querySelectorAll('.font-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-font') === currentFont);
+            });
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-size') === currentSize);
+            });
+            document.querySelectorAll('.line-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-line') === currentLine);
+            });
+        }
+
+        // ── Открытие / закрытие панели ──
+        function openPanel() {
+            overlay.classList.add('open');
+            panel.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            toggleBtn.classList.add('hidden');
+        }
+        function closePanel() {
+            overlay.classList.remove('open');
+            panel.classList.remove('open');
+            document.body.style.overflow = '';
+            toggleBtn.classList.remove('hidden');
+        }
+
+        toggleBtn.addEventListener('click', openPanel);
+        closeBtn.addEventListener('click', closePanel);
+        overlay.addEventListener('click', closePanel);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePanel();
+        });
+
+        // ── Обработчики кнопок ──
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentTheme = this.getAttribute('data-theme');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.font-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentFont = this.getAttribute('data-font');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentSize = this.getAttribute('data-size');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.line-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentLine = this.getAttribute('data-line');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        // ── Инициализация ──
+        loadSettings();
+        applyClasses();
+        updateActiveButtons();
+
+        /* ── Пагинация (многостраничный режим) ── */
+        (function() {
+            const inputs = document.querySelectorAll('.page-input');
+            if (!inputs.length) return;
+
+            inputs.forEach(function(inp) {
+                inp.addEventListener('change', function() {
+                    let v = parseInt(this.value, 10) || 1;
+                    const max = parseInt(this.max, 10);
+                    if (v < 1) v = 1;
+                    if (v > max) v = max;
+                    const current = parseInt(this.getAttribute('data-current'), 10);
+                    if (v === current) return;
+                    const target = (v === 1) ? 'index.html' : 'page_' + v + '.html';
+                    window.location.href = target;
+                });
+                inp.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        this.blur();
+                    }
+                });
+            });
+        })();
+    })();
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102424835, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

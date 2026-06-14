@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://omogr.github.io/</loc>
-    <lastmod>2026-06-12T12:19:58+00:00</lastmod>
+    <lastmod>2026-06-14T22:55:25+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -43,14 +43,20 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://omogr.github.io/story/3body1</loc>
+    <lastmod>2026-06-11T19:01:08+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://omogr.github.io/story/amenemope</loc>
-    <lastmod>2026-05-17T15:03:34+00:00</lastmod>
+    <lastmod>2026-06-14T22:45:21+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://omogr.github.io/story/desert_bell</loc>
-    <lastmod>2026-05-17T15:06:00+00:00</lastmod>
+    <lastmod>2026-06-14T22:44:46+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
@@ -61,2060 +67,2096 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/doggy_dad/</loc>
+    <lastmod>2026-06-14T22:19:44+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_10</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/doggy_dad/page_2</loc>
+    <lastmod>2026-06-14T22:19:44+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_100</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/doggy_dad/page_3</loc>
+    <lastmod>2026-06-14T22:19:44+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_101</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/doggy_dad/page_4</loc>
+    <lastmod>2026-06-14T22:19:44+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_102</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/doggy_dad/page_5</loc>
+    <lastmod>2026-06-14T22:19:44+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_103</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/doggy_dad/page_6</loc>
+    <lastmod>2026-06-14T22:04:42+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_104</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_105</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_10</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_106</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_100</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_107</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_101</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_108</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_102</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_109</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_103</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_11</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_104</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_110</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_105</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_111</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_106</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_112</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_107</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_113</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_108</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_114</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_109</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_115</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_11</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_116</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_110</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_117</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_111</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_118</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_112</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_119</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_113</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_12</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_114</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_120</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_115</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_121</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_116</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_122</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_117</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_123</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_118</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_124</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_119</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_125</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_12</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_126</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_120</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_127</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_121</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_128</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_122</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_129</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_123</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_13</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_124</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_130</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_125</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_131</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_126</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_132</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_127</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_133</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_128</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_134</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_129</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_135</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_13</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_136</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_130</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_137</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_131</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_138</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_132</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_139</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_133</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_14</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_134</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_140</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_135</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_141</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_136</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_142</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_137</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_143</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_138</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_144</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_139</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_145</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_14</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_146</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_140</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_147</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_141</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_148</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_142</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_149</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_143</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_15</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_144</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_150</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_145</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_151</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_146</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_152</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_147</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_153</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_148</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_154</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_149</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_155</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_15</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_156</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_150</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_157</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_151</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_158</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_152</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_159</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_153</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_16</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_154</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_160</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_155</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_161</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_156</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_162</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_157</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_163</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_158</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_164</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_159</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_165</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_16</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_166</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_160</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_167</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_161</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_168</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_162</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_169</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_163</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_17</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_164</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_170</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_165</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_171</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_166</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_172</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_167</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_173</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_168</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_174</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_169</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_175</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_17</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_176</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_170</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_177</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_171</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_178</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_172</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_179</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_173</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_18</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_174</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_180</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_175</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_181</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_176</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_182</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_177</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_183</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_178</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_184</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_179</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_185</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_18</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_186</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_180</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_187</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_181</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_188</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_182</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_189</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_183</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_19</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_184</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_190</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_185</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_191</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_186</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_192</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_187</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_193</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_188</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_194</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_189</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_195</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_19</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_196</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_190</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_197</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_191</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_198</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_192</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_199</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_193</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_2</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_194</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_20</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_195</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_200</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_196</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_201</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_197</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_202</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_198</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_203</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_199</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_204</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_2</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_205</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_20</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_206</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_200</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_207</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_201</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_208</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_202</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_209</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_203</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_21</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_204</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_210</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_205</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_211</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_206</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_212</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_207</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_213</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_208</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_214</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_209</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_215</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_21</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_216</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_210</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_217</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_211</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_218</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_212</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_219</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_213</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_22</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_214</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_220</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_215</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_221</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_216</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_222</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_217</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_223</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_218</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_224</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_219</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_225</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_22</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_226</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_220</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_227</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_221</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_228</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_222</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_229</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_223</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_23</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_224</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_230</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_225</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_231</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_226</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_232</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_227</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_233</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_228</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_234</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_229</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_235</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_23</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_236</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_230</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_237</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_231</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_238</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_232</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_239</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_233</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_24</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_234</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_240</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_235</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_241</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_236</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_242</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_237</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_243</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_238</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_244</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_239</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_245</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_24</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_246</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_240</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_247</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_241</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_248</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_242</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_249</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_243</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_25</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_244</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_250</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_245</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_251</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_246</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_252</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_247</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_253</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_248</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_254</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_249</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_255</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_25</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_256</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_250</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_257</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_251</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_258</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_252</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_259</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_253</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_26</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_254</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_260</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_255</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_261</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_256</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_262</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_257</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_263</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_258</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_264</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_259</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_265</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_26</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_266</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_260</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_267</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_261</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_268</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_262</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_269</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_263</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_27</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_264</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_270</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_265</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_271</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_266</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_272</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_267</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_273</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_268</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_274</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_269</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_275</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_27</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_276</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_270</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_277</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_271</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_278</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_272</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_279</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_273</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_28</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_274</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_280</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_275</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_281</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_276</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_282</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_277</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_283</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_278</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_284</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_279</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_285</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_28</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_286</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_280</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_287</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_281</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_288</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_282</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_289</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_283</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_29</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_284</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_290</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_285</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_291</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_286</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_292</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_287</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_293</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_288</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_294</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_289</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_295</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_29</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_296</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_290</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_297</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_291</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_298</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_292</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_299</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_293</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_3</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_294</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_30</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_295</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_300</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_296</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_301</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_297</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_302</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_298</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_303</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_299</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_304</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_3</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_305</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_30</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_306</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_300</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_307</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_301</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_308</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_302</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_309</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_303</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_31</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_304</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_310</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_305</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_311</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_306</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_312</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_307</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_313</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_308</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_314</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_309</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_315</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_31</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_316</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_310</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_317</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_311</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_318</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_312</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_319</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_313</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_32</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_314</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_320</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_315</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_321</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_316</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_322</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_317</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_323</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_318</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_324</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_319</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_325</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_32</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_326</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_320</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_327</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_321</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_328</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_322</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_329</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_323</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_33</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_324</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_330</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_325</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_331</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_326</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_332</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_327</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_333</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_328</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_334</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_329</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_335</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_33</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_336</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_330</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_337</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_331</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_338</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_332</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_339</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_333</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_34</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_334</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_340</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_335</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_341</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_336</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_342</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_337</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_343</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_338</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_35</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_339</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_36</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_34</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_37</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_340</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_38</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_341</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_39</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_342</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_4</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_343</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_40</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_35</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_41</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_36</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_42</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_37</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_43</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_38</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_44</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_39</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_45</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_4</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_46</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_40</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_47</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_41</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_48</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_42</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_49</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_43</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_5</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_44</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_50</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_45</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_51</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_46</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_52</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_47</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_53</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_48</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_54</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_49</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_55</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_5</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_56</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_50</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_57</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_51</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_58</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_52</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_59</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_53</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_6</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_54</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_60</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_55</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_61</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_56</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_62</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_57</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_63</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_58</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_64</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_59</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_65</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_6</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_66</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_60</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_67</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_61</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_68</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_62</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_69</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_63</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_7</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_64</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_70</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_65</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_71</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_66</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_72</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_67</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_73</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_68</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_74</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_69</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_75</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_7</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_76</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_70</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_77</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_71</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_78</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_72</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_79</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_73</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_8</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_74</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_80</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_75</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_81</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_76</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_82</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_77</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_83</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_78</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_84</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_79</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_85</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_8</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_86</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_80</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_87</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_81</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_88</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_82</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_89</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_83</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_9</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_84</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_90</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_85</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_91</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_86</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_92</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_87</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_93</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_88</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_94</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_89</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_95</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_9</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_96</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_90</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_97</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_91</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_98</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_92</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://omogr.github.io/story/3b/page_99</loc>
-    <lastmod>2026-06-14T09:31:50+00:00</lastmod>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_93</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_94</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_95</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_96</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_97</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_98</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://omogr.github.io/story/zadacha_triekh_tiel/page_99</loc>
+    <lastmod>2026-06-14T22:48:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
