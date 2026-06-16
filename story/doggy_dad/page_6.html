@@ -16,7 +16,7 @@
 :root {
     /* Цвета */
     --bg: #faf9f7;
-    --bg-reader: #ffffff;
+    --bg-reader: #faf9f7;
     --text: #2c2c2c;
     --heading: #1a1a1a;
     --link: #6b7280;
@@ -254,9 +254,10 @@ body {
     width: 100%;
     animation: fadeIn 1.2s ease-out;
     background: var(--bg-reader);
-    padding: 0;
+    padding: 2rem;
     margin: 0 auto;
     transition: var(--transition);
+    border-radius: 4px;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -460,6 +461,8 @@ p {
 }
 
 .page-btn.next-btn:hover:not(:disabled) {
+    background: var(--accent-vital);
+    color: #ffffff;
     filter: brightness(1.15);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(139, 105, 20, 0.3);
@@ -583,6 +586,12 @@ p {
     .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
     .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
 
+    /* Line-height overrides for mobile */
+    .reader-line-height-1 .reader-container p { line-height: 1.2; }
+    .reader-line-height-2 .reader-container p { line-height: 1.5; }
+    .reader-line-height-3 .reader-container p { line-height: 1.8; }
+    .reader-line-height-4 .reader-container p { line-height: 2.2; }
+
     .settings-panel { width: 300px; }
     h1 { font-size: 2rem; }
     .part-header { font-size: 1.5rem; }
@@ -632,6 +641,12 @@ p {
     .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
     .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
     .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+
+    /* Line-height overrides for small mobile */
+    .reader-line-height-1 .reader-container p { line-height: 1.2; }
+    .reader-line-height-2 .reader-container p { line-height: 1.5; }
+    .reader-line-height-3 .reader-container p { line-height: 1.8; }
+    .reader-line-height-4 .reader-container p { line-height: 2.2; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -666,6 +681,7 @@ p {
     display: none;
 }
     </style>
+<base target="_blank">
 <base target="_blank">
 <base target="_blank">
 </head>
