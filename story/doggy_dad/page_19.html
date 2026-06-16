@@ -249,6 +249,7 @@ body {
     transition: var(--transition);
 }
 
+/*
 .reader-container {
     max-width: var(--container-max);
     width: 100%;
@@ -258,6 +259,17 @@ body {
     margin: 0 auto;
     transition: var(--transition);
     border-radius: 4px;
+}
+*/
+
+.reader-container {
+    max-width: var(--container-max);
+    width: 100%;
+    animation: fadeIn 1.2s ease-out;
+    background: var(--bg-reader);
+    padding: 0;
+    margin: 0 auto;
+    transition: var(--transition);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -632,6 +644,11 @@ p {
     .reader-footer {
         margin-bottom: 4rem;
     }
+
+    .reader-container {
+        padding: 0 0.75rem;
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -647,6 +664,10 @@ p {
     .reader-line-height-2 .reader-container p { line-height: 1.5; }
     .reader-line-height-3 .reader-container p { line-height: 1.8; }
     .reader-line-height-4 .reader-container p { line-height: 2.2; }
+    .reader-container {
+        padding: 0 0.5rem;
+    }
+
 }
 
 /* ═══════════════════════════════════════════════════════════════
