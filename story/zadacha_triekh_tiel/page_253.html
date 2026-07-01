@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zadacha triekh tiel - Liu Tsysin'">
+    <title>Zadacha triekh tiel - Liu Tsysin'</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+
+/* ═══════════════════════════════════════════════════════════════
+   CSS-ПЕРЕМЕННЫЕ: Светлая тема (по умолчанию)
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+    /* Цвета */
+    --bg: #faf9f7;
+    --bg-reader: #ffffff;
+    --text: #2c2c2c;
+    --heading: #1a1a1a;
+    --link: #6b7280;
+    --link-hover: #374151;
+    --divider: #e5e7eb;
+    --accent-vital: #8b6914;
+    --accent-important: #4b5563;
+    --note-bg: #fef9e3;
+    --note-border: #f1c40f;
+    --footer-bg: #f3f4f6;
+    --footer-text: #6b7280;
+    --panel-bg: #ffffff;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    --btn-bg: #ffffff;
+    --btn-border: #d1d5db;
+    --btn-active-bg: #a64738;
+    --btn-active-text: #ffffff;
+    --btn-hover-bg: #f3f4f6;
+    --overlay-bg: rgba(0,0,0,0.35);
+
+    /* Типографика */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+    --container-max: 780px;
+    --reader-padding: 3rem 1.5rem;
+
+    /* Переходы */
+    --transition: all 0.25s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ТЕМНАЯ ТЕМА
+   ═══════════════════════════════════════════════════════════════ */
+.theme-dark {
+    --bg: #0c0c0f;
+    --bg-reader: transparent;
+    --text: #b0b3b8;
+    --heading: #e2e0db;
+    --link: #8a929a;
+    --link-hover: #d4d8dc;
+    --divider: #25252a;
+    --accent-vital: #c9b896;
+    --accent-important: #9aa4b4;
+    --note-bg: rgba(241, 196, 15, 0.08);
+    --note-border: rgba(241, 196, 15, 0.4);
+    --footer-bg: #141418;
+    --footer-text: #6b7280;
+    --panel-bg: #1a1a1f;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    --btn-bg: #1f1f24;
+    --btn-border: #33333a;
+    --btn-active-bg: #c9b896;
+    --btn-active-text: #0c0c0f;
+    --btn-hover-bg: #25252a;
+    --overlay-bg: rgba(0,0,0,0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   БАЗОВЫЕ СТИЛИ
+   ═══════════════════════════════════════════════════════════════ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.65;
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КНОПКА НАСТРОЕК (плавающая)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: var(--transition);
+}
+.settings-toggle:hover {
+    background: var(--btn-hover-bg);
+    transform: rotate(30deg);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ПАНЕЛЬ НАСТРОЕК (оверлей)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-bg);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.settings-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 360px;
+    max-width: 90vw;
+    height: 100vh;
+    background: var(--panel-bg);
+    z-index: 999;
+    box-shadow: var(--panel-shadow);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+.settings-panel.open {
+    transform: translateX(0);
+}
+
+.settings-panel h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--divider);
+}
+
+.settings-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+.settings-close:hover {
+    background: var(--btn-hover-bg);
+}
+
+.control-group {
+    margin-bottom: 1.8rem;
+}
+.control-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.font-btn, .size-btn, .line-btn, .theme-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    padding: 5px 12px;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text);
+    font-family: var(--font-body);
+}
+.font-btn:hover, .size-btn:hover, .line-btn:hover, .theme-btn:hover {
+    background: var(--btn-hover-bg);
+}
+.font-btn.active, .size-btn.active, .line-btn.active, .theme-btn.active {
+    background: var(--btn-active-bg);
+    border-color: var(--btn-active-bg);
+    color: var(--btn-active-text);
+    font-weight: 500;
+}
+
+.current-settings {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--divider);
+    font-size: 0.8rem;
+    color: var(--link);
+    line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КОНТЕЙНЕР ЧИТАЛКИ
+   ═══════════════════════════════════════════════════════════════ */
+.reader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--reader-padding);
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+.reader-container {
+    max-width: var(--container-max);
+    width: 100%;
+    animation: fadeIn 1.2s ease-out;
+    background: var(--bg-reader);
+    padding: 0;
+    margin: 0 auto;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ТИПОГРАФИКА ТЕКСТА
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Заголовок рассказа */
+.story-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 1.2rem;
+}
+h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    transition: var(--transition);
+}
+.story-sub {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--link);
+    font-weight: 300;
+}
+
+/* Заголовки частей */
+.part-header {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin: 2.5rem 0 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--divider);
+    letter-spacing: 0.01em;
+    transition: var(--transition);
+}
+.part-header:first-of-type {
+    margin-top: 0;
+}
+
+/* Основной текст */
+p {
+    margin-bottom: 1.6rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+    transition: var(--transition);
+}
+
+/* Выделения */
+.vital {
+    font-weight: 500;
+    color: var(--accent-vital);
+    background: rgba(201, 184, 150, 0.08);
+    padding: 0.1rem 0.2rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+.important {
+    font-style: italic;
+    color: var(--accent-important);
+    border-bottom: 1px dashed rgba(154, 164, 180, 0.4);
+    padding-bottom: 1px;
+}
+
+/* Финальная фраза */
+.final-phrase {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    border-top: 1px solid var(--divider);
+    transition: var(--transition);
+}
+.final-phrase .vital {
+    background: none;
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ДОПОЛНИТЕЛЬНЫЕ СТИЛИ: Замечания и Footer
+   ═══════════════════════════════════════════════════════════════ */
+.info-note {
+    background: var(--note-bg);
+    border-left: 4px solid var(--note-border);
+    padding: 12px 20px;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    border-radius: 0 12px 12px 0;
+    color: var(--text);
+    transition: var(--transition);
+}
+
+.reader-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1.5rem;
+    color: var(--footer-text);
+    background: var(--footer-bg);
+    border-top: 1px solid var(--divider);
+    margin-top: 3rem;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   НАВИГАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+.back-link {
+    display: inline-block;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--link);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.back-link::before {
+    content: '←';
+    margin-right: 0.5rem;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.back-link:hover {
+    color: var(--link-hover);
+}
+.back-link:hover::before {
+    transform: translateX(-3px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ПАГИНАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+.pagination-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--divider);
+    flex-wrap: wrap;
+    user-select: none;
+}
+
+.pagination-bar.top {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    padding-top: 0;
+    padding-bottom: 1.2rem;
+    border-top: none;
+    border-bottom: 1px solid var(--divider);
+}
+
+.page-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: var(--btn-hover-bg);
+    border-color: var(--link-hover);
+}
+
+.page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* Кнопка «Следующая» — заметная, крупная, акцентная */
+.page-btn.next-btn {
+    background: var(--accent-vital);
+    color: #ffffff;
+    border-color: var(--accent-vital);
+    font-weight: 500;
+    padding: 0.85rem 2.2rem;
+    font-size: 1.05rem;
+    border-radius: 12px;
+    letter-spacing: 0.02em;
+}
+
+.page-btn.next-btn:hover:not(:disabled) {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 105, 20, 0.3);
+}
+
+.page-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--link);
+}
+
+.page-input {
+    width: 56px;
+    text-align: center;
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text);
+    padding: 0.5rem 0.3rem;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    -moz-appearance: textfield;
+}
+
+.page-input::-webkit-outer-spin-button,
+.page-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.page-input:focus {
+    outline: none;
+    border-color: var(--accent-vital);
+}
+
+.page-total {
+    color: var(--link);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ШРИФТОВЫЕ КЛАССЫ (8 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-font-1 .reader-container,
+.reader-text-font-1 {
+    --font-body: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+}
+.reader-text-font-2 .reader-container,
+.reader-text-font-2 {
+    --font-body: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+.reader-text-font-3 .reader-container,
+.reader-text-font-3 {
+    --font-body: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.reader-text-font-4 .reader-container,
+.reader-text-font-4 {
+    --font-body: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-5 .reader-container,
+.reader-text-font-5 {
+    --font-body: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+}
+.reader-text-font-6 .reader-container,
+.reader-text-font-6 {
+    --font-body: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-7 .reader-container,
+.reader-text-font-7 {
+    --font-body: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+}
+.reader-text-font-8 .reader-container,
+.reader-text-font-8 {
+    --font-body: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   РАЗМЕРЫ ТЕКСТА (6 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-size-1 .reader-container p { font-size: 0.8em; line-height: 1.2em; }
+.reader-text-size-2 .reader-container p { font-size: 1em; line-height: 1.2em; }
+.reader-text-size-3 .reader-container p { font-size: 1.2em; line-height: 1.4em; }
+.reader-text-size-4 .reader-container p { font-size: 1.4em; line-height: 1.5em; }
+.reader-text-size-5 .reader-container p { font-size: 1.6em; line-height: 1.6em; }
+.reader-text-size-6 .reader-container p { font-size: 2em; line-height: 1.8em; }
+
+/* Размеры для заголовков тоже масштабируем */
+.reader-text-size-1 .reader-container h1 { font-size: 2.0rem; }
+.reader-text-size-2 .reader-container h1 { font-size: 2.4rem; }
+.reader-text-size-3 .reader-container h1 { font-size: 2.8rem; }
+.reader-text-size-4 .reader-container h1 { font-size: 3.2rem; }
+.reader-text-size-5 .reader-container h1 { font-size: 3.6rem; }
+.reader-text-size-6 .reader-container h1 { font-size: 4.0rem; }
+
+.reader-text-size-1 .reader-container .part-header { font-size: 1.3rem; }
+.reader-text-size-2 .reader-container .part-header { font-size: 1.5rem; }
+.reader-text-size-3 .reader-container .part-header { font-size: 1.8rem; }
+.reader-text-size-4 .reader-container .part-header { font-size: 2.1rem; }
+.reader-text-size-5 .reader-container .part-header { font-size: 2.4rem; }
+.reader-text-size-6 .reader-container .part-header { font-size: 2.7rem; }
+
+/* ═══════════════════════════════════════════════════════════════
+   МЕЖСТРОЧНЫЙ ИНТЕРВАЛ (4 варианта)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-line-height-1 .reader-container p { line-height: 1.2; }
+.reader-line-height-2 .reader-container p { line-height: 1.5; }
+.reader-line-height-3 .reader-container p { line-height: 1.8; }
+.reader-line-height-4 .reader-container p { line-height: 2.2; }
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: мобильные
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+
+    .settings-panel { width: 300px; }
+    h1 { font-size: 2rem; }
+    .part-header { font-size: 1.5rem; }
+    p { font-size: 0.98rem; }
+    body { padding: 2rem 1rem; }
+
+    /* Фиксированная нижняя панель пагинации на мобильных */
+    .pagination-bar.bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0.75rem 1rem;
+        background: var(--panel-bg);
+        border-top: 1px solid var(--divider);
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+        z-index: 500;
+        justify-content: space-between;
+    }
+    .pagination-bar.bottom .page-input-wrapper {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.4rem;
+    }
+    .pagination-bar.bottom .page-btn.next-btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+    }
+    .pagination-bar.bottom .page-btn {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+    }
+    body {
+        padding-bottom: 5rem; /* отступ для фикс. панели */
+    }
+    .reader-footer {
+        margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: БОЛЬШИЕ ЭКРАНЫ — увеличенные поля
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+    :root {
+        --container-max: 860px;
+        --reader-padding: 4rem 2.5rem;
+    }
+    .reader-container {
+        padding: 0 1rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --container-max: 960px;
+        --reader-padding: 5rem 3rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АНИМАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.settings-toggle.hidden {
+    display: none;
+}
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body class="theme-light reader-text-font-1 reader-text-size-3 reader-line-height-2">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         КНОПКА НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <button class="settings-toggle" id="settingsToggle" title="Настройки чтения">⚙️</button>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ПАНЕЛЬ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="settings-overlay" id="settingsOverlay"></div>
+    <div class="settings-panel" id="settingsPanel">
+        <button class="settings-close" id="settingsClose">✕</button>
+        <h2>Настройки чтения</h2>
+
+        <div class="control-group">
+            <label>🌗 Тема оформления</label>
+            <div class="button-group">
+                <button class="theme-btn active" data-theme="light">☀️ Светлая</button>
+                <button class="theme-btn" data-theme="dark">🌙 Тёмная</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🎨 Гарнитура шрифта</label>
+            <div class="button-group">
+                <button class="font-btn active" data-font="1">1 — Cambria/Times</button>
+                <button class="font-btn" data-font="2">2 — Constantia/Georgia</button>
+                <button class="font-btn" data-font="3">3 — Frutiger/Arial</button>
+                <button class="font-btn" data-font="4">4 — Corbel/Verdana</button>
+                <button class="font-btn" data-font="5">5 — Garamond/Palatino</button>
+                <button class="font-btn" data-font="6">6 — Segoe UI/Trebuchet</button>
+                <button class="font-btn" data-font="7">7 — Impact/Arial Black</button>
+                <button class="font-btn" data-font="8">8 — Consolas/Courier</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🔠 Размер текста</label>
+            <div class="button-group">
+                <button class="size-btn" data-size="1">Очень мелкий</button>
+                <button class="size-btn" data-size="2">Мелкий</button>
+                <button class="size-btn active" data-size="3">Средний</button>
+                <button class="size-btn" data-size="4">Крупный</button>
+                <button class="size-btn" data-size="5">Очень крупный</button>
+                <button class="size-btn" data-size="6">Огромный</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>↕️ Межстрочный интервал</label>
+            <div class="button-group">
+                <button class="line-btn" data-line="1">Тесный (1.2)</button>
+                <button class="line-btn active" data-line="2">Обычный (1.5)</button>
+                <button class="line-btn" data-line="3">Свободный (1.8)</button>
+                <button class="line-btn" data-line="4">Широкий (2.2)</button>
+            </div>
+        </div>
+
+        <div class="current-settings" id="currentInfo">
+            Тема: <strong>Светлая</strong><br>
+            Шрифт: <strong>Cambria/Times</strong><br>
+            Размер: <strong>Средний (1.2em)</strong><br>
+            Интервал: <strong>Обычный (1.5)</strong>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ОСНОВНОЙ КОНТЕНТ
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="reader-wrapper">
+        <main class="reader-container">
+            <a href="../../index.html" class="back-link">К оглавлению</a>
+
+            <div class="pagination-bar top">
+    <div class="page-input-wrapper">
+        <span>Страница</span>
+        <input type="number" class="page-input" value="253" min="1" max="343" data-current="253">
+        <span class="page-total">из 343</span>
+    </div>
+</div>
+
+            
+
+            <p>Они долго молчали. За окном, словно гигантский глаз, за ними наблюдало Большое красное пятно Юпитера.</p>
+
+            <p>«Прежде чем я перейду к деталям задания, вы должны одно четко понимать: действовать придется в условиях предельной осторожности. Если вы не сможете определить степень опасности, первым делом выбирайте команду на уничтожение. Даже если это окажется ошибкой, ответственности с вас не будет. В ходе операции не берите в расчет сопутствующий ущерб — если потребуется, уничтожение всего корабля будет допустимым вариантом».</p>
+
+            <p>После старта Хантера назначили в первую смену, которая должна была длиться пять лет. Все эти пять лет он втайне принимал маленькие синие таблетки. Когда смена подошла к концу, во время медосмотра перед гибернацией у него обнаружили цереброваскулярное нарушение свертываемости крови, также известное как синдром нарушения спячки. Это крайне редкое состояние, которое никак не влияет на обычную жизнь, но делает невозможным переход в спячку: в противном случае после пробуждения мозг получит серьезные повреждения. На сегодняшний день это единственное известное заболевание, препятствующее гибернации. Когда Хантеру поставили диагноз, он заметил, что окружающие смотрят на него так, будто пришли на его похороны.</p>
+
+            <p>Поэтому весь полет Хантер не засыпал, и каждый, кто пробуждался на корабле, замечал, что он стал старше. Он рассказывал каждой новой группе проснувшихся о всяких забавных случаях, произошедших за те десять с лишним лет, что они провели в спячке. Благодаря этому кухар стал самым популярным человеком на корабле: его любили все, от простых солдат до офицеров. Постепенно он стал настоящим символом этого долгого перелета. Никто и подумать не мог, что этот добродушный и общительный кок на самом деле является офицером того же ранга, что и капитан, и единственным человеком, кроме капитана, который в случае кризиса имеет право и возможность уничтожить весь корабль.</p>
+
+            <p>За первые тридцать лет у Хантера было несколько девушек. У него было преимущество, которому завидовали остальные: он мог встречаться с девушками из разных смен. Но спустя десятилетия он начал стареть, и девушки, которые всё еще оставались молодыми, стали видеть в нем просто доброго друга и интересного собеседника.</p>
+
+            <p>За эти полвека единственной женщиной, которую Хантер по-настоящему любил, была Акихара Рэйко. Однако большую часть времени их разделяли миллионы астрономических единиц, ведь Рэйко была офицером-навигатором на корабле «Голубое пространство».</p>
+
+            <p>Преследование «Голубого пространства» стало единственным делом, в котором миры Три тел и Земли действительно объединились, ведь этот одинокий корабль, уходящий в глубины космоса, представлял общую угрозу для обоих миров. Когда «Голубое пространство» заманивало два корабля, выживших в Битве при приманке тьмы, на обратный путь, экипаж узнал о том, что Вселенная представляет собой Темный лес. Если бы они когда-нибудь обрели способность транслировать сигналы в космос, последствия были бы катастрофическими. Преследование «Голубого пространства» проходило при полной поддержке мира Три тела: до того как «Всемирное тяготение» вошло в слепую зону софонов, экипаж корабля в реальном времени получал изображения с борта преследуемого судна.</p>
+
+            <p>За несколько десятилетий Хантер прошел путь от сержанта до старшего сержанта, а затем, в порядке исключения, был переведен в офицеры, поднявшись от прапорщика до капитана. Но даже в итоге он так и не получил доступа к изображениям с борта «Голубого пространства», которые передавали софоны. Тем не менее он знал бэкдоры почти ко всем системам корабля и часто смотрел в своей каюте изображения с «Голубого пространства», уменьшив их до размеров ладони. Он увидел, что там сложилось общество, совершенно не похожее на то, что было на «Всемирном тяготении»: жестко централизованное, с сильным уклоном в милитаризм, суровой дисциплиной и людьми, которые полностью растворились в коллективе. Впервые он увидел Линцзы на второй год после старта. Хантер был мгновенно очарован этой красивой восточной девушкой; он мог часами смотреть на неё, чувствуя, что знает её жизнь даже лучше, чем свою собственную. Но всего через год Линцзы ушла в криосон и проснулась для службы лишь спустя тридцать лет. Она всё так же была молода, в то время как Хантер из юноши превратился в мужчину почти шестидесяти лет. В ту рождественскую ночь, вернувшись с праздничного вечера в свою маленькую каюту, он снова вывел на экран изображение «Голубого пространства» в реальном времени. Сначала на экране появилась сложная схема всего корабля. Он нажал на центр управления полетами, и перед ним действительно возникла Линцзы, которая была сейчас на дежурстве. Она стояла перед широкой голографической картой звездного неба, где яркая красная линия отмечала маршрут «Голубого пространства», а почти сливающаяся с ней белая линия показывала путь «Всемирного тяготения». Хантер заметил, что белая линия не совсем точно повторяет реальный курс «Всемирного тяготения». Сейчас между кораблями еще несколько тысяч астрономических единиц, а на таком расстоянии определить местоположение объекта настолько малого размера крайне сложно. Скорее всего, этот маршрут был лишь предположением, но расстояние между судами рассчитали очень точно. На этот раз Хантер специально увеличил изображение. В этот момент Линцзы вдруг повернулась к нему и с очаровательной улыбкой произнесла: «Счастливого Рождества!» Хантер понимал, что она обращается не лично к нему, а ко всем преследователям. Она знала, что за ней наблюдает Софон, но сама не могла видеть, что происходит с их стороны. Как бы то ни было, для Хантера это был самый счастливый момент в жизни. Из-за большого количества экипажа на «Голубом пространстве» Линцзы дежурила недолго и спустя год снова ушла в анабиоз. Хантер с нетерпением ждал того дня, когда сможет встретиться с Линцзы лично — это произойдет, когда «Всемирное тяготение» догонит «Голубое пространство». С грустью он подумал, что даже если всё пройдет успешно, к тому времени ему будет уже почти восемьдесят. Он хотел лишь сказать ей «я люблю тебя» и проводить её на суд.</p>
+
+            <p>На протяжении полувека полета Хантер преданно исполнял свой долг: он неустанно следил за любыми возможными отклонениями в работе корабля и постоянно прорабатывал в уме планы действий на случай различных кризисных ситуаций. Но сама миссия не давила на него, ведь он знал: «Всемирное тяготение» всегда прикрывает самая надежная страховка. Как и многие на корабле, он часто смотрел в иллюминатор на сопровождающие их Капли, но для него они значили гораздо больше, чем для остальных. Он прекрасно понимал: стоит на «Всемирном тяготении» произойти чему-то необычному — особенно если появятся признаки бунта или попытки захватить контроль над системой излучения гравитационных волн, — и Капли немедленно уничтожат корабль. Они определенно были быстрее него: Каплям требовалось не более пяти секунд, чтобы разогнаться и пролететь несколько километров до цели.</p>
+
+            <p>Теперь миссия Хантера была почти завершена. Система мониторинга показывала, что основная часть излучающей антенны гравитационных волн — вырожденная вибрирующая струна толщиной менее десяти нанометров, проходящая сквозь весь полуторакилометровый корпус корабля, — почти достигла своего периода полураспада. Меньше чем через два месяца её плотность упадет ниже критической отметки, и антенна полностью выйдет из строя. Тогда «Всемирное тяготение» перестанет быть опасной для обоих миров станцией по излучению гравитационных волн и превратится в обычный межзвездный корабль. На этом миссия Хантера будет завершена. Тогда он раскроет свою личность. Ему было любопытно, что он встретит — восхищение или осуждение, но в любом случае он перестанет принимать те синие таблетки. Цереброваскулярное нарушение свертываемости крови исчезнет, и он сможет погрузиться в искусственный сон, чтобы после пробуждения провести остаток своих дней на Земле в Новом веке. Но в искусственный сон он погрузится только после встречи с Линцзы, что в любом случае произойдет совсем скоро.</p>
+
+            <p>Но эскадра вошла в слепую зону софонов. За полвека своего пребывания под прикрытием он представлял себе сотни возможных кризисов, и этот был одним из самых серьезных. Из-за отказа софонов Капля и Мир Трех Тел больше не могли в реальном времени следить за тем, что происходит на борту «Всемирного тяготения». А это значило, что в случае любой непредвиденной ситуации Капля просто не успеет вовремя среагировать. Ситуация внезапно стала критической, и груз ответственности на плечах Хантера вырос в десять раз. Под этим внезапным давлением он почувствовал, что его настоящая миссия только начинается.</p>
+
+            <p>Хантер стал еще пристальнее следить за всем, что происходило на корабле, но поскольку «Всемирное тяготение» уже полностью пробудилось, делать это стало гораздо сложнее. Хантер был единственным человеком на корабле, которого знали все. Благодаря своему дружелюбию и широкому кругу знакомств он пользовался общим доверием, а его неприметная должность не вызывала никаких подозрений. Особенно это касалось солдат и младших офицеров: они рассказывали ему то, что не осмеливались доверить высшему командованию или военным психологам. Это позволило Хантеру иметь полное и точное представление о происходящем на корабле.</p>
+
+            <p>Как только корабль вошел в слепую зону софонов, ситуация стала всё более напряженной. Внезапно начали происходить странные вещи, которых почти не случалось за все полвека полета: так, экологическая зона в самом центре корабля подверглась удару микрометеоритов. Не один человек утверждал, что видел, как переборки внезапно разошлись. Некоторые предметы исчезали целиком или частично, а спустя время снова появлялись. … Из всех этих странностей Хантеру больше всего запомнился случай, о котором рассказал командир военной полиции подполковник Дэвен. Дэвен входил в высший командный состав корабля, и Хантер почти не общался с ним, но в тот день он сразу насторожился, заметив, что Дэвен сам решил обратиться к психологу, которого все старались избегать. Он решил подкупить Дэвена бутылкой выдержанного виски, чтобы завязать с ним разговор, и так узнал о том странном случае. Конечно, если не считать случая с микрометеоритами, всё это проще всего объяснить галлюцинациями. Доктор Вест и военные психологи утверждали, что исчезновение софонов каким-то неведомым образом спровоцировало массовое психическое расстройство. Долг не позволял Хантеру просто так принять эту версию. Конечно, если отбросить галлюцинации и психические расстройства, всё произошедшее казалось невозможным, но миссия Хантера как раз и заключалась в том, чтобы иметь дело с таким «невозможным».</p>
+
+            <p>По сравнению с огромными антеннами, блок управления системой излучения гравитационных волн был совсем небольшим. Он располагался в маленьком сферическом отсеке на корме корабля и был полностью независим от всех остальных систем судна. Этот сферический отсек был похож на укрепленный сейф: никто на корабле, включая капитана, не знал кода доступа к нему. Запустить систему могли только Держатели Меча на Земле. Если Держатели Меча на Земле запустят передачу гравитационных волн, на корабль «Всемирное тяготение» будет отправлен поток нейтрино, который активирует систему излучения на борту. Разумеется, сейчас сигналу требуется целый год, чтобы дойти с Земли до этого места.</p>
+
+            <p>Но если корабль «Всемирное тяготение» захватят, все эти меры защиты окажутся бесполезными.</p>
+
+            <p>На часах Хантера была маленькая кнопка: одно нажатие — и в сферическом отсеке с блоком управления запуском сработает термитный заряд, который расплавит всё оборудование внутри. Его стратегия была проста: сохранять спокойствие и действовать по плану. В любой кризисной ситуации, если опасность перейдет определенный порог, он просто нажмет на кнопку и уничтожит блок управления запуском. Это окончательно выведет систему трансляции гравитационных волн из строя, и восстановить её будет невозможно. Решать, перешел ли критический порог опасности, он будет сам.</p>
+
+            <p>В этом смысле Хантер был своего рода «анти-Держателем Меча».</p>
+
+            <p>Однако Хантер не до конца доверял кнопке на часах и тому самому термитному заряду в блоке управления, который он никогда не видел вживую. В идеале он хотел круглосуточно караулить отсек с оборудованием, но это могло вызвать подозрения, а секретность была его главным преимуществом. Тем не менее он старался держаться как можно ближе к отсеку блока управления, поэтому часто заходил в космологическую обсерваторию, которая тоже находилась на корме корабля — так он не вызывал никаких подозрений. Когда весь экипаж проснулся, обязанности по кухне перешли к другим, и у Хантера появилось много свободного времени. К тому же доктор Гуань Ифань был единственным гражданским ученым на борту, на которого не распространялась военная дисциплина, поэтому визиты старого Хантера к нему, чтобы выпить и поболтать, выглядели совершенно естественно. Гуань Ифань, наслаждаясь вином, которое Хантер раздобыл благодаря своим привилегиям, увлеченно рассказывал ему о «синдроме трех и трехсот тысяч». Вскоре Хантер стал проводить большую часть времени в обсерватории на корме, которая находилась всего в двадцати метрах от отсека блока управления системой излучения гравитационных волн.</p>
+
+            <p>Хантер снова направился в обсерваторию, но по дороге встретил Гуань Ифаня и того психолога, которые шли к носу корабля, и решил сразу зайти в отсек блока управления. Когда до места оставалось меньше десяти метров, прозвучал сигнал тревоги: началась атака водяных капель. Из-за низкого уровня доступа в информационном окне перед ним отображались лишь общие данные, но он понимал: сейчас Капля находится гораздо дальше от корабля, чем во время движения в строю, так что в запасе есть еще около десяти секунд. В эти последние мгновения старый Хантер чувствовал лишь облегчение и удовлетворение. Что бы ни случилось с миром в будущем, он наконец выполнил свой долг, и теперь его ждала не смерть, а победа.</p>
+
+            <p>Именно поэтому, когда через полминуты сигнал тревоги стих, Хантер оказался единственным человеком на всем корабле, охваченным смертельным ужасом. Атака Капли стала для него своего рода избавлением, но вот прекращение тревоги сулило огромную опасность: это означало, что в сложившейся непредсказуемой ситуации система излучения гравитационных волн осталась исправной. Не колеблясь, он нажал кнопку уничтожения на своих часах.</p>
+
+            <p>Воцарилась тишина. Хотя отсек блока управления был герметично закрыт, Хантер всё равно должен был почувствовать вибрацию от взрыва термитного заряда. Однако на маленьком экране часов высветилось сообщение: «Операция уничтожения не может быть завершена, модуль уничтожения демонтирован».</p>
+
+            <p>Хантер даже не удивился: интуиция давно подсказывала ему, что случится самое худшее, и та призрачная удача, до которой оставалось всего несколько секунд, так и не пришла.</p>
+
+            <p>Ни одна из капель не попала в цель: они пролетели в нескольких десятках метров от кораблей «Всемирное тяготение» и «Голубое пространство».</p>
+
+            <p>Спустя три минуты после отмены тревоги капитан «Всемирного тяготения» Джозеф Мовович наконец смог собраться с высшим командованием в оперативном центре. В центре экрана отображалась огромная симуляция тактической обстановки: на черном фоне космоса не было видно звезд — лишь относительное положение двух кораблей и траектории атак Капель. Эти две белые линии длиной по триста тысяч километров казались прямыми, но данные показывали, что на самом деле они были параболическими кривыми — просто их кривизна была слишком мала, чтобы это можно было заметить. Вскоре после начала ускорения курс Капель стал постоянно меняться. Эти отклонения были ничтожны, но в итоге они привели к промаху в несколько десятков метров от каждой из целей. Командиры поняли, что это вовсе не курс Капель. Многие из них участвовали в Последней битве, и воспоминания о том, как Капли на огромной скорости совершали резкие повороты, до сих пор приводили их в ужас. Теперь же казалось, будто на Капли постоянно действует какая-то внешняя сила, направленная перпендикулярно их курсу и сбивающая их с траектории атаки.</p>
+
+            <p>— Запись в видимом спектре, — сказал капитан.</p>
+
+            <p>На экране появились звезды и Млечный Путь — настоящие кадры из космоса, а в одном из углов быстро сменяли друг друга цифры таймера. Все снова переживали тот ужас, что охватил их несколько минут назад, когда оставалось только ждать смерти, а любые маневры уклонения или попытки отстреляться были бесполезны. Вскоре таймер остановился. К этому моменту Капли уже пролетели мимо корабля, но из-за огромной скорости их невозможно было заметить невооруженным глазом.</p>
+
+            <p>Затем включили запись высокоскоростной съемки. Чтобы показать весь процесс, занявший всего десять с лишним секунд, потребовалось бы слишком много времени, поэтому оставили только финальный отрезок. На экране было видно, как перед объективом пролетают Капли — на фоне звезд они промелькнули, словно тусклые метеоры. Затем запустили воспроизведение видео. Когда Капля оказалась в центре экрана, изображение поставили на паузу и начали постепенно увеличивать масштаб, пока она не заняла почти весь экран. Полвека совместного полета в составе флота помогли им очень хорошо изучить Капли, и потому увиденное потрясло их еще сильнее: форма объекта на экране осталась прежней, но поверхность больше не была идеально гладкой и зеркальной. Теперь она отливала тусклым латунным цветом и выглядела ржавой. Казалось, будто какое-то магическое заклинание, поддерживавшее молодость, внезапно перестало действовать, и следы трех столетий в космосе проступили мгновенно. Капля больше не была сверкающим созданием — теперь она напоминала старый снаряд, дрейфующий в пустоте. За последние годы благодаря связи с Землей они узнали основные принципы работы материалов на основе сильного взаимодействия. Стало известно, что поверхность Капли находится под воздействием силового поля, создаваемого внутренними устройствами. Это поле нейтрализует электромагнитные силы между частицами, позволяя сильному взаимодействию проявляться на поверхности; если же поле исчезнет, материал превратится в обычный металл.</p>
+
+            <p>Капля погибла.</p>
+
+            <p>Далее следуют последующие записи мониторинга. На схеме видно, что после того как Капля пролетела мимо «Всемирного тяготения», её курс перестал медленно меняться: она перешла на прямолинейное движение с постоянной скоростью, и таинственная внешняя тяга исчезла. Это состояние длилось всего несколько секунд, после чего Капля начала замедляться. Расчеты системы анализа поля боя показали, что сила торможения была равна той силе, что ранее меняла её курс. Похоже, один и тот же источник тяги переместился из перпендикулярного положения прямо перед Каплей.</p>
+
+            <p>На снимках в видимом спектре, сделанных мощным телескопом, видна удаляющаяся Капля. Затем она разворачивается на девяносто градусов и начинает тормозить, оказавшись в положении перпендикулярно курсу. И в этот момент произошло нечто невероятное. Доктор Вест тоже был там, и если бы он не видел этого своими глазами, то наверняка снова назвал бы всё это галлюцинацией. Перед Каплей появился треугольный объект длиной примерно в два раза больше неё самой — все сразу узнали в нём космический шаттл с «Голубого пространства». Чтобы увеличить тягу, к шаттлу были прикреплены несколько небольших термоядерных двигателей. И хотя их сопла были обращены от камеры, всё равно было видно, как они работают на полную мощность, выбрасывая столбы света. Шаттл прижался вплотную к Капле, чтобы замедлить её. Можно предположить, что тот же импульс был использован и ранее, когда Капля сменила курс, что и спасло «Всемирное тяготение». Вслед за шаттлом с другой стороны Капли появились две фигуры в скафандрах. Из-за перегрузки при торможении их буквально прижало к поверхности объекта. Один из них держал в руке какой-то прибор, похоже, изучая захваченный образец. Раньше люди считали Каплю чем-то божественным, чем-то неземным и недосягаемым. До Последней битвы единственным человеком, который смог оказаться в непосредственной близости от неё, был тот, кто уже давно обратился в прах. Но при этом контакте Капля уже утратила всё своё божественное величие. Лишившись зеркального блеска, она выглядела совершенно заурядно и казалась даже более ветхой, чем соседние космический челнок и астронавты; в ней больше не осталось ничего притягательного — теперь она походила на какой-то антиквариат или старый хлам, который те решили собрать. Шаттл и астронавты появились всего на несколько секунд и снова исчезли. Омертвевшая Капля вновь осталась в полном одиночестве в открытом космосе, но она всё еще замедлялась, а значит, шаттл всё еще...</p>
+
+            <p>...просто толкал её, оставаясь невидимым.</p>
+
+            <p>— Они смогли уничтожить Каплю?! — вскрикнул кто-то.</p>
+
+            <p>Первой мыслью капитана Мововича было одно и то же. Как и Хантер, когда сигнал тревоги прекратился, он без малейших колебаний нажал кнопку на своих часах — таких же, как у Хантера. На этот раз в воздухе всплыло красное окно с сообщением об ошибке.</p>
+
+            <p>Команда на уничтожение не может быть выполнена: модуль уничтожения демонтирован.</p>
+
+            <p>Капитан развернулся и выбежал из оперативного центра, бросившись к корме; остальные офицеры последовали за ним.</p>
+
+            <div class="pagination-bar bottom">
+    <a href="page_252.html" class="page-btn prev-btn" target="_self">← Предыдущая</a>
+    <div class="page-input-wrapper">
+        <span>Страница</span>
+        <input type="number" class="page-input" value="253" min="1" max="343" data-current="253">
+        <span class="page-total">из 343</span>
+    </div>
+    <a href="page_254.html" class="page-btn next-btn" target="_self">Следующая →</a>
+</div>
+        </main>
+    </div>
+
+    <footer class="reader-footer">
+        ⚙️ Читалка.
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         СКРИПТ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <script>
+    (function() {
+        // ── Элементы ──
+        const body = document.body;
+        const toggleBtn = document.getElementById('settingsToggle');
+        const closeBtn = document.getElementById('settingsClose');
+        const overlay = document.getElementById('settingsOverlay');
+        const panel = document.getElementById('settingsPanel');
+        const infoSpan = document.getElementById('currentInfo');
+
+        // ── Текущие значения ──
+        let currentTheme = 'light';
+        let currentFont = '1';
+        let currentSize = '3';
+        let currentLine = '2';
+
+        // ── Справочники для отображения ──
+        const themeNames = {
+            light: 'Светлая',
+            dark: 'Тёмная'
+        };
+        const fontNames = {
+            1: 'Cambria/Times (классический serif)',
+            2: 'Constantia/Georgia (элегантный)',
+            3: 'Frutiger/Arial (гуманистический sans)',
+            4: 'Corbel/Verdana (чистый sans)',
+            5: 'Garamond/Palatino (книжный)',
+            6: 'Segoe UI / Trebuchet (современный)',
+            7: 'Impact / Arial Black (рубленый)',
+            8: 'Consolas/Courier (моноширинный)'
+        };
+        const sizeNames = {
+            1: 'Очень мелкий (0.8em)',
+            2: 'Мелкий (1em)',
+            3: 'Средний (1.2em)',
+            4: 'Крупный (1.4em)',
+            5: 'Очень крупный (1.6em)',
+            6: 'Огромный (2em)'
+        };
+        const lineNames = {
+            1: 'Тесный (1.2)',
+            2: 'Обычный (1.5)',
+            3: 'Свободный (1.8)',
+            4: 'Широкий (2.2)'
+        };
+
+        // ── Применение классов ──
+        function applyClasses() {
+            // Тема
+            body.classList.remove('theme-light', 'theme-dark');
+            body.classList.add('theme-' + currentTheme);
+
+            // Шрифт
+            for (let i = 1; i <= 8; i++) {
+                body.classList.remove('reader-text-font-' + i);
+            }
+            body.classList.add('reader-text-font-' + currentFont);
+
+            // Размер
+            for (let i = 1; i <= 6; i++) {
+                body.classList.remove('reader-text-size-' + i);
+            }
+            body.classList.add('reader-text-size-' + currentSize);
+
+            // Интервал
+            for (let i = 1; i <= 4; i++) {
+                body.classList.remove('reader-line-height-' + i);
+            }
+            body.classList.add('reader-line-height-' + currentLine);
+
+            updateInfo();
+            saveSettings();
+        }
+
+        // ── Обновление информационного блока ──
+        function updateInfo() {
+            infoSpan.innerHTML =
+                'Тема: <strong>' + themeNames[currentTheme] + '</strong><br>' +
+                'Шрифт: <strong>' + fontNames[currentFont] + '</strong><br>' +
+                'Размер: <strong>' + sizeNames[currentSize] + '</strong><br>' +
+                'Интервал: <strong>' + lineNames[currentLine] + '</strong>';
+        }
+
+        // ── Сохранение / загрузка из localStorage ──
+        function saveSettings() {
+            try {
+                localStorage.setItem('readerSettings', JSON.stringify({
+                    theme: currentTheme,
+                    font: currentFont,
+                    size: currentSize,
+                    line: currentLine
+                }));
+            } catch (e) {}
+        }
+
+        function loadSettings() {
+            try {
+                const saved = localStorage.getItem('readerSettings');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.theme) currentTheme = data.theme;
+                    if (data.font) currentFont = data.font;
+                    if (data.size) currentSize = data.size;
+                    if (data.line) currentLine = data.line;
+                }
+            } catch (e) {}
+        }
+
+        // ── Обновление активных кнопок ──
+        function updateActiveButtons() {
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-theme') === currentTheme);
+            });
+            document.querySelectorAll('.font-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-font') === currentFont);
+            });
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-size') === currentSize);
+            });
+            document.querySelectorAll('.line-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-line') === currentLine);
+            });
+        }
+
+        // ── Открытие / закрытие панели ──
+        function openPanel() {
+            overlay.classList.add('open');
+            panel.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            toggleBtn.classList.add('hidden');
+        }
+        function closePanel() {
+            overlay.classList.remove('open');
+            panel.classList.remove('open');
+            document.body.style.overflow = '';
+            toggleBtn.classList.remove('hidden');
+        }
+
+        toggleBtn.addEventListener('click', openPanel);
+        closeBtn.addEventListener('click', closePanel);
+        overlay.addEventListener('click', closePanel);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePanel();
+        });
+
+        // ── Обработчики кнопок ──
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentTheme = this.getAttribute('data-theme');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.font-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentFont = this.getAttribute('data-font');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentSize = this.getAttribute('data-size');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.line-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentLine = this.getAttribute('data-line');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        // ── Инициализация ──
+        loadSettings();
+        applyClasses();
+        updateActiveButtons();
+
+        /* ── Пагинация (многостраничный режим) ── */
+        (function() {
+            const inputs = document.querySelectorAll('.page-input');
+            if (!inputs.length) return;
+
+            inputs.forEach(function(inp) {
+                inp.addEventListener('change', function() {
+                    let v = parseInt(this.value, 10) || 1;
+                    const max = parseInt(this.max, 10);
+                    if (v < 1) v = 1;
+                    if (v > max) v = max;
+                    const current = parseInt(this.getAttribute('data-current'), 10);
+                    if (v === current) return;
+                    const target = (v === 1) ? 'index.html' : 'page_' + v + '.html';
+                    window.location.href = target;
+                });
+                inp.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        this.blur();
+                    }
+                });
+            });
+        })();
+    })();
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102424835, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

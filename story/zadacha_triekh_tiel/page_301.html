@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zadacha triekh tiel - Liu Tsysin'">
+    <title>Zadacha triekh tiel - Liu Tsysin'</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+
+/* ═══════════════════════════════════════════════════════════════
+   CSS-ПЕРЕМЕННЫЕ: Светлая тема (по умолчанию)
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+    /* Цвета */
+    --bg: #faf9f7;
+    --bg-reader: #ffffff;
+    --text: #2c2c2c;
+    --heading: #1a1a1a;
+    --link: #6b7280;
+    --link-hover: #374151;
+    --divider: #e5e7eb;
+    --accent-vital: #8b6914;
+    --accent-important: #4b5563;
+    --note-bg: #fef9e3;
+    --note-border: #f1c40f;
+    --footer-bg: #f3f4f6;
+    --footer-text: #6b7280;
+    --panel-bg: #ffffff;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    --btn-bg: #ffffff;
+    --btn-border: #d1d5db;
+    --btn-active-bg: #a64738;
+    --btn-active-text: #ffffff;
+    --btn-hover-bg: #f3f4f6;
+    --overlay-bg: rgba(0,0,0,0.35);
+
+    /* Типографика */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+    --container-max: 780px;
+    --reader-padding: 3rem 1.5rem;
+
+    /* Переходы */
+    --transition: all 0.25s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ТЕМНАЯ ТЕМА
+   ═══════════════════════════════════════════════════════════════ */
+.theme-dark {
+    --bg: #0c0c0f;
+    --bg-reader: transparent;
+    --text: #b0b3b8;
+    --heading: #e2e0db;
+    --link: #8a929a;
+    --link-hover: #d4d8dc;
+    --divider: #25252a;
+    --accent-vital: #c9b896;
+    --accent-important: #9aa4b4;
+    --note-bg: rgba(241, 196, 15, 0.08);
+    --note-border: rgba(241, 196, 15, 0.4);
+    --footer-bg: #141418;
+    --footer-text: #6b7280;
+    --panel-bg: #1a1a1f;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    --btn-bg: #1f1f24;
+    --btn-border: #33333a;
+    --btn-active-bg: #c9b896;
+    --btn-active-text: #0c0c0f;
+    --btn-hover-bg: #25252a;
+    --overlay-bg: rgba(0,0,0,0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   БАЗОВЫЕ СТИЛИ
+   ═══════════════════════════════════════════════════════════════ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.65;
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КНОПКА НАСТРОЕК (плавающая)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: var(--transition);
+}
+.settings-toggle:hover {
+    background: var(--btn-hover-bg);
+    transform: rotate(30deg);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ПАНЕЛЬ НАСТРОЕК (оверлей)
+   ═══════════════════════════════════════════════════════════════ */
+.settings-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-bg);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.settings-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 360px;
+    max-width: 90vw;
+    height: 100vh;
+    background: var(--panel-bg);
+    z-index: 999;
+    box-shadow: var(--panel-shadow);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+.settings-panel.open {
+    transform: translateX(0);
+}
+
+.settings-panel h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--divider);
+}
+
+.settings-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+.settings-close:hover {
+    background: var(--btn-hover-bg);
+}
+
+.control-group {
+    margin-bottom: 1.8rem;
+}
+.control-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.font-btn, .size-btn, .line-btn, .theme-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    padding: 5px 12px;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text);
+    font-family: var(--font-body);
+}
+.font-btn:hover, .size-btn:hover, .line-btn:hover, .theme-btn:hover {
+    background: var(--btn-hover-bg);
+}
+.font-btn.active, .size-btn.active, .line-btn.active, .theme-btn.active {
+    background: var(--btn-active-bg);
+    border-color: var(--btn-active-bg);
+    color: var(--btn-active-text);
+    font-weight: 500;
+}
+
+.current-settings {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--divider);
+    font-size: 0.8rem;
+    color: var(--link);
+    line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   КОНТЕЙНЕР ЧИТАЛКИ
+   ═══════════════════════════════════════════════════════════════ */
+.reader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--reader-padding);
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+.reader-container {
+    max-width: var(--container-max);
+    width: 100%;
+    animation: fadeIn 1.2s ease-out;
+    background: var(--bg-reader);
+    padding: 0;
+    margin: 0 auto;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ТИПОГРАФИКА ТЕКСТА
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Заголовок рассказа */
+.story-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 1.2rem;
+}
+h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    transition: var(--transition);
+}
+.story-sub {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--link);
+    font-weight: 300;
+}
+
+/* Заголовки частей */
+.part-header {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin: 2.5rem 0 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--divider);
+    letter-spacing: 0.01em;
+    transition: var(--transition);
+}
+.part-header:first-of-type {
+    margin-top: 0;
+}
+
+/* Основной текст */
+p {
+    margin-bottom: 1.6rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+    transition: var(--transition);
+}
+
+/* Выделения */
+.vital {
+    font-weight: 500;
+    color: var(--accent-vital);
+    background: rgba(201, 184, 150, 0.08);
+    padding: 0.1rem 0.2rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+.important {
+    font-style: italic;
+    color: var(--accent-important);
+    border-bottom: 1px dashed rgba(154, 164, 180, 0.4);
+    padding-bottom: 1px;
+}
+
+/* Финальная фраза */
+.final-phrase {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    border-top: 1px solid var(--divider);
+    transition: var(--transition);
+}
+.final-phrase .vital {
+    background: none;
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ДОПОЛНИТЕЛЬНЫЕ СТИЛИ: Замечания и Footer
+   ═══════════════════════════════════════════════════════════════ */
+.info-note {
+    background: var(--note-bg);
+    border-left: 4px solid var(--note-border);
+    padding: 12px 20px;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    border-radius: 0 12px 12px 0;
+    color: var(--text);
+    transition: var(--transition);
+}
+
+.reader-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1.5rem;
+    color: var(--footer-text);
+    background: var(--footer-bg);
+    border-top: 1px solid var(--divider);
+    margin-top: 3rem;
+    transition: var(--transition);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   НАВИГАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+.back-link {
+    display: inline-block;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--link);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.back-link::before {
+    content: '←';
+    margin-right: 0.5rem;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.back-link:hover {
+    color: var(--link-hover);
+}
+.back-link:hover::before {
+    transform: translateX(-3px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ПАГИНАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+.pagination-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--divider);
+    flex-wrap: wrap;
+    user-select: none;
+}
+
+.pagination-bar.top {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    padding-top: 0;
+    padding-bottom: 1.2rem;
+    border-top: none;
+    border-bottom: 1px solid var(--divider);
+}
+
+.page-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: var(--btn-hover-bg);
+    border-color: var(--link-hover);
+}
+
+.page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* Кнопка «Следующая» — заметная, крупная, акцентная */
+.page-btn.next-btn {
+    background: var(--accent-vital);
+    color: #ffffff;
+    border-color: var(--accent-vital);
+    font-weight: 500;
+    padding: 0.85rem 2.2rem;
+    font-size: 1.05rem;
+    border-radius: 12px;
+    letter-spacing: 0.02em;
+}
+
+.page-btn.next-btn:hover:not(:disabled) {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 105, 20, 0.3);
+}
+
+.page-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--link);
+}
+
+.page-input {
+    width: 56px;
+    text-align: center;
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text);
+    padding: 0.5rem 0.3rem;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    -moz-appearance: textfield;
+}
+
+.page-input::-webkit-outer-spin-button,
+.page-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.page-input:focus {
+    outline: none;
+    border-color: var(--accent-vital);
+}
+
+.page-total {
+    color: var(--link);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ШРИФТОВЫЕ КЛАССЫ (8 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-font-1 .reader-container,
+.reader-text-font-1 {
+    --font-body: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+}
+.reader-text-font-2 .reader-container,
+.reader-text-font-2 {
+    --font-body: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+.reader-text-font-3 .reader-container,
+.reader-text-font-3 {
+    --font-body: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.reader-text-font-4 .reader-container,
+.reader-text-font-4 {
+    --font-body: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-5 .reader-container,
+.reader-text-font-5 {
+    --font-body: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+}
+.reader-text-font-6 .reader-container,
+.reader-text-font-6 {
+    --font-body: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+}
+.reader-text-font-7 .reader-container,
+.reader-text-font-7 {
+    --font-body: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+}
+.reader-text-font-8 .reader-container,
+.reader-text-font-8 {
+    --font-body: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   РАЗМЕРЫ ТЕКСТА (6 вариантов из settings-sample.html)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-text-size-1 .reader-container p { font-size: 0.8em; line-height: 1.2em; }
+.reader-text-size-2 .reader-container p { font-size: 1em; line-height: 1.2em; }
+.reader-text-size-3 .reader-container p { font-size: 1.2em; line-height: 1.4em; }
+.reader-text-size-4 .reader-container p { font-size: 1.4em; line-height: 1.5em; }
+.reader-text-size-5 .reader-container p { font-size: 1.6em; line-height: 1.6em; }
+.reader-text-size-6 .reader-container p { font-size: 2em; line-height: 1.8em; }
+
+/* Размеры для заголовков тоже масштабируем */
+.reader-text-size-1 .reader-container h1 { font-size: 2.0rem; }
+.reader-text-size-2 .reader-container h1 { font-size: 2.4rem; }
+.reader-text-size-3 .reader-container h1 { font-size: 2.8rem; }
+.reader-text-size-4 .reader-container h1 { font-size: 3.2rem; }
+.reader-text-size-5 .reader-container h1 { font-size: 3.6rem; }
+.reader-text-size-6 .reader-container h1 { font-size: 4.0rem; }
+
+.reader-text-size-1 .reader-container .part-header { font-size: 1.3rem; }
+.reader-text-size-2 .reader-container .part-header { font-size: 1.5rem; }
+.reader-text-size-3 .reader-container .part-header { font-size: 1.8rem; }
+.reader-text-size-4 .reader-container .part-header { font-size: 2.1rem; }
+.reader-text-size-5 .reader-container .part-header { font-size: 2.4rem; }
+.reader-text-size-6 .reader-container .part-header { font-size: 2.7rem; }
+
+/* ═══════════════════════════════════════════════════════════════
+   МЕЖСТРОЧНЫЙ ИНТЕРВАЛ (4 варианта)
+   ═══════════════════════════════════════════════════════════════ */
+.reader-line-height-1 .reader-container p { line-height: 1.2; }
+.reader-line-height-2 .reader-container p { line-height: 1.5; }
+.reader-line-height-3 .reader-container p { line-height: 1.8; }
+.reader-line-height-4 .reader-container p { line-height: 2.2; }
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: мобильные
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+
+    .settings-panel { width: 300px; }
+    h1 { font-size: 2rem; }
+    .part-header { font-size: 1.5rem; }
+    p { font-size: 0.98rem; }
+    body { padding: 2rem 1rem; }
+
+    /* Фиксированная нижняя панель пагинации на мобильных */
+    .pagination-bar.bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0.75rem 1rem;
+        background: var(--panel-bg);
+        border-top: 1px solid var(--divider);
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+        z-index: 500;
+        justify-content: space-between;
+    }
+    .pagination-bar.bottom .page-input-wrapper {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.4rem;
+    }
+    .pagination-bar.bottom .page-btn.next-btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+    }
+    .pagination-bar.bottom .page-btn {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+    }
+    body {
+        padding-bottom: 5rem; /* отступ для фикс. панели */
+    }
+    .reader-footer {
+        margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reader-text-size-1 .reader-container p { font-size: 0.8rem; line-height: 1.2rem; }
+    .reader-text-size-2 .reader-container p { font-size: 1rem; line-height: 1.2rem; }
+    .reader-text-size-3 .reader-container p { font-size: 1.2rem; line-height: 1.4rem; }
+    .reader-text-size-4 .reader-container p { font-size: 1.4rem; line-height: 1.5rem; }
+    .reader-text-size-5 .reader-container p { font-size: 1.6rem; line-height: 1.6rem; }
+    .reader-text-size-6 .reader-container p { font-size: 2rem; line-height: 1.8rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АДАПТИВНОСТЬ: БОЛЬШИЕ ЭКРАНЫ — увеличенные поля
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+    :root {
+        --container-max: 860px;
+        --reader-padding: 4rem 2.5rem;
+    }
+    .reader-container {
+        padding: 0 1rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --container-max: 960px;
+        --reader-padding: 5rem 3rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   АНИМАЦИЯ
+   ═══════════════════════════════════════════════════════════════ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.settings-toggle.hidden {
+    display: none;
+}
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body class="theme-light reader-text-font-1 reader-text-size-3 reader-line-height-2">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         КНОПКА НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <button class="settings-toggle" id="settingsToggle" title="Настройки чтения">⚙️</button>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ПАНЕЛЬ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="settings-overlay" id="settingsOverlay"></div>
+    <div class="settings-panel" id="settingsPanel">
+        <button class="settings-close" id="settingsClose">✕</button>
+        <h2>Настройки чтения</h2>
+
+        <div class="control-group">
+            <label>🌗 Тема оформления</label>
+            <div class="button-group">
+                <button class="theme-btn active" data-theme="light">☀️ Светлая</button>
+                <button class="theme-btn" data-theme="dark">🌙 Тёмная</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🎨 Гарнитура шрифта</label>
+            <div class="button-group">
+                <button class="font-btn active" data-font="1">1 — Cambria/Times</button>
+                <button class="font-btn" data-font="2">2 — Constantia/Georgia</button>
+                <button class="font-btn" data-font="3">3 — Frutiger/Arial</button>
+                <button class="font-btn" data-font="4">4 — Corbel/Verdana</button>
+                <button class="font-btn" data-font="5">5 — Garamond/Palatino</button>
+                <button class="font-btn" data-font="6">6 — Segoe UI/Trebuchet</button>
+                <button class="font-btn" data-font="7">7 — Impact/Arial Black</button>
+                <button class="font-btn" data-font="8">8 — Consolas/Courier</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>🔠 Размер текста</label>
+            <div class="button-group">
+                <button class="size-btn" data-size="1">Очень мелкий</button>
+                <button class="size-btn" data-size="2">Мелкий</button>
+                <button class="size-btn active" data-size="3">Средний</button>
+                <button class="size-btn" data-size="4">Крупный</button>
+                <button class="size-btn" data-size="5">Очень крупный</button>
+                <button class="size-btn" data-size="6">Огромный</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>↕️ Межстрочный интервал</label>
+            <div class="button-group">
+                <button class="line-btn" data-line="1">Тесный (1.2)</button>
+                <button class="line-btn active" data-line="2">Обычный (1.5)</button>
+                <button class="line-btn" data-line="3">Свободный (1.8)</button>
+                <button class="line-btn" data-line="4">Широкий (2.2)</button>
+            </div>
+        </div>
+
+        <div class="current-settings" id="currentInfo">
+            Тема: <strong>Светлая</strong><br>
+            Шрифт: <strong>Cambria/Times</strong><br>
+            Размер: <strong>Средний (1.2em)</strong><br>
+            Интервал: <strong>Обычный (1.5)</strong>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ОСНОВНОЙ КОНТЕНТ
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="reader-wrapper">
+        <main class="reader-container">
+            <a href="../../index.html" class="back-link">К оглавлению</a>
+
+            <div class="pagination-bar top">
+    <div class="page-input-wrapper">
+        <span>Страница</span>
+        <input type="number" class="page-input" value="301" min="1" max="343" data-current="301">
+        <span class="page-total">из 343</span>
+    </div>
+</div>
+
+            
+
+            <p>Выйдя из коридора, Чэн Синь первым делом увидела над головой вращающееся звездное небо. Звездное небо вращалось так быстро, что сперва даже закружилась голова. Пространство вокруг внезапно расширилось: они оказались на круглой площади диаметром восемь километров, расположенной на вершине космического города. Это был городской космопорт, где было припарковано множество космических аппаратов, большинство из которых представляли собой космические катера. Внешне они мало отличались от тех, что Чэн Синь видела более шестидесяти лет назад, но стали заметно меньше — многие из них были размером с обычный легковой автомобиль из прошлого. Чэн Синь заметила, что пламя из сопел космических катеров при взлете стало гораздо тусклее, чем полвека назад. Оно больше не слепило, а отливало глубоким синим цветом, что, возможно, говорило о повышении эффективности малых термоядерных двигателей.</p>
+
+            <p>Чэн Синь заметила, что вокруг выхода горит яркий красный круг радиусом около ста метров. Она быстро поняла, что означает этот красный круг: космический город вращается, и за пределами круга центробежная сила становится ощутимой, а при дальнейшем удалении — резко возрастает. Поэтому припаркованные там космические катера нужно закреплять, а людям приходится носить обувь с липкой подошвой, чтобы их не выбросило наружу.</p>
+
+            <p>Здесь было очень холодно, и лишь тепло от двигателей запускающихся неподалеку космических катеров приносило мимолетное облегчение. Чэн Синь вздрогнула — и не только от холода, а от внезапного осознания того, что она находится в открытом космосе. Но воздух и атмосферное давление здесь были настоящими, и она чувствовала порывы холодного ветра. Похоже, технология поддержания давления в открытом космосе, которую когда-то видела Чэн Синь, шагнула вперед, и теперь стало возможным создавать полноценную атмосферу даже в полностью открытом пространстве!</p>
+
+            <p>Цао Бинь заметил её потрясение и пояснил: «О, сейчас можно создать слой воздуха с нормальным давлением только на высоте около десяти метров от поверхности, больше пока не получается». Хотя он сам оказался в этом мире недавно, подобные технологии, казавшиеся Чэн Синь чем-то фантастическим, уже перестали его удивлять. Он просто хотел показать ей вещи куда более впечатляющие.</p>
+
+            <p>На фоне вращающегося звездного моря Чэн Синь увидела Мир Бункеров.</p>
+
+            <p>С этого ракурса была видна большая часть колонии космических городов Юпитера: двадцать два города были как на ладони, а еще четыре скрывались внизу. Все двадцать шесть космических городов (на шесть больше, чем планировалось) находились в тени Юпитера. Они были выстроены в четыре неровных ряда, что напомнило Чэн Синь космические корабли, которые более шестидесяти лет назад прятались за тем космическим монолитом. С одной стороны от Азии-1 располагались Северная Америка-1 и Океания-1, с другой — Азия-3. Расстояние между Азией-1 и соседними космическими городами составляло всего около пятидесяти километров; их размеры поражали, они казались настоящими планетами. Но четыре города в другом ряду находились в ста пятидесяти километрах отсюда, и их истинные размеры уже было трудно осознать. Самый дальний космический город находился примерно в тысяче километров отсюда и казался крошечным, словно игрушка.</p>
+
+            <p>Чэн Синь почувствовала, что эти космические города похожи на стаю рыб, которые замерли за камнем в реке, укрываясь от бурного течения.</p>
+
+            <p>Северная Америка-1, расположенная ближе всего к Азии-1, представляла собой идеальную сферу; вместе с цилиндрической Азией-1 эти два города демонстрировали две крайности в архитектуре космических городов. Большинство космических городов представляли собой эллипсоиды, формы которых были промежуточными между этими двумя крайностями. Различалось лишь соотношение большой и малой осей. Встречались и космические города необычной формы, например, спицеобразные или веретеновидные, но их было очень мало.</p>
+
+            <p>За тремя другими гигантами располагались еще три скопления космических городов, насчитывавшие в общей сложности тридцать восемь поселений: двадцать шесть — за Сатурном, восемь — за Нептуном и четыре — за Ураном. Эти города находились в более безопасных, но при этом более отдаленных и безлюдных местах.</p>
+
+            <p>В этот момент один из ближайших космических городов внезапно вспыхнул синим светом, словно в космосе появилось маленькое голубое солнце. От этого света на поверхности четко отпечатались тени людей и космических катеров. Цао Бинь объяснил Чэн Синь, что это запустились двигатели космического города для корректировки его орбиты. Космические города не были спутниками Юпитера; они двигались вокруг Солнца параллельно с планетой, но по внешней стороне её орбиты. Только так города могли долгое время оставаться скрытыми в тени Юпитера. Гравитация Юпитера постоянно притягивает космический город к планете, поэтому для удержания позиции приходится постоянно использовать городские двигатели, что требует огромного количества энергии.</p>
+
+            <p>Когда-то была идея сделать все космические города спутниками Юпитера, чтобы при сигнале тревоги они могли изменить орбиту и стать солнечными спутниками, которые движутся вокруг Солнца вместе с Юпитером, оставаясь в его тени. Но пока система раннего предупреждения Солнечной системы не станет более совершенной и надежной, ни один космический город не решится пойти на такой риск.</p>
+
+            <p>— Тебе повезло, ты застал зрелище, которое бывает раз в три дня. Смотри! — Цао Бинь указал в сторону космоса.</p>
+
+            <p>Чэн Синь увидела в той стороне маленькую белую точку. Белая точка постепенно росла и вскоре превратилась в белый шар размером с мячик для пинг-понга.</p>
+
+            <p>— Европа? — спросила Чэн Синь.</p>
+
+            <p>— Да, Европа. Мы сейчас совсем близко к её орбите. Стой крепче и не бойся.</p>
+
+            <p>Чэн Синь задумалась над его словами. Как и большинство людей, она была уверена, что небесные тела движутся очень медленно, если наблюдать за ними невооруженным глазом. И их движение обычно невозможно заметить, если наблюдать за ними недолго. Но она тут же осознала одну вещь: космический город не является спутником Юпитера, он практически неподвижен относительно планеты. А Европа движется очень быстро — она вспомнила, что её скорость составляет четырнадцать километров в секунду. Значит, и относительная скорость Европы по отношению к городу так же высока. И если город находится совсем близко к её орбите… …</p>
+
+            <p>Жун Чэн не успел даже подумать, как белый шар начал стремительно расти, и скорость этого увеличения казалась просто нереальной. Европа быстро заполнила собой почти всё пространство: в мгновение ока маленький белый шарик превратился в огромную планету. Ощущение верха и низа тут же исчезло, и Чэн Синь почувствовала, что «Азия-1» стремительно падает в этот белый мир. Затем этот мир диаметром более трех тысяч километров стремительно пронесся над ними, на мгновение заполнив собой всё пространство. В этот момент космический город фактически летел над ледяным океаном Европы. На поверхности льда были отчетливо видны пересекающиеся полосы, похожие на линии на гигантской белой ладони. В слоях воздуха, возмущенных гравитацией Европы, поднялся сильный ветер. Чэн Синь почувствовала, как невидимая сила тянет её слева направо; если бы не магнитные ботинки, её бы наверняка оторвало от поверхности. Все незакрепленные мелкие предметы вокруг взлетели в воздух, за ними заплясали несколько кабелей, соединявших космический катер с городом. Снизу донесся пугающий гул — это огромный каркас космического города содрогался под воздействием резких перепадов гравитации Европы. Европа пронеслась мимо космического города всего за три минуты, после чего показала свою противоположную сторону и начала стремительно уменьшаться в размерах. В этот момент восемь космических городов в первых двух рядах запустили двигатели, чтобы скорректировать свое положение и ориентацию, изменившиеся под воздействием гравитации Европы; в космосе вспыхнули восемь светящихся сфер.</p>
+
+            <p>— Боже, как же близко оно пролетело?! — в ужасе спросила Чэн Синь.</p>
+
+            <p>— В ближайшей точке расстояние было всего сто пятьдесят километров, почти вплотную. Ничего не поделаешь: у Юпитера тринадцать спутников, и космические города не могут полностью избежать их влияния. Орбита Европы почти совпадает с экватором, поэтому она проходит так близко к этому ряду городов. Европа — наш основной источник воды, там также сосредоточено множество промышленных объектов, но в случае опасности ими придется пожертвовать. После вспышки Солнца орбиты всех спутников Юпитера сильно изменятся, и тогда маневрирование космических городов, чтобы избежать столкновений, станет невероятно сложной задачей.</p>
+
+            <p>Цао Бинь нашел космический катер, на котором прибыл. Это была самая маленькая модель: по форме и размеру он напоминал старые автомобили и вмещал всего двух человек. Чэн Синь чувствовала инстинктивную тревогу от того, что ей предстояло отправиться в космос на таком маленьком корабле, хотя и понимала, что эти опасения беспочвенны. Внутри катера скафандр не требовался. Цао Бинь просто... I. Цао Бинь скомандовал: «На Северную Америку-1», и космический катер, включив двигатели, взлетел.</p>
+
+            <p>Чэн Синь видела, как земля стремительно уходит вниз. Космический катер вылетел по касательной к вращающемуся городу, и вскоре в поле зрения появилась его вершина диаметром восемь километров, а затем и весь космический город Азия-1. За этим цилиндром простиралось бескрайнее темно-желтое пространство. И только когда вдали показались его границы, Чэн Синь осознала, что это и есть Юпитер, который до этого был не виден. Это была теневая сторона гигантской планеты, погруженная в холод и мрак. Казалось, Солнца вовсе не существует, и лишь фосфоресцирующее свечение жидкого водорода и гелия пробивалось сквозь плотную атмосферу Юпитера туманными ореолами, похожими на движение глазных яблок под закрытыми веками во время сна. Масштабы Юпитера потрясли Чэн Синь: с этого расстояния был виден лишь край планеты, и его изгиб казался почти прямой линией. Юпитер казался глухой темной стеной, заслоняющей всё вокруг, и Чэн Синь снова почувствовала себя так, словно стоит перед исполинским рубежом на краю мира.</p>
+
+            <p>В следующие три дня Цао Бинь показал Чэн Синь еще четыре космических города.</p>
+
+            <p>Сначала они отправились в Северную Америку-1, ближайший к Азии-1 космический город, который представлял собой идеальную сферу. Главное преимущество такой конструкции в том, что одного искусственного солнца в центре сферы достаточно, чтобы все районы получали одинаковое освещение. Однако у сферической конфигурации были и очевидные недостатки. Главный из них заключался в сильной разнице гравитации на разных широтах: на экваторе она была максимальной, постепенно уменьшалась по мере движения к полюсам, а в самих полярных регионах и вовсе наблюдалось состояние невесомости. Из-за этого жителям разных районов приходилось привыкать к разному уровню гравитации.</p>
+
+            <p>В отличие от «Азии-1», малые космические корабли могли попадать в космический город напрямую через входы на Северном полюсе. Когда космический катер вошел внутрь, Чэн Синь почувствовала, что весь мир вращается вокруг нее. Чтобы совершить посадку, космический катер должен был начать вращаться, синхронизируясь с вращением города.</p>
+
+            <p>Чэн Синь и Цао Бинь отправились в районы низких широт на высокоскоростном поезде, который двигался гораздо быстрее дорожных машин в «Азии-1». Чэн Синь заметила, что застройка здесь более плотная. Здания здесь были выше, что придавало городу вид величественного мегаполиса. Особенно в районах высоких широт с низкой гравитацией высота зданий была ограничена лишь пространством сферы. Вблизи полюсов возвышались небоскребы высотой до десяти километров — половина радиуса сферы. Их вершины находились всего в нескольких десятках километров от искусственного солнца, напоминая тонкие иглы, тянущиеся от земли к светилу.</p>
+
+            <p>«Северная Америка-1» была построена довольно давно. Радиус этого шара составляет более двадцати километров. Это самый густонаселенный космический город с населением в двадцать миллионов человек, который служит оживленным торговым центром всей городской системы Юпитера.</p>
+
+            <p>В этом космическом городе. Чэн Синь увидела великолепный пейзаж, которого не было в «Азиатском институте номер один»: экваториальное кольцо-море. На самом деле, в большинстве космических городов есть кольцевые моря разной ширины, и только «Азия-1» является исключением. В городах сферической или эллипсоидальной конфигурации экватор является самой низкой точкой с точки зрения гравитации, поэтому вода естественным образом стекает туда. Так вокруг центра города образуется водное кольцо, которое выглядит как сверкающий пояс. Она стояла на берегу моря. Было видно, как кольцевое море поднимается с обеих сторон и пересекает «небо» за солнцем. Чэн Синь и Цао Бинь проплыли на катере вдоль всего кольцевого моря. Путь составил более шестидесяти километров. Вода, привезенная со спутника Европа, была чистой и холодной, а блики на ее поверхности отражались в стеклах небоскребов по обоим берегам. Со стороны Юпитера дамбы кольцевого моря были выше. Это было сделано для того, чтобы вода не выплескивалась из-за ускорения при удержании города на месте. Тем не менее, при нестандартном ускорении всё равно могли случаться небольшие наводнения.</p>
+
+            <p>Третьим космическим городом, который Цао Бинь показал Чэн Синь, был «Европа-4». Этот город имел типичную форму эллипсоида. Его особенностью было отсутствие общего искусственного солнца: в каждом районе работало свое миниатюрное термоядерное солнце, которое освещало часть поверхности с высоты двух-трех сотен метров. Это позволяло максимально эффективно использовать ось невесомости: вдоль главной оси «Европы-4» были возведены самые высокие и длинные здания из всех космических городов. Эта ось длиной сорок километров соединяет северный и южный полюса эллипсоида. Так образовалась одна длинная ось. Благодаря состоянию невесомости внутри, эта ось в основном используется как космопорт и коммерческий развлекательный район.</p>
+
+            <p>Европа-4 — самый малонаселенный космический город с населением всего четыре с половиной миллиона человек, но при этом самое богатое место в Мире Бункеров. Чэн Синь с удивлением увидела множество изысканных вилл, залитых светом маленького солнца. У каждой из них был свой бассейн, а у некоторых — даже просторные зеленые газоны. На спокойной глади моря виднелись белые паруса, а на берегу неспешно рыбачили люди. Она заметила медленно проплывающую мимо яхту, которая по роскоши ничуть не уступала судам древней Земли; на ее борту проходил коктейльный прием под аккомпанемент небольшой группы музыкантов… … Она была поражена тем, что такую роскошную жизнь удалось перенести сюда, в тень Юпитера, за восемьсот миллионов километров от Земли.</p>
+
+            <p>Пацифик-1 был полной противоположностью Европы-4. Это был первый космический город, построенный в рамках проекта «Укрытие»; как и «Северная Америка-1», он имел стандартную сферическую форму. Его главной особенностью было то, что он не входил в группу городов, расположенных на обратной стороне Юпитера. Напротив, он вращался вокруг Юпитера, являясь его спутником.</p>
+
+            <p>В первые годы проекта «Укрытие» Пацифик-1 служил жилым районом для миллионов рабочих, а по мере продвижения строительства стал использоваться как огромный склад стройматериалов. Позже выяснилось, что этот ранний экспериментальный космический город имел множество конструктивных недостатков, поэтому в итоге его забросили. После завершения великого переселения в Мир Бункеров в Пацифике-1 снова появились жители, и со временем там вырос настоящий город. В нем даже появились мэрия и полиция, но они следили лишь за работой базовой инфраструктуры, фактически оставив общество на самотек. Пацифик-1 — единственный город, где можно жить свободно, не имея никаких разрешений на проживание. В основном здесь обитают безработные, бродяги и множество бедняков, которые по разным причинам лишились социальной поддержки. Здесь также живут обедневшие художники, а позже город даже стал прибежищем для некоторых экстремистских политических организаций.</p>
+
+            <p>У Пацифика-1 нет городских двигателей и искусственного солнца, но самое главное — он не вращается, поэтому в городе царит полная невесомость.</p>
+
+            <p>Войдя в город, Чэн Синь увидела мир, похожий на сказку: старый, обветшалый, но при этом оживленный город, в котором внезапно исчезла гравитация, и всё вокруг стало парить в воздухе. Пацифик-1 — это город вечной ночи. Каждое здание здесь питается от ядерных батарей, которые обеспечивают свет и жизнедеятельность, поэтому всё вокруг усыпано огнями.</p>
+
+            <p>Большинство зданий в городе — это простые лачуги, построенные из строительного мусора. Поскольку здесь нет понятий «верх» и «низ», они обычно представляют собой кубы, где каждая из шести граней служит и окном, и дверью, либо имеют форму шара. Последние более прочны, что важно при неизбежных столкновениях в свободном плавании. В Пацифике-1 совершенно нет понятия собственности на землю: все здания свободно дрейфуют в пространстве, а жители, в принципе, могут использовать любое свободное место в городе. В городе также много бродяг, у которых нет даже собственной лачуги. Всё своё имущество они хранят в большой сетке, чтобы вещи не разлетелись в разные стороны, и дрейфуют в пространстве вместе с ней. Транспорт в городе устроен предельно просто: машин почти нет, не встретишь никаких тросов для перемещения в невесомости или персональных двигателей. Люди просто отталкиваются ногами от зданий, чтобы перелететь с места на место. Здания в городе расположены так плотно, что добраться куда угодно не проблема, однако такой способ передвижения требует определенного навыка. Глядя на людей, которые ловко перемещаются между парящими зданиями, Чэн Синь невольно вспомнила гибких гиббонов, прыгающих по ветвям деревьев.</p>
+
+            <p>Чэн Синь и Цао Бинь подлетели к группе бездомных, собравшихся вокруг костра. В других космических городах разводить открытый огонь было строго запрещено. Похоже, в качестве топлива они использовали какой-то горючий строительный материал. Из-за невесомости пламя не поднималось вверх, а превращалось в парящий в воздухе огненный шар. Пили они тоже необычно: выплескивали вино из бутылок, и в воздухе зависали множество прозрачных капель. Мужчины в рваной одежде и с длинными бородами сами парили в невесомости, один за другим ловя ртом эти сверкающие в свете костра шарики. Одного из пьянц стошнило, и от отдачи он начал кувыркаться в воздухе… …</p>
+
+            <div class="pagination-bar bottom">
+    <a href="page_300.html" class="page-btn prev-btn" target="_self">← Предыдущая</a>
+    <div class="page-input-wrapper">
+        <span>Страница</span>
+        <input type="number" class="page-input" value="301" min="1" max="343" data-current="301">
+        <span class="page-total">из 343</span>
+    </div>
+    <a href="page_302.html" class="page-btn next-btn" target="_self">Следующая →</a>
+</div>
+        </main>
+    </div>
+
+    <footer class="reader-footer">
+        ⚙️ Читалка.
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         СКРИПТ НАСТРОЕК
+         ═══════════════════════════════════════════════════════════ -->
+    <script>
+    (function() {
+        // ── Элементы ──
+        const body = document.body;
+        const toggleBtn = document.getElementById('settingsToggle');
+        const closeBtn = document.getElementById('settingsClose');
+        const overlay = document.getElementById('settingsOverlay');
+        const panel = document.getElementById('settingsPanel');
+        const infoSpan = document.getElementById('currentInfo');
+
+        // ── Текущие значения ──
+        let currentTheme = 'light';
+        let currentFont = '1';
+        let currentSize = '3';
+        let currentLine = '2';
+
+        // ── Справочники для отображения ──
+        const themeNames = {
+            light: 'Светлая',
+            dark: 'Тёмная'
+        };
+        const fontNames = {
+            1: 'Cambria/Times (классический serif)',
+            2: 'Constantia/Georgia (элегантный)',
+            3: 'Frutiger/Arial (гуманистический sans)',
+            4: 'Corbel/Verdana (чистый sans)',
+            5: 'Garamond/Palatino (книжный)',
+            6: 'Segoe UI / Trebuchet (современный)',
+            7: 'Impact / Arial Black (рубленый)',
+            8: 'Consolas/Courier (моноширинный)'
+        };
+        const sizeNames = {
+            1: 'Очень мелкий (0.8em)',
+            2: 'Мелкий (1em)',
+            3: 'Средний (1.2em)',
+            4: 'Крупный (1.4em)',
+            5: 'Очень крупный (1.6em)',
+            6: 'Огромный (2em)'
+        };
+        const lineNames = {
+            1: 'Тесный (1.2)',
+            2: 'Обычный (1.5)',
+            3: 'Свободный (1.8)',
+            4: 'Широкий (2.2)'
+        };
+
+        // ── Применение классов ──
+        function applyClasses() {
+            // Тема
+            body.classList.remove('theme-light', 'theme-dark');
+            body.classList.add('theme-' + currentTheme);
+
+            // Шрифт
+            for (let i = 1; i <= 8; i++) {
+                body.classList.remove('reader-text-font-' + i);
+            }
+            body.classList.add('reader-text-font-' + currentFont);
+
+            // Размер
+            for (let i = 1; i <= 6; i++) {
+                body.classList.remove('reader-text-size-' + i);
+            }
+            body.classList.add('reader-text-size-' + currentSize);
+
+            // Интервал
+            for (let i = 1; i <= 4; i++) {
+                body.classList.remove('reader-line-height-' + i);
+            }
+            body.classList.add('reader-line-height-' + currentLine);
+
+            updateInfo();
+            saveSettings();
+        }
+
+        // ── Обновление информационного блока ──
+        function updateInfo() {
+            infoSpan.innerHTML =
+                'Тема: <strong>' + themeNames[currentTheme] + '</strong><br>' +
+                'Шрифт: <strong>' + fontNames[currentFont] + '</strong><br>' +
+                'Размер: <strong>' + sizeNames[currentSize] + '</strong><br>' +
+                'Интервал: <strong>' + lineNames[currentLine] + '</strong>';
+        }
+
+        // ── Сохранение / загрузка из localStorage ──
+        function saveSettings() {
+            try {
+                localStorage.setItem('readerSettings', JSON.stringify({
+                    theme: currentTheme,
+                    font: currentFont,
+                    size: currentSize,
+                    line: currentLine
+                }));
+            } catch (e) {}
+        }
+
+        function loadSettings() {
+            try {
+                const saved = localStorage.getItem('readerSettings');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.theme) currentTheme = data.theme;
+                    if (data.font) currentFont = data.font;
+                    if (data.size) currentSize = data.size;
+                    if (data.line) currentLine = data.line;
+                }
+            } catch (e) {}
+        }
+
+        // ── Обновление активных кнопок ──
+        function updateActiveButtons() {
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-theme') === currentTheme);
+            });
+            document.querySelectorAll('.font-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-font') === currentFont);
+            });
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-size') === currentSize);
+            });
+            document.querySelectorAll('.line-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-line') === currentLine);
+            });
+        }
+
+        // ── Открытие / закрытие панели ──
+        function openPanel() {
+            overlay.classList.add('open');
+            panel.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            toggleBtn.classList.add('hidden');
+        }
+        function closePanel() {
+            overlay.classList.remove('open');
+            panel.classList.remove('open');
+            document.body.style.overflow = '';
+            toggleBtn.classList.remove('hidden');
+        }
+
+        toggleBtn.addEventListener('click', openPanel);
+        closeBtn.addEventListener('click', closePanel);
+        overlay.addEventListener('click', closePanel);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePanel();
+        });
+
+        // ── Обработчики кнопок ──
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentTheme = this.getAttribute('data-theme');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.font-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentFont = this.getAttribute('data-font');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentSize = this.getAttribute('data-size');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        document.querySelectorAll('.line-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentLine = this.getAttribute('data-line');
+                applyClasses();
+                updateActiveButtons();
+            });
+        });
+
+        // ── Инициализация ──
+        loadSettings();
+        applyClasses();
+        updateActiveButtons();
+
+        /* ── Пагинация (многостраничный режим) ── */
+        (function() {
+            const inputs = document.querySelectorAll('.page-input');
+            if (!inputs.length) return;
+
+            inputs.forEach(function(inp) {
+                inp.addEventListener('change', function() {
+                    let v = parseInt(this.value, 10) || 1;
+                    const max = parseInt(this.max, 10);
+                    if (v < 1) v = 1;
+                    if (v > max) v = max;
+                    const current = parseInt(this.getAttribute('data-current'), 10);
+                    if (v === current) return;
+                    const target = (v === 1) ? 'index.html' : 'page_' + v + '.html';
+                    window.location.href = target;
+                });
+                inp.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        this.blur();
+                    }
+                });
+            });
+        })();
+    })();
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102424835, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+</body>
+</html>
