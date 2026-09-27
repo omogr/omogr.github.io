@@ -5,169 +5,274 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Обзоры книг</title>
     <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            background-color: #f6f6f6;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Liberation Sans", Helvetica, Arial, sans-serif;
-            color: #202122;
+            background-color: var(--bg-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-main);
             line-height: 1.6;
             font-size: 16px;
+            -webkit-font-smoothing: antialiased;
         }
-        .mw-body {
-            max-width: 960px;
-            margin: 20px auto;
-            background: #ffffff;
-            padding: 20px 40px;
-            border: 1px solid #a7d7f9;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            min-height: 100vh;
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
         }
-        h1 {
-            font-family: "Linux Libertine", Georgia, Times, serif;
-            font-size: 2.2em;
-            font-weight: normal;
-            border-bottom: 1px solid #a2a9b1;
-            margin-bottom: 0.3em;
-            padding-bottom: 0.2em;
-        }
-        h2 {
-            font-family: "Linux Libertine", Georgia, Times, serif;
-            font-size: 1.6em;
-            font-weight: normal;
-            border-bottom: 1px solid #a2a9b1;
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
-        }
-        a {
-            color: #0645ad;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        a:visited {
-            color: #0b0080;
-        }
-        .toc {
-            background-color: #f8f9fa;
-            border: 1px solid #a2a9b1;
-            padding: 15px 20px;
-            display: inline-block;
-            margin: 15px 0 25px 0;
-            font-size: 0.95em;
-        }
-        .toc-title {
-            font-weight: bold;
+
+        header {
+            margin-bottom: 40px;
             text-align: center;
-            margin-bottom: 10px;
-            font-size: 1.1em;
         }
-        .toc ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0 0 10px 0;
+            letter-spacing: -0.02em;
         }
-        .toc > ul > li {
-            margin-bottom: 5px;
-        }
+
         .intro {
-            font-size: 1.05em;
-            margin-bottom: 20px;
-            color: #444;
+            font-size: 1.1em;
+            color: var(--text-muted);
+            margin: 0 auto;
+            max-width: 600px;
         }
-        .book-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+
+        /* Оглавление (Навигация по тематикам) */
+        .toc-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 48px;
+            box-shadow: var(--shadow);
         }
-        .book-list li {
+
+        .toc-title {
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
             margin-bottom: 12px;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            border-left: 4px solid #36c;
-            border-radius: 2px;
-            transition: background 0.2s;
         }
-        .book-list li:hover {
-            background: #eaecf0;
+
+        .toc-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .book-title {
-            font-size: 1.15em;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 4px;
+
+        .toc-link {
+            background: #f1f5f9;
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
         }
-        .book-author {
+
+        .toc-link:hover {
+            background: var(--accent);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        /* Секции категорий */
+        .category-section {
+            margin-bottom: 56px;
+            scroll-margin-top: 20px;
+        }
+
+        .category-header {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0 0 8px 0;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        .comment {
+            color: var(--text-muted);
+            font-size: 1em;
+            margin: 0 0 24px 0;
             font-style: italic;
-            color: #54595d;
-            display: block;
         }
+
+        /* Сетка книг (Решает проблему широких экранов) */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .book-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.25s ease;
+            transform-origin: bottom;
+        }
+
+        .book-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .book-card:hover::before {
+            transform: scaleY(1);
+            transform-origin: top;
+        }
+
+        .book-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .book-author {
+            font-size: 0.95em;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: auto;
+        }
+
         footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eaecf0;
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
             font-size: 0.85em;
-            color: #72777d;
+            color: var(--text-muted);
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 16px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .book-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="mw-body">
-        <h1>Обзоры книг</h1>
-        <p class="intro">
-            Собрание литературных обзоров, сгенерированных автоматически.
-            Книги сгруппированы по тематикам.
-        </p>
+    <div class="container">
+        <header>
+            <h1>Wiki-обзоры книг</h1>
+            <p class="intro">
+                Коллекция литературных обзоров (содержание книг, персонажи, факты, мир книги).
+            </p>
+        </header>
 
-        <div class="toc">
-            <div class="toc-title">Содержание</div>
-            <ul>
-                <li><a href="#Общее">Общее</a></li>
-            </ul>
-        </div>
-
-        <div class="category-section">
-                <h2 id="Общее">Общее</h2>
-                
-                <ul class="book-list">
-                    <li>
-                <a href="Общее\Звездная_Кровь.html" class="book-title">Звездная Кровь</a>
-                <span class="book-author">Роман Прокофьев</span>
-            </li>
-<li>
-                <a href="Общее\Мёртвые_души.html" class="book-title">Мёртвые души</a>
-                <span class="book-author">Николай Гоголь</span>
-            </li>
-<li>
-                <a href="Общее\Недоросль.html" class="book-title">Недоросль</a>
-                <span class="book-author">Денис Фонвизин</span>
-            </li>
-<li>
-                <a href="Общее\Отцы_и_дети.html" class="book-title">Отцы и дети</a>
-                <span class="book-author">Иван Тургенев</span>
-            </li>
-<li>
-                <a href="Общее\Ревизор.html" class="book-title">Ревизор</a>
-                <span class="book-author">Николай Гоголь</span>
-            </li>
-<li>
-                <a href="Общее\Темные_врата.html" class="book-title">Темные врата</a>
-                <span class="book-author">Марта Уэллс</span>
-            </li>
-<li>
-                <a href="Общее\Шинель.html" class="book-title">Шинель</a>
-                <span class="book-author">Николай Гоголь</span>
-            </li>
-                </ul>
+        <nav class="toc-container">
+            <div class="toc-title">Тематики</div>
+            <div class="toc-links">
+                <a href="#Общее" class="toc-link">Общее</a>
+<a href="#Школьное" class="toc-link">Школьное</a>
             </div>
+        </nav>
+
+        <main>
+            <section class="category-section" id="Общее">
+                <h2 class="category-header">Общее</h2>
+                
+                <div class="book-grid">
+                    <a href="Общее\Звездная_Кровь.html" class="book-card">
+                <div class="book-title">Звездная Кровь</div>
+                <div class="book-author">Роман Прокофьев</div>
+            </a>
+<a href="Общее\Темные_врата.html" class="book-card">
+                <div class="book-title">Темные врата</div>
+                <div class="book-author">Марта Уэллс</div>
+            </a>
+                </div>
+            </section>
+<section class="category-section" id="Школьное">
+                <h2 class="category-header">Школьное</h2>
+                
+                <div class="book-grid">
+                    <a href="Школьное\Мёртвые_души.html" class="book-card">
+                <div class="book-title">Мёртвые души</div>
+                <div class="book-author">Николай Гоголь</div>
+            </a>
+<a href="Школьное\Недоросль.html" class="book-card">
+                <div class="book-title">Недоросль</div>
+                <div class="book-author">Денис Фонвизин</div>
+            </a>
+<a href="Школьное\Отцы_и_дети.html" class="book-card">
+                <div class="book-title">Отцы и дети</div>
+                <div class="book-author">Иван Тургенев</div>
+            </a>
+<a href="Школьное\Ревизор.html" class="book-card">
+                <div class="book-title">Ревизор</div>
+                <div class="book-author">Николай Гоголь</div>
+            </a>
+<a href="Школьное\Шинель.html" class="book-card">
+                <div class="book-title">Шинель</div>
+                <div class="book-author">Николай Гоголь</div>
+            </a>
+                </div>
+            </section>
+        </main>
 
         <footer>
-            Страница сгенерирована автоматически.
+            &copy; 2026 &middot; Сгенерировано автоматически
         </footer>
     </div>
-    
 
     
     <!-- Yandex.Metrika counter -->
@@ -187,7 +292,5 @@
     <noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
 
-    
-    
 </body>
 </html>
