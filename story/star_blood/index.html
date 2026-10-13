@@ -66,7 +66,7 @@
     padding: 10px 24px;
     display: flex; align-items: center; gap: 16px;
   }
-  .topbar-title {
+  /*.topbar-title {
     font-weight: 700; font-size: .95rem;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     max-width: 30%;
@@ -76,7 +76,28 @@
     padding: 4px 2px; margin-left: auto;
     scrollbar-width: thin;
     -webkit-overflow-scrolling: touch;
-  }
+  }*/
+  .topbar-title {
+      /* раньше: max-width: 30%; */
+      flex: 0 0 auto;          /* не сжиматься */
+      max-width: 45%;          /* но и не занимать всю строку */
+      font-weight: 700;
+      font-size: .95rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chip-nav {
+      /* раньше: margin-left: auto; */
+      flex: 1 1 auto;
+      min-width: 0;            /* разрешаем сжиматься и скроллиться */
+      margin-left: 12px;
+      display: flex; gap: 8px; overflow-x: auto;
+      padding: 4px 2px;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
   .chip-nav::-webkit-scrollbar { height: 6px; }
   .chip-nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
   .chip {
