@@ -1,0 +1,872 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Звездная Кровь</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --bg-translucent: rgba(244, 245, 247, .85);
+    --surface: #ffffff;
+    --surface-2: #f8f9fb;
+    --text: #16181d;
+    --muted: #6b7280;
+    --border: #e6e8ec;
+    --accent: #2563eb;
+    --accent-soft: #eaf1fe;
+    --radius: 14px;
+    --shadow-sm: 0 1px 2px rgba(16, 24, 40, .04);
+    --shadow-md: 0 6px 20px rgba(16, 24, 40, .06);
+    --shadow-lg: 0 24px 60px rgba(16, 24, 40, .28);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1014;
+      --bg-translucent: rgba(14, 16, 20, .85);
+      --surface: #161a21;
+      --surface-2: #1b2029;
+      --text: #e7e9ee;
+      --muted: #98a0ad;
+      --border: #262b35;
+      --accent: #7cb0ff;
+      --accent-soft: #1c2940;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.5);
+      --shadow-md: 0 6px 20px rgba(0,0,0,.5);
+      --shadow-lg: 0 24px 60px rgba(0,0,0,.8);
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---------- Липкая верхняя панель ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 40;
+    background: var(--bg-translucent);
+    backdrop-filter: saturate(1.2) blur(10px);
+    -webkit-backdrop-filter: saturate(1.2) blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 10px 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .topbar-title {
+    font-weight: 700; font-size: .95rem;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    max-width: 30%;
+  }
+  .chip-nav {
+    display: flex; gap: 8px; overflow-x: auto;
+    padding: 4px 2px; margin-left: auto;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+  .chip-nav::-webkit-scrollbar { height: 6px; }
+  .chip-nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .chip {
+    flex: 0 0 auto;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: .85rem;
+    line-height: 1.2;
+    transition: background .15s, border-color .15s, color .15s, transform .1s;
+  }
+  .chip:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .chip:active { transform: scale(.97); }
+
+  /* ---------- Контейнер ---------- */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { margin-bottom: 32px; }
+  .hero h1 {
+    font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+    font-weight: 800;
+  }
+  .hero .author {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  /* ---------- Вступительный текст ---------- */
+  .intro {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 48px;
+  }
+  .intro h2 {
+    margin: 0 0 12px;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+  .intro h3 { font-size: 1.05rem; margin: 1.2em 0 .4em; }
+  .intro h4 { font-size: .95rem; margin: 1em 0 .3em; color: var(--muted); }
+  .intro p { margin: 0 0 .9em; }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro ul, .intro ol { margin: 0 0 .9em; padding-left: 1.3em; }
+  .intro li { margin: .2em 0; }
+
+  /* ---------- Карточки портретов ---------- */
+  .portrait-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px 20px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 36px;
+    scroll-margin-top: 80px;
+  }
+  .portrait-name {
+    margin: 0 0 18px;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  .portrait-figure {
+    margin: 0 0 18px;
+    display: flex;
+    justify-content: center;
+  }
+  .portrait-figure img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 80vh;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    cursor: zoom-in;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .portrait-figure img:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(16,24,40,.14);
+  }
+
+  /* ---------- Промпт ---------- */
+  .prompt-block {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-2);
+    overflow: hidden;
+  }
+  .prompt-block > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .92rem;
+    font-weight: 600;
+    color: var(--text);
+    user-select: none;
+    transition: background .15s;
+  }
+  .prompt-block > summary::-webkit-details-marker { display: none; }
+  .prompt-block > summary::before {
+    content: "";
+    width: 0; height: 0;
+    border-left: 6px solid currentColor;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    transition: transform .2s;
+    flex: 0 0 auto;
+    opacity: .7;
+  }
+  .prompt-block[open] > summary::before { transform: rotate(90deg); }
+  .prompt-block > summary:hover { background: var(--accent-soft); }
+  .summary-hint {
+    margin-left: auto;
+    color: var(--muted);
+    font-weight: 400;
+    font-size: .82rem;
+  }
+  .prompt-block[open] .summary-hint { visibility: hidden; }
+  .prompt-content {
+    position: relative;
+    padding: 14px 16px 16px;
+    border-top: 1px solid var(--border);
+  }
+  .image-prompt {
+    margin: 0;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+                 "Liberation Mono", monospace;
+    font-size: .85rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--text);
+  }
+  .copy-btn {
+    position: absolute;
+    top: 10px; right: 10px;
+    padding: 4px 10px;
+    font: inherit;
+    font-size: .78rem;
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: color .15s, border-color .15s;
+  }
+  .copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .copy-btn.copied { color: #16a34a; border-color: #16a34a; }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 12, 16, .9);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 24px;
+    cursor: zoom-out;
+    animation: lb-fade .2s ease;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    cursor: default;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    width: 42px; height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    color: #fff;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,.22); }
+  @keyframes lb-fade { from { opacity: 0 } to { opacity: 1 } }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--muted);
+    font-size: .82rem;
+  }
+
+  /* ---------- Мобильные ---------- */
+  @media (max-width: 640px) {
+    .topbar-inner { padding: 8px 14px; gap: 8px; }
+    .topbar-title { display: none; }
+    .chip-nav { margin-left: 0; }
+    .page { padding: 24px 14px 60px; }
+    .intro { padding: 20px; }
+    .portrait-card { padding: 20px 16px 16px; border-radius: 12px; }
+    .portrait-name { font-size: 1.25rem; margin-bottom: 14px; }
+    .portrait-figure img { max-height: 65vh; }
+  }
+
+  @media print {
+    .topbar, .lightbox, .copy-btn { display: none !important; }
+    body { background: #fff; }
+    .prompt-block[open] { background: #fff; }
+    .portrait-card, .intro {
+      box-shadow: none;
+      border-color: #ddd;
+      page-break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">Звездная Кровь</div>
+    <nav class="chip-nav" aria-label="Персонажи">
+      <a href="#portrait-1" class="chip">Сигурд</a>
+      <a href="#portrait-2" class="chip">Марк</a>
+      <a href="#portrait-3" class="chip">Свирель</a>
+      <a href="#portrait-4" class="chip">Минос</a>
+      <a href="#portrait-5" class="chip">Гай Флоу</a>
+      <a href="#portrait-6" class="chip">Рэнди</a>
+      <a href="#portrait-7" class="chip">Инь</a>
+      <a href="#portrait-8" class="chip">Кел Аммос</a>
+      <a href="#portrait-9" class="chip">Девушка</a>
+      <a href="#portrait-10" class="chip">Травинка</a>
+      <a href="#portrait-11" class="chip">Говорящая-с-Травами</a>
+      <a href="#portrait-12" class="chip">Черный скелет</a>
+      <a href="#portrait-13" class="chip">Эйрик</a>
+      <a href="#portrait-14" class="chip">Хищник</a>
+      <a href="#portrait-15" class="chip">Тайна</a>
+      <a href="#portrait-16" class="chip">Птерозавр</a>
+      <a href="#portrait-17" class="chip">Серебряная Форель</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero">
+    <h1>Звездная Кровь</h1>
+<p class="author">Автор: Роман Прокофьев</p>  </section>
+
+
+  <article class="portrait-card" id="portrait-1">
+    <h2 class="portrait-name">Сигурд</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/01_Сигурд.png" alt="Портрет: Сигурд" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">Sigurd is a young man in his early twenties, possessing a sturdy, athletic build that is both robust and slightly square-shouldered. His physique reflects a blend of disciplined military training and the recent, raw physicality of survival; his muscles are defined and tense, marked by the subtle, unnatural texture changes resulting from his recent exposure to Star Blood. His skin is tanned, bearing the signs of recent hardships: faint bruises on his torso, a distinct red, star-shaped scar on his left side where a bronze alpha-drake struck him, and traces of dried blood on his hands. A short, unkempt stubble covers his jaw, adding to his rugged appearance. His face is characterized by a stern, impenetrable expression, often described as being as hard as stone, which he uses to mask his internal turmoil and analytical processes. However, his eyes hold a sharp, attentive gaze that misses nothing, capable of shifting from cold calculation to a rare, guarded warmth when he smiles.
+
+He is dressed in a worn, dirty blue &#34;Scout&#34; jumpsuit, part of the &#34;Cosmos&#34; project, which is patched and stained with the grime of his journey. Over this, he wears dented, scratched gray plastalev armor, and his gear is a chaotic mix of Earth technology and alien artifacts. Two assault rifles hang from straps across his chest, alongside a wide leather bandolier and a utility belt filled with pockets. On his wrist, he wears a cryptor bracelet and an A-energy indicator, while a curved dagger rests at his neck. A small, furry creature named Kysh, a yurr, often clings to his shoulder or neck, acting as a living fur collar and a testament to his unique affinity with the local fauna.
+
+Sigurd’s personality is defined by a profound, enigmatic reserve. He is a graduate of the Star Fleet Academy in Saint Petersburg, a specialist pilot from the high social stratum of New Arkeon, yet he carries himself with the humility of a novice in the alien world of Unity. His demeanor is calm, disciplined, and polite, but beneath this surface lies a complex, sometimes twisted logic and a deep capacity for self-reflection. He is observant to a fault, constantly analyzing his surroundings, often seen scratching the back of his head in moments of deep thought or sitting on the ground with his knees drawn up, absorbing the weight of his new reality.
+
+His charisma stems from his quiet reliability and intellectual depth. Despite his initial shock and amnesia, he possesses a strong sense of duty and loyalty to his group, the &#34;Dynamite&#34; squad. He is not merely a warrior but a thinker, struggling with the moral complexities of a world where ancient technology is mistaken for magic and survival is dictated by the &#34;Star Blood.&#34; He feels a heavy burden of guilt, particularly regarding the death of the chieftain Gay, which adds a layer of tragic nobility to his character. He is curious, eager to understand the fundamental mechanics of this universe, yet often feels a sense of inadequacy and vulnerability in the face of its vast, incomprehensible scale.
+
+Sigurd’s life is one of abrupt transition. Once a man of structure and education, he is now a survivor who fell from the ship &#34;Helga&#34; into an alien lake, having spent days in isolation before being rescued. He is a &#34;Rising&#34; in the early stages of his transformation, possessing a neural interface that allows him to see augmented reality, titles, and runic manipulations. He hears a subvocal whisper in his ear, a guide to the stigmata and the war against the Worms, which adds to his air of mystery. He is drawn to animals, possessing an inexplicable ability to attract and calm them, a trait that sets him apart from his more aggressive companions. Despite his physical strength and combat skills, including the ability to fight without weapons and handle firearms with muscle memory, he remains introspective, haunted by dreams of a turquoise ocean and a brown-eyed girl, symbols of the peace and normalcy he has lost. He is a man caught between the rigid logic of his Earthly past and the mystical, chaotic reality of his present, seeking not just survival, but understanding in a world that is both beautiful and terrifying.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-2">
+    <h2 class="portrait-name">Марк</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/02_Марк.png" alt="Портрет: Марк" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">Mark is a towering figure of immense physical power, embodying the raw, primal strength of a warrior forged in the harsh realities of the Unity. Standing tall and broad-shouldered, his physique is that of a bear or a heavy infantryman—dense, muscular, and built for endurance rather than speed. His skin is a deep, dark bronze, often marked by the scars and dried blood of recent battles, which can be seen caked up to his eyebrows, adding to his grim, battle-worn appearance. His face is dominated by a heavy, square jaw and a wide, muscular nape, giving him an imposing, almost animalistic presence. His hair is a tangled mane of black, interwoven with premature streaks of gray in his thick beard, suggesting a life of stress and age beyond his years. His eyes are his most striking feature: heavy, brooding, and intensely focused, they hold a piercing gaze that can ignite with green, wolf-like glints when his instincts or powers are engaged. This look is not merely one of aggression, but of deep, calculating attention, as if he is constantly analyzing the threat level of everyone in his vicinity.
+
+He is a man of few words and even fewer expressions, his face often resembling an impenetrable rock. This stoicism masks a complex inner life, where a mysterious, disembodied voice resides in his mind, creating a constant tension between his own will and this external influence. Mark is a &#34;Rising,&#34; a status that grants him access to ancient runic magic and bio-engineered enhancements, allowing him to manipulate his physical form, become invisible, or channel &#34;Star Blood&#34; energy. Yet, despite these futuristic abilities, he retains the demeanor of a rugged survivor, a &#34;barbarian&#34; in a high-tech world. He wears the scaled hide of a blue-green creature as a cloak, a testament to his adaptability and resourcefulness, and carries a mix of ancient and advanced weaponry, including a technological block bow, a spear, and a rifle known as the &#34;Suvorov.&#34;
+
+His character is defined by a blend of cold discipline, latent aggression, and strategic intelligence. As the son of a former colony leader and a former Star Fleet cadet, Mark possesses a natural authority and a tactical mind that allows him to lead small groups with precision. He is observant, noting details others miss, and his leadership style is demanding and direct. He values strength and resources above all else, often prioritizing the survival of his group or his own ambitions over individual lives. This can make him appear cold or even greedy, as seen in his treatment of subordinates like Sviriel, whom he interrogates with rough hands, or in his pragmatic, almost ruthless handling of the body of Guy Flow.
+
+Despite his harsh exterior, Mark is driven by a deep-seated desire to prove himself, to surpass the &#34;old men&#34; who hold power in the Unity, and to secure his place in a world where resources are scarce and survival is a constant struggle. He is a man who understands the local customs, the language of the River People, and the dangers of the environment, making him a valuable, if unpredictable, asset. His charisma lies in his reliability under pressure; he is the one who can be counted on to make the hard call, to endure the pain, and to strike when the moment is right. There is a mystery to him, a sense of hidden depths and secrets, particularly regarding his relationship with the mysterious voice in his head and his true intentions within the political landscape of the colony. He is a character who commands respect through sheer force of will and capability, a man who has survived the worst of the Unity and is still hungry for more.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-3">
+    <h2 class="portrait-name">Свирель</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/07_Свирель.png" alt="Портрет: Свирель" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">Sviriel is a young woman of Asian descent, a former Earth colonist who has spent approximately four years navigating the harsh, hierarchical, and technologically anomalous environment of the Unity. She is a &#34;Rising&#34; — a native-born individual with innate magical potential — and serves as a vital, albeit unconventional, member of a four-rider squad, often positioned at the rear of the formation to act as a scout and rear guard. Her social standing is that of a survivor from the lower strata of society, a background that has forged her into a resilient, street-smart, and fiercely independent individual. She is the lover of Mark (known as Mrak), a relationship defined by a complex dynamic of power, intimacy, and mutual reliance, where she often asserts her status by calling her companions &#34;students&#34; or &#34;blockheads,&#34; particularly Gray.
+
+Physically, Sviriel is a short, full-figured woman with pale skin that is often marked by the sweat and road dust of her travels. Her most striking feature is her face, dominated by dark brown eyes that are described as empty and vicious, resembling those of a snake, and thin lips that she frequently presses into a tight, defiant pucker. Her hair is cut short and black, accented with vivid, venomous blue streaks, a style characteristic of the &#34;social bottom&#34; of the ant-hive society. Her face and neck are adorned with digital tattoos, and her body bears several piercings, including one on her chest. A subtle, almost invisible silver droplet-like stigmata marks her left wrist. She typically wears a tight, protective top in a camouflage shade, which is often torn and tied in a large knot above her stomach, with sleeves that can be rolled up to the elbows. Her overall appearance evokes that of a tough, scrappy fighter from a gang of outcasts, blending practicality with a rebellious aesthetic.
+
+Her personality is a complex tapestry of boldness, irony, and hidden vulnerability. Sviriel is brash, cheeky, and provocative, possessing a sharp tongue and a talent for sarcasm that she uses to deflect attention and assert dominance. She speaks with a specific slang and mannerisms typical of the lower-class &#34;thugs,&#34; often employing a flirtatious, teasing tone that masks her underlying caution. She is known for her loud, raspy laughter and her distinctive, intricate whistling, which earned her the nickname &#34;Sviriel&#34; (Flute). Despite her outward confidence and tendency to chatter, she is deeply observant and analytical. She understands the world primarily through the &#34;language of power,&#34; relying on her innate abilities rather than just physical strength.
+
+Her capabilities are a blend of technological savvy and mystical intuition. She possesses the ability &#34;Sensitive Ear,&#34; allowing her to hear distant sounds, identify the number and type of creatures or people nearby, and detect approaching dangers. She is skilled in combat, capable of rapid-fire shooting, throwing smoke grenades, and hunting, often working in tandem with her partner Mark. She has a deep connection to the world&#39;s magic, able to activate runic circles, manipulate runic energy to enhance others, and sense the presence of other Risings. She also maintains a bond with a companion creature, a carh, and is proficient in using the vox-network for silent communication.
+
+Despite her tough exterior, Sviriel harbors a deep-seated fear and vulnerability, particularly when faced with overwhelming power, such as during Mark&#39;s interrogations. Her shoulders may tremble, and her teeth may chatter, revealing the human beneath the warrior. She is a character of contradictions: a predator who is also prey, a leader who is also a follower, and a skeptic who is drawn to the mysteries of the ancient artifacts and the &#34;Star Blood.&#34; Her role in the group is that of a crucial informant and protector, someone who sees the details others miss and who holds the key to understanding the deeper, often darker, truths of their world. She is a character who invites empathy through her resilience, her sharp wit, and her quiet, often overlooked, contributions to the survival of her companions.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-4">
+    <h2 class="portrait-name">Минос</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/08_Минос.png" alt="Портрет: Минос" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">Minos is a tall, imposing figure with dark, sun-weathered skin and a distinctive, prominent bump on his nose, a physical trait that lends his face an air of rugged, ancient experience. He is a mature man, likely in his prime, whose presence commands immediate respect and quiet awe. His attire is a tattered, billowing brown cloak that flutters in the winds of the Unity, contrasting sharply with the intricate, golden chain draped across his chest. This chain is not merely jewelry but a living artifact, composed of numerous interlinked golden beetles that shimmer with an otherworldly luster. Hovering just above his left shoulder is a mesmerizing sphere made of a thousand microscopic, greenish fireflies, a swarm of light that serves as both a protective shield and a testament to his mastery over the arcane technologies of this world.
+
+As a Bronze-rank Ascendant and a scholar of immense caliber, Minos embodies a rare fusion of intellectual depth and martial prowess. He is a scientist by trade, engaged in excavations that peel back the layers of history, yet he is equally at home on the battlefield, coordinating the movements of his team with calm, decisive gestures. His demeanor is characterized by a profound, unshakeable calm; even in the heat of combat against the bronze alpha-draeks, he maintains a composed air, often leaning back in his chair with his hands clasped behind his head, a habit that suggests a man who has seen much and fears little. His speech is slow and deliberate, laced with a dry, sardonic humor that only surfaces in moments of genuine connection or when explaining complex astronomical theories to those less versed in the mysteries of the Dyson sphere.
+
+Minos is a protector and a guide, a figure who bridges the gap between the mundane and the magical. He possesses a deep sense of duty, often sacrificing his own resources—such as his precious &#34;Golden Lanterns&#34;—to heal the wounded and guide the lost. His knowledge of the Unity’s structure, from the Igg-Trees to the ancient artifacts of the Kell people, is encyclopedic, and he shares this wisdom with a teacher’s patience, finding genuine pleasure in the act of explanation. Yet, beneath his scholarly exterior lies a warrior’s instinct; he wields a sleek, alien spear-gun that disrupts the very fabric of living matter, and he can summon invisible splitting beams or transform his golden chain into healing insects. He is a man of contradictions: a gentle healer who can reduce enemies to ash, a quiet observer who commands the battlefield with absolute authority. His charisma stems from this balance of power and empathy, making him a mysterious, enigmatic ally whose loyalty is earned through trust and whose presence offers a beacon of hope in the harsh, resource-scarce world of the Unity.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-5">
+    <h2 class="portrait-name">Гай Флоу</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/10_Гай Флоу.png" alt="Портрет: Гай Флоу" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">Gai Flow is a towering, almost square-shaped figure, a physical embodiment of raw, untamed strength often described as a &#34;Titan&#34; or a &#34;barbarian.&#34; His build is stocky and rugged, with a thick, muscular frame that speaks to decades of physical labor and brutal survival. His skin is weathered and tanned, marked by deep wrinkles and old scars that map out a history of countless battles. His face is severe, dominated by wolf-like eyes that often narrow in a calculating squint, and he frequently wears a crooked, predatory smile that hints at his aggressive nature. Short, gray hair frames his face, interspersed with striking, venomous blue strands, while his face and neck are adorned with digital tattoos and piercings that blend organic flesh with technological augmentation.
+
+He is clad in the battered armor of a futuristic knight, specifically a dented and scratched, dull-gray &#34;Guardian&#34; plasteel suit, worn over a jumpsuit and faded Earth camouflage. A frayed &#34;COSMO&#34; project chevron sits above his right pocket, a tattered remnant of his origins as a colonist from the ship *Helga*. On his shoulder rests a worn impulse rifle, a knife hangs at his belt, and he wields a technospear with a vibrating blade, a weapon he commands with lethal precision. His presence is further defined by the artifacts of his status as an Ascendant: a cryptor on his wrist, a runic circle, and the latent power of Star Blood, which allows him to enhance his physical capabilities to terrifying degrees.
+
+Gai’s character is defined by a decisive, authoritarian leadership style. He is a &#34;worldly man,&#34; a term that reflects his pragmatic, often ruthless approach to life in the harsh hierarchy of the Unity. His motivations are driven by the glory of his freehold and the accumulation of resources, valuing Star Blood and Runes often above human lives. Yet, beneath the surface of his greed and aggression lies a sense of duty; he cares for his subordinates, such as Sigurd, helping them rise and calming their fears, though his loyalty is ultimately to his own legacy. He possesses a dangerous charisma, inspiring both trust and fear in those around him. His death, a tragic and somewhat absurd betrayal by an arrow to the neck after a hard-won victory, cements his status as a tragic hero—a powerful protector and mentor whose immense strength and valuable artifacts left a lasting impact on the world, turning him into a symbol of both heroic sacrifice and the cruel, resource-driven nature of their reality.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-6">
+    <h2 class="portrait-name">Рэнди</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/11_Рэнди.png" alt="Портрет: Рэнди" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">Randy is a twenty-year-old native of the Unity, a colossal Dyson sphere where ancient bio-engineering and mystical artifacts coexist with harsh survivalist hierarchies. Born into the rigid social structure of the Earth colonists, he is a &#34;tauro&#34; and a native-born inhabitant who currently holds the precarious status of a probationary recruit in Guy Flow’s combat spear. His life is defined by the scarcity of resources, the omnipresent surveillance of the algorithmic Observers, and the constant struggle for access to &#34;Star Blood,&#34; the unique energy source that sustains life in this anomalous environment. As a member of Mark’s group, Randy exists on the fringes of authority, lacking the prestige of the elite but possessing the raw, untamed instinct of a survivor.
+
+Physically, Randy is a striking and unsettling figure. He possesses a lean, athletic build with defined, bulging muscles that allow for rapid, jerky movements, contrasting with the rough, uneven texture of his skin on his abdomen and sides. His face is angular and gaunt, dominated by high cheekbones and a pair of eyes that hold a perpetual, hostile squint. His hair is a fiery, disheveled red, with the temples shaved close to the scalp, giving him the appearance of a wild, feral creature. His expression is often fixed in a nasty, baring grin or a scowl, with lips pressed into a thin, tight line. A broken nose, swollen and weeping thin streams of blood, adds to his rugged, battle-worn aesthetic. He moves with the quick, unpredictable agility of a mustelid, evoking the image of a dangerous, skittish beast rather than a disciplined soldier.
+
+Randy’s character is marked by a palpable, simmering resentment and a lack of social grace. He is not a natural leader; instead, he is a reactive force, prone to snarling silence and sharp, ironic jabs when forced to interact. His relationship with the main protagonist is defined by open disdain, a tension that stems from a specific incident of theft where Randy attempted to steal a crytor bracelet from Sigurd during a night watch. This act of petty larceny, which he later defended with the excuse that he was merely trying to wake the guard, established him as a &#34;unreliable ally&#34; and a source of collective anxiety for his group. He is not a scholar or a &#34;egg-head,&#34; but a practical, street-smart individual who relies on instinct over intellect.
+
+Despite his abrasive exterior, Randy is a capable and decisive combatant. He wields an impulse rifle with proficiency, capable of unleashing bursts of blue plasma that shatter and ignite the alien flora of the Unity. In battle, he serves as a rearguard, covering the retreat of his comrades with relentless fire. His magical abilities as an &#34;Ascending&#34; allow him to perceive the Scriptorium and Runes, a gift of the Star Blood that grants him a unique interface displaying his Glory status. He also hears a mysterious, guiding voice, adding a layer of mystique to his otherwise gritty persona.
+
+Randy’s journey is scarred by physical and emotional trauma. He bears a long, crimson scar on his shoulder from a grazing arrow, a small bug-paw shaped scar, and a distinctive red, star-shaped mark on his left thigh, a testament to the healing power of the Crimson Nightingale artifact. A stigmat in the form of a shiny silver drop with a miniature needle symbol rests on his wrist, marking his connection to the deeper mysteries of the Unity. His current state is one of exhaustion and vulnerability, often found in medical modules or riding a tauro at the rear of the formation, his body weakened by the cost of healing. Yet, beneath the gruffness and the bloodied nose, there is a core of resilience. He is a character who, despite his flaws and the distrust he inspires, remains a vital, if prickly, component of the group’s survival, embodying the raw, unpolished spirit of the Unity’s natives.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-7">
+    <h2 class="portrait-name">Инь</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/12_Инь.png" alt="Портрет: Инь" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">Yin, also known as Yan, is a young man in his late twenties or early thirties, a contemporary of the protagonist Sigurd. He is a human of the &#34;Azio&#34; lineage, characterized by his distinct East Asian features: yellowish skin, a narrow face, and jet-black hair that often appears slicked back or practical for fieldwork. His physical presence is that of a lean, agile individual, possessing the physical strength necessary to withstand the recoil of heavy weaponry, yet his demeanor often carries a subtle, underlying fatigue—a weariness that speaks to the harsh realities of survival in the Unity.
+
+Yin’s charisma stems from a complex blend of stoic professionalism and quiet, enigmatic warmth. He is not a loud leader, but his authority is absolute, earned through expertise and reliability. He possesses a habit of smirking or offering a knowing smile, a facial expression that suggests he sees more than he says, adding a layer of mystery to his interactions. This smirk is often accompanied by a calm, almost unnerving composure in critical situations, which contrasts sharply with his occasional bursts of intense emotion, such as the sharp groan of dissatisfaction or the frantic, visceral cry of &#34;Help!&#34; when the situation turns dire.
+
+His appearance is defined by the duality of his existence: a modern soldier and a bearer of ancient power. He is typically seen equipped with a tactical load-bearing vest, a sniper’s helmet, and the distinctive blue-metal runic tablet (scriptorium) that hints at his status as an Ascendant. His eyes, often described as sharp and observant, reflect a deep attentiveness to his surroundings, constantly scanning for threats or ecological nuances that others might miss. In moments of extreme cold or magical exertion, his face takes on a haunting quality, with tiny, needle-like ice crystals forming on his eyelids and lips, a visual manifestation of the &#34;Star Blood&#34; and the cold breath of the creatures he hunts.
+
+Yin’s lifestyle is that of a reluctant expert in a world that has rendered his original profession—Light Influencer—obsolete. He resides in the 37th compartment of the colony, a modest dwelling that reflects his practical nature. His life is dictated by the rigid hierarchy of the Unity, where survival depends on access to resources and the favor of the Observers. He is a member of Dmitry Voronin’s group and serves as a trusted companion and mentor to the protagonist, often acting as a guide to the local fauna and the hidden rules of the environment. His knowledge of the land is extensive; he can identify stone-eaters, warn of the &#34;Firetooth&#34; predators, and explain the addictive properties of spirit-herb tea with the ease of a field biologist.
+
+Despite his calm exterior, Yin is deeply connected to the mystical aspects of the world. He is an Ascendant, possessing the &#34;Star Blood,&#34; which grants him the ability to hear an inner voice—a silent companion that offers advice and commentary. This internal dialogue adds a layer of psychological depth to his character, suggesting a mind that is constantly processing information, weighing options, and navigating the blurred line between technology and magic. His combat skills are precise and lethal; he is proficient with the long-range Gauss rifle &#34;Widow&#34; and the assault rifle &#34;Suvorov,&#34; capable of delivering tactical advice on targeting wings or using burst fire with the confidence of a seasoned veteran.
+
+Yin’s emotional core is revealed through his selflessness and protectiveness. He is not merely a soldier but a guardian, willing to take risks for the sake of his team. His relationship with the protagonist is built on trust and mentorship, where his insights into the world’s dangers and his ability to assess enemy strength provide a sense of security. However, his character is also marked by a certain vulnerability; he is not immune to fear or pain, as evidenced by his nervousness during the drake attack and the agonizing process of being revived by the golden nightlight artifact. This vulnerability makes him relatable, transforming him from a mere archetype of the &#34;cool expert&#34; into a complex human being struggling to maintain his humanity in a dehumanizing, high-tech dystopia.
+
+In summary, Yin is a figure of quiet intensity and profound depth. He is a man who carries the weight of his knowledge and his powers, using them to protect those around him while grappling with the alien nature of the world he inhabits. His charm lies in his ability to balance the mundane with the magical, the professional with the personal, and the stoic with the deeply human. He is a character who invites the reader to look closer, to question the nature of his inner voice, and to appreciate the quiet strength that allows him to endure the harsh, beautiful, and terrifying reality of the Unity.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-8">
+    <h2 class="portrait-name">Кел Аммос</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/25_Кел Аммос.png" alt="Портрет: Кел Аммос" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">Kell Ammos, known by the epithet &#34;The Celestial,&#34; is a towering giant whose very presence commands awe and reverence. He possesses a physique of immense stature and power, draped in armor crafted from hard light that shimmers with an ethereal, almost divine intensity. His most striking feature is his cascade of golden hair, which contrasts sharply with the violent energy that surrounds him. His eyes are not merely biological; they are vessels of power, glowing with the radiant essence of Star Blood, a unique energy source that fuels his existence and abilities.
+
+In his current state, Kell is a testament to resilience and stoic endurance. He is suspended by a chain, a prisoner of his enemies, yet his demeanor remains unbroken. His face, though battered and bruised from the rigors of battle, retains a defiant, almost mocking smile that freezes into a stone-like mask when challenged by his adversaries. This expression conveys a cold, calculated calm, a refusal to let his enemies see fear even as his body is pushed to its limits. His skin is often seen weeping blood, a testament to the physical toll of his combat, yet he endures with a stoicism that borders on the supernatural.
+
+Kell’s aura is a spectacle of raw elemental force. He is enveloped in a halo of ghostly, spectral flame that flickers and dances around him, casting an otherworldly glow. From his body, sizzling blue lightning arcs and snaps, biting into the earth and crackling with volatile energy. This celestial fire is not just a visual effect but a manifestation of his Aspect, a power that allows him to manipulate reality through ancient runes and bio-engineered magic.
+
+His primary weapon is a massive, crimson blade, its surface stained as if perpetually bathed in blood. This sword is an extension of his will, a tool of destruction that he wields with terrifying precision. Though he has lost both hands in recent battles—his right hand severed along with the Celestial Staff, a powerful artifact he once wielded—his combat prowess remains undiminished. He is a master of defensive and offensive magic, capable of reflecting attacks, such as the Dragon Slayer&#39;s needles, and protecting his allies with a Harmonic Shield. His knowledge of ancient runes, including those of the Dead Generals, Annihilation, Flight, and Anor, allows him to combine powers in ways that defy conventional logic.
+
+Kell’s personality is defined by a blend of arrogance, humor, and deep-seated strength. He is not a silent warrior; he is vocal, often spitting in the faces of his enemies or laughing in their presence, even when his blood and runes are nearly exhausted. This defiance is not mere bravado but a psychological weapon, designed to unsettle his opponents and assert his dominance. His ability to maintain composure in critical situations, issuing brief, commanding phrases like &#34;Enough chatter. Act!&#34;, reveals a leader’s mind beneath the warrior’s exterior.
+
+As a member of the Pleiades of the Dark Stars, Kell carries the weight of a mysterious lineage and a high social status within the rigid hierarchy of the Unity. His life is one of constant adaptation and survival in a world where ancient technology and magic intertwine. He is a survivor, a protector, and a force of nature, whose very existence challenges the order of the Observers and the resource-scarce colonies. His story is one of endurance, of a man who, despite being stripped of his limbs and his immediate power, remains a beacon of hope and a source of dread for his enemies. His charisma lies in his ability to remain human, flawed, and defiant in the face of overwhelming odds, making him a figure readers can both admire and empathize with.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-9">
+    <h2 class="portrait-name">Девушка</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/27_Девушка.png" alt="Портрет: Девушка" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">She is a figure of imposing and ethereal stature, towering with a slender, almost unnaturally perfect physique that evokes the idealized form of a demigoddess. Her most striking feature is her long, flowing hair of pure, unblemished gold, which cascades down her back, contrasting sharply with the intricate, patterned attire she wears. This garment is a fusion of ancient mystique and futuristic design, consisting of a form-fitting dress in shades of azure, white, and gold, paired with a billowing cloak that seems to move with a life of its own. A complex belt adorned with geometric ornaments cinches her waist, accompanied by various strange, enigmatic accessories that hint at a technology or magic far beyond the comprehension of the current inhabitants of the Unity.
+
+Her face bears a strict, severe expression, yet her eyes hold a terrifying beauty; they can shift from human-like hues to a glowing, unearthly silver, shining with the intensity of distant stars. When she speaks, her voice is a ringing, melodic soprano that can suddenly shift into a sharp, threatening tone, commanding absolute obedience. Her speech, often described as &#34;perfect gibberish&#34; by those who encounter her, is delivered with the grace and precision of a being accustomed to authority, using forbidding gestures and imperious intonations that leave little room for argument.
+
+Her movements are fluid and graceful, characterized by dexterous, precise finger movements that manipulate a ghostly, holographic circle of symbols floating before her. This spectral interface, resembling a pentagram or an augmented reality display, allows her to control her environment with ease. She is capable of generating azure light, bursts of blue flame, and crackling blue lightning, all of which serve as manifestations of her power. Her presence is often marked by sudden appearances and disappearances, as she can teleport or fade from existence within her designated territory, a vast crypt or zone protected by her ancient code.
+
+Whether she is a &#34;talking ghost,&#34; a highly realistic hologram, or an artifact left behind by the ancient Kel people, her nature remains shrouded in mystery. She serves as a guardian of her domain, a mystical threat to those who cross the threshold of her protective circle. Her existence instills a mix of awe, wonder, and anxiety in observers, who are captivated by her divine aesthetic yet terrified by her non-negotiable authority and the cold, algorithmic logic that underpins her seemingly magical abilities. In the harsh, resource-scarce world of the Unity, she stands as a beacon of ancient power, a beautiful and deadly enigma that embodies the intersection of high technology and primal mysticism.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-10">
+    <h2 class="portrait-name">Травинка</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/28_Травинка.png" alt="Портрет: Травинка" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">Travinka is a young woman of striking, exotic beauty, her slender frame mirroring the sharp, almost unsettling features of her mother, the Herbspeaker of the Fregold. Her most arresting feature is her hair, a cascade of strange, silvery strands that catch the light with an unnatural shimmer, framing a face marked by a profound, weary vulnerability. Intricate tattoos of interwoven plants, trees, and herbs cover her temples, forehead, and cheeks, flowing down her neck to adorn much of her body, serving as a living map of her spiritual heritage and connection to the flora of the Unity. A small, silver disc of vox adorns her ear, a subtle technological accent in a world where ancient bio-engineering and mystical runes coexist.
+
+Her demeanor is defined by a quiet, humble grace that often masks a deep-seated anxiety. She moves with a tentative grace, frequently lowering her eyes and stepping back when confronted, her expressions shifting rapidly from polite smiles to wide-eyed alarm. There is a palpable spiritual power within her, a physical weight to her presence that contrasts sharply with her fragile appearance. This internal strength is often suppressed by the &#34;maternal pressure&#34; of her formidable mother, creating a dynamic where Travinka appears perpetually tired, offering weary smiles even when burdened by the weight of her responsibilities.
+
+In the harsh, hierarchical society of the Unity, where survival depends on access to Star Blood and the favor of the Observers, Travinka occupies a role that is both vital and precarious. As the daughter of a respected Herbspeaker, she is well-versed in the lore of the Ascendants and the ancient runes, yet she remains grounded in the practical, earthy tasks of gathering herbs and stone-berries. She is often seen carrying rectangular woven baskets, her movements hurried and breathless, driven by the urgent need to provide for her community and her four young children. Her life is a constant balance between the serene, magical aspects of her heritage and the brutal, resource-scarce reality of the Dyson sphere.
+
+Her charisma lies in her relatable fragility and her quiet resilience. Readers are drawn to her not by grand gestures, but by her human reactions: the flush of embarrassment, the hesitant nod, the protective instinct that emerges when danger, such as a pack of Dreyks, closes in. She embodies the tension between the peaceful pursuit of nature’s gifts and the looming threat of the Unity’s anomalies. Her ability to evoke sympathy stems from her visible struggle to maintain dignity and kindness in the face of overwhelming odds, making her a figure who inspires a protective instinct in those around her, particularly in characters like Sigurd, who finds himself drawn to her quiet strength and the gentle, weary warmth she offers despite her own exhaustion.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-11">
+    <h2 class="portrait-name">Говорящая-с-Травами</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/29_Говорящая-с-Травами.png" alt="Портрет: Говорящая-с-Травами" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">She is a figure of terrifying, exotic beauty, possessing a face that is sharply sculpted and distinctly non-human. Her features are defined by high, prominent cheekbones and a jawline that tapers into an unnervingly narrow, acute point, giving her profile a predatory elegance. Her ears are pointed, and her eyes—almond-shaped and glowing with a luminous blue-green intensity—hold a depth that seems to pierce through the observer. Her lips are full and often curve into a faint, mocking smirk, a habitual expression that betrays her lack of social tact and her underlying dominance.
+
+Her skin is adorned with intricate, delicate tattoos that weave across her temples, forehead, and cheeks, depicting complex patterns of plants, trees, and herbs. These botanical designs do not stop at her face; they continue down her neck and spread extensively across the rest of her body, hidden beneath her garments. She is typically draped in a dark, hooded mantle of an unusual cut, cinched at the waist by a twisted silver belt, which adds to her air of mystery and authority.
+
+Despite her alien appearance, she carries herself with a regal, almost crushing dignity. Her movements are silent and deliberate, exuding a powerful, suppressing charisma that commands attention and often induces a sense of awe or anxiety in those around her. She is a &#34;Rising&#34; of the Earth people, specifically from the Frigold Sky, yet she does not belong to its bloodline, holding the title of Flaminica with the rank of Silver. This status grants her a high social standing within the rigid hierarchy of the Unity, a colossal Dyson sphere where survival depends on access to &#34;Star Blood&#34; and the favor of algorithmic Observers.
+
+As a biologist specializing in the cultivation and study of rare plants and creatures, she possesses deep knowledge of the world’s anomalous flora and fauna. Her spiritual power is not merely abstract; it is a physical presence that can be felt, adding to the intrigue and tension surrounding her. She speaks Globish with an unusual articulation, her voice quiet, deep, and insinuating, yet she commands the language with native fluency.
+
+Her life is marked by a blend of scientific curiosity and maternal instinct, as evidenced by her care for her daughter, Travinika, whom she named herself. She is a woman of significant influence, capable of demanding rare artifacts like a Star Blood core and shaping the destinies of those around her, such as Sigurd, whom she views as a debtor to the Frigold. Her presence is a constant reminder of the fusion between advanced biotechnology and the mystical elements of this world, making her a character who is both revered and feared for her power, her beauty, and her unyielding nature.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-12">
+    <h2 class="portrait-name">Черный скелет</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/30_Черный скелет.png" alt="Портрет: Черный скелет" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">The figure lies in a state of eternal, frozen agony, a testament to a violence so ancient and ritualistic that it transcends mere death. This is not a human, but a being of the native Kael civilization, its skeletal form preserved in a state of macabre perfection. The bones are not the pale ivory of terrestrial life, but an absolute, void-like black, resembling polished ebony wood rather than organic calcium. The texture is smooth, dense, and unnaturally uniform, suggesting a biology engineered for durability or perhaps a different evolutionary path entirely. The anatomy is elegant and refined, possessing a slender, finished elegance that contrasts sharply with the brutality of its final moments.
+
+The skull is the focal point of this eerie tableau, its proportions distinctly non-human. The eye sockets are larger and more angular than those of any known human race, hinting at a sensory apparatus far superior to our own. Adorning the cranium is an intricate, golden ornament that does not sit upon the bone but appears to be fused with it, an inlay or implant that winds around the temples and forehead like a circlet of high antiquity. This gold is not merely decorative; it seems to be part of the being’s very structure, a mark of status or power from a civilization that viewed technology and magic as one. Above the bridge of the nose, a single, elongated diamond-shaped droplet of material catches the light, shimmering with an iridescent, rainbow-like sheen that defies the static darkness of the surrounding stone. It is a point of mystical beauty in a scene of horror, a lingering spark of the arcane.
+
+The jaw is set in a silent scream or a grimace of defiance, revealing a row of teeth that are flawless, uniform, and made of pure gold. They lack the canines of predatory humans, instead presenting a flat, efficient structure suited for a diet or function unknown to us. The teeth are perfectly preserved, unchipped and gleaming, a stark contrast to the decay that should have claimed them over millennia.
+
+The being is crucified upon a rectangular slab of white metal veined with gold, a surface that serves as both an altar and a tomb. The position is one of extreme restraint and suffering: the wrists and ankles are stretched wide, pinned to the plate, while the chest and limbs are bound by chains that are far more than simple metal. These are the &#34;Rune of Living Chains,&#34; jagged, serrated links that do not merely wrap around the body but bite into it. The spikes of the chains have pierced deep into the black bone, fusing with the skeletal structure, suggesting that the binding was not just physical but magical, a ritualistic imprisonment that kept the body intact and the pain, perhaps, eternal.
+
+The overall impression is one of profound unease and awe. There is a terrifying beauty to the scene, a sense of high art corrupted by violence. The observer feels a mix of horror at the method of execution and a deep, empathetic sorrow for the being’s final moments. The scale of the alien context is overwhelming; this was not a common criminal, but a warrior or a significant figure from a culture that warred with semi-divine entities. The silence of the tomb is heavy, charged with the residual energy of the runes and the mystery of the Kael people. The black bones, the gold teeth, the iridescent gem, and the living chains create a visual narrative of power, sacrifice, and the incomprehensible nature of a world where technology and magic are indistinguishable. It is a portrait of a being who faced the end with a dignity that has been preserved in stone and metal, a silent witness to the harsh, hierarchical laws of the Unity, where survival is measured in Star Blood and order is maintained by the cold, algorithmic gaze of the Observers.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-13">
+    <h2 class="portrait-name">Эйрик</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/31_Эйрик.png" alt="Портрет: Эйрик" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">He is a man of indeterminate age, his face weathered by the harsh, alien winds of the Unity and the relentless passage of decades in a world that defies earthly logic. As one of the original Earth colonists, he carries the quiet, enduring weight of a pioneer who did not merely survive but thrived in a place where survival is a privilege granted by ancient, incomprehensible forces. His stature is not that of a brute; in his youth, he was considered physically unremarkable, even weak, compared to the genetically enhanced or naturally robust warriors of the early settlements. Yet, time and the mysterious power of Ascension have transformed him. He possesses a lean, wiry strength, a coiled resilience that speaks of a life spent not in idle comfort, but in constant, vigilant engagement with a wild and dangerous environment. His eyes are sharp, observant, and hold a depth that suggests a man who has stared into the abyss of the Shadow Lands and looked back, carrying with him the weight of lost comrades and unanswered questions.
+
+His appearance is that of a master of his domain, a figure who commands respect not through volume, but through presence. He wears the practical, durable attire of a rancher in a biome where flora and fauna are anomalies of bio-engineering and ancient magic. His hands are calloused, not from fine work, but from the rough handling of beasts, the reins of exotic mounts, and the tools of a man who builds and maintains his own world. There is a certain rugged elegance to him, a sense of order and control that contrasts with the chaotic, untamed nature of the lands he oversees. He is the &#34;Master of Beasts,&#34; a title that is not merely a nickname but a reflection of his unique bond with the creatures of the Unity. It is said he can speak to them, a whisper of truth in a world of rumors, for the Tigrax, fearsome predators that obey no other, walk at his side, their eyes fixed on him with an almost human loyalty. One such Tigrax, a creature of immense power and grace, serves as his personal guardian, a silent testament to his authority over the wild.
+
+His social standing is that of a powerful, independent leader, a Silver-level Ascendant who has carved out a life of significant influence and autonomy. He is the patriarch of a large, complex family, with seven wives and fifteen children, a testament to his vitality and the social structures of the fortified communes he helped establish. His eldest wife, Sugretta, a woman of the Nordic lineage, stands as a pillar of his domestic life, a connection to the diverse cultures that have merged in this new world. He is the father of Mark, a lineage that carries the weight of his legacy. His ranch is a vast, thriving ecosystem of his own making, home to prairie carves, tauro, goats, silk birds, and the formidable Tigrax, a living monument to his ability to harness and direct the resources of the Unity.
+
+His life is marked by significant historical events that have shaped his character and reputation. He was a key figure in the founding of the freehold, one of the first to swear the Oath of Unity and claim the land, a act of courage and vision in a time of uncertainty. He participated in the culling of the giant apes, a brutal campaign where his &#34;bronze&#34; level power was once deemed insufficient, a memory that likely fuels his drive to prove his worth. He was a trusted companion to Vince, serving as his riks on the expedition to the Temple of Eternity, a journey that ended in the shadowy, treacherous lands where Vince vanished. This loss, and the subsequent break from the main group, added a layer of mystery and independence to his character. He is a man who has walked away from the collective when the collective failed, choosing his own path, his own family, his own ranch, and his own bond with the wild.
+
+There is an aura of quiet mystery surrounding him. He is a man who has seen the ancient artifacts of the Kel People, who has felt the presence of the Observers, and who has navigated the complex social hierarchies of the colonists. He is respected by the Grass People, a testament to his ability to bridge the gap between human and other. He is not afraid to live in these lands, a quality that sets him apart from many who are perpetually on edge, waiting for the next threat from the anomalous environment. His charisma lies in his steadiness, his deep connection to the natural world, and his quiet, unwavering strength. He is a man who has found his place in a world that is not his own, and in doing so, has become a force to be reckoned with, a leader who commands loyalty not through fear, but through a profound understanding of the world he inhabits and the creatures that share it. His life is a tapestry of adventure, family, and the quiet, persistent work of building a home in the heart of the unknown, a man whose story is still being written, but whose legacy is already etched into the fabric of the Unity.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-14">
+    <h2 class="portrait-name">Хищник</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/32_Хищник.png" alt="Портрет: Хищник" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">The creature is a formidable apex predator, a biological anomaly that defies simple categorization, standing larger than a mature wolf with a muscular, powerfully built frame that suggests immense physical strength. It is a tailless entity, its silhouette dominated by a head shaped like that of a hyena, giving it a distinctively predatory and aggressive profile. Its most striking feature is its visual apparatus: six long, narrow eyes, arranged in pairs of three on each side of its head, are partially covered by thick, leathery eyelids. These eyes, combined with its acute senses, make it a terrifying hunter in the dim, shadowed environments of the Unity.
+
+Its skin is a dense, black expanse, resembling molded rubber in its texture and sheen, providing a tough, almost impenetrable barrier. Running from the crown of its head down its spine is a mane composed not of fur, but of numerous sharp, black spines. Some of these spines are as long as a human hand, gleaming with a deep, ominous purple hue that contrasts sharply with the matte black of its body. These spines often litter the ground around its territory, marking its presence.
+
+The creature’s mouth is an elongated maw, housing a double row of teeth akin to those of a shark, designed for gripping and tearing. Its powerful jaws are capable of crushing metal cylinders with a satisfying crunch, a testament to its raw physical power. When it moves, it does so with explosive speed, leaping on all four limbs with a grace that belies its size. It is a creature of the shadows, instinctively recoiling from bright light, which causes it unbearable pain and even makes its body smoke under intense golden radiance.
+
+Its blood, when spilled, is a vivid crimson with a distinct purple undertone, staining the rocks, grass, and earth of its rocky gorge lair. The creature communicates through a mix of a shrill, whimpering screech and a furious, vibrating growl that resonates with primal aggression. It is a resilient being, possessing iron health and remarkable regenerative abilities, allowing it to withstand injuries that would fell lesser creatures.
+
+Living in a cave beneath a rocky overhang, this predator is a symbol of the harsh, survival-driven world of the Unity. It is a nightmare from the darkness, a creature that inspires both awe and terror in the human colonists. Its presence is marked by the remnants of its meals—animal bones and human remains—scattered in its den, serving as a grim reminder of the brutal hierarchy that governs this alien sphere. The creature is not just a beast, but a living embodiment of the ancient, mysterious forces that shape the lives of those who dwell within the Dyson sphere, a constant, looming threat that defines the boundaries of safety and danger in this futuristic, magical-realist landscape.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-15">
+    <h2 class="portrait-name">Тайна</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/34_Тайна.png" alt="Портрет: Тайна" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">She is a slender figure with bronzed skin, her shoulders and cheeks tanned to a deep, warm hue that contrasts sharply with the pale, ethereal light of the surrounding environment. Her most striking feature is her hair—fluffy, weightless, and seemingly defying gravity, giving her an otherworldly, dreamlike appearance. She wears a gossamer-thin, transparent pareo that clings to her form, suggesting a comfort with vulnerability and a carefree attitude toward the rigid social norms of the Unity. Her face is animated by a bright, white-toothed smile, and her dark cheeks are marked by charming dimples that deepen when she laughs, a sound that is light, ringing, and infectious.
+
+Her demeanor is one of effortless ease and playful energy. She moves with a fluid grace, often engaging others with a tactile, intimate familiarity, such as playfully plucking at the fingers of her companion. Her laughter is spontaneous and unguarded, reflecting a spirit that is vibrant, alive, and deeply optimistic. Despite the harsh, hierarchical reality of the Dyson sphere and the scarcity of resources, she radiates a sense of sun-drenched joy, as if she carries her own internal light.
+
+Professionally, she is a Second-Class Specialist, a status she earned through rigorous testing and virtual interviews. Her primary specialization is as a teacher of ancient history, with a secondary role as an info-archivist, indicating a mind that is both scholarly and deeply curious about the past. She is well-versed in the lore of the old world, knowing of works like the *Nibelungenlied* and the broader context of the &#34;Cosmo&#34; project. Her interests lie in bridging the gap between the ancient, magical artifacts of the Kell people and the technological present, a pursuit that requires both intellectual rigor and imaginative flexibility.
+
+She is a woman of action and adventure, capable of dragging her companions into impulsive, joyful escapades, such as running along the edge of the waves or diving into the water. Her plans are bold; she intends to meet her companion, Sigurd, in the &#34;Cosmo,&#34; suggesting a desire for connection that transcends the immediate, confined spaces of their settlements. She has recently undergone the procedure for a digital imprint, a step that reflects her engagement with the technological systems that govern their lives, yet her spirit remains distinctly human, warm, and inviting. She is the kind of person who makes the mundane feel like a dream, inspiring those around her to embrace the beauty and mystery of their unique, alien world.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-16">
+    <h2 class="portrait-name">Птерозавр</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/37_Птерозавр.png" alt="Портрет: Птерозавр" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">The Alpha Drayke is a colossal apex predator, standing three meters tall at the shoulder—a size that dwarfs its kin by a factor of two. Its presence is defined by a terrifying, regal majesty, crowned by a jagged, bone-like crest that resembles a skeletal diadem upon its head. This skeletal crown, combined with its deep, ethereal blue plumage, gives the creature an appearance of ancient, otherworldly authority rather than mere brute force. The most striking feature of its anatomy is its beak: a long, serrated blade of keratin and bone, sharp enough to function as a sword, which it uses with terrifying precision to seize and thrash its prey.
+
+Beneath the deep blue of its wings and back, the Drayke’s chest bursts with a vivid, contrasting hue of blue and orange, a visual testament to the potent Star Blood coursing through its veins. This internal energy source grants the creature a resilience that defies biological logic; while ordinary pterosaurs possess hollow bones and flesh that shatters under bullet fire, this Alpha survived a full magazine of gunfire, its thickened hide and reinforced skeletal structure absorbing impacts that would turn lesser creatures into pulp.
+
+Its behavior is a study in relentless, feral aggression. Lacking the instinct for fear or the sensitivity to pain that governs most living beings, the Alpha Drayke moves with jerky, violent bursts of energy. When threatened, it does not flee but rises on its powerful hind legs, spreading its massive wings to block out the light, a posture that radiates imminent, crushing violence. Its hunting style is visceral and chaotic; it does not merely kill, but savages its victims, thrashing them with the ferocity of a dog shaking a rat, driven by an unyielding persistence that makes it a nightmare for any colonist in the Unity’s harsh, resource-scarce environment. To encounter this creature is to face not just a beast, but a force of nature—a living artifact of the ancient Kell civilization’s bio-engineering, embodying the raw, untamed danger of the Dyson sphere’s wilds.</pre>
+      </div>
+    </details>
+  </article>
+  <article class="portrait-card" id="portrait-17">
+    <h2 class="portrait-name">Серебряная Форель</h2>
+
+    <figure class="portrait-figure">
+      <img src="images/39_Серебряная Форель.png" alt="Портрет: Серебряная Форель" loading="lazy">
+    </figure>
+
+    <details class="prompt-block">
+      <summary>
+        <span>Промпт для модели рисования</span>
+        <span class="summary-hint">показать</span>
+      </summary>
+      <div class="prompt-content">
+        <button class="copy-btn" type="button">Копировать</button>
+        <pre class="image-prompt">Silver Trout, known among the river-dwelling clans as the Hound of Dead Fish, is a figure who embodies the raw, untamed essence of the Unity’s northern reaches. A member of the Ascendants, she possesses Star Blood, a rare and potent biological trait that marks her as both a miracle and a threat in the rigid hierarchy of the Dyson Sphere. Her appearance is a striking fusion of humanoid grace and predatory animalism, reflecting her dual nature as a warrior and a shapeshifter. In her human form, she moves with a fluid, serpentine agility, her limbs coiled with latent power, ready to snap into action with a feral hiss that betrays her beastly heritage. Her voice is not merely spoken but felt—a wild, barbaric rasp that carries the weight of ancient, unspoken laws.
+
+Physically, she is lean and muscular, her body sculpted by a life of relentless hunting in the harsh, anomalous environments of the north. Her eyes hold the cold, calculating intelligence of a predator, always scanning for threats or prey, while her skin may bear subtle markings or textures that hint at her connection to the water and the ancient bio-engineering of the Kell people. She is not a solitary wanderer; her presence is often accompanied by the silent, coordinated movements of her hunting group, a pack bound by instinct and survival. This communal aspect of her life underscores her role as a protector of territory and a key player in the resource-scarce society of the colonists.
+
+Her combat style is as unique as her physiology. She wields a spear that is not merely a weapon but an extension of her will, capable of transforming into a spectral, ghostly disc that blurs the line between physical force and magical resonance. She also employs jagged, white darts that resemble sharp fish bones, throwing them with deadly accuracy from a distance. These weapons, combined with her ability to leap with inhuman speed and her capacity to shift into a giant otter-like form, make her a formidable opponent. In her transformed state, she becomes a massive, aquatic predator, her movements in the water as swift and deadly as they are on land, allowing her to traverse the complex ecosystems of the Unity with ease.
+
+Silver Trout’s character is defined by a primal aggression tempered by the strategic intelligence of a master hunter. She is driven by the need to secure resources and defend her territory, traits that have been honed by the harsh realities of life in the Unity, where survival depends on access to Star Blood and the favor of the Watchers. Her presence evokes a mix of awe and fear, as she represents the wild, uncontrolled aspect of this high-tech, magical world. To encounter her is to face a force of nature, a being who has mastered the art of survival in a place where technology and magic intertwine, and where the line between human and beast is often blurred. Her charisma lies in her raw power and her unyielding connection to the primal rhythms of the Unity, making her a compelling and dangerous figure in the narrative.</pre>
+      </div>
+    </details>
+  </article>
+
+  <footer>Картинки</footer>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox-close" type="button" aria-label="Закрыть">&times;</button>
+  <img alt="">
+</div>
+
+<script>
+(function () {
+  var lb = document.getElementById('lightbox');
+  var lbImg = lb.querySelector('img');
+  var lbClose = lb.querySelector('.lightbox-close');
+
+  function openLightbox(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.portrait-figure img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      openLightbox(img.currentSrc || img.src, img.alt);
+    });
+  });
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', function (e) {
+    if (e.target === lb) closeLightbox();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+  });
+
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var pre = btn.parentElement.querySelector('.image-prompt');
+      var text = pre ? pre.textContent : '';
+      var done = function () {
+        btn.textContent = 'Скопировано';
+        btn.classList.add('copied');
+        setTimeout(function () {
+          btn.textContent = 'Копировать';
+          btn.classList.remove('copied');
+        }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, done);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        done();
+      }
+    });
+  });
+})();
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(102424835, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/102424835" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>
